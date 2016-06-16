@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g2 -Map=PCB Laser Etcher.map -O0 --gc-sections -LC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher -TC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/STM32F103C8_FLASH.ld -g">
+      <target file="PCB Laser Etcher.elf" lastModified="1555892a172">
+         <source file="..\obj\GPIO_setting.o" lastModified="155588ecf8d"/>
+         <source file="..\obj\syscalls.o" lastModified="155588ecbf7"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="155588ec4bb"/>
+         <source file="..\obj\startup_stm32f103xb.o" lastModified="155588ec849"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="155588ec33b"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="155588ec6b9"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="155588eca47"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="155588ece17"/>
+         <source file="..\obj\main.o" lastModified="15558929dec"/>
+      </target>
+   </processor>
+</history>
