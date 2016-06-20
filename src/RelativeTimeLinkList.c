@@ -11,14 +11,14 @@ timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rat
   return record;
 }
 
-// void AddTimeList(timeRecordList *record, struct ListElement *newElement){
-  
-// }
-
-
 
 void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
     uint32_t storeActTime = 0;
+    uint32_t interval1 = 0;
+    uint32_t interval2 = 0;
+    uint32_t newActTime = 0;
+    uint32_t store = 0;
+    struct ListElement * element;
     
     if(newList->head == NULL){
       
@@ -38,15 +38,51 @@ void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
          
         
        
-      uint32_t interval1 = record->currentTime - record->baseTime;
+      interval1 = record->currentTime - record->baseTime;
       printf("interval1 = record->currentTime - record->baseTime = %d\n",interval1);
-      uint32_t interval2 =  storeActTime - interval1;
+      
+      if(interval1 == newList->head->actionTime){
+      interval2 = storeActTime;
+      }else{
+      interval2 = storeActTime - interval1;
       printf("interval2 =  storeActTime - interval1 = %d\n",interval2);
-       
+      }
+    
+      
       if(record->rate > interval2){
-       uint32_t nextActTime = record->rate - interval2;
-        printf("nextActTime = record->rate - interval2 = %d\n",nextActTime);
-       addList(newList,createLinkedElement(nextActTime));
+       newActTime = record->rate - interval2;
+       printf("newActTime = record->rate - interval2 = %d\n",newActTime);
+       addList(newList,createLinkedElement(newActTime));
+      }else if(record->rate < interval2){
+        printf("Hello World\n");
+        if(newList->head->next == NULL){
+          newActTime = newList->head->actionTime - (record->rate + interval1);
+          printf("newActTime = %d\n",newActTime);
+          newList->head->actionTime = newList->head->actionTime - newActTime;
+          addList(newList,createLinkedElement(newActTime));
+          printf("newList->head->actionTime = %d\n",newList->head->actionTime);
+        }else{
+           element = newList->head;
+           store = 0;
+            printf("store = %d\n",store);
+         while( store < (record->rate + interval1) && element != NULL ){
+            store += element->actionTime;
+            printf("element->actionTime = %d\n",element->actionTime);
+            printf("store = %d\n",store);
+            if(store < (record->rate + interval1) ){
+                element = element->next;
+            }
+         }
+           newActTime = storeActTime - (record->rate + interval1);
+           printf("newActTime = storeActTime - (record->rate + interval1) = %d - %d = %d\n",storeActTime,(record->rate + interval1),newActTime);
+           element->actionTime = element->actionTime - newActTime;
+           addList(newList,createLinkedElement(newActTime));
+           printf("element->actionTime = %d\n",element->actionTime);
+         
+        }
+        
+        
+        
       }
       
       

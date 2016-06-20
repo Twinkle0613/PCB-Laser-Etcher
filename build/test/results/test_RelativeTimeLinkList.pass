@@ -1,0 +1,131 @@
+---
+:source:
+  :path: test
+  :file: test_RelativeTimeLinkList.c
+:successes:
+- :test: test_recordTime_Add_data
+  :line: 17
+  :message: ''
+- :test: test_relative_Time_Link_list_a_time_element_is_added_into_link_list
+  :line: 42
+  :message: ''
+- :test: test_relative_Time_Link_list_two_time_element_is_added_into_link_list
+  :line: 59
+  :message: ''
+- :test: test_relative_Time_Link_list_three_time_element_is_added_into_link_list
+  :line: 77
+  :message: ''
+- :test: test_relative_Time_Link_list_four_time_element_is_added_into_link_list
+  :line: 99
+  :message: ''
+- :test: test_relative_Time_Link_list_five_time_element_is_added_into_link_list
+  :line: 122
+  :message: ''
+- :test: test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2
+  :line: 163
+  :message: ''
+- :test: test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2
+  :line: 183
+  :message: ''
+- :test: test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2
+  :line: 205
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 9
+  :passed: 9
+  :failed: 0
+  :ignored: 0
+:stdout:
+- No.01
+- No.02
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- newActTime = record->rate - interval2 = 5
+- No.03
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- newActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- newActTime = record->rate - interval2 = 5
+- No.04
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- newActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- newActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- interval1 = record->currentTime - record->baseTime = 9
+- interval2 =  storeActTime - interval1 = 11
+- newActTime = record->rate - interval2 = 2
+- No.05
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- newActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- newActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- interval1 = record->currentTime - record->baseTime = 9
+- interval2 =  storeActTime - interval1 = 11
+- newActTime = record->rate - interval2 = 2
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- storeActTime = 22
+- interval1 = record->currentTime - record->baseTime = 10
+- newActTime = record->rate - interval2 = 3
+- No.06
+- storeActTime = 20
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 15
+- Hello World
+- newActTime = 5
+- newList->head->actionTime = 15
+- No.07
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- Hello World
+- store = 0
+- element->actionTime = 10
+- store = 10
+- element->actionTime = 5
+- store = 15
+- newActTime = storeActTime - (record->rate + interval1) = 15 - 12 = 3
+- element->actionTime = 2
+- No.08
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 22
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 17
+- Hello World
+- store = 0
+- element->actionTime = 10
+- store = 10
+- element->actionTime = 5
+- store = 15
+- element->actionTime = 7
+- store = 22
+- newActTime = storeActTime - (record->rate + interval1) = 22 - 18 = 4
+- element->actionTime = 3
+- ''

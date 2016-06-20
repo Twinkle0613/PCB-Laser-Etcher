@@ -26,7 +26,7 @@ void tearDown(void)
 
 
 
-void xtest_recordTime_Add_data(void){
+void test_recordTime_Add_data(void){
 
   timeRecordList *record = recordTime(10,20,10);
 
@@ -38,13 +38,7 @@ void xtest_recordTime_Add_data(void){
 
 }
 
-
-
-
-
-
-
-void xtest_reative_Time_Link_list_a_time_element_is_added_into_link_list(void){
+void test_relative_Time_Link_list_a_time_element_is_added_into_link_list(void){
 
    printf("No.01\n");
 
@@ -54,11 +48,11 @@ void xtest_reative_Time_Link_list_a_time_element_is_added_into_link_list(void){
 
    AddTimeList(recordTime(10,20,10),ptr);
 
-   { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),31); };
+   { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),47); };
 
 }
 
-void xtest_reative_Time_Link_list_two_time_element_is_added_into_link_list(void){
+void test_relative_Time_Link_list_two_time_element_is_added_into_link_list(void){
 
    printf("No.02\n");
 
@@ -70,13 +64,11 @@ void xtest_reative_Time_Link_list_two_time_element_is_added_into_link_list(void)
 
     AddTimeList(recordTime(100,105,10),ptr);
 
-
-
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),50); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),65); };
 
 }
 
-void test_reative_Time_Link_list_three_time_element_is_added_into_link_list(void){
+void test_relative_Time_Link_list_three_time_element_is_added_into_link_list(void){
 
     printf("No.03\n");
 
@@ -90,11 +82,11 @@ void test_reative_Time_Link_list_three_time_element_is_added_into_link_list(void
 
     AddTimeList(recordTime(100,108,12),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),69); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),84); };
 
 }
 
-void test_reative_Time_Link_list_four_time_element_is_added_into_link_list(void){
+void test_relative_Time_Link_list_four_time_element_is_added_into_link_list(void){
 
     printf("No.04\n");
 
@@ -110,13 +102,13 @@ void test_reative_Time_Link_list_four_time_element_is_added_into_link_list(void)
 
     AddTimeList(recordTime(100,109,13),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),92); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),107); };
 
 }
 
-void test_reative_Time_Link_list_five_time_element_is_added_into_link_list(void){
+void test_relative_Time_Link_list_five_time_element_is_added_into_link_list(void){
 
-    printf("No.04\n");
+    printf("No.05\n");
 
     struct Linkedlist *ptr = createLinkedList();
 
@@ -132,6 +124,66 @@ void test_reative_Time_Link_list_five_time_element_is_added_into_link_list(void)
 
     AddTimeList(recordTime(100,110,25),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),116); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),131); };
+
+}
+
+void test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2(void){
+
+    printf("No.06\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {15,5};
+
+    AddTimeList(recordTime(10,20,20),ptr);
+
+    AddTimeList(recordTime(100,105,10),ptr);
+
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),169); };
+
+}
+
+void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+
+    printf("No.07\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,2,3};
+
+   addList(ptr,createLinkedElement(10));
+
+   addList(ptr,createLinkedElement(5));
+
+
+
+   AddTimeList(recordTime(100,108,4),ptr);
+
+
+
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),192); };
+
+}
+
+void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+
+    printf("No.08\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,3,4};
+
+   addList(ptr,createLinkedElement(10));
+
+   addList(ptr,createLinkedElement(5));
+
+   addList(ptr,createLinkedElement(7));
+
+   AddTimeList(recordTime(100,105,13),ptr);
+
+
+
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),214); };
 
 }
