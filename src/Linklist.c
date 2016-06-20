@@ -6,31 +6,26 @@
 struct Linkedlist *createLinkedList(){
 	struct Linkedlist *list_NULL = malloc(sizeof(struct Linkedlist));;
  	list_NULL->tail = NULL;
-  list_NULL->Head = NULL;
+  list_NULL->head = NULL;
   return list_NULL;
 }
 
 struct ListElement *createLinkedElement(int x){
 	  struct ListElement *newptr = malloc(sizeof(struct ListElement));
-	  newptr->value = x;
+	  newptr->actionTime = x;
 	  newptr->next = NULL;
 		return newptr;
 }
  
- 
-int addList( struct ListElement *newElement, struct Linkedlist *newList)
+void addList(  struct Linkedlist *newList, struct ListElement *newElement)
 {
-	 if(newList->Head == NULL)
+	 if(newList->head == NULL)
 	 {
-		       newList->Head = newElement;
-					 	printf("%d\n",newList->Head->value);
-		       return newList->Head->value; 
-		}
+      newList->head = newElement;
+	 }
 	 else 
 	 {
-		 for(newList->tail = newList->Head; newList->tail->next!=NULL ; newList->tail = newList->tail->next );
-	            newList->tail = newElement;
-							printf("%d\n",newList->tail->value);
-							return newList->tail->value;
+		 for(newList->tail = newList->head; newList->tail->next!=NULL ; newList->tail = newList->tail->next );
+     newList->tail->next = newElement;
 	 }
 }

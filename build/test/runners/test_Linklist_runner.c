@@ -30,11 +30,10 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_Head_and_Tail_euqal_NULL(void);
+extern void test_head_and_Tail_euqal_NULL(void);
 extern void test_creatlikedelement(void);
-extern void test_addlist_add_in_4_value(void);
-extern void test_addlist_add_in_pisitive_8_value(void);
-extern void test_addlist_add_in_negative_8_value(void);
+extern void test_addlist_one_element_was_added_into_Link_list(void);
+extern void test_addlist_a_few_elements_were_added_into_link_list(void);
 
 
 //=======Test Reset Option=====
@@ -50,11 +49,10 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_Linklist.c");
-  RUN_TEST(test_Head_and_Tail_euqal_NULL, 14);
-  RUN_TEST(test_creatlikedelement, 23);
-  RUN_TEST(test_addlist_add_in_4_value, 29);
-  RUN_TEST(test_addlist_add_in_pisitive_8_value, 37);
-  RUN_TEST(test_addlist_add_in_negative_8_value, 50);
+  RUN_TEST(test_head_and_Tail_euqal_NULL, 17);
+  RUN_TEST(test_creatlikedelement, 26);
+  RUN_TEST(test_addlist_one_element_was_added_into_Link_list, 34);
+  RUN_TEST(test_addlist_a_few_elements_were_added_into_link_list, 42);
 
   return (UnityEnd());
 }

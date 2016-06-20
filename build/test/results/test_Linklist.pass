@@ -3,47 +3,24 @@
   :path: test
   :file: test_Linklist.c
 :successes:
-- :test: test_Head_and_Tail_euqal_NULL
-  :line: 14
+- :test: test_head_and_Tail_euqal_NULL
+  :line: 17
   :message: ''
 - :test: test_creatlikedelement
-  :line: 23
+  :line: 26
   :message: ''
-- :test: test_addlist_add_in_4_value
-  :line: 29
+- :test: test_addlist_one_element_was_added_into_Link_list
+  :line: 34
   :message: ''
-- :test: test_addlist_add_in_pisitive_8_value
-  :line: 37
-  :message: ''
-- :test: test_addlist_add_in_negative_8_value
-  :line: 50
+- :test: test_addlist_a_few_elements_were_added_into_link_list
+  :line: 42
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout:
-- '3'
-- '9'
-- '27'
-- '81'
-- '1'
-- '2'
-- '3'
-- '4'
-- '5'
-- '6'
-- '7'
-- '8'
-- "-1"
-- "-2"
-- "-3"
-- "-4"
-- "-5"
-- "-6"
-- "-7"
-- "-8"
 - ''

@@ -1,0 +1,72 @@
+---
+:source:
+  :path: test
+  :file: test_RelativeTimeLinkList.c
+:successes:
+- :test: test_reative_Time_Link_list_three_time_element_is_added_into_link_list
+  :line: 62
+  :message: ''
+- :test: test_reative_Time_Link_list_four_time_element_is_added_into_link_list
+  :line: 84
+  :message: ''
+:failures:
+- :test: test_reative_Time_Link_list_five_time_element_is_added_into_link_list
+  :line: 116
+  :message: Expected 3 was 13. The element value is not the same with Array[4].
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 2
+  :failed: 1
+  :ignored: 0
+:stdout:
+- No.03
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- nextActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- nextActTime = record->rate - interval2 = 5
+- No.04
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- nextActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- nextActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- interval1 = record->currentTime - record->baseTime = 9
+- interval2 =  storeActTime - interval1 = 11
+- nextActTime = record->rate - interval2 = 2
+- No.04
+- storeActTime = 10
+- interval1 = record->currentTime - record->baseTime = 5
+- interval2 =  storeActTime - interval1 = 5
+- nextActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- interval1 = record->currentTime - record->baseTime = 8
+- interval2 =  storeActTime - interval1 = 7
+- nextActTime = record->rate - interval2 = 5
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- interval1 = record->currentTime - record->baseTime = 9
+- interval2 =  storeActTime - interval1 = 11
+- nextActTime = record->rate - interval2 = 2
+- storeActTime = 10
+- storeActTime = 15
+- storeActTime = 20
+- storeActTime = 22
+- interval1 = record->currentTime - record->baseTime = 10
+- interval2 =  storeActTime - interval1 = 12
+- nextActTime = record->rate - interval2 = 13
+- ''

@@ -30,7 +30,9 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_module_generator_needs_to_be_implemented(void);
+extern void test_reative_Time_Link_list_three_time_element_is_added_into_link_list(void);
+extern void test_reative_Time_Link_list_four_time_element_is_added_into_link_list(void);
+extern void test_reative_Time_Link_list_five_time_element_is_added_into_link_list(void);
 
 
 //=======Test Reset Option=====
@@ -45,8 +47,10 @@ void resetTest(void)
 //=======MAIN=====
 int main(void)
 {
-  UnityBegin("test_peripherals.c");
-  RUN_TEST(test_module_generator_needs_to_be_implemented, 12);
+  UnityBegin("test_RelativeTimeLinkList.c");
+  RUN_TEST(test_reative_Time_Link_list_three_time_element_is_added_into_link_list, 62);
+  RUN_TEST(test_reative_Time_Link_list_four_time_element_is_added_into_link_list, 84);
+  RUN_TEST(test_reative_Time_Link_list_five_time_element_is_added_into_link_list, 107);
 
   return (UnityEnd());
 }

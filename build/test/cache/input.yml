@@ -56,7 +56,7 @@
   :source: ".c"
   :assembly: ".s"
   :object: ".o"
-  :executable: ".out"
+  :executable: ".exe"
   :map: ".map"
   :list: ".lst"
   :testpass: ".pass"
