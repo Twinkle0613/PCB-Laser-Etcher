@@ -182,8 +182,26 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
 
    AddTimeList(recordTime(100,105,13),ptr);
 
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),213); };
 
+}
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),214); };
+void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+
+    printf("No.09\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,2,3,7};
+
+   addList(ptr,createLinkedElement(10));
+
+   addList(ptr,createLinkedElement(5));
+
+   addList(ptr,createLinkedElement(7));
+
+   AddTimeList(recordTime(100,105,7),ptr);
+
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),235); };
 
 }

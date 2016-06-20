@@ -153,8 +153,8 @@ void test_relative_Time_Link_list_five_time_element_is_added_into_link_list(void
                                                        V
                                                     |------|<--5-->       
           0                20                 0                   20      
-          |----------------|                  |-------------------|     
-          <-------20------>          =>       <----15------><--5-->
+          |----------------|                  |--------------------|     
+          <-------20------>          =>       <--5--><--10--><--5-->
                      
           Head-->20-->NULL                    Head-->15-->5-->NULL
 
@@ -192,13 +192,13 @@ void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement
     TEST_ASSERT_LINK_LIST_WITH_ARR(arr,ptr);
 }
 /*
-                                                          rate = 13
-                                                          |----------------|       
+                                                              rate = 13
+                                                           |----------------|       
           0          10      15     22              0          10      15  18       22
-          |----------|-------|------|               |----------|-------|---|-------|
-                     <---5--->        =>                       
+          |----------|-------|------|               |-----------|-------|---|-------|
+                     <---5--->        =>            <--5-->           
                      
-          Head-->10-->5-->7-->NULL               Head-->10-->15-->3-->4-->NULL
+          Head-->10-->5-->7-->NULL               Head-->10-->5-->3-->4-->NULL
 
 */
 
@@ -210,6 +210,29 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
    addList(ptr,createLinkedElement(5));
    addList(ptr,createLinkedElement(7));
    AddTimeList(recordTime(100,105,13),ptr);
-    
     TEST_ASSERT_LINK_LIST_WITH_ARR(arr,ptr);
 }
+
+/*
+                                                           rate = 7
+                                                          |---------|       
+          0          10      15     22              0          10  12     15          22
+          |----------|-------|------|               |-----------|--|-----|-----------|
+                     <---5--->        =>            <--5-->           
+                     
+          Head-->10-->5-->7-->NULL               Head-->10-->2-->3-->7-->NULL
+
+*/
+
+void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+    printf("No.09\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,2,3,7};
+   addList(ptr,createLinkedElement(10));
+   addList(ptr,createLinkedElement(5));
+   addList(ptr,createLinkedElement(7));
+   AddTimeList(recordTime(100,105,7),ptr);
+    TEST_ASSERT_LINK_LIST_WITH_ARR(arr,ptr);
+}
+
+

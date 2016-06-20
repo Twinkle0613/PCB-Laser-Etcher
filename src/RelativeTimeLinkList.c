@@ -73,11 +73,18 @@ void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
                 element = element->next;
             }
          }
-           newActTime = storeActTime - (record->rate + interval1);
-           printf("newActTime = storeActTime - (record->rate + interval1) = %d - %d = %d\n",storeActTime,(record->rate + interval1),newActTime);
+           newActTime = store - (record->rate + interval1);
+           printf("newActTime = store - (record->rate + interval1) = %d - %d = %d\n",storeActTime,(record->rate + interval1),newActTime);
            element->actionTime = element->actionTime - newActTime;
-           addList(newList,createLinkedElement(newActTime));
-           printf("element->actionTime = %d\n",element->actionTime);
+           
+           if(element->next == NULL){
+             addList(newList,createLinkedElement(newActTime));
+             printf("element->actionTime = %d\n",element->actionTime);
+           }else{
+             struct ListElement * temp = createLinkedElement(newActTime);
+             temp->next = element->next;
+             element->next = temp;
+           }
          
         }
         

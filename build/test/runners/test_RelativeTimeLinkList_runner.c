@@ -39,6 +39,7 @@ extern void test_relative_Time_Link_list_five_time_element_is_added_into_link_li
 extern void test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2(void);
 extern void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void);
 extern void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void);
+extern void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void);
 
 
 //=======Test Reset Option=====
@@ -63,6 +64,7 @@ int main(void)
   RUN_TEST(test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2, 163);
   RUN_TEST(test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 183);
   RUN_TEST(test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 205);
+  RUN_TEST(test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 227);
 
   return (UnityEnd());
 }
