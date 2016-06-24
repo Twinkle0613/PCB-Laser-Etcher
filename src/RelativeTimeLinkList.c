@@ -11,7 +11,11 @@ timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rat
   return record;
 }
 
+/*
+ The AddTimeList function is used to manage stepper motor action time.
 
+
+*/
 void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
     uint32_t storeActTime = 0;   // To store the sum of timeELement value.
     uint32_t interval1 = 0;      // To store the difference between currentTime and prevTime
