@@ -15,11 +15,14 @@
 - :test: test_addlist_a_few_elements_were_added_into_link_list
   :line: 42
   :message: ''
+- :test: test_double_link_list_
+  :line: 61
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
 :stdout:

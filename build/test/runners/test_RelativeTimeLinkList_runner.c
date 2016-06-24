@@ -55,16 +55,16 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_RelativeTimeLinkList.c");
-  RUN_TEST(test_recordTime_Add_data, 17);
-  RUN_TEST(test_relative_Time_Link_list_a_time_element_is_added_into_link_list, 42);
-  RUN_TEST(test_relative_Time_Link_list_two_time_element_is_added_into_link_list, 59);
-  RUN_TEST(test_relative_Time_Link_list_three_time_element_is_added_into_link_list, 77);
-  RUN_TEST(test_relative_Time_Link_list_four_time_element_is_added_into_link_list, 99);
-  RUN_TEST(test_relative_Time_Link_list_five_time_element_is_added_into_link_list, 122);
-  RUN_TEST(test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2, 163);
-  RUN_TEST(test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 183);
-  RUN_TEST(test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 205);
-  RUN_TEST(test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 227);
+  RUN_TEST(test_recordTime_Add_data, 23);
+  RUN_TEST(test_relative_Time_Link_list_a_time_element_is_added_into_link_list, 49);
+  RUN_TEST(test_relative_Time_Link_list_two_time_element_is_added_into_link_list, 66);
+  RUN_TEST(test_relative_Time_Link_list_three_time_element_is_added_into_link_list, 84);
+  RUN_TEST(test_relative_Time_Link_list_four_time_element_is_added_into_link_list, 106);
+  RUN_TEST(test_relative_Time_Link_list_five_time_element_is_added_into_link_list, 129);
+  RUN_TEST(test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_Intervel2, 170);
+  RUN_TEST(test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 190);
+  RUN_TEST(test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 212);
+  RUN_TEST(test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 234);
 
   return (UnityEnd());
 }

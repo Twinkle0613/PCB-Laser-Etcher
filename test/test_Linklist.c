@@ -50,5 +50,29 @@ void test_addlist_a_few_elements_were_added_into_link_list(void){
     TEST_ASSERT_LINK_LIST_WITH_ARR(arr,ptr);
 }
 
+/*
+             ----      ----
+   head --->| 9 |---> | 8 |
+        <-- ---- <--- ----
 
+
+*/
+
+void test_double_link_list_(void){
+  
+   struct Linkedlist *ptr = createLinkedList();
+   struct ListElement *Element9 = createLinkedElement(9);
+   struct ListElement *Element8 = createLinkedElement(8);
+   struct ListElement *Element7 = createLinkedElement(7);
+   struct ListElement *Element6 = createLinkedElement(6);
+   addList(ptr,Element9);
+   addList(ptr,Element8);
+   addList(ptr,Element7);
+   addList(ptr,Element6);
+   TEST_ASSERT_EQUAL_PTR(ptr->head,Element9->prev);
+   TEST_ASSERT_EQUAL_PTR(Element9,Element8->prev);
+   TEST_ASSERT_EQUAL_PTR(Element8,Element7->prev);
+   TEST_ASSERT_EQUAL_PTR(Element7,Element6->prev);
+  
+}
 

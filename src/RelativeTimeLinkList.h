@@ -14,6 +14,6 @@ typedef struct{
 }timeRecordList;
 
 timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate);
-//void AddTimeList(uint32_t baseTime, uint32_t currentTime, uint32_t rate, struct Linkedlist *newList)；
+void AddTimeList(timeRecordList *record, struct Linkedlist *newList);
 
 #endif // RelativeTimeLinkList_H

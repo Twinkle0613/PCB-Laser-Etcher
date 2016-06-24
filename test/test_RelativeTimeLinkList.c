@@ -14,7 +14,14 @@ void tearDown(void)
 {
 }
 
+/*
+
+    recordTime(curTime,prevTime,rate);
+
+
+*/
 void test_recordTime_Add_data(void){
+  printf("No.00\n");
   timeRecordList *record = recordTime(10,20,10);
   TEST_ASSERT_EQUAL(10,record->baseTime);
   TEST_ASSERT_EQUAL(20,record->currentTime);
@@ -22,7 +29,7 @@ void test_recordTime_Add_data(void){
 }
 
 /*
-  (Logic)Condition: Rate > Intervel2
+  Condition: Rate > Intervel2
      BaseTime    currentTime   currentActTime
       ||            ||            ||                             Intervel1 = CurrentTime - BaseTime;
       V             V             V                              Intervel2 = (currentActTime + actTime1) - Intervel1;
@@ -132,17 +139,17 @@ void test_relative_Time_Link_list_five_time_element_is_added_into_link_list(void
 }
 
 /*
-  (Logic)Condition: Rate < Intervel2
+  Condition: Rate < Intervel2
      BaseTime    currentTime   currentActTime
       ||            ||            ||                             Intervel1 = CurrentTime - BaseTime;
       V             V             V                              Intervel2 = (currentActTime + actTime1) - Intervel1;
-      |-------------|-------------|                              
-      <--Intervel1->              |-------------|        
+      |-------------|-------------|                             
+      <--Intervel1->              |-------------|               
                                   <--actTime1-->
                     |---------------------------|
                     <-------Intervel2----------->                  
                     |-------------|             
-                    <-----rate--->
+                    <----rate---->
 */
 
 
@@ -196,7 +203,7 @@ void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement
                                                            |----------------|       
           0          10      15     22              0          10      15  18       22
           |----------|-------|------|               |-----------|-------|---|-------|
-                     <---5--->        =>            <--5-->           
+                                           =>       <--5-->           
                      
           Head-->10-->5-->7-->NULL               Head-->10-->5-->3-->4-->NULL
 
@@ -218,7 +225,7 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
                                                           |---------|       
           0          10      15     22              0          10  12     15          22
           |----------|-------|------|               |-----------|--|-----|-----------|
-                     <---5--->        =>            <--5-->           
+                     <---5--->            =>        <--5-->           
                      
           Head-->10-->5-->7-->NULL               Head-->10-->2-->3-->7-->NULL
 
@@ -236,3 +243,16 @@ void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that
 }
 
 
+/*
+  Condition: Rate == Intervel2
+     BaseTime    currentTime   currentActTime
+      ||            ||            ||                             Intervel1 = CurrentTime - BaseTime;
+      V             V             V                              Intervel2 = (currentActTime + actTime1) - Intervel1;
+      |-------------|-------------|                             
+      <--Intervel1->              |-------------|               
+                                  <--actTime1-->
+                    |---------------------------|
+                    <-------Intervel2----------->                  
+                    |---------------------------|             
+                    <-----------rate------------>
+*/

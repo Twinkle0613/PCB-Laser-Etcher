@@ -26,15 +26,29 @@ void tearDown(void)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 void test_recordTime_Add_data(void){
+
+  printf("No.00\n");
 
   timeRecordList *record = recordTime(10,20,10);
 
-  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((record->baseTime)), (((void *)0)), (_U_UINT)(19), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((record->baseTime)), (((void *)0)), (_U_UINT)(26), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((record->currentTime)), (((void *)0)), (_U_UINT)(20), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((record->currentTime)), (((void *)0)), (_U_UINT)(27), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((record->rate)), (((void *)0)), (_U_UINT)(21), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((record->rate)), (((void *)0)), (_U_UINT)(28), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -48,7 +62,7 @@ void test_relative_Time_Link_list_a_time_element_is_added_into_link_list(void){
 
    AddTimeList(recordTime(10,20,10),ptr);
 
-   { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),47); };
+   { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),54); };
 
 }
 
@@ -64,7 +78,7 @@ void test_relative_Time_Link_list_two_time_element_is_added_into_link_list(void)
 
     AddTimeList(recordTime(100,105,10),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),65); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),72); };
 
 }
 
@@ -82,7 +96,7 @@ void test_relative_Time_Link_list_three_time_element_is_added_into_link_list(voi
 
     AddTimeList(recordTime(100,108,12),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),84); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),91); };
 
 }
 
@@ -102,7 +116,7 @@ void test_relative_Time_Link_list_four_time_element_is_added_into_link_list(void
 
     AddTimeList(recordTime(100,109,13),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),107); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),114); };
 
 }
 
@@ -124,7 +138,7 @@ void test_relative_Time_Link_list_five_time_element_is_added_into_link_list(void
 
     AddTimeList(recordTime(100,110,25),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),131); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),138); };
 
 }
 
@@ -140,7 +154,7 @@ void test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_In
 
     AddTimeList(recordTime(100,105,10),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),169); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),176); };
 
 }
 
@@ -162,7 +176,7 @@ void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement
 
 
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),192); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),199); };
 
 }
 
@@ -182,7 +196,7 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
 
    AddTimeList(recordTime(100,105,13),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),213); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),220); };
 
 }
 
@@ -202,6 +216,6 @@ void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that
 
    AddTimeList(recordTime(100,105,7),ptr);
 
-    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),235); };
+    { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),242); };
 
 }

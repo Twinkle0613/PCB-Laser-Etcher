@@ -23,6 +23,31 @@
       </source>
       <source file="..\..\..\Config\startup\system_stm32f10x.h" lastModified="1548a5329a5">
       </source>
+      <source file="..\..\..\Config\startup\stm32f10x_conf.h" lastModified="154864354f1">
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_adc.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_bkp.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_can.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_cec.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_crc.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_dac.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_dbgmcu.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_dma.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_exti.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_flash.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_fsmc.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_gpio.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_i2c.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_iwdg.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_pwr.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_rcc.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_rtc.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_sdio.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_spi.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_tim.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_usart.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_wwdg.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\misc.h"/>
+      </source>
       <source file="..\..\..\app\GPIO_setting.h" lastModified="1552523a07d">
          <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_gpio.h"/>
       </source>
@@ -123,6 +148,13 @@
       <source file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_fsmc.h" lastModified="15486435321">
          <include file="..\..\..\Config\startup\stm32f10x.h"/>
       </source>
+      <source file="..\..\..\app\Timer_setting.h" lastModified="155392393a4">
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_tim.h"/>
+      </source>
+      <source file="..\..\..\app\Timer_setting.c" lastModified="15558a96d75">
+         <include file="..\..\..\app\Timer_setting.h"/>
+         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_tim.h"/>
+      </source>
       <source file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_bkp.h" lastModified="154864352d6">
          <include file="..\..\..\Config\startup\stm32f10x.h"/>
       </source>
@@ -136,7 +168,7 @@
       <source file="..\..\..\Config\startup\stm32f10x.h" lastModified="154b0613ad4">
          <include file="..\..\..\Config\CMSIS\core_cm3.h"/>
          <include file="..\..\..\Config\startup\system_stm32f10x.h"/>
-         <include file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_conf.h"/>
+         <include file="..\..\..\Config\startup\stm32f10x_conf.h"/>
       </source>
       <source file="..\..\..\Config\StdPeriph_Driver\inc\stm32f10x_crc.h" lastModified="154864352ec">
          <include file="..\..\..\Config\startup\stm32f10x.h"/>

@@ -16,11 +16,14 @@
       <target file="system_stm32f10x.o" lastModified="155588ec4bb">
          <source file="..\..\..\Config\startup\system_stm32f10x.c" lastModified="1553e814a16"/>
       </target>
+      <target file="Timer_setting.o" lastModified="1557d9e3964">
+         <source file="..\..\..\app\Timer_setting.c" lastModified="15558a9698d"/>
+      </target>
       <target file="stm32f10x_spi.o" lastModified="155588ece17">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_spi.c" lastModified="15486435481"/>
       </target>
-      <target file="main.o" lastModified="15558929dec">
-         <source file="..\..\..\app\main.c" lastModified="15558925dad"/>
+      <target file="main.o" lastModified="1557df8dbe2">
+         <source file="..\..\..\app\main.c" lastModified="1557df8cdeb"/>
       </target>
       <target file="stm32f10x_gpio.o" lastModified="155588ec6b9">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_gpio.c" lastModified="1548643542c"/>

@@ -94,3 +94,37 @@ void test_addlist_a_few_elements_were_added_into_link_list(void){
     { test_assert_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),50); };
 
 }
+
+void test_double_link_list_(void){
+
+
+
+   struct Linkedlist *ptr = createLinkedList();
+
+   struct ListElement *Element9 = createLinkedElement(9);
+
+   struct ListElement *Element8 = createLinkedElement(8);
+
+   struct ListElement *Element7 = createLinkedElement(7);
+
+   struct ListElement *Element6 = createLinkedElement(6);
+
+   addList(ptr,Element9);
+
+   addList(ptr,Element8);
+
+   addList(ptr,Element7);
+
+   addList(ptr,Element6);
+
+   UnityAssertEqualNumber((_U_SINT)(_UP)((ptr->head)), (_U_SINT)(_UP)((Element9->prev)), (((void *)0)), (_U_UINT)(72), UNITY_DISPLAY_STYLE_HEX32);
+
+   UnityAssertEqualNumber((_U_SINT)(_UP)((Element9)), (_U_SINT)(_UP)((Element8->prev)), (((void *)0)), (_U_UINT)(73), UNITY_DISPLAY_STYLE_HEX32);
+
+   UnityAssertEqualNumber((_U_SINT)(_UP)((Element8)), (_U_SINT)(_UP)((Element7->prev)), (((void *)0)), (_U_UINT)(74), UNITY_DISPLAY_STYLE_HEX32);
+
+   UnityAssertEqualNumber((_U_SINT)(_UP)((Element7)), (_U_SINT)(_UP)((Element6->prev)), (((void *)0)), (_U_UINT)(75), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+}

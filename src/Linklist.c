@@ -22,10 +22,27 @@ void addList(  struct Linkedlist *newList, struct ListElement *newElement)
 	 if(newList->head == NULL)
 	 {
       newList->head = newElement;
+      newElement->prev = newList->head;
 	 }
 	 else 
 	 {
 		 for(newList->tail = newList->head; newList->tail->next!=NULL ; newList->tail = newList->tail->next );
      newList->tail->next = newElement;
+     newElement->prev = newList->tail;
 	 }
 }
+
+
+// void deleteListElement(struct Liskedlist *LinkList,int value){
+  // struct ListElement* temp;
+  // if(LinkList->head == NULL){
+    
+  // }else{
+    
+    
+    
+    
+    
+  // }
+  
+// }

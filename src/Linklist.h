@@ -5,7 +5,7 @@
 struct ListElement
 {
 	  struct ListElement *next;
-    struct ListElement *achor;
+    struct ListElement *prev;
 		uint32_t actionTime;
 };
  
