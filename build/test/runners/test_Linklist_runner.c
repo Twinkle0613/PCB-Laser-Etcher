@@ -35,6 +35,7 @@ extern void test_creatlikedelement(void);
 extern void test_addlist_one_element_was_added_into_Link_list(void);
 extern void test_addlist_a_few_elements_were_added_into_link_list(void);
 extern void test_double_link_list_(void);
+extern void test_cycle_link_list(void);
 
 
 //=======Test Reset Option=====
@@ -55,6 +56,7 @@ int main(void)
   RUN_TEST(test_addlist_one_element_was_added_into_Link_list, 34);
   RUN_TEST(test_addlist_a_few_elements_were_added_into_link_list, 42);
   RUN_TEST(test_double_link_list_, 61);
+  RUN_TEST(test_cycle_link_list, 94);
 
   return (UnityEnd());
 }

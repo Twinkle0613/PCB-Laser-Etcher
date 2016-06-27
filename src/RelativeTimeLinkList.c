@@ -2,6 +2,22 @@
 #include "Linklist.h"
 #include <stdint.h>
 
+#define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
+#define addTimeList(x,y) { _addList(x,createLinkedElement(y)); }
+#define insertList(x,y) {                                     \
+         struct ListElement * temp = createLinkedElement(y);  \
+         temp->next = x->next;                                \
+         x->next = temp;                                      \
+}  
+#define periodFromBase (period + receiveInstrTime)
+                      
+void updateCurTime(struct Linkedlist *newList,uint32_t curTime){
+     newList->curTime = curTime;
+}
+
+void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
+     newList->baseTime = baseTime;
+}
 
 timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate){
   timeRecordList *record = malloc(sizeof(timeRecordList));
@@ -13,9 +29,92 @@ timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rat
 
 /*
  The AddTimeList function is used to manage stepper motor action time.
-
-
 */
+
+
+
+
+uint32_t getWholeActionTime(struct Linkedlist *newList){
+  uint32_t storeActTime = 0;
+  struct ListElement * recordElement;
+  recordElement = newList->head;
+     do{
+         storeActTime += recordElement->actionTime;
+         recordElement = recordElement->next;
+        }while(recordElement != newList->head);
+  return storeActTime;
+}
+
+                                         
+void timerListAdd(struct Linkedlist *newList, uint32_t period){
+    uint32_t wholeActTime = 0;   // To store the sum of timeELement value.
+    uint32_t receiveInstrTime = 0;      // To store the difference between currentTime and prevTime
+    uint32_t timeInterval = 0;      // To store the difference between wholeActTime and receiveInstrTime
+    uint32_t newActTime = 0;     // To store the new timeElement value.
+    uint32_t collectActTime = 0;
+    struct ListElement * recordElement; // To record the timeElement address
+
+    if(newList->head == NULL){  // if the newList is NULL, timeELement is connected the newList->head.
+      addTimeList(newList,period);  //Added timeELement to newList
+	  }else{
+
+       wholeActTime =  getWholeActionTime(newList);
+       receiveInstrTime = diffBtwCurTimeAndBaseTime(newList);
+       timeInterval = wholeActTime - receiveInstrTime;
+       
+      
+       if( period > timeInterval){   //Condition: ( period > timeInterval)
+        newActTime = period - timeInterval;
+        addTimeList(newList,newActTime);
+       }else if( period < timeInterval){  //Condition: ( period < timeInterval) 
+        
+        recordElement = newList->head;
+        
+        if(recordElement->next == NULL){  
+          newActTime = recordElement->actionTime - periodFromBase;
+        }else{ 
+           findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
+           newActTime = collectActTime - periodFromBase;
+        }
+        
+        recordElement->actionTime = recordElement->actionTime - newActTime;
+         if(recordElement->next == NULL){
+            addTimeList(newList,newActTime);
+          }else{ 
+            insertList(recordElement,newActTime);
+          }
+           
+       }else{  //Condition: ( period == timeInterval ) 
+  
+           recordElement = newList->head;
+           findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
+           if(recordElement->next == NULL){
+             addTimeList(newList,0);
+           }else{ 
+             insertList(recordElement,0);
+           }
+       }
+    }
+}
+
+void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period){
+    while( (*collectActTime) < period ){
+        (*collectActTime) += (*recordElement)->actionTime;
+        if( (*collectActTime) < period ){
+          (*recordElement) = (*recordElement)->next;
+        }
+    }
+}
+void timerListDelete(struct ListElement* Node){
+  
+  
+  
+  
+}
+
+
+
+/*
 void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
     uint32_t storeActTime = 0;   // To store the sum of timeELement value.
     uint32_t interval1 = 0;      // To store the difference between currentTime and prevTime
@@ -76,3 +175,5 @@ void AddTimeList(timeRecordList *record, struct Linkedlist *newList){
     }
 }
 
+
+*/

@@ -75,4 +75,44 @@ void test_double_link_list_(void){
    TEST_ASSERT_EQUAL_PTR(Element7,Element6->prev);
   
 }
+/*
 
+      ----------------------------------------------------
+      ||            ||                                   ^
+      V             V                                   ||
+    ------         ----        ----        ----        ----
+   |      | ----> |   | ----> |   | ----> |   | ----> |   |
+   | head |       | 9 |       | 8 |       | 7 |       | 6 |
+   |      | <---- |   | <---- |   | <---- |   | <---- |   |
+   -------        ----        ----        ----        ----
+     ||            ||                                   ^  
+     V             V                                   ||
+     ----------------------------------------------------
+   
+*/
+
+void test_cycle_link_list(void){
+  
+   struct Linkedlist *ptr = createLinkedList();
+   struct ListElement *Element9 = createLinkedElement(9);
+   struct ListElement *Element8 = createLinkedElement(8);
+   struct ListElement *Element7 = createLinkedElement(7);
+   struct ListElement *Element6 = createLinkedElement(6);
+   _addList(ptr,Element9);
+   _addList(ptr,Element8);
+   _addList(ptr,Element7);
+   _addList(ptr,Element6);
+   
+   TEST_ASSERT_EQUAL_PTR(Element8,Element9->next);
+   TEST_ASSERT_EQUAL_PTR(Element7,Element8->next);
+   TEST_ASSERT_EQUAL_PTR(Element6,Element7->next);
+   TEST_ASSERT_EQUAL_PTR(Element9,Element6->next);
+   TEST_ASSERT_EQUAL_PTR(ptr->head,Element6->next);
+   
+   TEST_ASSERT_EQUAL_PTR(Element6,ptr->head->prev);
+   TEST_ASSERT_EQUAL_PTR(Element6,Element9->prev);
+   TEST_ASSERT_EQUAL_PTR(Element9,Element8->prev);
+   TEST_ASSERT_EQUAL_PTR(Element8,Element7->prev);
+   TEST_ASSERT_EQUAL_PTR(Element7,Element6->prev);
+  
+}

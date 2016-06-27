@@ -84,19 +84,19 @@
     <File name="Startup/stm32f1xx_hal_rcc.h" path="Config/startup/stm32f1xx_hal_rcc.h" type="1"/>
     <File name="Startup/startup_stm32f103xb.s" path="Config/startup/startup_stm32f103xb.s" type="1"/>
     <File name="CMSIS" path="" type="2"/>
-    <File name="Driver" path="" type="2"/>
     <File name="Driver/stm32f10x_tim.c" path="Config/StdPeriph_Driver/src/stm32f10x_tim.c" type="1"/>
-    <File name="Timer_setting.h" path="app/Timer_setting.h" type="1"/>
+    <File name="Driver" path="" type="2"/>
     <File name="CMSIS/cmsis_gcc.h" path="Config/CMSIS/cmsis_gcc.h" type="1"/>
-    <File name="GPIO_setting.h" path="app/GPIO_setting.h" type="1"/>
+    <File name="Timer_setting.h" path="app/Timer_setting.h" type="1"/>
     <File name="Driver/stm32f10x_gpio.c" path="Config/StdPeriph_Driver/src/stm32f10x_gpio.c" type="1"/>
+    <File name="GPIO_setting.h" path="app/GPIO_setting.h" type="1"/>
     <File name="CMSIS/core_cm3.h" path="Config/CMSIS/core_cm3.h" type="1"/>
     <File name="CMSIS/core_cmSimd.h" path="Config/CMSIS/core_cmSimd.h" type="1"/>
     <File name="Driver/stm32f10x_rcc.c" path="Config/StdPeriph_Driver/src/stm32f10x_rcc.c" type="1"/>
     <File name="Startup/system_stm32f10x.h" path="Config/startup/system_stm32f10x.h" type="1"/>
-    <File name="Startup/stm32f103xb.h" path="Config/startup/stm32f103xb.h" type="1"/>
     <File name="CMSIS/core_cmInstr.h" path="Config/CMSIS/core_cmInstr.h" type="1"/>
     <File name="Startup" path="" type="2"/>
+    <File name="Startup/stm32f103xb.h" path="Config/startup/stm32f103xb.h" type="1"/>
     <File name="Driver/stm32f10x_spi.c" path="Config/StdPeriph_Driver/src/stm32f10x_spi.c" type="1"/>
     <File name="Driver/stm32f10x_rcc.h" path="Config/StdPeriph_Driver/inc/stm32f10x_rcc.h" type="1"/>
     <File name="main.c" path="app/main.c" type="1"/>

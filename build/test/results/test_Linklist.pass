@@ -18,11 +18,14 @@
 - :test: test_double_link_list_
   :line: 61
   :message: ''
+- :test: test_cycle_link_list
+  :line: 94
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout:

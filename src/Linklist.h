@@ -13,6 +13,8 @@ struct Linkedlist
 {
 	 struct ListElement *head;
 	 	struct ListElement *tail;
+    uint32_t curTime;
+    uint32_t baseTime;
     
 }; 
 
