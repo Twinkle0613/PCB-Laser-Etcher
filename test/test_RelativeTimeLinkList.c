@@ -470,6 +470,230 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
 }
 
+/*
+                                                              rate = 6
+                                                           |------------|       
+          0          10      15      22           0          10        15        22  
+          |----------|-------|-------|            |------------|--------|---------|
+                     <---5--->            =>      <---5--->           
+                     
+          Head-->10-->5-->0-->8-->NULL               Head-->10-->5-->0-->0-->8-->NULL
+*/
+void test_relative_Time_Link_list_the_link_list_contain_two_0_that_period_equal_timeInterval_within_15(void){
+    printf("No.14 - timerListAdd\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,5,0,0,7};
+    
+    updateBaseTime(ptr,10);
+    updateCurTime(ptr,20);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,105);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+   
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
+/*
+                                                              rate = 6
+                                                           |------------|       
+          0          10      15      22           0          10        15        22  
+          |----------|-------|-------|            |------------|--------|---------|
+                     <---5--->            =>      <---5--->           
+                     
+          Head-->10-->5-->0-->0-->8-->NULL               Head-->10-->5-->0-->0-->0-->8-->NULL
+*/
+void test_relative_Time_Link_list_the_link_list_contain_three_0_that_period_equal_timeInterval_within_15(void){
+    printf("No.15 - timerListAdd\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,5,0,0,0,7};
+    
+    updateBaseTime(ptr,10);
+    updateCurTime(ptr,20);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,105);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
 
+/*
+                                                              rate = 6
+                                                           |------------|       
+          0          10      15      22           0          10        15        22  
+          |----------|-------|-------|            |------------|--------|---------|
+                     <---5--->            =>      <---5--->           
+                     
+          Head-->10-->5-->0-->0-->0-->7-->NULL               Head-->10-->5-->0-->0-->0-->0-->7-->NULL
+*/
+void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal_timeInterval_within_15(void){
+    printf("No.16 - timerListAdd\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,5,0,0,0,0,7};
+    
+    updateBaseTime(ptr,10);
+    updateCurTime(ptr,20);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,105);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,109);
+    timerListAdd(ptr,6);
+    
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
+
+/*
+                                                              rate = 14
+                                                          |-----------------------|       
+          0          10      15      22           0           10        15        22  
+          |----------|-------|-------|            |------------|--------|---------|
+                     <---5--->            =>      <---5--->           
+                     
+          Head-->10-->5-->7-->0-->NULL               Head-->10-->5-->7-->0-->0-->NULL
+*/
+
+void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15(void){
+    printf("No.17 - timerListAdd\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,5,7,0,0};
+    
+    updateBaseTime(ptr,10);
+    updateCurTime(ptr,20);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,105);
+    timerListAdd(ptr,10);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    updateBaseTime(ptr,100);
+    updateCurTime(ptr,108);
+    timerListAdd(ptr,14);
+    
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
+
+/*
+                                                              rate = 13
+                                                           |----------------|      
+          0          10      15      22           0          10        15        22  
+          |----------|-------|-------|            |------------|--------|---------|
+                     <---5--->            =>      <---5--->           
+                     
+          Head-->10-->5-->0-->8-->NULL               Head-->10-->5-->0-->3-->4-->NULL
+*/
+
+void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+    printf("No.18 - timerListAdd\n");
+    struct Linkedlist *ptr = createLinkedList();
+    int arr[] = {10,5,0,3,4,9};
+    
+   updateBaseTime(ptr,10);
+   updateCurTime(ptr,20);
+   timerListAdd(ptr,10);
+   
+   updateBaseTime(ptr,100);
+   updateCurTime(ptr,105);
+   timerListAdd(ptr,10);
+    
+   updateBaseTime(ptr,100);
+   updateCurTime(ptr,105);
+   timerListAdd(ptr,10);
+   
+   updateBaseTime(ptr,100);
+   updateCurTime(ptr,108);
+   timerListAdd(ptr,14);
+   
+   updateBaseTime(ptr,100);
+   updateCurTime(ptr,105);
+   timerListAdd(ptr,13);
+   
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
+
+/*
+                                                        
+                                                          
+          0                       0          10        
+          |                       |-----------|
+          
+                         =>       
+                     
+     Head-->0-->NULL               Head-->0-->10-->NULL
+
+*/
+
+void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node(void){
+      printf("No.19 - timerListAdd\n");
+      struct Linkedlist *ptr = createLinkedList();
+      int arr[] = {0,10};
+      
+     // updateBaseTime(ptr,10);
+     // updateCurTime(ptr,20);
+     // timerListAdd(ptr,0);
+     
+     // updateBaseTime(ptr,100);
+     // updateCurTime(ptr,108);
+     // timerListAdd(ptr,10);
+     
+     // TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
+}
 
 

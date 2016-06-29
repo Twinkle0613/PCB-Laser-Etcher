@@ -499,3 +499,307 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
     { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),470); };
 
 }
+
+void test_relative_Time_Link_list_the_link_list_contain_two_0_that_period_equal_timeInterval_within_15(void){
+
+    printf("No.14 - timerListAdd\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,0,0,7};
+
+
+
+    updateBaseTime(ptr,10);
+
+    updateCurTime(ptr,20);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),507); };
+
+}
+
+void test_relative_Time_Link_list_the_link_list_contain_three_0_that_period_equal_timeInterval_within_15(void){
+
+    printf("No.15 - timerListAdd\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,0,0,0,7};
+
+
+
+    updateBaseTime(ptr,10);
+
+    updateCurTime(ptr,20);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),547); };
+
+}
+
+void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal_timeInterval_within_15(void){
+
+    printf("No.16 - timerListAdd\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,0,0,0,0,7};
+
+
+
+    updateBaseTime(ptr,10);
+
+    updateCurTime(ptr,20);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),592); };
+
+}
+
+void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15(void){
+
+    printf("No.17 - timerListAdd\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,7,0,0};
+
+
+
+    updateBaseTime(ptr,10);
+
+    updateCurTime(ptr,20);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,108);
+
+    timerListAdd(ptr,14);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),630); };
+
+}
+
+void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void){
+
+    printf("No.18 - timerListAdd\n");
+
+    struct Linkedlist *ptr = createLinkedList();
+
+    int arr[] = {10,5,0,3,4,9};
+
+
+
+   updateBaseTime(ptr,10);
+
+   updateCurTime(ptr,20);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,108);
+
+   timerListAdd(ptr,14);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,13);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),668); };
+
+}
+
+void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node(void){
+
+      printf("No.19 - timerListAdd\n");
+
+      struct Linkedlist *ptr = createLinkedList();
+
+      int arr[] = {0,10};
+
+}

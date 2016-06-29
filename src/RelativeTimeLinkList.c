@@ -19,6 +19,11 @@ void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
      newList->baseTime = baseTime;
 }
 
+void insertBetweenNode(struct ListElement *recordElement, uint32_t newActTime){
+    struct ListElement * temp = createLinkedElement(newActTime);
+    
+}
+
 timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate){
   timeRecordList *record = malloc(sizeof(timeRecordList));
   record->baseTime = baseTime;
@@ -45,7 +50,11 @@ uint32_t getWholeActionTime(struct Linkedlist *newList){
   return storeActTime;
 }
 
-                                         
+#define findLastZeroNode(x) {                                       \
+    while(x->next->actionTime== 0){                                 \
+    x = x->next;                                                    \
+   }                                                                \
+}                          
 void timerListAdd(struct Linkedlist *newList, uint32_t period){
     uint32_t wholeActTime = 0;   // To store the sum of timeELement value.
     uint32_t receiveInstrTime = 0;      // To store the difference between currentTime and prevTime
@@ -58,37 +67,31 @@ void timerListAdd(struct Linkedlist *newList, uint32_t period){
       addTimeList(newList,period);  //Added timeELement to newList
 	  }else{
 
-       wholeActTime =  getWholeActionTime(newList);
+       wholeActTime = getWholeActionTime(newList);
+
        receiveInstrTime = diffBtwCurTimeAndBaseTime(newList);
        timeInterval = wholeActTime - receiveInstrTime;
-       
-      
-       if( period > timeInterval){   //Condition: ( period > timeInterval)
+
+       if( period > timeInterval){   //Condition: (period > timeInterval)       
         newActTime = period - timeInterval;
         addTimeList(newList,newActTime);
        }else if( period < timeInterval){  //Condition: ( period < timeInterval) 
+         
+         recordElement = newList->head;
+         findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
+         newActTime = collectActTime - periodFromBase;
+         recordElement->actionTime = recordElement->actionTime - newActTime;
         
-        recordElement = newList->head;
-        
-        if(recordElement->next == NULL){  
-          newActTime = recordElement->actionTime - periodFromBase;
-        }else{ 
-           findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
-           newActTime = collectActTime - periodFromBase;
-        }
-        
-        recordElement->actionTime = recordElement->actionTime - newActTime;
-         if(recordElement->next == NULL){
+        if(recordElement->next == newList->head){
             addTimeList(newList,newActTime);
-          }else{ 
+           }else{ 
             insertList(recordElement,newActTime);
-          }
-           
+         }
+         
        }else{  //Condition: ( period == timeInterval ) 
-  
            recordElement = newList->head;
            findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
-           if(recordElement->next == NULL){
+           if(recordElement->next == newList->head){
              addTimeList(newList,0);
            }else{ 
              insertList(recordElement,0);
@@ -97,14 +100,22 @@ void timerListAdd(struct Linkedlist *newList, uint32_t period){
     }
 }
 
-void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period){
-    while( (*collectActTime) < period ){
+  
+
+void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t periodFrombase){
+    while( (*collectActTime) < periodFrombase ){
         (*collectActTime) += (*recordElement)->actionTime;
-        if( (*collectActTime) < period ){
+        if( (*collectActTime) < periodFrombase ){
           (*recordElement) = (*recordElement)->next;
         }
     }
+   findLastZeroNode((*recordElement));     
 }
+
+
+
+  
+
 void timerListDelete(struct ListElement* Node){
   
   
