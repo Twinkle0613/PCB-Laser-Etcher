@@ -50,6 +50,7 @@ extern void test_relative_Time_Link_list_the_link_list_contain_four_0_that_perio
 extern void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15(void);
 extern void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void);
 extern void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node(void);
+extern void test_timerListDelete_(void);
 
 
 //=======Test Reset Option=====
@@ -82,9 +83,10 @@ int main(void)
   RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_two_0_that_period_equal_timeInterval_within_15, 482);
   RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_three_0_that_period_equal_timeInterval_within_15, 518);
   RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal_timeInterval_within_15, 559);
-  RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15, 605);
-  RUN_TEST(test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 643);
-  RUN_TEST(test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node, 683);
+  RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15, 618);
+  RUN_TEST(test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 660);
+  RUN_TEST(test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node, 700);
+  RUN_TEST(test_timerListDelete_, 716);
 
   return (UnityEnd());
 }

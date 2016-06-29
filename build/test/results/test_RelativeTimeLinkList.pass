@@ -55,19 +55,22 @@
   :line: 559
   :message: ''
 - :test: test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15
-  :line: 605
+  :line: 618
   :message: ''
 - :test: test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2
-  :line: 643
+  :line: 660
   :message: ''
 - :test: test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node
-  :line: 683
+  :line: 700
+  :message: ''
+- :test: test_timerListDelete_
+  :line: 716
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 20
-  :passed: 20
+  :total: 21
+  :passed: 21
   :failed: 0
   :ignored: 0
 :stdout:
@@ -91,4 +94,5 @@
 - No.17 - timerListAdd
 - No.18 - timerListAdd
 - No.19 - timerListAdd
+- No.20 - timerListDelete
 - ''

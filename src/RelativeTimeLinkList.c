@@ -4,24 +4,25 @@
 
 #define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
 #define addTimeList(x,y) { _addList(x,createLinkedElement(y)); }
-#define insertList(x,y) {                                     \
+#define insertNode(x,y) {                                     \
          struct ListElement * temp = createLinkedElement(y);  \
          temp->next = x->next;                                \
          x->next = temp;                                      \
 }  
 #define periodFromBase (period + receiveInstrTime)
-                      
+
+#define findLastZeroNode(x) {                                       \
+    while(x->next->actionTime== 0){                                 \
+    x = x->next;                                                    \
+   }                                                                \
+} 
+            
 void updateCurTime(struct Linkedlist *newList,uint32_t curTime){
      newList->curTime = curTime;
 }
 
 void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
      newList->baseTime = baseTime;
-}
-
-void insertBetweenNode(struct ListElement *recordElement, uint32_t newActTime){
-    struct ListElement * temp = createLinkedElement(newActTime);
-    
 }
 
 timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate){
@@ -35,10 +36,6 @@ timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rat
 /*
  The AddTimeList function is used to manage stepper motor action time.
 */
-
-
-
-
 uint32_t getWholeActionTime(struct Linkedlist *newList){
   uint32_t storeActTime = 0;
   struct ListElement * recordElement;
@@ -50,11 +47,7 @@ uint32_t getWholeActionTime(struct Linkedlist *newList){
   return storeActTime;
 }
 
-#define findLastZeroNode(x) {                                       \
-    while(x->next->actionTime== 0){                                 \
-    x = x->next;                                                    \
-   }                                                                \
-}                          
+                         
 void timerListAdd(struct Linkedlist *newList, uint32_t period){
     uint32_t wholeActTime = 0;   // To store the sum of timeELement value.
     uint32_t receiveInstrTime = 0;      // To store the difference between currentTime and prevTime
@@ -82,25 +75,25 @@ void timerListAdd(struct Linkedlist *newList, uint32_t period){
          newActTime = collectActTime - periodFromBase;
          recordElement->actionTime = recordElement->actionTime - newActTime;
         
-        if(recordElement->next == newList->head){
+         if(recordElement->next == newList->head){
             addTimeList(newList,newActTime);
-           }else{ 
-            insertList(recordElement,newActTime);
+         }else{ 
+           insertNode(recordElement,newActTime);
          }
          
        }else{  //Condition: ( period == timeInterval ) 
+       
            recordElement = newList->head;
            findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
+           
            if(recordElement->next == newList->head){
              addTimeList(newList,0);
            }else{ 
-             insertList(recordElement,0);
+             insertNode(recordElement,0);
            }
        }
     }
 }
-
-  
 
 void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t periodFrombase){
     while( (*collectActTime) < periodFrombase ){
@@ -116,11 +109,11 @@ void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* 
 
   
 
-void timerListDelete(struct ListElement* Node){
+void timerListDelete(struct ListElement* deleteNode){
   
-  
-  
-  
+  deleteNode->prev->next = deleteNode->next;
+  deleteNode->next->prev = deleteNode->prev;
+  free(deleteNode);
 }
 
 

@@ -622,6 +622,10 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
     struct Linkedlist *ptr = createLinkedList();
 
+    struct ListElement* store1;
+
+    struct ListElement* store2;
+
     int arr[] = {10,5,0,0,0,0,7};
 
 
@@ -650,11 +654,7 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
 
 
-    updateBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
-
-    timerListAdd(ptr,6);
 
 
 
@@ -666,13 +666,7 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
 
 
-    updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,109);
-
-    timerListAdd(ptr,6);
-
-
+    store1 = ptr->head->next->next;
 
     updateBaseTime(ptr,100);
 
@@ -680,9 +674,41 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
     timerListAdd(ptr,6);
 
+    store2 = ptr->head->next->next;
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((store1)), (_U_SINT)(_UP)((store2)), (((void *)0)), (_U_UINT)(589), UNITY_DISPLAY_STYLE_HEX32);
 
 
-    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),592); };
+
+    store1 = ptr->head->next->next->next;
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+    store2 = ptr->head->next->next->next;
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((store1)), (_U_SINT)(_UP)((store2)), (((void *)0)), (_U_UINT)(596), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    store1 = ptr->head->next->next->next->next;
+
+    updateBaseTime(ptr,100);
+
+    updateCurTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+    store2 = ptr->head->next->next->next->next;
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((store1)), (_U_SINT)(_UP)((store2)), (((void *)0)), (_U_UINT)(603), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),605); };
 
 }
 
@@ -691,6 +717,8 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period
     printf("No.17 - timerListAdd\n");
 
     struct Linkedlist *ptr = createLinkedList();
+
+
 
     int arr[] = {10,5,7,0,0};
 
@@ -728,15 +756,21 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period
 
 
 
+    struct ListElement* store1 = ptr->head->next->next->next;
+
     updateBaseTime(ptr,100);
 
     updateCurTime(ptr,108);
 
     timerListAdd(ptr,14);
 
+    struct ListElement* store2 = ptr->head->next->next->next;
 
 
-    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),630); };
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((store1)), (_U_SINT)(_UP)((store2)), (((void *)0)), (_U_UINT)(646), UNITY_DISPLAY_STYLE_HEX32);
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),647); };
 
 }
 
@@ -790,7 +824,7 @@ void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_
 
 
 
-    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),668); };
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),685); };
 
 }
 
@@ -801,5 +835,67 @@ void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new
       struct Linkedlist *ptr = createLinkedList();
 
       int arr[] = {0,10};
+
+}
+
+
+
+void test_timerListDelete_(void){
+
+   printf("No.20 - timerListDelete\n");
+
+   struct Linkedlist *ptr = createLinkedList();
+
+   int arr[] = {10,5,4,9};
+
+
+
+   updateBaseTime(ptr,10);
+
+   updateCurTime(ptr,20);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,10);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,108);
+
+   timerListAdd(ptr,14);
+
+
+
+   updateBaseTime(ptr,100);
+
+   updateCurTime(ptr,105);
+
+   timerListAdd(ptr,13);
+
+   timerListDelete(ptr->head->next->next);
+
+    timerListDelete(ptr->head->next->next);
+
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),742); };
+
+
+
+
 
 }
