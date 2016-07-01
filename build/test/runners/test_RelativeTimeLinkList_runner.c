@@ -50,7 +50,16 @@ extern void test_relative_Time_Link_list_the_link_list_contain_four_0_that_perio
 extern void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15(void);
 extern void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2(void);
 extern void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node(void);
-extern void test_timerListDelete_(void);
+extern void test_timerListDelete_delete_a_Node(void);
+extern void test_new_timerListAdd_(void);
+extern void test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_9_and_20(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_3_2(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_8_2_5(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_5_0(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_(void);
+extern void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_(void);
 
 
 //=======Test Reset Option=====
@@ -86,7 +95,16 @@ int main(void)
   RUN_TEST(test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period_equal_timeInterval_within_15, 618);
   RUN_TEST(test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_smaller_than_Intervel2, 660);
   RUN_TEST(test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node, 700);
-  RUN_TEST(test_timerListDelete_, 716);
+  RUN_TEST(test_timerListDelete_delete_a_Node, 716);
+  RUN_TEST(test_new_timerListAdd_, 744);
+  RUN_TEST(test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_9_and_20, 752);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7, 770);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_3_2, 806);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_8_2_5, 842);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5, 880);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_5_0, 916);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_, 952);
+  RUN_TEST(test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_, 989);
 
   return (UnityEnd());
 }

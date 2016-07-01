@@ -5,8 +5,8 @@
 #include "stm32f10x.h"
 #include "stm32f10x_rcc.h"
 #include "peripherals.h"
-#include <malloc.h>
 #include "Host.h"
+#include <malloc.h>
 #include <stdint.h>
 
 

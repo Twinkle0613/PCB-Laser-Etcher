@@ -7,8 +7,10 @@ struct ListElement
 	  struct ListElement *next;
     struct ListElement *prev;
 		uint32_t actionTime;
+    void *callBack;
+    void *motorID;
 };
- 
+
 struct Linkedlist
 {
 	 struct ListElement *head;

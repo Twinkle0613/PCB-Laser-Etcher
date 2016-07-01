@@ -716,7 +716,7 @@ void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new
 void test_timerListDelete_delete_a_Node(void){
    printf("No.20 - timerListDelete\n");
    struct Linkedlist *ptr = createLinkedList();
-   int arr[] = {10,5,4,9};
+   int arr[] = {10,5,7};
     
    updateBaseTime(ptr,10);
    updateCurTime(ptr,20);
@@ -734,11 +734,290 @@ void test_timerListDelete_delete_a_Node(void){
    updateCurTime(ptr,108);
    timerListAdd(ptr,14);
    
-   updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
-   timerListAdd(ptr,13);
    timerListDelete(ptr->head->next->next);
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
   
   
 }
+
+
+void test_new_timerListAdd_(void){
+  printf("No.21 - initialization root\n");
+  root = createLinkedList();
+  TEST_ASSERT_NULL(root->head);
+  TEST_ASSERT_EQUAL(0,root->curTime);
+  TEST_ASSERT_EQUAL(0,root->baseTime);  
+}
+
+void test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_9_and_20(void){
+  printf("No.22 - updateActionTime\n");
+  struct ListElement *motor1 = createLinkedElement(0);
+  updateActionTime(motor1,9);
+  TEST_ASSERT_EQUAL(9,motor1->actionTime);
+  updateActionTime(motor1,20);
+  TEST_ASSERT_EQUAL(20,motor1->actionTime);
+}
+/*
+                                                                 rate = 14
+                                                         |------------------------|       
+          0          10      15                 0               10        15      22    
+          |----------|-------|                  |---------------|--------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->5-->NULL               Head-->10-->5-->7-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7(void){
+    printf("No.23 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+    int arr[] = {10,5,7};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(10,motor1->actionTime);
+    
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+    TEST_ASSERT_EQUAL_PTR(5,motor2->actionTime);
+    
+    updateBaseTime(root,100);
+    updateCurTime(root,108);
+    newTimerListAdd(motor3,14);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
+    TEST_ASSERT_EQUAL_PTR(7,motor3->actionTime);
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+}
+/*
+                                                           rate = 8
+                                                         |----------|       
+          0          10      15                 0               10        15          
+          |----------|-------|                  |---------------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->5-->NULL               Head-->10-->3-->2-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_3_2(void){
+    printf("No.24 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+     int arr[] = {10,3,2};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor3,8);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+/*
+                                                       rate = 3
+                                                          |---|       
+          0          10      15                 0               10        15          
+          |----------|-------|                  |---------------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->5-->NULL               Head-->8-->2-->5-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_8_2_5(void){
+    printf("No.25 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+     int arr[] = {8,2,5};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor3,3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor2);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+/*
+                                                           rate = 10
+                                                          |---------------|       
+          0          10      15                 0               10        15          
+          |----------|-------|                  |---------------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->0-->NULL               Head-->10-->0-->5-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5(void){
+    printf("No.26 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+     int arr[] = {10,0,5};
+     
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,5);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor3,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+/*
+                                                           rate = 7
+                                                          |----------|       
+          0          10      15                 0          10        15          
+          |----------|-------|                  |-----------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->5-->NULL               Head-->10-->5-->0-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_5_0(void){
+    printf("No.27 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+     int arr[] = {10,5,0};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,106);
+    newTimerListAdd(motor3,9);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+/*
+                                                           rate = 7
+                                                          |----------|       
+          0          10      15                 0          10        15          
+          |----------|-------|                  |-----------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->5-->NULL               Head-->10-->0-->5-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_(void){
+    printf("No.28 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+     int arr[] = {10,0,5};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor3,5);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+
+/*
+                                                           rate = 7
+                                                          |----------|       
+          0          10      15                 0          10        15          
+          |----------|-------|                  |-----------|--------|
+                     <---5--->       =>         <----5--->           
+                     
+          Head-->10-->0-->5-->NULL               Head-->10-->0-->0-->5-->NULL
+
+*/
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_(void){
+    printf("No.29 - newTimerListAdd\n");
+    root = createLinkedList();
+    struct ListElement *motor1 = createLinkedElement(0);
+    struct ListElement *motor2 = createLinkedElement(0);
+    struct ListElement *motor3 = createLinkedElement(0);
+    struct ListElement *motor4 = createLinkedElement(0);
+     int arr[] = {10,0,0,5};
+    updateBaseTime(root,10);
+    updateCurTime(root,20);
+    newTimerListAdd(motor1,10);
+  
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor2,10);
+
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor3,5);
+   
+    updateBaseTime(root,100);
+    updateCurTime(root,105);
+    newTimerListAdd(motor4,5);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next->next,motor2);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor4);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+
+
+

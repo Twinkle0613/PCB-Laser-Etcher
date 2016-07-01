@@ -35,8 +35,8 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f10x.h"
-
+ #include "stm32f10x.h"
+ #include "peripherals.h"
 /** @addtogroup STM32F10x_StdPeriph_Driver
   * @{
   */

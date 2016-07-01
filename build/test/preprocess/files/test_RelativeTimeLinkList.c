@@ -840,13 +840,13 @@ void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new
 
 
 
-void test_timerListDelete_(void){
+void test_timerListDelete_delete_a_Node(void){
 
    printf("No.20 - timerListDelete\n");
 
    struct Linkedlist *ptr = createLinkedList();
 
-   int arr[] = {10,5,4,9};
+   int arr[] = {10,5,7};
 
 
 
@@ -882,19 +882,417 @@ void test_timerListDelete_(void){
 
 
 
-   updateBaseTime(ptr,100);
-
-   updateCurTime(ptr,105);
-
-   timerListAdd(ptr,13);
-
    timerListDelete(ptr->head->next->next);
 
-    timerListDelete(ptr->head->next->next);
-
-    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),742); };
+    { test_assert_cycle_link_list(ptr,arr,sizeof(arr)/sizeof(uint32_t),738); };
 
 
+
+
+
+}
+
+
+
+
+
+void test_new_timerListAdd_(void){
+
+  printf("No.21 - initialization root\n");
+
+  root = createLinkedList();
+
+  if ((((root->head)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(747))));};
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((root->curTime)), (((void *)0)), (_U_UINT)(748), UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((root->baseTime)), (((void *)0)), (_U_UINT)(749), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_9_and_20(void){
+
+  printf("No.22 - updateActionTime\n");
+
+  struct ListElement *motor1 = createLinkedElement(0);
+
+  updateActionTime(motor1,9);
+
+  UnityAssertEqualNumber((_U_SINT)((9)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(756), UNITY_DISPLAY_STYLE_INT);
+
+  updateActionTime(motor1,20);
+
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(758), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7(void){
+
+    printf("No.23 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+    int arr[] = {10,5,7};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(780), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((10)), (_U_SINT)(_UP)((motor1->actionTime)), (((void *)0)), (_U_UINT)(781), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(786), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((5)), (_U_SINT)(_UP)((motor2->actionTime)), (((void *)0)), (_U_UINT)(787), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,108);
+
+    newTimerListAdd(motor3,14);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(792), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((7)), (_U_SINT)(_UP)((motor3->actionTime)), (((void *)0)), (_U_UINT)(793), UNITY_DISPLAY_STYLE_HEX32);
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),794); };
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_3_2(void){
+
+    printf("No.24 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+     int arr[] = {10,3,2};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(816), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(821), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor3,8);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(826), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),828); };
+
+
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_8_2_5(void){
+
+    printf("No.25 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+     int arr[] = {8,2,5};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(852), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(857), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor3,3);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(862), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(863), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(864), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),866); };
+
+
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5(void){
+
+    printf("No.26 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+     int arr[] = {10,0,5};
+
+
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(891), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,5);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(896), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor3,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(901), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),903); };
+
+
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_5_0(void){
+
+    printf("No.27 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+     int arr[] = {10,5,0};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(926), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(931), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,106);
+
+    newTimerListAdd(motor3,9);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(936), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),938); };
+
+
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_(void){
+
+    printf("No.28 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+     int arr[] = {10,0,5};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(962), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(967), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor3,5);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(972), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),974); };
+
+
+
+}
+
+void test_newTimerListAdd_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_(void){
+
+    printf("No.29 - newTimerListAdd\n");
+
+    root = createLinkedList();
+
+    struct ListElement *motor1 = createLinkedElement(0);
+
+    struct ListElement *motor2 = createLinkedElement(0);
+
+    struct ListElement *motor3 = createLinkedElement(0);
+
+    struct ListElement *motor4 = createLinkedElement(0);
+
+     int arr[] = {10,0,0,5};
+
+    updateBaseTime(root,10);
+
+    updateCurTime(root,20);
+
+    newTimerListAdd(motor1,10);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor2,10);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor3,5);
+
+
+
+    updateBaseTime(root,100);
+
+    updateCurTime(root,105);
+
+    newTimerListAdd(motor4,5);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1013), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1014), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor4)), (((void *)0)), (_U_UINT)(1015), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1016), UNITY_DISPLAY_STYLE_HEX32);
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1017); };
 
 
 

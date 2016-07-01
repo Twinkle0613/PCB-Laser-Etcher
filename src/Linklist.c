@@ -36,7 +36,7 @@ void addList(  struct Linkedlist *newList, struct ListElement *newElement)
 	 }
 }
 
-void _addList(  struct Linkedlist *newList, struct ListElement *newElement)
+void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement)
 {
 	 if(newList->head == NULL)
 	 {
