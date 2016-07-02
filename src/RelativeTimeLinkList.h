@@ -6,20 +6,35 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <malloc.h>
+#include "projectStruct.h"
+
+
+
+#define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
+#define addTimeList(x,y) { addListInCycle(x,createLinkedElement(y)); }
+#define insertNode(x,y) {                                     \
+         struct ListElement * temp = createLinkedElement(y);  \
+         temp->next = x->next;                                \
+         x->next = temp;                                      \
+}  
+#define periodFromBase (period + receiveInstrTime)
+
+#define findLastZeroNode(x) {                                       \
+    while(x->next->actionTime== 0){                                 \
+    x = x->next;                                                    \
+   }                                                                \
+} 
+
+
 
 extern struct Linkedlist *root;
 
-typedef struct{
-  uint32_t baseTime;
-  uint32_t currentTime;
-  uint32_t rate;
-}timeRecordList;
 
+void updateCurTime(struct Linkedlist *newList,uint32_t curTime);
+void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime);
 void updateActionTime(struct ListElement *timerElement, uint32_t newActTime);
 void insertTimeElement(struct ListElement *recordElement, struct ListElement *timerElement);
-timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate);
 void newTimerListAdd(struct ListElement *timerElement, uint32_t period);
-void AddTimeList(timeRecordList *record, struct Linkedlist *newList);
 void timerListAdd(struct Linkedlist *newList, uint32_t period);
 void timerListDelete(struct ListElement* Node);
 void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period);

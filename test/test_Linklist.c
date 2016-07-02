@@ -4,7 +4,7 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include "CustomAssertion.h"
-
+#include "projectStruct.h"
 
 void setUp(void)
 {
@@ -98,10 +98,10 @@ void test_cycle_link_list(void){
    struct ListElement *Element8 = createLinkedElement(8);
    struct ListElement *Element7 = createLinkedElement(7);
    struct ListElement *Element6 = createLinkedElement(6);
-   _addList(ptr,Element9);
-   _addList(ptr,Element8);
-   _addList(ptr,Element7);
-   _addList(ptr,Element6);
+   addListInCycle(ptr,Element9);
+   addListInCycle(ptr,Element8);
+   addListInCycle(ptr,Element7);
+   addListInCycle(ptr,Element6);
    
    TEST_ASSERT_EQUAL_PTR(Element8,Element9->next);
    TEST_ASSERT_EQUAL_PTR(Element7,Element8->next);

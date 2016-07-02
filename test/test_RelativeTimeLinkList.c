@@ -1,12 +1,13 @@
 #include "unity.h"
-#include "RelativeTimeLinkList.h"
-
 #include "Linklist.h"
 #include <malloc.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "CustomAssertion.h"
+#include "projectStruct.h"
+#include "RelativeTimeLinkList.h"
+
 void setUp(void)
 {
 }
@@ -15,19 +16,6 @@ void tearDown(void)
 {
 }
 
-/*
-
-    recordTime(curTime,prevTime,rate);
-
-
-*/
-void test_recordTime_Add_data(void){
-  printf("No.00\n");
-  timeRecordList *record = recordTime(10,20,10);
-  TEST_ASSERT_EQUAL(10,record->baseTime);
-  TEST_ASSERT_EQUAL(20,record->currentTime);
-  TEST_ASSERT_EQUAL(10,record->rate);
-}
 
 /*
   Condition: Rate > Intervel2

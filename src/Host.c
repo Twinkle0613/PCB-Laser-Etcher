@@ -5,3 +5,4 @@
 void *HostRcc = NULL;
 void *HostGpioG = NULL;
 void *HostGpioA = NULL;
+void *HostTim2 = NULL;

@@ -1387,7 +1387,7 @@ typedef struct
   * @{
   */  
 
-#define TIM2                ((TIM_TypeDef *) TIM2_BASE)
+//#define TIM2                ((TIM_TypeDef *) TIM2_BASE)
 #define TIM3                ((TIM_TypeDef *) TIM3_BASE)
 #define TIM4                ((TIM_TypeDef *) TIM4_BASE)
 #define TIM5                ((TIM_TypeDef *) TIM5_BASE)

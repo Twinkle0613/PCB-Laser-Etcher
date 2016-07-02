@@ -2,6 +2,13 @@
 #define Coroutine_H
 #include <stdint.h>
 #include "Linklist.h"
+#include "RelativeTimeLinkList.h"
+#include "stepperMotor.h"
+#include "projectStruct.h"
+#include "stm32f10x_rcc.h"
+#include "stm32f10x_spi.h"
+#include "stm32f10x_tim.h"
+
 
 #define startCoroutine() \
             switch( whichMotor->state ){   \
@@ -14,15 +21,10 @@
                     case __LINE__:
                     
                     
-typedef struct{
-  int state;
-  int i;
-}CoroutineInfo;
-
 
  
-
-motorInfo* motorInit(void);
-
+void updateHead(struct Linkedlist *root);
+void timerDelay(struct ListElement* timerElement,uint32_t period);
+void coroutine(motorInfo* whichMotor);
             
 #endif // Coroutine_H

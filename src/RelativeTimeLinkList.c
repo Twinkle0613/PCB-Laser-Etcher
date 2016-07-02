@@ -1,21 +1,10 @@
 #include "RelativeTimeLinkList.h"
 #include "Linklist.h"
 #include <stdint.h>
+#include "projectStruct.h"
 
-#define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
-#define addTimeList(x,y) { addListInCycle(x,createLinkedElement(y)); }
-#define insertNode(x,y) {                                     \
-         struct ListElement * temp = createLinkedElement(y);  \
-         temp->next = x->next;                                \
-         x->next = temp;                                      \
-}  
-#define periodFromBase (period + receiveInstrTime)
 
-#define findLastZeroNode(x) {                                       \
-    while(x->next->actionTime== 0){                                 \
-    x = x->next;                                                    \
-   }                                                                \
-} 
+
 struct Linkedlist *root;
 
 void updateCurTime(struct Linkedlist *newList,uint32_t curTime){
@@ -26,13 +15,7 @@ void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
      newList->baseTime = baseTime;
 }
 
-timeRecordList *recordTime(uint32_t baseTime, uint32_t currentTime, uint32_t rate){
-  timeRecordList *record = malloc(sizeof(timeRecordList));
-  record->baseTime = baseTime;
-  record->currentTime =currentTime;
-  record->rate = rate;
-  return record;
-}
+
 
 void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t periodFrombase){
     while( (*collectActTime) < periodFrombase ){
@@ -175,7 +158,7 @@ void newTimerListAdd(struct ListElement *timerElement, uint32_t period){
        }
     }
 }
-WS
+
 
 
 
