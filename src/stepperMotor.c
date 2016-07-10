@@ -10,7 +10,7 @@
 /**
  * Initialize the motor infomation.
 */
-motorInfo* motorInit(void){
+motorInfo* motorInit( void (*funcAddress) ){
    motorInfo* whichMotor = malloc(sizeof(motorInfo));  
    whichMotor->direation = StpMtr_Clockwise;
    whichMotor->step = StpMtr_Low;
@@ -21,7 +21,7 @@ motorInfo* motorInit(void){
    whichMotor->timerElement.next = NULL;
    whichMotor->timerElement.prev = NULL;
    whichMotor->timerElement.actionTime = 0;
-   whichMotor->timerElement.callBack = NULL;
+   whichMotor->timerElement.callBack = funcAddress;
    setMotorID(whichMotor);
    return whichMotor;
 }
@@ -39,6 +39,11 @@ void setMotorID(motorInfo* whichMotor){
 void setCallBack(struct ListElement* whichMotorElement, void (*funcAddress) ){
    whichMotorElement->callBack = funcAddress;
 }
+
+void setPeriod(motorInfo* whichMotor,int period){
+	whichMotor->period = period;
+}
+
 
 uint8_t stdMtr_drive_conf(uint8_t dir, uint8_t slp_mode,uint8_t microstep){
   return (dir | StpMtr_Low |slp_mode | StpMtr_Rst_Off | microstep | StpMtr_Enable);

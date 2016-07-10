@@ -5,11 +5,12 @@
 #include "projectStruct.h"
 
 struct Linkedlist *createLinkedList(){
-	struct Linkedlist *list_NULL = malloc(sizeof(struct Linkedlist));;
- 	list_NULL->tail = NULL;
+  struct Linkedlist *list_NULL = malloc(sizeof(struct Linkedlist));;
+  list_NULL->tail = NULL;
   list_NULL->head = NULL;
   list_NULL->curTime = 0;
   list_NULL->baseTime = 0;
+  list_NULL->callBackState = IS_FIRST_CALL;
   return list_NULL;
 }
 
@@ -17,7 +18,7 @@ struct ListElement *createLinkedElement(int x){
 	  struct ListElement *newptr = malloc(sizeof(struct ListElement));
 	  newptr->actionTime = x;
 	  newptr->next = NULL;
-    newptr->prev = NULL;
+      newptr->prev = NULL;
 		return newptr;
 }
  

@@ -9,32 +9,57 @@
 #include "stm32f10x_tim.h"
 #include "GPIO_setting.h"
 #include "Timer_setting.h"
-
+#include "SPI_setting.h"
 
 void TIM2_IRQHandler(){
-  updateHead(root);
-  if(root->head != NULL){
-   root->head->callBack(root->head->motorID);
-  }
-  
-  
-  
-  TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
+  struct ListElement *temp;
+  TIM_Cmd(TIM2,DISABLE);
+  TIM_SetCounter(TIM2,0); // set CNT to 0
+
+  do{
+   temp = root->head;
+   root->baseTime += root->head->actionTime; // record the previous time of node
+   headPointToNext(root); // the Head point to next node
+   temp->callBack(temp->motorID); // call the function of previous node
+  }while(root->head != NULL && root->head->actionTime == 0);
+
+   if(root->head == NULL)
+	   TIM_Cmd(TIM2,DISABLE);
+   else 
+     TIM_SetAutoreload(TIM2,root->head->actionTime);
+
+   TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
+   TIM_Cmd(TIM2,ENABLE);
 }
 
-void coroutine(motorInfo* whichMotor){
+void motorControl(motorInfo* whichMotor){
    startCoroutine();
   while(1){
 
-    timerDelay(&(whichMotor->timerElement),10);
+    timerDelay(&(whichMotor->timerElement),whichMotor->period);
     yield();
-
 
    }
    endCoroutine();
 }
 
-void updateHead(struct Linkedlist *root){
+void timerDelay(struct ListElement* timerElement,uint32_t period){
+
+ if(root->head != NULL){
+   root->curTime = root->baseTime + getTime(TIM2);
+ }
+
+ newTimerListAdd(timerElement,period);
+
+ if(root->head->next == root->head && root->callBackState == IS_FIRST_CALL){
+  TIM_SetAutoreload(TIM2,period);
+  TIM_Cmd(TIM2,ENABLE);
+  root->callBackState = NOT_FIRST_CALL;
+ }
+
+}
+
+void headPointToNext(struct Linkedlist *root){
   
   struct ListElement *temp = root->head;
   
@@ -49,14 +74,15 @@ void updateHead(struct Linkedlist *root){
 	temp->prev = NULL;
 }
 
-
-void timerDelay(struct ListElement* timerElement,uint32_t period){
-  //updateBaseTime(root,10);
-  //updateCurTime(root,20);
-  newTimerListAdd(timerElement,period);
-  
-  // yield();
+uint8_t getMotorSetting(motorInfo* whichMotor){
+ return( whichMotor->direation| \
+		 whichMotor->sleep| \
+		 whichMotor->microstep| \
+		 StpMtr_Rst_Off | \
+		 StpMtr_Enable );
 }
+
+
       
       
 

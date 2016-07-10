@@ -152,9 +152,8 @@ void newTimerListAdd(struct ListElement *timerElement, uint32_t period){
            recordElement = root->head;
            findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
            updateActionTime(timerElement,0);
-           if(recordElement->next == root->head){
-             addListInCycle(root,timerElement);
-           }
+           addListInCycle(root,timerElement);
+           
        }
     }
 }

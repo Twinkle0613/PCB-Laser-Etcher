@@ -28,8 +28,7 @@ void testMotor(motorInfo* whichMotor){
 }
 
 void test_motorInit_the_configuration_was_set_by_motorInit(void){
-  
-  motorInfo* whichMotor = motorInit();
+  motorInfo* whichMotor = motorInit(testMotor);
   /* Initialzation Motor */
   TEST_ASSERT_EQUAL(StpMtr_Clockwise,whichMotor->direation);
   TEST_ASSERT_EQUAL(StpMtr_Low,whichMotor->step);
@@ -40,19 +39,19 @@ void test_motorInit_the_configuration_was_set_by_motorInit(void){
   /* Initialzation Timer Elemenet */
   TEST_ASSERT_NULL(whichMotor->timerElement.next);
   TEST_ASSERT_NULL(whichMotor->timerElement.prev);
-  TEST_ASSERT_NULL(whichMotor->timerElement.callBack);
+  TEST_ASSERT_EQUAL_PTR(testMotor,whichMotor->timerElement.callBack);
   TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->timerElement.motorID);
   TEST_ASSERT_EQUAL(0,whichMotor->timerElement.actionTime);
 }
 
 void test_setMotorID_(void){
-  motorInfo* whichMotor = motorInit();
+  motorInfo* whichMotor = motorInit(testMotor);
   setMotorID(whichMotor);
   TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->timerElement.motorID);
 }
 
 void test_setCallBack_(void){
-  motorInfo* whichMotor = motorInit();
+  motorInfo* whichMotor = motorInit(testMotor);
   setCallBack(&whichMotor->timerElement,testMotor);
   whichMotor->timerElement.callBack(whichMotor);
   TEST_ASSERT_EQUAL(1,whichMotor->step);

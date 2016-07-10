@@ -1,50 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc 4.9.3 mingw32 -mcpu=cortex-m3 -mthumb -g2 -Wall -O0 -c -DSTM32F103C8T6 -DSTM32F103xB -DUSE_STDPERIPH_DRIVER -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\startup -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\src -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config -I..\..\..\..\..\..\..\CoIDE\workspace -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\app -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\CMSIS -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver\inc -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher">
-      <target file="syscalls.o" lastModified="155a613d9cf">
-         <source file="..\..\..\Config\startup\syscalls.c" lastModified="154af482b57"/>
-      </target>
-      <target file="startup_stm32f103xb.o" lastModified="155a613d78b">
-         <source file="..\..\..\Config\startup\startup_stm32f103xb.s" lastModified="1518acc3ee0"/>
-      </target>
-      <target file="stm32f10x_tim.o" lastModified="155a613d4bf">
-         <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_tim.c" lastModified="15486435493"/>
-      </target>
-      <target file="Linklist.o" lastModified="155a66b0523">
-         <source file="..\..\..\src\Linklist.c" lastModified="155a636d748"/>
-      </target>
-      <target file="RelativeTimeLinkList.o" lastModified="155a9e706f7">
-         <source file="..\..\..\src\RelativeTimeLinkList.c" lastModified="155a63f7083"/>
-      </target>
-      <target file="GPIO_setting.o" lastModified="155a613dba0">
-         <source file="..\..\..\app\GPIO_setting.c" lastModified="15507b59dc9"/>
-      </target>
-      <target file="stepperMotor.o" lastModified="155a9b40f28">
-         <source file="..\..\..\src\stepperMotor.c" lastModified="155a9b3ed9f"/>
-      </target>
-      <target file="system_stm32f10x.o" lastModified="155a613d608">
-         <source file="..\..\..\Config\startup\system_stm32f10x.c" lastModified="1553e814a16"/>
-      </target>
-      <target file="Timer_setting.o" lastModified="155a613da57">
-         <source file="..\..\..\app\Timer_setting.c" lastModified="15558a9698d"/>
-      </target>
-      <target file="stm32f10x_spi.o" lastModified="155a613dafc">
+      <target file="stm32f10x_spi.o" lastModified="155c9d7e17d">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_spi.c" lastModified="15486435481"/>
       </target>
-      <target file="main.o" lastModified="155aa595031">
-         <source file="..\..\..\app\main.c" lastModified="155aa58aaa2"/>
+      <target file="stepperMotor.o" lastModified="155c9d7cb19">
+         <source file="..\..\..\src\stepperMotor.c" lastModified="155c9d684c1"/>
       </target>
-      <target file="Coroutine.o" lastModified="155aa594f88">
-         <source file="..\..\..\src\Coroutine.c" lastModified="155aa592225"/>
-      </target>
-      <target file="stm32f10x_gpio.o" lastModified="155a613d6b8">
-         <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_gpio.c" lastModified="1548643542c"/>
-      </target>
-      <target file="stm32f10x_rcc.o" lastModified="155a613d861">
+      <target file="stm32f10x_rcc.o" lastModified="155c9d7d5ce">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_rcc.c" lastModified="15486435459"/>
       </target>
-      <target file="projectStruct.o" lastModified="155a6732063">
+      <target file="startup_stm32f103xb.o" lastModified="155c9d7d380">
+         <source file="..\..\..\Config\startup\startup_stm32f103xb.s" lastModified="1518acc3ee0"/>
+      </target>
+      <target file="SPI_setting.o" lastModified="155c9d7dc91">
+         <source file="..\..\..\app\SPI_setting.c" lastModified="155b489dc91"/>
+      </target>
+      <target file="RelativeTimeLinkList.o" lastModified="155cabbbf4b">
+         <source file="..\..\..\src\RelativeTimeLinkList.c" lastModified="155cabaa09b"/>
+      </target>
+      <target file="GPIO_setting.o" lastModified="155c9d7e2d1">
+         <source file="..\..\..\app\GPIO_setting.c" lastModified="15507b59dc9"/>
+      </target>
+      <target file="DMA_setting.o" lastModified="155c9d7c5ab">
+         <source file="..\..\..\app\DMA_setting.c" lastModified="155c9cd4a12"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="155c9d7d146">
+         <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_gpio.c" lastModified="1548643542c"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="155c9d7cd53">
+         <source file="..\..\..\Config\startup\system_stm32f10x.c" lastModified="155b3e2a225"/>
+      </target>
+      <target file="Linklist.o" lastModified="155c9d7d902">
+         <source file="..\..\..\src\Linklist.c" lastModified="155b39d9ae4"/>
+      </target>
+      <target file="syscalls.o" lastModified="155c9d7db29">
+         <source file="..\..\..\Config\startup\syscalls.c" lastModified="154af482b57"/>
+      </target>
+      <target file="projectStruct.o" lastModified="155c9d7cbeb">
          <source file="..\..\..\src\projectStruct.c" lastModified="155a633f3b1"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="155c9d7c961">
+         <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_tim.c" lastModified="15486435493"/>
+      </target>
+      <target file="stm32f10x_dma.o" lastModified="155c9d7de2b">
+         <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_dma.c" lastModified="154864353f4"/>
+      </target>
+      <target file="Timer_setting.o" lastModified="155c9d7df93">
+         <source file="..\..\..\app\Timer_setting.c" lastModified="155ac2addd7"/>
+      </target>
+      <target file="Coroutine.o" lastModified="155ca026ab1">
+         <source file="..\..\..\src\Coroutine.c" lastModified="155ca006ea7"/>
+      </target>
+      <target file="main.o" lastModified="155ca26b086">
+         <source file="..\..\..\app\main.c" lastModified="155ca26a5f9"/>
       </target>
    </processor>
 </history>

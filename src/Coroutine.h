@@ -21,10 +21,10 @@
                     case __LINE__:
                     
                     
-
- 
 void updateHead(struct Linkedlist *root);
 void timerDelay(struct ListElement* timerElement,uint32_t period);
-void coroutine(motorInfo* whichMotor);
-            
+void motorControl(motorInfo* whichMotor);
+uint8_t getMotorSetting(motorInfo* whichMotor);
+void headPointToNext(struct Linkedlist *root);
+
 #endif // Coroutine_H

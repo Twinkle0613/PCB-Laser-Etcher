@@ -32,9 +32,9 @@ void setUp(void)
 
 {
 
- HostGpioA= malloc((sizeof(GPIO_TypeDef)));
+  HostGpioA= malloc((sizeof(GPIO_TypeDef)));
 
- HostTim2= malloc((sizeof(TIM_TypeDef)));
+  HostTim2= malloc((sizeof(TIM_TypeDef)));
 
 }
 
@@ -70,11 +70,11 @@ void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_
 
     root = createLinkedList();
 
-    motorInfo* motor1 = motorInit();
+    motorInfo* motor1 = motorInit(testMotor123);
 
-    motorInfo* motor2 = motorInit();
+    motorInfo* motor2 = motorInit(testMotor123);
 
-    motorInfo* motor3 = motorInit();
+    motorInfo* motor3 = motorInit(testMotor123);
 
 
 
@@ -106,17 +106,15 @@ void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandle
 
     root = createLinkedList();
 
-    motorInfo* motor1 = motorInit();
+    motorInfo* motor1 = motorInit(testMotor123);
 
-    motorInfo* motor2 = motorInit();
+    motorInfo* motor2 = motorInit(testMotor123);
 
-    motorInfo* motor3 = motorInit();
+    motorInfo* motor3 = motorInit(testMotor123);
 
     int arr[] = {5};
 
 
-
-    setCallBack(&motor2->timerElement,testMotor123);
 
     updateBaseTime(root,10);
 
@@ -138,17 +136,17 @@ void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandle
 
 
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(91), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(90), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->next)), (((void *)0)), (_U_UINT)(92), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->next)), (((void *)0)), (_U_UINT)(91), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->prev)), (((void *)0)), (_U_UINT)(93), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->prev)), (((void *)0)), (_U_UINT)(92), UNITY_DISPLAY_STYLE_HEX32);
 
-    if ((((motor1->timerElement.next)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(94))));};
+    if ((((motor1->timerElement.next)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(93))));};
 
-    if ((((motor1->timerElement.prev)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(95))));};
+    if ((((motor1->timerElement.prev)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(94))));};
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),96); };
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),95); };
 
 }
 
@@ -162,13 +160,13 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
 
      int arr[] = {5,7};
 
-    motorInfo* motor1 = motorInit();
+    motorInfo* motor1 = motorInit(testMotor123);
 
-    motorInfo* motor2 = motorInit();
+    motorInfo* motor2 = motorInit(testMotor123);
 
-    motorInfo* motor3 = motorInit();
+    motorInfo* motor3 = motorInit(testMotor123);
 
-    setCallBack(&motor2->timerElement,testMotor123);
+
 
     updateBaseTime(root,10);
 
@@ -192,72 +190,28 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
 
     newTimerListAdd(&motor3->timerElement,14);
 
-    { test_assert_cycle_link_list(root,arr2,sizeof(arr2)/sizeof(uint32_t),129); };
+    { test_assert_cycle_link_list(root,arr2,sizeof(arr2)/sizeof(uint32_t),128); };
 
 
 
     TIM2_IRQHandler();
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(132), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(131), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->next->next)), (((void *)0)), (_U_UINT)(133), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor2->timerElement)), (_U_SINT)(_UP)((root->head->next->next)), (((void *)0)), (_U_UINT)(132), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor3->timerElement)), (_U_SINT)(_UP)((root->head->next)), (((void *)0)), (_U_UINT)(134), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor3->timerElement)), (_U_SINT)(_UP)((root->head->next)), (((void *)0)), (_U_UINT)(133), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor3->timerElement)), (_U_SINT)(_UP)((root->head->prev)), (((void *)0)), (_U_UINT)(135), UNITY_DISPLAY_STYLE_HEX32);
-
-
-
-    if ((((motor1->timerElement.next)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(137))));};
-
-    if ((((motor1->timerElement.prev)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(138))));};
+    UnityAssertEqualNumber((_U_SINT)(_UP)((&motor3->timerElement)), (_U_SINT)(_UP)((root->head->prev)), (((void *)0)), (_U_UINT)(134), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),140); };
+    if ((((motor1->timerElement.next)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(136))));};
+
+    if ((((motor1->timerElement.prev)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(137))));};
 
 
 
-}
-
-
-
-void test_TIM2_IRQHandler_call_the_function(void){
-
-
-
-      root = createLinkedList();
-
-      motorInfo* motor1 = motorInit();
-
-      motorInfo* motor2 = motorInit();
-
-
-
-      setCallBack(&motor2->timerElement,testMotor123);
-
-
-
-      updateBaseTime(root,10);
-
-      updateCurTime(root,20);
-
-      newTimerListAdd(&motor1->timerElement,10);
-
-
-
-      updateBaseTime(root,100);
-
-      updateCurTime(root,105);
-
-      newTimerListAdd(&motor2->timerElement,10);
-
-
-
-      TIM2_IRQHandler();
-
-      UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((motor2->sleep)), (((void *)0)), (_U_UINT)(161), UNITY_DISPLAY_STYLE_INT);
-
-      UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((motor2->step)), (((void *)0)), (_U_UINT)(162), UNITY_DISPLAY_STYLE_INT);
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),139); };
 
 }

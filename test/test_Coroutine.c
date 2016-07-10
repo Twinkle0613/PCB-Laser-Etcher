@@ -16,8 +16,8 @@
 
 void setUp(void)
 {
- HostGpioA= malloc((sizeof(GPIO_TypeDef)));
- HostTim2= malloc((sizeof(TIM_TypeDef)));
+  HostGpioA= malloc((sizeof(GPIO_TypeDef)));
+  HostTim2= malloc((sizeof(TIM_TypeDef)));
 }
 
 void tearDown(void)
@@ -45,10 +45,10 @@ void testMotor123(motorInfo* whichMotor){
 void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null(void){
   
     root = createLinkedList();
-    motorInfo* motor1 = motorInit();
-    motorInfo* motor2 = motorInit();
-    motorInfo* motor3 = motorInit();
-    
+    motorInfo* motor1 = motorInit(testMotor123);
+    motorInfo* motor2 = motorInit(testMotor123);
+    motorInfo* motor3 = motorInit(testMotor123);
+
     updateBaseTime(root,10);
     updateCurTime(root,20);
     newTimerListAdd(&motor1->timerElement,10);
@@ -72,12 +72,11 @@ void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_
 void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement(void){
   
     root = createLinkedList();
-    motorInfo* motor1 = motorInit();
-    motorInfo* motor2 = motorInit();
-    motorInfo* motor3 = motorInit();
+    motorInfo* motor1 = motorInit(testMotor123);
+    motorInfo* motor2 = motorInit(testMotor123);
+    motorInfo* motor3 = motorInit(testMotor123);
     int arr[] = {5};
-    
-    setCallBack(&motor2->timerElement,testMotor123);
+
     updateBaseTime(root,10);
     updateCurTime(root,20);
     newTimerListAdd(&motor1->timerElement,10);
@@ -111,10 +110,10 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
     root = createLinkedList();
     int arr2[] = {10,5,7};
      int arr[] = {5,7};
-    motorInfo* motor1 = motorInit();
-    motorInfo* motor2 = motorInit();
-    motorInfo* motor3 = motorInit();
-    setCallBack(&motor2->timerElement,testMotor123);
+    motorInfo* motor1 = motorInit(testMotor123);
+    motorInfo* motor2 = motorInit(testMotor123);
+    motorInfo* motor3 = motorInit(testMotor123);
+
     updateBaseTime(root,10);
     updateCurTime(root,20);
     newTimerListAdd(&motor1->timerElement,10);
@@ -138,27 +137,5 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
     TEST_ASSERT_NULL(motor1->timerElement.prev);
     
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
-  
-}
-
-void test_TIM2_IRQHandler_call_the_function(void){
-  
-      root = createLinkedList();
-      motorInfo* motor1 = motorInit();
-      motorInfo* motor2 = motorInit();
-      
-      setCallBack(&motor2->timerElement,testMotor123);
-
-      updateBaseTime(root,10);
-      updateCurTime(root,20);
-      newTimerListAdd(&motor1->timerElement,10);
-      
-      updateBaseTime(root,100);
-      updateCurTime(root,105);
-      newTimerListAdd(&motor2->timerElement,10);
-      
-      TIM2_IRQHandler();
-      TEST_ASSERT_EQUAL(1,motor2->sleep);
-      TEST_ASSERT_EQUAL(1,motor2->step);
 }
 

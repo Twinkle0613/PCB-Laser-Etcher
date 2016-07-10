@@ -53,3 +53,5 @@ void SPI_conf(SPI_TypeDef* SPIx,
   spi.SPI_CRCPolynomial = 7;
   SPI_Init(SPIx,&spi);
 }
+
+

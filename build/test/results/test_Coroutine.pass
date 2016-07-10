@@ -10,16 +10,13 @@
   :line: 72
   :message: ''
 - :test: test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 109
-  :message: ''
-- :test: test_TIM2_IRQHandler_call_the_function
-  :line: 144
+  :line: 108
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 3
+  :passed: 3
   :failed: 0
   :ignored: 0
 :stdout:

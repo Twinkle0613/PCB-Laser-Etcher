@@ -7,10 +7,10 @@
   :line: 30
   :message: ''
 - :test: test_setMotorID_
-  :line: 48
+  :line: 47
   :message: ''
 - :test: test_setCallBack_
-  :line: 54
+  :line: 53
   :message: ''
 :failures: []
 :ignores: []

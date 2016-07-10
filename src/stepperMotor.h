@@ -40,9 +40,9 @@
 #define StpMtr_Enable  ((uint8_t)0x00)
 #define StpMtr_Disable ((uint8_t)0x01)
 
-
+void setPeriod(motorInfo* whichMotor,int period);
 void outputData();
-motorInfo* motorInit(void);
+motorInfo* motorInit(void (*funcAddress));
 void setMotorID(motorInfo* whichMotor);
 void sendConfToShiftReg(SPI_TypeDef* SPIx,uint16_t driver_conf);
 uint8_t stdMtr_drive_conf(uint8_t dir, uint8_t slp_mode,uint8_t microstep);

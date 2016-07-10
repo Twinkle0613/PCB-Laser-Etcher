@@ -10,13 +10,12 @@
 void Timer_conf(TIM_TypeDef* TIMx,
                 uint16_t Prescaler,
                 uint16_t CounterMode,
-                uint16_t Period,
-                uint16_t ClockDivision
+                uint16_t Period
               );
               
               
 void enableTimer(TIM_TypeDef* TIM,FunctionalState NewState);
-
+void updatePeriod(TIM_TypeDef* TIMx,uint16_t period);
 
 uint16_t getTime(TIM_TypeDef* TIMx);
 

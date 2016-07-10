@@ -1,22 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g2 -Map=PCB Laser Etcher.map -O0 --gc-sections -LC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher -TC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/STM32F103C8_FLASH.ld -g">
-      <target file="PCB Laser Etcher.elf" lastModified="155aa5954d8">
-         <source file="..\obj\GPIO_setting.o" lastModified="155a613dba0"/>
-         <source file="..\obj\Timer_setting.o" lastModified="155a613da57"/>
-         <source file="..\obj\syscalls.o" lastModified="155a613d9cf"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="155a613d608"/>
-         <source file="..\obj\stepperMotor.o" lastModified="155a9b40f28"/>
-         <source file="..\obj\RelativeTimeLinkList.o" lastModified="155a9e706f7"/>
-         <source file="..\obj\startup_stm32f103xb.o" lastModified="155a613d78b"/>
-         <source file="..\obj\Coroutine.o" lastModified="155aa594f88"/>
-         <source file="..\obj\stm32f10x_tim.o" lastModified="155a613d4bf"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="155a613d6b8"/>
-         <source file="..\obj\projectStruct.o" lastModified="155a6732063"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="155a613d861"/>
-         <source file="..\obj\Linklist.o" lastModified="155a66b0523"/>
-         <source file="..\obj\stm32f10x_spi.o" lastModified="155a613dafc"/>
-         <source file="..\obj\main.o" lastModified="155aa595031"/>
+      <target file="PCB Laser Etcher.elf" lastModified="155cabbc2e4">
+         <source file="..\obj\stm32f10x_dma.o" lastModified="155c9d7de2b"/>
+         <source file="..\obj\GPIO_setting.o" lastModified="155c9d7e2d1"/>
+         <source file="..\obj\Timer_setting.o" lastModified="155c9d7df93"/>
+         <source file="..\obj\syscalls.o" lastModified="155c9d7db29"/>
+         <source file="..\obj\stepperMotor.o" lastModified="155c9d7cb19"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="155c9d7cd53"/>
+         <source file="..\obj\RelativeTimeLinkList.o" lastModified="155cabbbf4b"/>
+         <source file="..\obj\DMA_setting.o" lastModified="155c9d7c5ab"/>
+         <source file="..\obj\startup_stm32f103xb.o" lastModified="155c9d7d380"/>
+         <source file="..\obj\Coroutine.o" lastModified="155ca026ab1"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="155c9d7c961"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="155c9d7d146"/>
+         <source file="..\obj\SPI_setting.o" lastModified="155c9d7dc91"/>
+         <source file="..\obj\projectStruct.o" lastModified="155c9d7cbeb"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="155c9d7d5ce"/>
+         <source file="..\obj\Linklist.o" lastModified="155c9d7d902"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="155c9d7e17d"/>
+         <source file="..\obj\main.o" lastModified="155ca26b086"/>
       </target>
    </processor>
 </history>

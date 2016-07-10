@@ -2,14 +2,16 @@
 #define projectStruct_H
 #include <stdint.h>
 
+#define IS_FIRST_CALL 1
+#define NOT_FIRST_CALL 0
 
 typedef struct motorInfo motorInfo_t;
 
 struct ListElement
 {
-	  struct ListElement *next;
-    struct ListElement *prev;
-		uint32_t actionTime;
+   struct ListElement *next;
+   struct ListElement *prev;
+   uint32_t actionTime;
     void (*callBack)();
     void *motorID;
 };
@@ -18,9 +20,10 @@ struct ListElement
 struct Linkedlist
 {
 	 struct ListElement *head;
-	 	struct ListElement *tail;
+	struct ListElement *tail;
     uint32_t curTime;
     uint32_t baseTime;
+    int callBackState;
 }; 
 
 typedef struct{
@@ -32,5 +35,6 @@ typedef struct{
   uint8_t sleep;
   uint8_t microstep;   
 }motorInfo;   
+
 
 #endif // projectStruct_H
