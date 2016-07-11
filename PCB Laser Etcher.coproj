@@ -76,13 +76,13 @@
     <File name="Driver/stm32f10x_dma.c" path="Config/StdPeriph_Driver/src/stm32f10x_dma.c" type="1"/>
     <File name="GPIO_setting.c" path="app/GPIO_setting.c" type="1"/>
     <File name="Timer_setting.c" path="app/Timer_setting.c" type="1"/>
-    <File name="Driver/stm32f10x_gpio.h" path="Config/StdPeriph_Driver/inc/stm32f10x_gpio.h" type="1"/>
     <File name="Startup/syscalls.c" path="Config/startup/syscalls.c" type="1"/>
+    <File name="Driver/stm32f10x_gpio.h" path="Config/StdPeriph_Driver/inc/stm32f10x_gpio.h" type="1"/>
     <File name="projectStruct.h" path="src/projectStruct.h" type="1"/>
+    <File name="Startup/system_stm32f10x.c" path="Config/startup/system_stm32f10x.c" type="1"/>
     <File name="Driver/stm32f10x_spi.h" path="Config/StdPeriph_Driver/inc/stm32f10x_spi.h" type="1"/>
     <File name="stepperMotor.c" path="src/stepperMotor.c" type="1"/>
     <File name="Linklist.h" path="src/Linklist.h" type="1"/>
-    <File name="Startup/system_stm32f10x.c" path="Config/startup/system_stm32f10x.c" type="1"/>
     <File name="DMA_setting.h" path="app/DMA_setting.h" type="1"/>
     <File name="RelativeTimeLinkList.c" path="src/RelativeTimeLinkList.c" type="1"/>
     <File name="Startup/stm32f10x.h" path="Config/startup/stm32f10x.h" type="1"/>
@@ -98,8 +98,8 @@
     <File name="CMSIS/cmsis_gcc.h" path="Config/CMSIS/cmsis_gcc.h" type="1"/>
     <File name="Timer_setting.h" path="app/Timer_setting.h" type="1"/>
     <File name="Driver/stm32f10x_dma.h" path="Config/StdPeriph_Driver/inc/stm32f10x_dma.h" type="1"/>
-    <File name="GPIO_setting.h" path="app/GPIO_setting.h" type="1"/>
     <File name="Driver/stm32f10x_gpio.c" path="Config/StdPeriph_Driver/src/stm32f10x_gpio.c" type="1"/>
+    <File name="GPIO_setting.h" path="app/GPIO_setting.h" type="1"/>
     <File name="CMSIS/core_cm3.h" path="Config/CMSIS/core_cm3.h" type="1"/>
     <File name="SPI_setting.c" path="app/SPI_setting.c" type="1"/>
     <File name="CMSIS/core_cmSimd.h" path="Config/CMSIS/core_cmSimd.h" type="1"/>

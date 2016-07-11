@@ -23,13 +23,13 @@ void TIM2_IRQHandler(){
    temp->callBack(temp->motorID); // call the function of previous node
   }while(root->head != NULL && root->head->actionTime == 0);
 
-   if(root->head == NULL)
-	   TIM_Cmd(TIM2,DISABLE);
-   else 
-     TIM_SetAutoreload(TIM2,root->head->actionTime);
-
    TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
-   TIM_Cmd(TIM2,ENABLE);
+   if(root->head != NULL){
+	 TIM_SetAutoreload(TIM2,root->head->actionTime);
+     TIM_Cmd(TIM2,ENABLE);
+   }else{
+	 TIM_Cmd(TIM2,DISABLE);
+   }
 }
 
 void motorControl(motorInfo* whichMotor){
@@ -71,7 +71,7 @@ void headPointToNext(struct Linkedlist *root){
 	 temp->prev->next = root->head;
   }
   temp->next = NULL;
-	temp->prev = NULL;
+  temp->prev = NULL;
 }
 
 uint8_t getMotorSetting(motorInfo* whichMotor){

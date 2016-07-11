@@ -92,10 +92,8 @@ void timerListAdd(struct Linkedlist *newList, uint32_t period){
            findTheNodeNearPeriodForBase(&recordElement,&collectActTime,periodFromBase);
            
            if(recordElement->next == newList->head){
-          
              addTimeList(newList,0);
            }else{ 
-        
              insertNode(recordElement,0);
            }
        }

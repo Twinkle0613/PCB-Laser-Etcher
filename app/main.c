@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-void SPI1_DMA1_Channel_init(void);
+void SPI1_DMA1_init(void);
 void Tim2_init(void);
 void SPI1_init(void);
 struct Linkedlist *root;
@@ -36,25 +36,31 @@ int main(void)
   SPI1_DMA1_init();
   Tim2_init();
 
-  //txBuffer[0] = 0x88; //Drive1&0xBF;
-  //txBuffer[1] = 0x44; //Drive1|0x40;
-  //txBuffer[2] = 0x22;
-
-//  DMA_Cmd(DMA1_Channel3,ENABLE);
-
-
-  //outputData();
+ /*  txBuffer[0] = 0x88; //Drive1&0xBF;
+   txBuffer[1] = 0x44; //Drive1|0x40;
+   txBuffer[2] = 0x22;
+   DMA_Cmd(DMA1_Channel3,ENABLE);
+   outputData();
+   uint32_t checkCCR = DMA1_Channel3->CCR;
+   DMA_Cmd(DMA1_Channel3,DISABLE);
+   DMA_Cmd(DMA1_Channel3,ENABLE);
+   txBuffer[0] = 0xF2; //Drive1&0xBF;
+   txBuffer[1] = 0x8F; //Drive1|0x40;
+   txBuffer[2] = 0xF4;
+   outputData();
+   */
   motor1->timerElement.callBack(motor1);
   motor2->timerElement.callBack(motor2);
   motor3->timerElement.callBack(motor3);
-	//SPI1_init();
-	//uint8_t Drive1 = stdMtr_drive_conf(StpMtr_Clockwise,StpMtr_Slp_Off,StpMtr_Full_step);
+
+   // SPI1_init();
+   // uint8_t Drive1 = stdMtr_drive_conf(StpMtr_Clockwise,StpMtr_Slp_Off,StpMtr_Full_step);
    // uint32_t checkDIER = TIM2->DIER;
    // uint32_t checkCR1 = TIM2->CR1;
 
 	while(1)
     {
-	 time = getTime(TIM2);
+	    time = getTime(TIM2);
     }
 }
 
@@ -62,7 +68,7 @@ void SPI1_DMA1_init(void){
   SPI_I2S_DMACmd(SPI1,SPI_I2S_DMAReq_Tx,ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);
   DMA_conf(DMA1_Channel3,&(SPI1->DR),&txBuffer,DMA_DIR_PeripheralDST,3,
-		   DMA_PeripheralDataSize_Byte,DMA_MemoryDataSize_Byte);
+	       DMA_PeripheralDataSize_Byte,DMA_MemoryDataSize_Byte);
 }
 
 void Tim2_init(void){
