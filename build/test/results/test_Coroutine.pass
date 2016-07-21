@@ -2,21 +2,12 @@
 :source:
   :path: test
   :file: test_Coroutine.c
-:successes:
-- :test: test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null
-  :line: 45
-  :message: ''
-- :test: test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 72
-  :message: ''
-- :test: test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 108
-  :message: ''
+:successes: []
 :failures: []
 :ignores: []
 :counts:
-  :total: 3
-  :passed: 3
+  :total: 0
+  :passed: 0
   :failed: 0
   :ignored: 0
 :stdout:

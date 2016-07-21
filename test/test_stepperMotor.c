@@ -1,15 +1,25 @@
+//General Library
 #include "unity.h"
-#include "stepperMotor.h"
-#include "Host.h"
-#include "Registers.h"
+#include <malloc.h>
+#include <stdio.h>
+//STM standard Library
 #include "stm32f10x_gpio.h"
 #include "stm32f10x.h"
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_spi.h"
-#include <malloc.h>
-#include <stdio.h>
+#include "stm32f10x_tim.h"
+#include "stm32f10x_dma.h"
+//Own Library
+#include "DMA_setting.h"
+#include "DMA.h"
+#include "Host.h"
+#include "Timer.h"
+#include "Linklist.h"
+#include "Registers.h"
+#include "stepperMotor.h"
 #include "projectStruct.h"
-
+#include "Timer_setting.h"
+#include "RelativeTimeLinkList.h"
 
 void setUp(void)
 {
@@ -28,7 +38,7 @@ void testMotor(motorInfo* whichMotor){
 }
 
 void test_motorInit_the_configuration_was_set_by_motorInit(void){
-  motorInfo* whichMotor = motorInit(testMotor);
+  motorInfo* whichMotor = motorInit(testMotor,0,FIRST_MOTOR);
   /* Initialzation Motor */
   TEST_ASSERT_EQUAL(StpMtr_Clockwise,whichMotor->direation);
   TEST_ASSERT_EQUAL(StpMtr_Low,whichMotor->step);
@@ -36,22 +46,28 @@ void test_motorInit_the_configuration_was_set_by_motorInit(void){
   TEST_ASSERT_EQUAL(StpMtr_Full_step,whichMotor->microstep);
   TEST_ASSERT_EQUAL(0,whichMotor->period);
   TEST_ASSERT_EQUAL(0,whichMotor->state);
+  TEST_ASSERT_EQUAL(FIRST_MOTOR,whichMotor->slot);
   /* Initialzation Timer Elemenet */
   TEST_ASSERT_NULL(whichMotor->timerElement.next);
   TEST_ASSERT_NULL(whichMotor->timerElement.prev);
   TEST_ASSERT_EQUAL_PTR(testMotor,whichMotor->timerElement.callBack);
-  TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->timerElement.motorID);
+  TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->timerElement.args);
   TEST_ASSERT_EQUAL(0,whichMotor->timerElement.actionTime);
+  
+  
+  TEST_ASSERT_EQUAL(0,whichMotor->motorConfiguration->counter);
+  TEST_ASSERT_EQUAL(FIRST_MOTOR,whichMotor->motorConfiguration->slot);
+  TEST_ASSERT_EQUAL(0,whichMotor->motorConfiguration->stepHighCommand);
+  TEST_ASSERT_EQUAL(0,whichMotor->motorConfiguration->stepLowCommand);
+  TEST_ASSERT_NULL(whichMotor->motorConfiguration->txElement.next);
+  TEST_ASSERT_NULL(whichMotor->motorConfiguration->txElement.prev);
+  TEST_ASSERT_EQUAL_PTR(testMotor,whichMotor->motorConfiguration->txElement.callBack);
+  TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->motorConfiguration->txElement.args);
 }
 
-void test_setMotorID_(void){
-  motorInfo* whichMotor = motorInit(testMotor);
-  setMotorID(whichMotor);
-  TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->timerElement.motorID);
-}
 
 void test_setCallBack_(void){
-  motorInfo* whichMotor = motorInit(testMotor);
+  motorInfo* whichMotor = motorInit(testMotor,0,FIRST_MOTOR);
   setCallBack(&whichMotor->timerElement,testMotor);
   whichMotor->timerElement.callBack(whichMotor);
   TEST_ASSERT_EQUAL(1,whichMotor->step);

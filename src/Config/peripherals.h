@@ -7,5 +7,7 @@
 
 #define GPIOA ((GPIO_TypeDef *) GPIOA_BASE_ADDRESS)
 #define TIM2 ((TIM_TypeDef*) TIM2_BASE_ADDRESS)
+#define DMA1 ((DMA_TypeDef*) DMA1_BASE_ADDRESS)
+#define DMA1_Channel3 ((DMA_Channel_TypeDef*) DMA1_Channel3_BASE_ADDRESS)
 
 #endif // peripherals_H

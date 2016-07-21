@@ -22,7 +22,6 @@ void enableTimer(TIM_TypeDef* TIMx,FunctionalState NewState){
   }else{
   TIMx->CR1 &= TImer_Disable;
   }
-  
 }
 
 void updatePeriod(TIM_TypeDef* TIMx,uint16_t period){

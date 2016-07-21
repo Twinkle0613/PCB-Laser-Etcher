@@ -1,12 +1,17 @@
 #ifndef RelativeTimeLinkList_H
 #define RelativeTimeLinkList_H
 
-#include "Linklist.h"
+//General Library
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <malloc.h>
+//STM32F1XX standard Library
+#include "stm32f10x_tim.h"
+//Own Library
+#include "Linklist.h"
 #include "projectStruct.h"
+#include "Timer_setting.h"
 
 
 
@@ -25,19 +30,18 @@
    }                                                                \
 } 
 
-
-
 extern struct Linkedlist *root;
 
-
+void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
+void updateHead(struct Linkedlist *root);
+struct ListElement* timerDequeue(void);
 void updateCurTime(struct Linkedlist *newList,uint32_t curTime);
-void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime);
+void _updateBaseTime(struct Linkedlist *newList,uint32_t baseTime);
 void updateActionTime(struct ListElement *timerElement, uint32_t newActTime);
 void insertTimeElement(struct ListElement *recordElement, struct ListElement *timerElement);
-void newTimerListAdd(struct ListElement *timerElement, uint32_t period);
+void timerQueue(struct ListElement *timerElement, uint32_t period);
 void timerListAdd(struct Linkedlist *newList, uint32_t period);
 void timerListDelete(struct ListElement* Node);
-void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
 
 
 #endif // RelativeTimeLinkList_H

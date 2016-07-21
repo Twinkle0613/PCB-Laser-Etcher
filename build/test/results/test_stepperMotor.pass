@@ -4,19 +4,16 @@
   :file: test_stepperMotor.c
 :successes:
 - :test: test_motorInit_the_configuration_was_set_by_motorInit
-  :line: 30
-  :message: ''
-- :test: test_setMotorID_
-  :line: 47
+  :line: 40
   :message: ''
 - :test: test_setCallBack_
-  :line: 53
+  :line: 69
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 3
-  :passed: 3
+  :total: 2
+  :passed: 2
   :failed: 0
   :ignored: 0
 :stdout:

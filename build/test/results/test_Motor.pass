@@ -1,0 +1,17 @@
+---
+:source:
+  :path: test
+  :file: test_Motor.c
+:successes:
+- :test: test_getCommond_
+  :line: 39
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

@@ -6,7 +6,6 @@
 #include "cmock.h"
 #include "mock_MockFunction.h"
 
-static const char* CMockString_getTime = "getTime";
 static const char* CMockString_readButton = "readButton";
 
 typedef struct _CMOCK_readButton_CALL_INSTANCE
@@ -17,14 +16,6 @@ typedef struct _CMOCK_readButton_CALL_INSTANCE
 
 } CMOCK_readButton_CALL_INSTANCE;
 
-typedef struct _CMOCK_getTime_CALL_INSTANCE
-{
-  UNITY_LINE_TYPE LineNumber;
-  uint32_t ReturnVal;
-  int CallOrder;
-
-} CMOCK_getTime_CALL_INSTANCE;
-
 static struct mock_MockFunctionInstance
 {
   int readButton_IgnoreBool;
@@ -32,11 +23,6 @@ static struct mock_MockFunctionInstance
   CMOCK_readButton_CALLBACK readButton_CallbackFunctionPointer;
   int readButton_CallbackCalls;
   CMOCK_MEM_INDEX_TYPE readButton_CallInstance;
-  int getTime_IgnoreBool;
-  uint32_t getTime_FinalReturn;
-  CMOCK_getTime_CALLBACK getTime_CallbackFunctionPointer;
-  int getTime_CallbackCalls;
-  CMOCK_MEM_INDEX_TYPE getTime_CallInstance;
 } Mock;
 
 extern jmp_buf AbortFrame;
@@ -52,12 +38,6 @@ void mock_MockFunction_Verify(void)
   UNITY_TEST_ASSERT(CMOCK_GUTS_NONE == Mock.readButton_CallInstance, cmock_line, CMockStringCalledLess);
   if (Mock.readButton_CallbackFunctionPointer != NULL)
     Mock.readButton_CallInstance = CMOCK_GUTS_NONE;
-  if (Mock.getTime_IgnoreBool)
-    Mock.getTime_CallInstance = CMOCK_GUTS_NONE;
-  UNITY_SET_DETAIL(CMockString_getTime);
-  UNITY_TEST_ASSERT(CMOCK_GUTS_NONE == Mock.getTime_CallInstance, cmock_line, CMockStringCalledLess);
-  if (Mock.getTime_CallbackFunctionPointer != NULL)
-    Mock.getTime_CallInstance = CMOCK_GUTS_NONE;
 }
 
 void mock_MockFunction_Init(void)
@@ -71,8 +51,6 @@ void mock_MockFunction_Destroy(void)
   memset(&Mock, 0, sizeof(Mock));
   Mock.readButton_CallbackFunctionPointer = NULL;
   Mock.readButton_CallbackCalls = 0;
-  Mock.getTime_CallbackFunctionPointer = NULL;
-  Mock.getTime_CallbackCalls = 0;
   GlobalExpectCount = 0;
   GlobalVerifyOrder = 0;
 }
@@ -135,65 +113,5 @@ void readButton_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_re
 void readButton_StubWithCallback(CMOCK_readButton_CALLBACK Callback)
 {
   Mock.readButton_CallbackFunctionPointer = Callback;
-}
-
-uint32_t getTime(void)
-{
-  UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  UNITY_SET_DETAIL(CMockString_getTime);
-  CMOCK_getTime_CALL_INSTANCE* cmock_call_instance = (CMOCK_getTime_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.getTime_CallInstance);
-  Mock.getTime_CallInstance = CMock_Guts_MemNext(Mock.getTime_CallInstance);
-  if (Mock.getTime_IgnoreBool)
-  {
-    UNITY_CLR_DETAILS();
-    if (cmock_call_instance == NULL)
-      return Mock.getTime_FinalReturn;
-    Mock.getTime_FinalReturn = cmock_call_instance->ReturnVal;
-    return cmock_call_instance->ReturnVal;
-  }
-  if (Mock.getTime_CallbackFunctionPointer != NULL)
-  {
-    return Mock.getTime_CallbackFunctionPointer(Mock.getTime_CallbackCalls++);
-  }
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
-  cmock_line = cmock_call_instance->LineNumber;
-  if (cmock_call_instance->CallOrder > ++GlobalVerifyOrder)
-    UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
-  if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
-    UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
-  UNITY_CLR_DETAILS();
-  return cmock_call_instance->ReturnVal;
-}
-
-void getTime_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return)
-{
-  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_getTime_CALL_INSTANCE));
-  CMOCK_getTime_CALL_INSTANCE* cmock_call_instance = (CMOCK_getTime_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
-  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
-  Mock.getTime_CallInstance = CMock_Guts_MemChain(Mock.getTime_CallInstance, cmock_guts_index);
-  Mock.getTime_IgnoreBool = (int)0;
-  cmock_call_instance->LineNumber = cmock_line;
-  cmock_call_instance->ReturnVal = cmock_to_return;
-  Mock.getTime_IgnoreBool = (int)1;
-}
-
-void getTime_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return)
-{
-  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_getTime_CALL_INSTANCE));
-  CMOCK_getTime_CALL_INSTANCE* cmock_call_instance = (CMOCK_getTime_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
-  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
-  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
-  Mock.getTime_CallInstance = CMock_Guts_MemChain(Mock.getTime_CallInstance, cmock_guts_index);
-  Mock.getTime_IgnoreBool = (int)0;
-  cmock_call_instance->LineNumber = cmock_line;
-  cmock_call_instance->CallOrder = ++GlobalExpectCount;
-  cmock_call_instance->ReturnVal = cmock_to_return;
-  UNITY_CLR_DETAILS();
-}
-
-void getTime_StubWithCallback(CMOCK_getTime_CALLBACK Callback)
-{
-  Mock.getTime_CallbackFunctionPointer = Callback;
 }
 

@@ -31,7 +31,6 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_motorInit_the_configuration_was_set_by_motorInit(void);
-extern void test_setMotorID_(void);
 extern void test_setCallBack_(void);
 
 
@@ -48,9 +47,8 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_stepperMotor.c");
-  RUN_TEST(test_motorInit_the_configuration_was_set_by_motorInit, 30);
-  RUN_TEST(test_setMotorID_, 47);
-  RUN_TEST(test_setCallBack_, 53);
+  RUN_TEST(test_motorInit_the_configuration_was_set_by_motorInit, 40);
+  RUN_TEST(test_setCallBack_, 69);
 
   return (UnityEnd());
 }

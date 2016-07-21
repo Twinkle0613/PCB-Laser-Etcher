@@ -18,7 +18,6 @@
   *              - To use or not the peripheral’s drivers in application code(i.e. 
   *                code will be based on direct access to peripheral’s registers 
   *                rather than drivers API), this option is controlled by 
-  *                "#define USE_STDPERIPH_DRIVER"
   *              - To change few application-specific parameters such as the HSE 
   *                crystal frequency
   *           - Data structures and the address mapping for all peripherals

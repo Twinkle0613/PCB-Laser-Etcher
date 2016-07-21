@@ -8,5 +8,7 @@
 #define GPIOG_BASE_ADDRESS ((uint32_t)HostGpioG)
 #define GPIOA_BASE_ADDRESS ((uint32_t)HostGpioA)
 #define TIM2_BASE_ADDRESS  ((uint32_t)HostTim2)
+#define DMA1_BASE_ADDRESS  ((uint32_t)HostDma1)
+#define DMA1_Channel3_BASE_ADDRESS ((uint32_t)HostDma1_Channel3)
 
 #endif //__Registers_H__

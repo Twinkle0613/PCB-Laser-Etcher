@@ -3,36 +3,56 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <malloc.h>
+
+//STM standard Library
 #include "stm32f10x_spi.h"
 #include "stm32f10x_gpio.h"
-
+//Own Library
+#include "DMA.h"
+#include "RelativeTimeLinkList.h"
 #include "projectStruct.h"
+#include "Timer.h"
+
+void motorController(motorInfo* whichMotor){
+   startCoroutine();
+  while(1){
+   //dmaDriveMotor(whichMotor,StpMtr_Clockwise,StpMtr_Full_step);
+    timerDelay(&(whichMotor->timerElement),whichMotor->period);
+    yield();
+   }
+   endCoroutine();
+}
+
 /**
  * Initialize the motor infomation.
 */
-motorInfo* motorInit( void (*funcAddress) ){
+
+motorInfo* motorInit( void (*funcAddress),int period, int slot ){
    motorInfo* whichMotor = malloc(sizeof(motorInfo));  
    whichMotor->direation = StpMtr_Clockwise;
    whichMotor->step = StpMtr_Low;
    whichMotor->sleep = StpMtr_Slp_Off; 
    whichMotor->microstep = StpMtr_Full_step;
-   whichMotor->period = 0;
+   whichMotor->period = period;
    whichMotor->state = 0;
+   whichMotor->slot = slot;
    whichMotor->timerElement.next = NULL;
    whichMotor->timerElement.prev = NULL;
    whichMotor->timerElement.actionTime = 0;
    whichMotor->timerElement.callBack = funcAddress;
-   setMotorID(whichMotor);
+   whichMotor->timerElement.args = whichMotor;
+   whichMotor->motorConfiguration = motorConfigInit(whichMotor,funcAddress,slot);
    return whichMotor;
 }
 
-/**
- * Set own address to MotorID that was created in motorInfo struct.
-*/
-void setMotorID(motorInfo* whichMotor){
-  whichMotor->timerElement.motorID = whichMotor;
-}
 
+
+/**
+ * Set own address to args that was created in motorInfo struct.
+*/
+void setArgs(motorInfo* whichMotor){
+  whichMotor->timerElement.args = whichMotor;
+}
 /**
  * Set some function address to callBack that was created in motorInfo struct.
 */
@@ -61,4 +81,23 @@ void outputData(){
       GPIO_SetBits(GPIOA, GPIO_Pin_4);   // Clock High
 }
 
+uint8_t getMotorSetting(motorInfo* whichMotor){
+ return(whichMotor->direation
+	    |whichMotor->sleep
+    	|whichMotor->microstep
+		|StpMtr_Rst_Off
+		|StpMtr_Enable);
+}
+
+void resetMotorDrive(void){
+ uint8_t reset = StpMtr_Clockwise
+		         |StpMtr_Low
+		         |StpMtr_Slp_Off
+		         |StpMtr_Rst_On
+		         |StpMtr_Full_step
+		         |StpMtr_Enable;
+ SPI_I2S_SendData(SPI1,reset);
+  while(!SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE));
+  outputData();
+}
 

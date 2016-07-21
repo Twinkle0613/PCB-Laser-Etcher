@@ -1,7 +1,9 @@
-#include "Linklist.h"
-#include "malloc.h"
+//General Library
 #include <stdlib.h>
 #include <stdio.h>
+#include <malloc.h>
+//Own Library
+#include "Linklist.h"
 #include "projectStruct.h"
 
 struct Linkedlist *createLinkedList(){
@@ -10,20 +12,18 @@ struct Linkedlist *createLinkedList(){
   list_NULL->head = NULL;
   list_NULL->curTime = 0;
   list_NULL->baseTime = 0;
-  list_NULL->callBackState = IS_FIRST_CALL;
   return list_NULL;
 }
 
 struct ListElement *createLinkedElement(int x){
-	  struct ListElement *newptr = malloc(sizeof(struct ListElement));
-	  newptr->actionTime = x;
-	  newptr->next = NULL;
-      newptr->prev = NULL;
-		return newptr;
+  struct ListElement *newptr = malloc(sizeof(struct ListElement));
+  newptr->actionTime = x;
+  newptr->next = NULL;
+  newptr->prev = NULL;
+  return newptr;
 }
  
-void addList(  struct Linkedlist *newList, struct ListElement *newElement)
-{
+void addList(  struct Linkedlist *newList, struct ListElement *newElement){
 	 if(newList->head == NULL)
 	 {
       newList->head = newElement;
@@ -37,8 +37,7 @@ void addList(  struct Linkedlist *newList, struct ListElement *newElement)
 	 }
 }
 
-void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement)
-{
+void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement){
 	 if(newList->head == NULL)
 	 {
       newList->head = newElement;

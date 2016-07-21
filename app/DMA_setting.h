@@ -8,8 +8,10 @@ void DMA_conf(DMA_Channel_TypeDef* DMAy_Channelx,
               uint32_t dataDirection,
               uint32_t bufferSize,
               uint32_t periDataSize,
-              uint32_t memoryDataSize
+              uint32_t memoryDataSize,
+              uint32_t dmaMode
               );
-
+void setDataNumber(DMA_Channel_TypeDef* DMAy_Channelx,uint32_t dataNumber);
+void setMemoryAddress(DMA_Channel_TypeDef* DMAy_Channelx,uint32_t address);
 
 #endif //__DMA_setting_H__

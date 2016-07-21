@@ -1,62 +1,47 @@
-//Own Library
-#include "SPI_setting.h"
-#include "GPIO_setting.h"
-#include "Timer_setting.h"
-#include "stepperMotor.h"
-#include "RelativeTimeLinkList.h"
-#include "Coroutine.h"
-#include "projectStruct.h"
+//General Library
+#include <stdint.h>
+#include <stdio.h>
 //STM32F103 Standard Library
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_spi.h"
 #include "stm32f10x_tim.h"
-//General Library
-#include <stdint.h>
-#include <stdio.h>
+//Own Library
+#include "DMA.h"
+#include "Timer.h"
+#include "Coroutine.h"
+#include "SPI_setting.h"
+#include "stepperMotor.h"
+#include "GPIO_setting.h"
+#include "Timer_setting.h"
+#include "RelativeTimeLinkList.h"
+#include "projectStruct.h"
 
 void SPI1_DMA1_init(void);
 void Tim2_init(void);
 void SPI1_init(void);
 struct Linkedlist *root;
 void delay(int counter);
-uint8_t txBuffer[];
+uint8_t txBuffer[3];
+uint8_t txStorage[3];
 
+void initializeTxBuffer(void);
 int main(void)
 {
   uint32_t time = 0;
   root = createLinkedList();
-  motorInfo* motor1 = motorInit(motorControl);
-  motorInfo* motor2 = motorInit(motorControl);
-  motorInfo* motor3 = motorInit(motorControl);
-  setPeriod(motor1,10000);
-  setPeriod(motor2,10000);
-  setPeriod(motor3,10000);
-
+  motorInfo* motor1 = motorInit(motorController,100,FIRST_MOTOR);
+  motorInfo* motor2 = motorInit(motorController,1000,SECOND_MOTOR);
+  motorInfo* motor3 = motorInit(motorController,10000,THIRD_MOTOR);
+  initializeTxBuffer();
   SPI1_init();
   SPI1_DMA1_init();
   Tim2_init();
+  resetMotorDrive();
 
- /*  txBuffer[0] = 0x88; //Drive1&0xBF;
-   txBuffer[1] = 0x44; //Drive1|0x40;
-   txBuffer[2] = 0x22;
-   DMA_Cmd(DMA1_Channel3,ENABLE);
-   outputData();
-   uint32_t checkCCR = DMA1_Channel3->CCR;
-   DMA_Cmd(DMA1_Channel3,DISABLE);
-   DMA_Cmd(DMA1_Channel3,ENABLE);
-   txBuffer[0] = 0xF2; //Drive1&0xBF;
-   txBuffer[1] = 0x8F; //Drive1|0x40;
-   txBuffer[2] = 0xF4;
-   outputData();
-   */
   motor1->timerElement.callBack(motor1);
   motor2->timerElement.callBack(motor2);
-  motor3->timerElement.callBack(motor3);
+ // motor3->timerElement.callBack(motor3);
 
-   // SPI1_init();
-   // uint8_t Drive1 = stdMtr_drive_conf(StpMtr_Clockwise,StpMtr_Slp_Off,StpMtr_Full_step);
-   // uint32_t checkDIER = TIM2->DIER;
-   // uint32_t checkCR1 = TIM2->CR1;
 
 	while(1)
     {
@@ -66,13 +51,15 @@ int main(void)
 
 void SPI1_DMA1_init(void){
   SPI_I2S_DMACmd(SPI1,SPI_I2S_DMAReq_Tx,ENABLE);
+  NVIC_EnableIRQ(DMA1_Channel3_IRQn);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);
+  DMA_DeInit(DMA1_Channel3);
   DMA_conf(DMA1_Channel3,&(SPI1->DR),&txBuffer,DMA_DIR_PeripheralDST,3,
-	       DMA_PeripheralDataSize_Byte,DMA_MemoryDataSize_Byte);
+	       DMA_PeripheralDataSize_Byte,DMA_MemoryDataSize_Byte,DMA_Mode_Normal);
+  DMA_ITConfig(DMA1_Channel3,DMA_IT_TC,ENABLE);
 }
 
 void Tim2_init(void){
-
     NVIC_EnableIRQ(TIM2_IRQn);  //TIM2 global Interrupt
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2 ,ENABLE);
     RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM2 ,DISABLE);
@@ -99,13 +86,23 @@ void SPI1_init(void){
 	  enableSPI(SPI1,ENABLE);
 }
 
+void initializeTxBuffer(void){
+  int i;
+  for(i=0;i<3;i++){
+  txBuffer[i] = StpMtr_Clockwise
+		        |StpMtr_High
+		        |StpMtr_Slp_Off
+		        |StpMtr_Rst_Off
+		        |StpMtr_Full_step
+		        |StpMtr_Enable;
+  }
+}
 
 void delay(int counter)
 {
     int i;
     for (i = 0; i < counter * 100; i++) {}
 }
-
 
 /*
  *DMA
@@ -118,3 +115,36 @@ void delay(int counter)
   //uint32_t checkSpiDR = SPI1->DR;
    *
  * */
+
+/*
+  // txBuffer[0] = 0x88; //Drive1&0xBF;
+  // txBuffer[1] = 0x44; //Drive1|0x40;
+  // txBuffer[2] = 0x22;
+  // DMA_Cmd(DMA1_Channel3,ENABLE);
+  // outputData();
+
+  // uint32_t checkCCR = DMA1_Channel3->CCR;
+ //  DMA_Cmd(DMA1_Channel3,DISABLE);
+
+   uint32_t checkCNDTR = DMA1_Channel3->CNDTR;
+   txBuffer[0] = 0xFF;
+   txBuffer[1] = 0xAA;
+   txBuffer[2] = 0xBB;
+   uint32_t checkISR = DMA1->ISR;
+   DMA_Cmd(DMA1_Channel3,ENABLE);
+//   outputData();
+
+   checkISR = DMA1->ISR;
+   checkCNDTR = DMA1_Channel3->CNDTR;
+   uint32_t checkCCR = DMA1_Channel3->CCR;
+   DMA_Cmd(DMA1_Channel3,DISABLE);
+   txBuffer[0] = 0x01; //Drive1&0xBF;
+   txBuffer[1] = 0x10; //Drive1|0x40;
+   txBuffer[2] = 0x20;
+   setDataNumber(DMA1_Channel3,3);
+   checkCNDTR = DMA1_Channel3->CNDTR;
+   DMA_Cmd(DMA1_Channel3,ENABLE);
+  // outputData();
+ //  checkCNDTR = DMA1_Channel3->CNDTR;
+
+*/

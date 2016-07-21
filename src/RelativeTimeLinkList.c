@@ -1,9 +1,12 @@
-#include "RelativeTimeLinkList.h"
-#include "Linklist.h"
+//General Library
 #include <stdint.h>
+//STM32F1XX standard Library
+#include "stm32f10x_tim.h"
+//Own Library
+#include "Linklist.h"
 #include "projectStruct.h"
-
-
+#include "Timer_setting.h"
+#include "RelativeTimeLinkList.h"
 
 struct Linkedlist *root;
 
@@ -11,11 +14,9 @@ void updateCurTime(struct Linkedlist *newList,uint32_t curTime){
      newList->curTime = curTime;
 }
 
-void updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
+void _updateBaseTime(struct Linkedlist *newList,uint32_t baseTime){
      newList->baseTime = baseTime;
 }
-
-
 
 void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t periodFrombase){
     while( (*collectActTime) < periodFrombase ){
@@ -104,7 +105,7 @@ void timerListAdd(struct Linkedlist *newList, uint32_t period){
 /*
   timerListAdd() function Version 2  
 */
-void newTimerListAdd(struct ListElement *timerElement, uint32_t period){
+void timerQueue(struct ListElement *timerElement, uint32_t period){
     uint32_t wholeActTime = 0;   // To store the sum of timeELement value.
     uint32_t receiveInstrTime = 0;      // To store the difference between currentTime and prevTime
     uint32_t timeInterval = 0;      // To store the difference between wholeActTime and receiveInstrTime
@@ -157,6 +158,25 @@ void newTimerListAdd(struct ListElement *timerElement, uint32_t period){
 }
 
 
+struct ListElement* timerDequeue(void){
+  struct ListElement *temp = root->head;
+  updateHead(root);
+  return temp;
+}
+
+
+void updateHead(struct Linkedlist *root){
+  struct ListElement *temp = root->head;
+  if(root->head->next == root->head){
+	 root->head = NULL;
+  }else{
+	 root->head = root->head->next;
+	 root->head->prev = temp->prev;
+	 temp->prev->next = root->head;
+  }
+  temp->next = NULL;
+  temp->prev = NULL;
+}
 
 
 void timerListDelete(struct ListElement* deleteNode){

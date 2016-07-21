@@ -26,11 +26,5 @@ void readButton_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_re
 void readButton_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int cmock_to_return);
 typedef int (* CMOCK_readButton_CALLBACK)(int cmock_num_calls);
 void readButton_StubWithCallback(CMOCK_readButton_CALLBACK Callback);
-#define getTime_IgnoreAndReturn(cmock_retval) getTime_CMockIgnoreAndReturn(__LINE__, cmock_retval)
-void getTime_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return);
-#define getTime_ExpectAndReturn(cmock_retval) getTime_CMockExpectAndReturn(__LINE__, cmock_retval)
-void getTime_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return);
-typedef uint32_t (* CMOCK_getTime_CALLBACK)(int cmock_num_calls);
-void getTime_StubWithCallback(CMOCK_getTime_CALLBACK Callback);
 
 #endif
