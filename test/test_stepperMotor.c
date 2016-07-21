@@ -62,7 +62,9 @@ void test_motorInit_the_configuration_was_set_by_motorInit(void){
   TEST_ASSERT_NULL(whichMotor->motorConfiguration->txElement.next);
   TEST_ASSERT_NULL(whichMotor->motorConfiguration->txElement.prev);
   TEST_ASSERT_EQUAL_PTR(testMotor,whichMotor->motorConfiguration->txElement.callBack);
-  TEST_ASSERT_EQUAL_PTR(whichMotor,whichMotor->motorConfiguration->txElement.args);
+  
+  TEST_ASSERT_EQUAL_PTR(whichMotor->motorConfiguration,whichMotor->motorConfiguration->txElement.args);
+  
 }
 
 

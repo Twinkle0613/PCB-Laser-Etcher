@@ -27,19 +27,18 @@ uint8_t txStorage[3];
 struct Linkedlist *txRoot;
 
 void DMA1_Channel3_IRQHandler(void){
-
   stopDMA(DMA1_Channel3);
   outputData();
   DMA_ClearITPendingBit(DMA1_IT_TC3);
+  struct ListElement* temp = dmaDequeue();
+  motorConfigInfo* motorConfiguration = (motorConfigInfo*)temp->args;
   
-  if(cmarIsNotTXstorage){
-   setMemoryAddress(DMA1_Channel3,(uint32_t)txBuffer);
-   copyWholeInform(txBuffer,txStorage);
+
+
+
    
    setDataNumber(DMA1_Channel3,3);
    startDMA(DMA1_Channel3);
-  }
-
 }
 
 void copyWholeInform(uint8_t buffer[],uint8_t storetage[]){
@@ -68,7 +67,7 @@ motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress) ,int sl
   detail->txElement.next = NULL;
   detail->txElement.prev = NULL;
   detail->txElement.callBack = funcAddress;
-  detail->txElement.args = motorAddress;
+  detail->txElement.args = detail;
   return detail;
 }
 

@@ -24,4 +24,5 @@
 
 uint8_t getCommand(motorConfigInfo* motorConfiguration);
 
+
 #endif //Motor_H

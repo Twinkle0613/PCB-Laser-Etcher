@@ -113,7 +113,11 @@ void test_motorInit_the_configuration_was_set_by_motorInit(void){
 
   UnityAssertEqualNumber((_U_SINT)(_UP)((testMotor)), (_U_SINT)(_UP)((whichMotor->motorConfiguration->txElement.callBack)), (((void *)0)), (_U_UINT)(64), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((whichMotor)), (_U_SINT)(_UP)((whichMotor->motorConfiguration->txElement.args)), (((void *)0)), (_U_UINT)(65), UNITY_DISPLAY_STYLE_HEX32);
+
+
+  UnityAssertEqualNumber((_U_SINT)(_UP)((whichMotor->motorConfiguration)), (_U_SINT)(_UP)((whichMotor->motorConfiguration->txElement.args)), (((void *)0)), (_U_UINT)(66), UNITY_DISPLAY_STYLE_HEX32);
+
+
 
 }
 
@@ -129,8 +133,8 @@ void test_setCallBack_(void){
 
   whichMotor->timerElement.callBack(whichMotor);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((whichMotor->step)), (((void *)0)), (_U_UINT)(73), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((whichMotor->step)), (((void *)0)), (_U_UINT)(75), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((whichMotor->sleep)), (((void *)0)), (_U_UINT)(74), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((whichMotor->sleep)), (((void *)0)), (_U_UINT)(76), UNITY_DISPLAY_STYLE_INT);
 
 }

@@ -48,7 +48,7 @@ int main(void)
 {
   UnityBegin("test_stepperMotor.c");
   RUN_TEST(test_motorInit_the_configuration_was_set_by_motorInit, 40);
-  RUN_TEST(test_setCallBack_, 69);
+  RUN_TEST(test_setCallBack_, 71);
 
   return (UnityEnd());
 }

@@ -39,6 +39,7 @@ uint32_t getDataNumber(DMA_Channel_TypeDef* DMAy_Channelx){
 }
 void setMemoryAddress(DMA_Channel_TypeDef* DMAy_Channelx,uint32_t address){
 	DMAy_Channelx->CMAR = address;
+
 }
 
 

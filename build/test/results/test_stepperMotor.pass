@@ -7,7 +7,7 @@
   :line: 40
   :message: ''
 - :test: test_setCallBack_
-  :line: 69
+  :line: 71
   :message: ''
 :failures: []
 :ignores: []

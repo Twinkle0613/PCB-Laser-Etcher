@@ -34,6 +34,8 @@ typedef struct{
   uint8_t stepHighCommand;
   uint8_t stepLowCommand;
 }motorConfigInfo;
+
+
 extern uint8_t motorDriveBuffer[];
 extern uint8_t txBuffer[];
 extern uint8_t txStorage[];

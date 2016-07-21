@@ -19,10 +19,15 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
-#define isSlotNotEqualFirstMotor (motorConfiguration->slot != FIRST_MOTOR)
-#define isSlotEqualThirdMotor (motorConfiguration->slot == THIRD_MOTOR)
+
+#define allowThirdMotorUpdate (motorConfiguration->slot == THIRD_MOTOR)
+#define allowSecondMotorUpdate (motorConfiguration->slot == SECOND_MOTOR)
+#define allowFirstMotorUpdate (motorConfiguration->slot == FIRST_MOTOR)
+#define OneCommandTransmitted 2
+#define noCommandTransmitted  3
+#define transmittedNumber getDataNumber(DMA1_Channel3)
 #define motorPosition motorConfiguration->slot
-#define isDMAstarted(x) (x->CCR & 0x01)
+#define isDMAstarted(x) ( (x->CCR & 0x01) == 1)
 
 uint8_t getCommand(motorConfigInfo* motorConfiguration){
   uint8_t commond;
@@ -40,26 +45,24 @@ uint8_t getCommand(motorConfigInfo* motorConfiguration){
 void motorStep(motorConfigInfo* motorConfiguration){
 
   dmaQueue(&motorConfiguration->txElement);  
-  switch(getDataNumber()){
-    case 3:
-    if( !isDMAstarted(DMA1_Channel3) || isSlotNotEqualFirstMotor ){
+ switch( transmittedNumber ){
+
+    case noCommandTransmitted:
+    if( !isDMAstarted(DMA1_Channel3) || !allowThirdMotorUpdate ){
      motorDriveBuffer[motorPosition] = getCommand(motorConfiguration);
-    }    
-    break;
-    
-    case 2:
-    if(isSlotEqualThirdMotor){
-     motorDriveBuffer[THIRD_MOTOR] = getCommand(motorConfiguration);
     }
     
     break;
     
-    case 1:
-    break;
+    case OneCommandTransmitted:
+    if( allowFirstMotorUpdate ){
+     motorDriveBuffer[motorPosition] = getCommand(motorConfiguration);
+    }
     
+    break;
     default:break;
   }
-  setDataNumber(DMA1_Channel3,3);
+  
   startDMA(DMA1_Channel3); 
 }
 
