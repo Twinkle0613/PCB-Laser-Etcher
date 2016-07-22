@@ -10,52 +10,56 @@
   :line: 68
   :message: ''
 - :test: test_resetMotorDriveBuffer_
-  :line: 84
-  :message: ''
-- :test: test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update
-  :line: 100
-  :message: ''
-- :test: test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update
-  :line: 128
+  :line: 80
   :message: ''
 - :test: test_motorStep_When_DMA_is_off_third_motor_can_be_update
-  :line: 155
+  :line: 103
   :message: ''
-- :test: test_motorStep_When_DMA_is_On_third_motor_can_be_update
-  :line: 181
+- :test: test_motorStep_When_DMA_is_On_the_third_motor_can_not_be_update
+  :line: 136
+  :message: ''
+- :test: test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update
+  :line: 170
+  :message: ''
+- :test: test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update
+  :line: 203
   :message: ''
 - :test: test_motorStep_One_Command_is_transmitted_first_motor_can_be_update
-  :line: 208
+  :line: 237
   :message: ''
 - :test: test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update
-  :line: 234
+  :line: 270
   :message: ''
 - :test: test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update
-  :line: 261
+  :line: 302
+  :message: ''
+- :test: test_motorStep_two_Command_is_transmitted_first_motor_can_not_be_update
+  :line: 333
   :message: ''
 - :test: test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer
-  :line: 283
+  :line: 350
   :message: ''
 - :test: test_motorStep_add_third_and_sec_commad_into_tx_buffer
-  :line: 316
+  :line: 390
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 12
-  :passed: 12
+  :total: 13
+  :passed: 13
   :failed: 0
   :ignored: 0
 :stdout:
 - NO.01
 - NO.02
-- NO.03
-- NO.04.1
 - NO.04.2
 - NO.04.3
+- NO.03
+- NO.04.1
 - NO.06
 - NO.05
 - NO.07
+- NO.07.1
 - NO.08
 - NO.08
 - ''

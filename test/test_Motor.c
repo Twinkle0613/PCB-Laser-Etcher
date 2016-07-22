@@ -76,10 +76,6 @@ void test_getCommond_(void){
   TEST_ASSERT_EQUAL(0xFF,getCommand(motorConfig));
   TEST_ASSERT_EQUAL(2,motorConfig->counter);
 }
-  // motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
-  // motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-  // motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-  
 
 void test_resetMotorDriveBuffer_(void){
   printf("NO.02");
@@ -90,65 +86,17 @@ void test_resetMotorDriveBuffer_(void){
 }
 
 /*
-  DMA1_Channel3->CNDTR = 3    DMA is OFF.
-                                           (FIRST_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(FirMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0xFF;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[SECOND_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0; 
 
-*/
-void test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update(void){
-  printf("NO.03");
-    startDMA(DMA1_Channel3); 
-  txRoot = createLinkedList();
-  setDataNumber(DMA1_Channel3,3);
-  motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,FIRST_MOTOR);
-  initialStepCommand(motorConfig);
-  
-  motorStep(motorConfig);
-  
-  TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig->txElement);
-  TEST_ASSERT_EQUAL(motorConfig->stepLowCommand,motorDriveBuffer[FIRST_MOTOR]);
-  TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
-  TEST_ASSERT_EQUAL(0,motorDriveBuffer[THIRD_MOTOR]);
-  TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
-}
-
-
-/*
-
-  DMA1_Channel3->CNDTR = 3    DMA is ON.
-                                          (SECOND_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(triMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0; 
-
-*/
-
-void test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update(void){
-  printf("NO.04.1");
-  startDMA(DMA1_Channel3); 
-  setDataNumber(DMA1_Channel3,3);
-  txRoot = createLinkedList();
-  motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,SECOND_MOTOR);
-  initialStepCommand(motorConfig);
-  
-  motorStep(motorConfig);
-  
-  TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig->txElement);
-  TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
-  TEST_ASSERT_EQUAL(motorConfig->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
-  TEST_ASSERT_EQUAL(0,motorDriveBuffer[THIRD_MOTOR]);
-  TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
-}
-
-/*
-
-  DMA1_Channel3->CNDTR = 3    DMA is off.
-                                          (THIRD_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(triMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0xAA; 
+  DMA1_Channel3->CNDTR = 3    DMA was stoped.
+                     
+       Update                                               Update
+         ||                                                  ||
+         V                                                   V
+        3nd   2nd    1st                                    3nd   2nd   1st
+      --------------------   motorStep(triMotorConfig);     -----------------
+     |  low  |  0  |  0    |         ------->              | low  |  0  |  0  | 
+     --------------------                                  -----------------
+     (motorDriveBuffer)
 
 */
 
@@ -170,15 +118,22 @@ void test_motorStep_When_DMA_is_off_third_motor_can_be_update(void){
 
 /*
 
-  DMA1_Channel3->CNDTR = 3    DMA is On.
-                                          (THIRD_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(triMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0xAA; 
+  DMA1_Channel3->CNDTR = 3    DMA was started.
+         
+         Update
+          ||
+          V         
+        Sending                                            Sending
+         V                                                   V
+        3nd   2nd    1st                                    3nd   2nd   1st
+      --------------------   motorStep(triMotorConfig);     -----------------
+     |  x  |  0  |  0    |         ------->                | x  |  0  |  0  | 
+     --------------------                                  -----------------
+     (motorDriveBuffer)
 
 */
 
-void test_motorStep_When_DMA_is_On_third_motor_can_be_update(void){
+void test_motorStep_When_DMA_is_On_the_third_motor_can_not_be_update(void){
   printf("NO.04.3");
   setDataNumber(DMA1_Channel3,3);
   startDMA(DMA1_Channel3); 
@@ -196,20 +151,94 @@ void test_motorStep_When_DMA_is_On_third_motor_can_be_update(void){
 }
 
 
+
+
 /*
 
-  DMA1_Channel3->CNDTR = 2    DMA is ON.
-                                          (FIRST_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(firMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0; 
+  DMA1_Channel3->CNDTR = 3    DMA was started.
+                     
+                     update                                               update
+      sending         ||                                   sending         ||
+         V            V                                       V            V
+        3nd   2nd    1st                                     3nd    2nd   1st
+      --------------------   motorStep(secMotorConfig);     -------------------
+     |  x  |  0  |  low  |         ------->                | x  |  0  |  low  | 
+     --------------------                                  -------------------
+     (motorDriveBuffer)
 
 */
+void test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update(void){
+  printf("NO.03");
+  startDMA(DMA1_Channel3); 
+  txRoot = createLinkedList();
+  setDataNumber(DMA1_Channel3,3);
+  motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,FIRST_MOTOR);
+  initialStepCommand(motorConfig);
+  
+  motorStep(motorConfig);
+  
+  TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig->txElement);
+  TEST_ASSERT_EQUAL(motorConfig->stepLowCommand,motorDriveBuffer[FIRST_MOTOR]);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[THIRD_MOTOR]);
+  TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
+}
+
+
+/*
+
+  DMA1_Channel3->CNDTR = 3    DMA was started.
+                     
+              update                                               update
+      sending  ||                                          sending  ||
+         V     V                                              V     V
+        3nd   2nd    1st                                     3nd   2nd   1st
+      --------------------   motorStep(secMotorConfig);     -------------------
+     |  x  |  0  |  0    |         ------->                | x  |  low  |  0  | 
+     --------------------                                  -------------------
+     (motorDriveBuffer)
+
+*/
+
+void test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update(void){
+  printf("NO.04.1");
+  startDMA(DMA1_Channel3); 
+  setDataNumber(DMA1_Channel3,3);
+  txRoot = createLinkedList();
+  motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,SECOND_MOTOR);
+  initialStepCommand(motorConfig);
+  
+  motorStep(motorConfig);
+  
+  TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig->txElement);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
+  TEST_ASSERT_EQUAL(motorConfig->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[THIRD_MOTOR]);
+  TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
+}
+
+
+
+/*
+
+  DMA1_Channel3->CNDTR = 2    DMA was started.
+                     
+                     Update                                               Update
+            Sending   ||                                          Sending  ||
+               V      V                                              V     V
+        3nd   2nd    1st                                      3nd   2nd   1st
+      --------------------   motorStep(firMotorConfig);     -------------------
+     |  x  |  x  |  0    |         ------->                | x  |  x  |  low  | 
+     --------------------                                  -------------------
+     (motorDriveBuffer)
+
+*/
+
 void test_motorStep_One_Command_is_transmitted_first_motor_can_be_update(void){
   printf("NO.06");
   startDMA(DMA1_Channel3); 
-  setDataNumber(DMA1_Channel3,2);
   txRoot = createLinkedList();
+  setDataNumber(DMA1_Channel3,2);
   motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,FIRST_MOTOR);
   initialStepCommand(motorConfig);
   
@@ -224,11 +253,18 @@ void test_motorStep_One_Command_is_transmitted_first_motor_can_be_update(void){
 
 /*
 
-  DMA1_Channel3->CNDTR = 2    DMA is NO.
-                                          (SECOND_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(secMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0; 
+  DMA1_Channel3->CNDTR = 2    DMA was started.
+     
+              Update 
+               ||
+               V
+            Sending                                           Sending
+               V                                                V
+        3nd   2nd   1st                                  3nd   2nd   1st
+      ------------------   motorStep(secMotorConfig);   ----------------- 
+     |  x  |  x  |  0  |         ------->              | x  |  x  |  0  | 
+     ------------------                                ----------------- 
+     (motorDriveBuffer)
 
 */
 void test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update(void){
@@ -251,11 +287,16 @@ void test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update(vo
 
 /*
 
-  DMA1_Channel3->CNDTR = 2    DMA is ON.
-                                          (THIRD_MOTOR)
-  motorDriveBuffer[FIRST_MOTOR]  = 0;   motorStep(firMotor);    motorDriveBuffer[FIRST_MOTOR]  = 0;
-  motorDriveBuffer[SECOND_MOTOR] = 0;      -------->            motorDriveBuffer[SECOND_MOTOR] = 0; 
-  motorDriveBuffer[THIRD_MOTOR] = 0;                           motorDriveBuffer[THIRD_MOTOR] = 0; 
+  DMA1_Channel3->CNDTR = 2    DMA was started.
+     
+       update
+         ||  Sending                                            Sending
+         V     V                                                  V
+        3nd   2nd   1st                                    3nd   2nd   1st
+      ------------------   motorStep(triMotorConfig);     ----------------- 
+     |  x  |  x  |  0  |         ------->                | x  |  x  |  0  | 
+     ------------------                                  ----------------- 
+     (motorDriveBuffer)
 
 */
 void test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update(void){
@@ -273,13 +314,39 @@ void test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update(void){
   TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
 }
 
-
 /*
-            
-   ------  motorStep(firMotor);   ------
-  |3| | |     -------->          |3| |1|
-  ------                         ------
+
+  DMA1_Channel3->CNDTR = 2    DMA was started.
+     
+                    update
+                     ||
+                     V
+                  Sending                                            Sending
+                     V                                                  V
+        3nd   2nd   1st                                    3nd   2nd   1st
+      ------------------   motorStep(firMotorConfig);     ----------------- 
+     |  x  |  x  |  x  |         ------->                | x  |  x  |  x  | 
+     ------------------                                  ----------------- 
+     (motorDriveBuffer)
+
 */
+void test_motorStep_two_Command_is_transmitted_first_motor_can_not_be_update(void){
+  printf("NO.07.1");
+  startDMA(DMA1_Channel3); 
+  setDataNumber(DMA1_Channel3,1);
+  txRoot = createLinkedList();
+  motorConfigInfo* motorConfig = motorConfigInit(&motor,func1,FIRST_MOTOR);
+  initialStepCommand(motorConfig);
+  motorStep(motorConfig);
+  TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig->txElement);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
+  TEST_ASSERT_EQUAL(0,motorDriveBuffer[THIRD_MOTOR]);
+  TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
+}
+
+
+
 void test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer(void){
   printf("NO.08");
 
@@ -308,11 +375,18 @@ void test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer(void){
 }
 
 /*
-            
-   ------  motorStep(secMotor);   ------
-  |3| | |     -------->          |3|2| |
-  ------                         ------
+  
+    Head-->triMotorElement                               Head-->triMotorElement->secMotorElement
+    
+        3nd      2nd    1st                                     3nd   2nd   1st
+      -----------------------   updateMotorDriveBuffer();    ---------------------
+     |  low   |   0   |  0  |         ------->              | low |  low   |  0  | 
+     -----------------------                                ---------------------
+     (motorDriveBuffer)
+
 */
+
+
 void test_motorStep_add_third_and_sec_commad_into_tx_buffer(void){
   printf("NO.08");
 
