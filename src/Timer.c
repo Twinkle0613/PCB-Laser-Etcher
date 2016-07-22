@@ -32,7 +32,6 @@ void TIM2_IRQHandler(){
   struct ListElement *temp;
   stopTimer(TIM2);
   resetTimerCounter(TIM2);
-  
   do{
    updateBaseTime; 
    temp = timerDequeue();

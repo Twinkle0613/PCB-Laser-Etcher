@@ -74,8 +74,7 @@ void test_getCommond_(void){
   TEST_ASSERT_EQUAL(0xF0,getCommand(motorConfig));
   TEST_ASSERT_EQUAL(1,motorConfig->counter);
   TEST_ASSERT_EQUAL(0xFF,getCommand(motorConfig));
-  TEST_ASSERT_EQUAL(0,motorConfig->counter);
-  
+  TEST_ASSERT_EQUAL(2,motorConfig->counter);
 }
   // motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
   // motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
@@ -310,14 +309,13 @@ void test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer(void){
 
 /*
             
-   ------  motorStep(firMotor);   ------
+   ------  motorStep(secMotor);   ------
   |3| | |     -------->          |3|2| |
   ------                         ------
 */
 void test_motorStep_add_third_and_sec_commad_into_tx_buffer(void){
   printf("NO.08");
 
-  
   txRoot = createLinkedList();
   
   setDataNumber(DMA1_Channel3,3);
@@ -330,7 +328,6 @@ void test_motorStep_add_third_and_sec_commad_into_tx_buffer(void){
   motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
   initialStepCommand(motorConfig2);
   motorStep(motorConfig2);
-  
   
   
   TEST_ASSERT_EQUAL_PTR(txRoot->head,&motorConfig3->txElement);

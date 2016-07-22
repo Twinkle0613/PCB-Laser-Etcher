@@ -1,0 +1,53 @@
+---
+:source:
+  :path: test
+  :file: test_DMA.c
+:successes:
+- :test: test_motorConfigInit_initialize_the_txDetail
+  :line: 63
+  :message: ''
+- :test: test_dmaQueue_add_one_txElement_into_Queue
+  :line: 78
+  :message: ''
+- :test: test_dmaQueue_add_two_txElement_into_Queue
+  :line: 87
+  :message: ''
+- :test: test_dmaQueue_add_two_txElement_into_Queue_and_deQueue
+  :line: 100
+  :message: ''
+- :test: test_updateMotorDriveBuffer_the_linkedlist_only_contain_triMotorElement_and_Update_the_triMotor_slot_buffer
+  :line: 127
+  :message: ''
+- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_Update_the_triMotor_and_secMotor_slot_buffer
+  :line: 149
+  :message: ''
+- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_firMotorElement_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer
+  :line: 179
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_after_function_it_should_dequeue
+  :line: 216
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_secMotorElem_and_firMotorElem_after_function_they_should_dequeue
+  :line: 244
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_they_should_dequeue
+  :line: 286
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_linkedList_contain_firMotorElement
+  :line: 323
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_is_emply
+  :line: 357
+  :message: ''
+- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_only_contain_secMotorElem
+  :line: 390
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 13
+  :passed: 13
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

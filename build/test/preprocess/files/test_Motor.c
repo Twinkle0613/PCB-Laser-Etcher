@@ -123,9 +123,7 @@ void test_getCommond_(void){
 
   UnityAssertEqualNumber((_U_SINT)((0xFF)), (_U_SINT)((getCommand(motorConfig))), (((void *)0)), (_U_UINT)(76), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorConfig->counter)), (((void *)0)), (_U_UINT)(77), UNITY_DISPLAY_STYLE_INT);
-
-
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((motorConfig->counter)), (((void *)0)), (_U_UINT)(77), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -145,11 +143,11 @@ void test_resetMotorDriveBuffer_(void){
 
   resetMotorDriveBuffer();
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(88), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(87), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(89), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(88), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(90), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(89), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -173,15 +171,15 @@ void test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(111), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(110), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(112), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(111), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(113), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(112), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(114), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(113), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(115), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(114), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -205,15 +203,15 @@ void test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(139), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(138), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(140), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(139), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(141), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(140), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(142), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(141), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(143), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(142), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -235,15 +233,15 @@ void test_motorStep_When_DMA_is_off_third_motor_can_be_update(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(165), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(164), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(166), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(165), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(167), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(166), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(168), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(167), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(169), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(168), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -267,15 +265,15 @@ void test_motorStep_When_DMA_is_On_third_motor_can_be_update(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(192), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(191), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(193), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(192), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(194), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(193), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(195), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(194), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(196), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(195), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -299,15 +297,15 @@ void test_motorStep_One_Command_is_transmitted_first_motor_can_be_update(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(219), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(218), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(220), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(219), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(221), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(220), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(222), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(221), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(223), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(222), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -333,15 +331,15 @@ void test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update(vo
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(246), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(245), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(247), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(246), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(248), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(247), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(249), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(248), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(250), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(249), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -361,15 +359,15 @@ void test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update(void){
 
   motorStep(motorConfig);
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(270), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig->txElement)), (((void *)0)), (_U_UINT)(269), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(271), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(270), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(272), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(271), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(273), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(272), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(274), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(273), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -411,17 +409,17 @@ void test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig3->txElement)), (((void *)0)), (_U_UINT)(303), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig3->txElement)), (((void *)0)), (_U_UINT)(302), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head->next)), (_U_SINT)(_UP)((&motorConfig1->txElement)), (((void *)0)), (_U_UINT)(304), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head->next)), (_U_SINT)(_UP)((&motorConfig1->txElement)), (((void *)0)), (_U_UINT)(303), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig1->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(305), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig1->stepLowCommand)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(304), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(306), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(305), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((motorConfig3->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(307), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig3->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(306), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(308), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(307), UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -442,8 +440,6 @@ void test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer(void){
 void test_motorStep_add_third_and_sec_commad_into_tx_buffer(void){
 
   printf("NO.08");
-
-
 
 
 
@@ -475,20 +471,18 @@ void test_motorStep_add_third_and_sec_commad_into_tx_buffer(void){
 
 
 
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig3->txElement)), (((void *)0)), (_U_UINT)(333), UNITY_DISPLAY_STYLE_HEX32);
 
+  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head->next)), (_U_SINT)(_UP)((&motorConfig2->txElement)), (((void *)0)), (_U_UINT)(334), UNITY_DISPLAY_STYLE_HEX32);
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head)), (_U_SINT)(_UP)((&motorConfig3->txElement)), (((void *)0)), (_U_UINT)(336), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(335), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)(_UP)((txRoot->head->next)), (_U_SINT)(_UP)((&motorConfig2->txElement)), (((void *)0)), (_U_UINT)(337), UNITY_DISPLAY_STYLE_HEX32);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig2->stepLowCommand)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(336), UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motorDriveBuffer[FIRST_MOTOR])), (((void *)0)), (_U_UINT)(338), UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((motorConfig2->stepLowCommand)), (_U_SINT)((motorDriveBuffer[SECOND_MOTOR])), (((void *)0)), (_U_UINT)(339), UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((motorConfig3->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(340), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((motorConfig3->stepLowCommand)), (_U_SINT)((motorDriveBuffer[THIRD_MOTOR])), (((void *)0)), (_U_UINT)(337), UNITY_DISPLAY_STYLE_INT);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(342), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((((DMA_Channel_TypeDef*) ((uint32_t)HostDma1_Channel3))->CCR&0x01)), (((void *)0)), (_U_UINT)(339), UNITY_DISPLAY_STYLE_INT);
 
 }

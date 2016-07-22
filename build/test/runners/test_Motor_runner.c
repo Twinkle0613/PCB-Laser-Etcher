@@ -59,16 +59,16 @@ int main(void)
   UnityBegin("test_Motor.c");
   RUN_TEST(test_initialStepCommand_, 60);
   RUN_TEST(test_getCommond_, 68);
-  RUN_TEST(test_resetMotorDriveBuffer_, 85);
-  RUN_TEST(test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update, 101);
-  RUN_TEST(test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update, 129);
-  RUN_TEST(test_motorStep_When_DMA_is_off_third_motor_can_be_update, 156);
-  RUN_TEST(test_motorStep_When_DMA_is_On_third_motor_can_be_update, 182);
-  RUN_TEST(test_motorStep_One_Command_is_transmitted_first_motor_can_be_update, 209);
-  RUN_TEST(test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update, 235);
-  RUN_TEST(test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update, 262);
-  RUN_TEST(test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer, 284);
-  RUN_TEST(test_motorStep_add_third_and_sec_commad_into_tx_buffer, 317);
+  RUN_TEST(test_resetMotorDriveBuffer_, 84);
+  RUN_TEST(test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update, 100);
+  RUN_TEST(test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update, 128);
+  RUN_TEST(test_motorStep_When_DMA_is_off_third_motor_can_be_update, 155);
+  RUN_TEST(test_motorStep_When_DMA_is_On_third_motor_can_be_update, 181);
+  RUN_TEST(test_motorStep_One_Command_is_transmitted_first_motor_can_be_update, 208);
+  RUN_TEST(test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update, 234);
+  RUN_TEST(test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update, 261);
+  RUN_TEST(test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer, 283);
+  RUN_TEST(test_motorStep_add_third_and_sec_commad_into_tx_buffer, 316);
 
   return (UnityEnd());
 }

@@ -25,7 +25,7 @@
 #define allowFirstMotorUpdate (motorConfiguration->slot == FIRST_MOTOR)
 #define OneCommandTransmitted 2
 #define noCommandTransmitted  3
-#define transmittedNumber getDataNumber(DMA1_Channel3)
+#define transmittedStatus getDataNumber(DMA1_Channel3)
 #define motorPosition motorConfiguration->slot
 #define isDMAstarted(x) ( (x->CCR & 0x01) == 1)
 
@@ -33,36 +33,31 @@ uint8_t getCommand(motorConfigInfo* motorConfiguration){
   uint8_t commond;
   if(motorConfiguration->counter == 0){
    commond = motorConfiguration->stepLowCommand;
-   motorConfiguration->counter++;
   }else{
    commond = motorConfiguration->stepHighCommand;
-   motorConfiguration->counter = 0;
   }
+   motorConfiguration->counter++;
   return commond;
 }
 
-
 void motorStep(motorConfigInfo* motorConfiguration){
-
   dmaQueue(&motorConfiguration->txElement);  
- switch( transmittedNumber ){
+ switch( transmittedStatus ){
 
     case noCommandTransmitted:
     if( !isDMAstarted(DMA1_Channel3) || !allowThirdMotorUpdate ){
-     motorDriveBuffer[motorPosition] = getCommand(motorConfiguration);
+     updateSlotCommand(motorConfiguration->slot);
     }
-    
     break;
     
     case OneCommandTransmitted:
     if( allowFirstMotorUpdate ){
-     motorDriveBuffer[motorPosition] = getCommand(motorConfiguration);
+     updateSlotCommand(motorConfiguration->slot);
     }
-    
     break;
+    
     default:break;
   }
-  
   startDMA(DMA1_Channel3); 
 }
 

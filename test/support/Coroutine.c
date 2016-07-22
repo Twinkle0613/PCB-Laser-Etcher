@@ -7,6 +7,7 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_dma.h"
 //Own Library
+#include "Motor.h"
 #include "Timer.h"
 #include "DMA_setting.h"
 #include "Coroutine.h"

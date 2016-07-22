@@ -27,6 +27,8 @@
 #define stepHigh 0x40
 #define stepLow 0xBF
 
+#define updateSlotCommand(x) (motorDriveBuffer[x] = getCommand(motorConfiguration))
+
 typedef struct{
   int slot;
   int counter;
@@ -45,7 +47,7 @@ void copyWholeInform(uint8_t buffer[],uint8_t storetage[]);
 motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress),int slot);
 void dmaQueue(struct ListElement *txElement);
 struct ListElement* dmaDequeue(void);
-
+void cleanUpListedList(void);
 
 
 #endif // DMA_H
