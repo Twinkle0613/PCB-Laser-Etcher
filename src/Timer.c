@@ -23,26 +23,28 @@ void timerDelay(struct ListElement* timerElement,uint32_t period){
    timerQueue(timerElement,period);
 }
 
-void timerSetExpiry(uint32_t period){
+void timerSetExpiry(uint16_t period){
    TIM_SetAutoreload(TIM2,period);
    startTimer(TIM2);
 }
+#define nextActionTime ( getTime(TIM2) + root->head->actionTime)
+#define newActionTime (root->head->actionTime + root->baseTime)
 
 void TIM2_IRQHandler(){
+  clearUpdateFlag(TIM2);
   struct ListElement *temp;
-  stopTimer(TIM2);
-  resetTimerCounter(TIM2);
+
   do{
    updateBaseTime; 
    temp = timerDequeue();
    callBackFunction(temp); 
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
 
-   clearUpdateFlag(TIM2);
-   
+
    if(!isTimerQueueEmpty){
-     timerSetExpiry(root->head->actionTime);
+
+     timerSetExpiry(root->head->actionTime  );
    }else{
-   	 stopTimer(TIM2);
+   	// stopTimer(TIM2);
    }
 }

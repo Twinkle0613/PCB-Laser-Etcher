@@ -5,7 +5,7 @@
 #include "stm32f10x_spi.h"
 #include "stm32f10x_gpio.h"
 //Own Library
-#include "DMA.h"
+//#include "DMA.h"
 #include "Timer.h"
 #include "Linklist.h"
 #include "projectStruct.h"
@@ -16,11 +16,24 @@
 // #define THIRD_MOTOR 0
 
 
+typedef struct{
+  int slot;
+  int counter;
+  struct ListElement txElement;
+  uint8_t stepHighCommand;
+  uint8_t stepLowCommand;
+}motorConfigInfo;
 
 typedef enum{
   THIRD_MOTOR,
   SECOND_MOTOR,
   FIRST_MOTOR
+}motorIdentify;
+
+typedef enum{
+  SLOT_0,
+  SLOT_1,
+  SLOT_2,
 }motorSlot;
 
 typedef struct{
@@ -30,10 +43,17 @@ typedef struct{
   uint8_t direation;         
   uint8_t step;     
   uint8_t sleep;
+  uint8_t reset;
+  uint8_t motorState;
   uint8_t microstep;
-  motorSlot slot;
+  uint16_t timeRecord1;
+  uint16_t timeRecord2;
   motorConfigInfo* motorConfiguration;
 }motorInfo;   
+
+
+
+
 
 //  Co-routine for MotorController 
 
@@ -80,10 +100,10 @@ typedef struct{
 #define StpMtr_Enable  ((uint8_t)0x00)
 #define StpMtr_Disable ((uint8_t)0x01)
 
-
+motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress) ,int slot);
 uint8_t getMotorSetting(motorInfo* whichMotor);
 void outputData();
-void motorController(motorInfo* whichMotor);
+
 motorInfo* motorInit(void (*funcAddress),int period,int identity);
 void setArgs(motorInfo* whichMotor);
 void setPeriod(motorInfo* whichMotor,int period);

@@ -28,9 +28,20 @@
 
 
 motorInfo motor;
+
+#define motorConfig3 Motor3->motorConfiguration
+#define motorConfig2 Motor2->motorConfiguration
+#define motorConfig1 Motor1->motorConfiguration
+
+#define motor2Config motor2->motorConfiguration
+#define motor1Config motor1->motorConfiguration
+#define motor0Config motor0->motorConfiguration
+
+
 void resetMotorDriveBuffer(void);
 void setUp(void)
 {
+ HostGpioA= malloc((sizeof(GPIO_TypeDef)));
  HostDma1_Channel3 = malloc((sizeof(DMA_Channel_TypeDef)));
  HostDma1 = malloc((sizeof(DMA_TypeDef)));
 }
@@ -39,6 +50,8 @@ void tearDown(void)
 {
   free(HostDma1_Channel3);
   free(HostDma1);
+  free(HostGpioA);
+   HostGpioA = NULL;
   HostDma1_Channel3 = NULL;
   HostDma1 = NULL;
   resetMotorDriveBuffer();
@@ -46,7 +59,7 @@ void tearDown(void)
 
 void func1(void){
   
-  
+  printf("Hello World\n");
 }
 
 void initialStepCommand(motorConfigInfo* motorConfiguration){
@@ -60,8 +73,8 @@ void resetMotorDriveBuffer(void){
   motorDriveBuffer[THIRD_MOTOR] = 0;
 }
 
-void test_motorConfigInit_initialize_the_txDetail(void){
-  
+void test_motorConfigInit_the_txDetail_was_set_by_motorConfigInit_the_setting_of_txDetail_should_pass_the_test(void){
+  printf("No 1.0");
   motorInfo motor1; 
   motorConfigInfo* txDetail = motorConfigInit(&motor1,func1,FIRST_MOTOR);
   TEST_ASSERT_EQUAL(0,txDetail->counter);
@@ -71,11 +84,19 @@ void test_motorConfigInit_initialize_the_txDetail(void){
   TEST_ASSERT_NULL(txDetail->txElement.next);
   TEST_ASSERT_NULL(txDetail->txElement.prev);
   TEST_ASSERT_EQUAL_PTR(func1,txDetail->txElement.callBack);
- // TEST_ASSERT_EQUAL_PTR(&motor1,txDetail->txElement.args);
+
 }
 
+void test_readMotorConfigInfo_(void){
+   printf("No 2.0");
+   motorConfigInfo* motorConfig;
+   motorInfo* Motor3 = motorInit(func1,0,THIRD_MOTOR);
+   motorConfig = readMotorConfigInfo(Motor3->motorConfiguration->txElement.args);
+   TEST_ASSERT_EQUAL(Motor3,motorConfig->txElement.args);
+}
 
 void test_dmaQueue_add_one_txElement_into_Queue(void){
+    printf("No 3.0");
     txRoot = createLinkedList();
     motorInfo motor1; 
     motorInfo motor2; 
@@ -85,6 +106,7 @@ void test_dmaQueue_add_one_txElement_into_Queue(void){
 }
 
 void test_dmaQueue_add_two_txElement_into_Queue(void){
+    printf("No 3.1");
     txRoot = createLinkedList();
     motorInfo motor1; 
     motorInfo motor2; 
@@ -98,6 +120,7 @@ void test_dmaQueue_add_two_txElement_into_Queue(void){
 }
 
 void test_dmaQueue_add_two_txElement_into_Queue_and_deQueue(void){
+    printf("No 3.2");
     txRoot = createLinkedList();
     struct ListElement *temp;
     motorInfo motor1; 
@@ -113,62 +136,71 @@ void test_dmaQueue_add_two_txElement_into_Queue_and_deQueue(void){
     TEST_ASSERT_NULL(txRoot->head);
 
 }
+
+/****************updateMotorDriveBuffer*****************/
 /*
   
-    Head-->triMotorElement
+    Head-->motor0Element
     
-        3nd   2nd   1st                                    3nd   2nd   1st
+      slot0  slot1  slot2                                 slot0  slot1  slot2   
       ------------------   updateMotorDriveBuffer();     ------------------ 
      | 0   |  0  |  0  |         ------->               | Low |  0  |  0 | 
      ------------------                                 ------------------ 
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_the_linkedlist_only_contain_triMotorElement_and_Update_the_triMotor_slot_buffer(void){
+void test_updateMotorDriveBuffer_the_linkedlist_only_contain_motor0Element_and_Update_the_triMotor_slot_buffer(void){
+     printf("No 4.0");  
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    initialStepCommand(motorConfig3);
-    dmaQueue(&motorConfig3->txElement);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    initialStepCommand(motor0Config);
+    dmaQueue(&motor0Config->txElement);
     updateMotorDriveBuffer();
-    TEST_ASSERT_EQUAL(motorConfig3->stepLowCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(1,motorConfig3->counter);
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[THIRD_MOTOR]);
+    TEST_ASSERT_EQUAL(1,motor0Config->counter);
 }
+
 
 /*
   
-    Head-->triMotorElement->secMotorElement
+    Head-->motor0Element->motor1Element
     
-        3nd   2nd    1st                                    3nd   2nd   1st
+      slot0  slot1  slot2                                 slot0  slot1  slot2   
       ------------------   updateMotorDriveBuffer();     --------------------
      | 0   |  0  |  0  |         ------->               | Low |  low  |  0  | 
      ------------------                                 --------------------
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_Update_the_triMotor_and_secMotor_slot_buffer(void){
+void test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_and_motor1Element_and_Update_the_triMotor_and_secMotor_slot_buffer(void){
+    printf("No 4.1");    
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    dmaQueue(&motorConfig3->txElement);
-    dmaQueue(&motorConfig2->txElement);
+
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    
+    dmaQueue(&motor0Config->txElement);
+    dmaQueue(&motor1Config->txElement);
+    
     updateMotorDriveBuffer();
-    TEST_ASSERT_EQUAL(motorConfig3->stepLowCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(1,motorConfig3->counter);
-    TEST_ASSERT_EQUAL(1,motorConfig2->counter);
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepLowCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(1,motor0Config->counter);
+    TEST_ASSERT_EQUAL(1,motor1Config->counter);
 }
 
 
 
 /*
   
-    Head-->triMotorElement->secMotorElement->firMotorElement
+    Head-->motor0Element->motor1Element->motor2Element
     
-        3nd   2nd    1st                                         3nd   2nd   1st
+      slot0  slot1  slot2                                 slot0  slot1  slot2   
       ------------------   updateMotorDriveBuffer();         ---------------------- 
      |  0  |  0  |  0  |         ------->                   | Low |  Low  |  Low  | 
      ------------------                                     -----------------------
@@ -176,36 +208,38 @@ void test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotor
 
 */
 
-void test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_firMotorElement_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer(void){
+void test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_motor1Element_and_motor2Elementent_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer(void){
+    printf("No 4.2");      
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    dmaQueue(&motorConfig3->txElement);
-    dmaQueue(&motorConfig2->txElement);
-    dmaQueue(&motorConfig1->txElement);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    dmaQueue(&motor0Config->txElement);
+    dmaQueue(&motor1Config->txElement);
+    dmaQueue(&motor2Config->txElement);
     
     updateMotorDriveBuffer();
-    TEST_ASSERT_EQUAL(motorConfig3->stepLowCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepLowCommand,motorDriveBuffer[FIRST_MOTOR]);
-    TEST_ASSERT_EQUAL(1,motorConfig3->counter);
-    TEST_ASSERT_EQUAL(1,motorConfig2->counter);
-    TEST_ASSERT_EQUAL(1,motorConfig1->counter);
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor2Config->stepLowCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepLowCommand,motorDriveBuffer[2]);
+    TEST_ASSERT_EQUAL(1,motor0Config->counter);
+    TEST_ASSERT_EQUAL(1,motor1Config->counter);
+    TEST_ASSERT_EQUAL(1,motor2Config->counter);
 }
 
 
 /*
   
-    Head-->triMotorElement                             Head-->NULL
+    Head-->motor0Element                             
     
-        3nd   2nd   1st                                    3nd   2nd   1st
+      slot0  slot1  slot2                                 slot0  slot1  slot2   
       ------------------   updateMotorDriveBuffer();     ------------------ 
      | Low   |  0  |  0  |         ------->             | High |  0  |  0 | 
      ------------------                                 ------------------ 
@@ -213,203 +247,444 @@ void test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotor
 
 */
 
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_after_function_it_should_dequeue(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_after_function_it_should_dequeue(void){
+    printf("No 4.3");      
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    initialStepCommand(motorConfig3);
     
-    motorStep(motorConfig3);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    initialStepCommand(motor0Config);
+    
+    motorStep(motor0Config);
     updateMotorDriveBuffer();
     
-    TEST_ASSERT_NULL(txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(0,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(0,motorDriveBuffer[2]);
 }
 
 
 
 /*
   
-    Head-->triMotorElement->secMotorElement->firMotorElement           Head-->NULL
+    Head-->motor0Element->motor1Element->motor2Element           
     
-        3nd   2nd    1st                                         3nd   2nd   1st
-      -----------------------   updateMotorDriveBuffer();      --------------------
+           slot0  slot1  slot2                                 slot0  slot1  slot2   
+      -----------------------   updateMotorDriveBuffer();      -----------------------
      |  low   |  low  |  low  |         ------->              | High | High |  High  | 
-     -----------------------                                  --------------------
+     -----------------------                                  -----------------------
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_secMotorElem_and_firMotorElem_after_function_they_should_dequeue(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_motor1Element_and_motor2Element_after_function_they_should_dequeue(void){
+    printf("No 4.4");           
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    motorStep(motorConfig3);
-    motorStep(motorConfig2);
-    motorStep(motorConfig1);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
     
-    TEST_ASSERT_EQUAL_PTR(&motorConfig3->txElement,txRoot->head);
-    TEST_ASSERT_EQUAL_PTR(&motorConfig2->txElement,txRoot->head->next);
-    TEST_ASSERT_EQUAL_PTR(&motorConfig1->txElement,txRoot->head->next->next);
+    motorStep(motor0Config);
+    motorStep(motor1Config);
+    motorStep(motor2Config);
     
-    TEST_ASSERT_EQUAL(motorConfig3->stepLowCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig1->stepLowCommand,motorDriveBuffer[FIRST_MOTOR]);
+    TEST_ASSERT_EQUAL_PTR(&motor0Config->txElement,txRoot->head);
+    TEST_ASSERT_EQUAL_PTR(&motor1Config->txElement,txRoot->head->next);
+    TEST_ASSERT_EQUAL_PTR(&motor2Config->txElement,txRoot->head->next->next);
+    
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepLowCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepLowCommand,motorDriveBuffer[2]);
     
     updateMotorDriveBuffer();
     
-    TEST_ASSERT_NULL(txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepHighCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig1->stepHighCommand,motorDriveBuffer[FIRST_MOTOR]);
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
 }
 
 /*
   
-    Head-->triMotorElement->firMotorElement                    Head-->NULL
+    Head-->motor0Element->motor2Element                 
     
-        3nd      2nd    1st                                     3nd   2nd   1st
+           slot0  slot1  slot2                                 slot0  slot1  slot2   
       -------------------------   updateMotorDriveBuffer();    ---------------------
      |  low   |   0   |  low  |         ------->              | High |  0  |  High | 
      -------------------------                                ---------------------
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_they_should_dequeue(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_they_should_dequeue(void){
+    printf("No 4.5"); 
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    motorStep(motorConfig3);
-    motorStep(motorConfig1);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
     
-    TEST_ASSERT_EQUAL_PTR(&motorConfig3->txElement,txRoot->head);
-    TEST_ASSERT_EQUAL_PTR(&motorConfig1->txElement,txRoot->head->next);
+    motorStep(motor0Config);
+    motorStep(motor2Config);
+    
+    TEST_ASSERT_EQUAL_PTR(&motor0Config->txElement,txRoot->head);
+    TEST_ASSERT_EQUAL_PTR(&motor2Config->txElement,txRoot->head->next);
     
     updateMotorDriveBuffer();
     
-    TEST_ASSERT_NULL(txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig1->stepHighCommand,motorDriveBuffer[FIRST_MOTOR]);
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(0,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
 }
 
 /*
   
-    Head-->triMotorElement->firMotorElement                    Head-->firMotorElement
+    Head-->motor0Element->motor2Element                    Head-->motor2Element
     
-        3nd      2nd    1st                                     3nd   2nd   1st
-      -----------------------   updateMotorDriveBuffer();    --------------------
-     |  low   |   0   |  0  |         ------->              | High |  0  |  low  | 
-     -----------------------                                --------------------
+         slot0  slot1  slot2                                 slot0  slot1  slot2  
+      -----------------------   updateMotorDriveBuffer();    -----------------------
+     |  0   |   0   |  low  |         ------->              |  0  |  low  |  High  | 
+     -----------------------                                -----------------------
      (motorDriveBuffer)
 
 */
 
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_linkedList_contain_firMotorElement(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_linkedList_contain_motor2Element(void){
+    printf("No 4.6");     
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    motorStep(motorConfig3);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    motorStep(motor2Config);
     setDataNumber(DMA1_Channel3,1);
-    motorStep(motorConfig1);
+    motorStep(motor1Config);
     
     updateMotorDriveBuffer();
-    
-    TEST_ASSERT_EQUAL_PTR(&motorConfig1->txElement,txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig1->stepLowCommand,motorDriveBuffer[FIRST_MOTOR]);
+   
+    TEST_ASSERT_EQUAL(motor1Config->stepLowCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
 }
 
 /*
   
-    Head-->triMotorElement->secMotorElement           Head-->NULL
+    Head-->motor0Element->motor1Element        
     
-        3nd   2nd    1st                                         3nd   2nd   1st
+         slot0  slot1  slot2                                 slot0  slot1  slot2 
       -----------------------   updateMotorDriveBuffer();    --------------------
      |  low   |  low  |  0  |         ------->              | High | High |  0  | 
      -----------------------                                --------------------
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_is_emply(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_is_emply(void){
+    printf("No 4.7");  
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
     
-    motorStep(motorConfig3);
-    motorStep(motorConfig2);
+    motorStep(motor0Config);
+    motorStep(motor1Config);
     
     updateMotorDriveBuffer();
     
-    TEST_ASSERT_NULL(txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepHighCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
+
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(0,motorDriveBuffer[2]);
 }
+
 
 /*
   
-    Head-->triMotorElement->secMotorElement                    Head-->secMotorElement
+    Head-->motor0Element                                  Head-->motor0Element->motor1Element
     
-        3nd      2nd    1st                                     3nd   2nd   1st
+        slot0  slot1  slot2                                  slot0  slot1  slot2   
       -----------------------   updateMotorDriveBuffer();    ----------------------
-     |  low   |   0   |  0  |         ------->              | High |  low   |  0  | 
+     |  0   |   low   |  0  |         ------->              |  low  |  High   |  0  | 
      -----------------------                                ----------------------
      (motorDriveBuffer)
 
 */
-void test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_only_contain_secMotorElem(void){
+void test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_only_contain_motor1Element(void){
+    printf("No 4.8");     
     txRoot = createLinkedList();
     setDataNumber(DMA1_Channel3,3);
-    motorConfigInfo* motorConfig3 = motorConfigInit(&motor,func1,THIRD_MOTOR);
-    motorConfigInfo* motorConfig2 = motorConfigInit(&motor,func1,SECOND_MOTOR);
-    motorConfigInfo* motorConfig1 = motorConfigInit(&motor,func1,FIRST_MOTOR);
     
-    initialStepCommand(motorConfig3);
-    initialStepCommand(motorConfig2);
-    initialStepCommand(motorConfig1);
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
     
-    motorStep(motorConfig3);
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    motorStep(motor1Config);
     setDataNumber(DMA1_Channel3,2);
-    motorStep(motorConfig2);
+    motorStep(motor0Config);
     
     updateMotorDriveBuffer();
     
-    TEST_ASSERT_EQUAL_PTR(&motorConfig2->txElement,txRoot->head);
-    TEST_ASSERT_EQUAL(motorConfig3->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
-    TEST_ASSERT_EQUAL(motorConfig2->stepLowCommand,motorDriveBuffer[SECOND_MOTOR]);
-    TEST_ASSERT_EQUAL(0,motorDriveBuffer[FIRST_MOTOR]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(0,motorDriveBuffer[2]);
     
-    TEST_ASSERT_EQUAL(2,motorConfig3->counter);
-    TEST_ASSERT_EQUAL(1,motorConfig2->counter);
-    TEST_ASSERT_EQUAL(0,motorConfig1->counter);
+    TEST_ASSERT_EQUAL(1,motor0Config->counter);
+    TEST_ASSERT_EQUAL(2,motor1Config->counter);
+    TEST_ASSERT_EQUAL(0,motor2Config->counter);
+}
+/**********************_DMA1_Channel3_IRQHandler************************/
+
+/*
+  
+    Head-->motor0Element                                   Head-->motor0Element
+        counter = 1                                               counter = 2
+        slot0  slot1  slot2                                 slot0  slot1  slot2   
+      -----------------------   DMA1_Channel3_IRQHandler();  ----------------------
+     |  low   |   0   |  0  |         ------->              | High |  0   |  0    | 
+     -----------------------                                ----------------------
+     (motorDriveBuffer)
+
+*/
+void test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_will_update_motor0Element_Command(void){
+    printf("No 5.0"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+    
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    motorStep(motor0Config);
+    
+    DMA1_Channel3_IRQHandler();
+    
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
+    TEST_ASSERT_EQUAL(2,motor0Config->counter);
+    TEST_ASSERT_EQUAL_PTR(&motor0Config->txElement,txRoot->head);
+    
+}
+
+/*
+  
+    Head-->motor0Element                                   Head-->NULL
+        counter = 2                                               counter = 0
+        slot0  slot1  slot2                                   slot0  slot1  slot2   
+      -----------------------   DMA1_Channel3_IRQHandler();  ----------------------
+     |  High   |   0   |  0  |         ------->             | High |  0   |  0    | 
+     -----------------------                                ----------------------
+     (motorDriveBuffer)
+
+*/
+void test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_was_called_in_2_times_and_the_head_of_queue_is_point_to_null(void){
+    printf("No 5.1"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+    
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    motorStep(motor0Config);
+    
+    DMA1_Channel3_IRQHandler();
+    DMA1_Channel3_IRQHandler();
+    
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[THIRD_MOTOR]);
+    TEST_ASSERT_EQUAL(0,motor0Config->counter);
+    TEST_ASSERT_NULL(txRoot->head);
+    
+}
+
+
+/*
+  
+    Head-->motor0Elementent->motor1Element                 Head-->motor0Elementent->motor1Element
+    counter3 = 1  counter2 = 1                             counter = 2 counter = 2
+        slot0  slot1  slot2                                    slot0  slot1  slot2
+      -----------------------   DMA1_Channel3_IRQHandler();    ----------------------
+     |  low   |   Low   |  0  |         ------->              | High |  High  |  0  | 
+     -----------------------                                  ----------------------
+     (motorDriveBuffer)
+
+*/
+
+void test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_will_update_triMotorSlot_and_secMotorSlot_Command(void){
+    printf("No 5.2"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+    
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    motorStep(motor0Config);
+    motorStep(motor1Config);
+    
+    DMA1_Channel3_IRQHandler();
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(2,motor0Config->counter);
+    TEST_ASSERT_EQUAL(2,motor1Config->counter);
+    TEST_ASSERT_EQUAL_PTR(&motor0Config->txElement,txRoot->head);
+    TEST_ASSERT_EQUAL_PTR(&motor1Config->txElement,txRoot->head->next);
+}
+
+/*
+  
+    Head-->motor0Elementent->motor1Element                 Head-->NULL
+    counter3 = 2  counter2 = 2                             counter = 0 counter = 0
+         slot0  slot1  slot2                                    slot0  slot1  slot2 
+      -----------------------   DMA1_Channel3_IRQHandler();    ----------------------
+     |  High  |  High  |  0  |         ------->              | High |  High  |  0  | 
+     -----------------------                                  ----------------------
+     (motorDriveBuffer)
+
+*/
+
+void test_DMA1_Channel3_IRQHandler_motor0Element_and_motor1Element_that_updated_completely_should_be_dequeue(void){
+    printf("No 5.3"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+    
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    motorStep(motor0Config);
+    motorStep(motor1Config);
+    
+    DMA1_Channel3_IRQHandler();
+    DMA1_Channel3_IRQHandler();
+    
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(0,motor0Config->counter);
+    TEST_ASSERT_EQUAL(0,motor1Config->counter);
+    TEST_ASSERT_NULL(txRoot->head);
+    
+}
+
+/*
+  
+    Head-->motor0Elementent->motor1Element->motor2Element          Head-->NULL
+    counter3 = 2  counter2 = 2 counter1 = 2                 counter = 0 counter = 0 counter1 = 0 
+        slot0  slot1  slot2                                         slot0  slot1  slot2   
+      --------------------------  DMA1_Channel3_IRQHandler();    ----------------------
+     |  High  |  High  |  High |          ------->              | High |  High  |  High  | 
+     --------------------------                                 ----------------------
+     (motorDriveBuffer)
+
+*/
+
+void test_DMA1_Channel3_IRQHandler_motor0Element__motor1Element_and_motor2Element_that_updated_completely_should_be_dequeue(void){
+       printf("No 5.3"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    motorStep(motor0Config);
+    motorStep(motor1Config);
+    motorStep(motor2Config);
+
+    DMA1_Channel3_IRQHandler();
+    DMA1_Channel3_IRQHandler();
+    
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor1Config->stepHighCommand,motorDriveBuffer[1]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
+    
+    TEST_ASSERT_EQUAL(0,motor0Config->counter);
+    TEST_ASSERT_EQUAL(0,motor1Config->counter);
+    TEST_ASSERT_EQUAL(0,motor2Config->counter);
+    TEST_ASSERT_NULL(txRoot->head);
+}
+
+/*
+  
+    Head-->motor0Elementent->motor1Element                 Head->motor1Element
+    
+        slot0  slot1  slot2                                   slot0  slot1  slot2
+      -------------------------   DMA1_Channel3_IRQHandler()   ----------------------
+     |   0   |   0   |  Low  |         ------->              | low |  0  |  High  | 
+     -------------------------                                ----------------------
+     (motorDriveBuffer)
+     
+    Head-->motor1Element                                    Head->NULL
+    
+        slot0  slot1  slot2                                   slot0  slot1  slot2
+      -------------------------   DMA1_Channel3_IRQHandler()    ----------------------
+     |   low   |   0   |  High |         ------->              | High |  0  |  High  | 
+     -------------------------                                ----------------------
+     (motorDriveBuffer)
+
+*/
+
+void test_DMA1_Channel3_IRQHandler_motor0Element_and_motor1Element_(void){
+    printf("No 5.4"); 
+    txRoot = createLinkedList();
+    setDataNumber(DMA1_Channel3,3);
+    
+    motorInfo* motor0 = motorInit(func1,1000,0);
+    motorInfo* motor1 = motorInit(func1,1000,1);
+    motorInfo* motor2 = motorInit(func1,1000,2);
+    
+    initialStepCommand(motor0Config);
+    initialStepCommand(motor1Config);
+    initialStepCommand(motor2Config);
+    
+    
+    motorStep(motor2Config);
+    setDataNumber(DMA1_Channel3,1);
+    motorStep(motor0Config);
+    
+
+    DMA1_Channel3_IRQHandler();
+    TEST_ASSERT_EQUAL(motor0Config->stepLowCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
+    
+    DMA1_Channel3_IRQHandler();
+    TEST_ASSERT_EQUAL_PTR(&motor0Config->txElement,txRoot->head);
+    TEST_ASSERT_EQUAL(motor0Config->stepHighCommand,motorDriveBuffer[0]);
+    TEST_ASSERT_EQUAL(motor2Config->stepHighCommand,motorDriveBuffer[2]);
+    TEST_ASSERT_EQUAL(2,motor0Config->counter);
+    TEST_ASSERT_EQUAL(0,motor2Config->counter);
+    
+    DMA1_Channel3_IRQHandler();
+    TEST_ASSERT_NULL(txRoot->head);
 }

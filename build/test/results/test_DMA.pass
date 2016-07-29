@@ -3,51 +3,96 @@
   :path: test
   :file: test_DMA.c
 :successes:
-- :test: test_motorConfigInit_initialize_the_txDetail
-  :line: 63
+- :test: test_motorConfigInit_the_txDetail_was_set_by_motorConfigInit_the_setting_of_txDetail_should_pass_the_test
+  :line: 76
+  :message: ''
+- :test: test_readMotorConfigInfo_
+  :line: 90
   :message: ''
 - :test: test_dmaQueue_add_one_txElement_into_Queue
-  :line: 78
+  :line: 98
   :message: ''
 - :test: test_dmaQueue_add_two_txElement_into_Queue
-  :line: 87
+  :line: 108
   :message: ''
 - :test: test_dmaQueue_add_two_txElement_into_Queue_and_deQueue
-  :line: 100
+  :line: 122
   :message: ''
-- :test: test_updateMotorDriveBuffer_the_linkedlist_only_contain_triMotorElement_and_Update_the_triMotor_slot_buffer
-  :line: 127
+- :test: test_updateMotorDriveBuffer_the_linkedlist_only_contain_motor0Element_and_Update_the_triMotor_slot_buffer
+  :line: 152
   :message: ''
-- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_Update_the_triMotor_and_secMotor_slot_buffer
-  :line: 149
+- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_and_motor1Element_and_Update_the_triMotor_and_secMotor_slot_buffer
+  :line: 176
   :message: ''
-- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_triMotorElement_secMotorElement_and_firMotorElement_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer
-  :line: 179
+- :test: test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_motor1Element_and_motor2Elementent_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer
+  :line: 211
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_after_function_it_should_dequeue
-  :line: 216
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_after_function_it_should_dequeue
+  :line: 250
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_secMotorElem_and_firMotorElem_after_function_they_should_dequeue
-  :line: 244
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_motor1Element_and_motor2Element_after_function_they_should_dequeue
+  :line: 279
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_they_should_dequeue
-  :line: 286
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_they_should_dequeue
+  :line: 322
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_firMotorElem_after_function_linkedList_contain_firMotorElement
-  :line: 323
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_linkedList_contain_motor2Element
+  :line: 360
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_is_emply
-  :line: 357
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_is_emply
+  :line: 394
   :message: ''
-- :test: test_updateMotorDriveBuffer_Queue_contain_triMotorElem_and_secMotorElem_after_function_linkedList_only_contain_secMotorElem
-  :line: 390
+- :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_only_contain_motor1Element
+  :line: 429
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_will_update_motor0Element_Command
+  :line: 469
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_was_called_in_2_times_and_the_head_of_queue_is_point_to_null
+  :line: 499
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_the_DMA_IRQ_function_will_update_triMotorSlot_and_secMotorSlot_Command
+  :line: 532
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_motor0Element_and_motor1Element_that_updated_completely_should_be_dequeue
+  :line: 569
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_motor0Element__motor1Element_and_motor2Element_that_updated_completely_should_be_dequeue
+  :line: 608
+  :message: ''
+- :test: test_DMA1_Channel3_IRQHandler_motor0Element_and_motor1Element_
+  :line: 658
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 13
-  :passed: 13
+  :total: 20
+  :passed: 20
   :failed: 0
   :ignored: 0
 :stdout:
+- No 1.0
+- No 2.0
+- No 3.0
+- No 3.1
+- No 3.2
+- No 4.0
+- No 4.1
+- No 4.2
+- No 4.3
+- No 4.4
+- No 4.5
+- No 4.6
+- No 4.7
+- No 4.8
+- No 5.0
+- No 5.1Hello World
+- No 5.2
+- No 5.3Hello World
+- Hello World
+- No 5.3Hello World
+- Hello World
+- Hello World
+- No 5.4Hello World
+- Hello World
 - ''

@@ -48,9 +48,9 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_Timer.c");
-  RUN_TEST(test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null, 54);
-  RUN_TEST(test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement, 81);
-  RUN_TEST(test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement, 117);
+  RUN_TEST(test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null, 55);
+  RUN_TEST(test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement, 82);
+  RUN_TEST(test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement, 118);
 
   return (UnityEnd());
 }

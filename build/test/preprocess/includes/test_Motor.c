@@ -6,6 +6,7 @@
 - stm32f10x_spi.h
 - stm32f10x_dma.h
 - stm32f10x_gpio.h
+- Config.h
 - Host.h
 - Registers.h
 - DMA.h

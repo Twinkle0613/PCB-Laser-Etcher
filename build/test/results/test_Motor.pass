@@ -3,63 +3,76 @@
   :path: test
   :file: test_Motor.c
 :successes:
-- :test: test_initialStepCommand_
-  :line: 60
+- :test: test_initialStepCommand_the_value_stepLowCommand_and_stepHighCommand_is_changed_to_0xAA_and_0x55
+  :line: 61
   :message: ''
-- :test: test_getCommond_
-  :line: 68
+- :test: test_getCommond_first_called_getCommand_should_return_0xAA_and_second_called_getCommand_should_retun_0x55
+  :line: 69
   :message: ''
-- :test: test_resetMotorDriveBuffer_
+- :test: test_resetMotorDriveBuffer_the_data_of_motoDriveBuffer_should_become_0
   :line: 80
   :message: ''
-- :test: test_motorStep_When_DMA_is_off_third_motor_can_be_update
-  :line: 103
+- :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot0_still_can_be_update
+  :line: 104
   :message: ''
-- :test: test_motorStep_When_DMA_is_On_the_third_motor_can_not_be_update
-  :line: 136
+- :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot1_still_can_be_update
+  :line: 133
   :message: ''
-- :test: test_motorStep_put_motorConfig1_that_relate_First_Motor_into_the_motorStep_motorDriveBuffer_should_be_update
-  :line: 170
+- :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot2_still_can_be_update
+  :line: 163
   :message: ''
-- :test: test_motorStep_When_DMA_is_started_Second_motor_can_not_be_update
-  :line: 203
+- :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot0_still_can_not_be_update
+  :line: 194
   :message: ''
-- :test: test_motorStep_One_Command_is_transmitted_first_motor_can_be_update
-  :line: 237
+- :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot1_still_can_be_update
+  :line: 229
   :message: ''
-- :test: test_motorStep_One_Command_is_transmitted_second_motor_can_not_be_update
-  :line: 270
+- :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot2_still_can_be_update
+  :line: 261
   :message: ''
-- :test: test_motorStep_One_Command_is_transmitted_Third_motor_can_be_update
-  :line: 302
+- :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot0_still_can_not_be_update
+  :line: 291
   :message: ''
-- :test: test_motorStep_two_Command_is_transmitted_first_motor_can_not_be_update
-  :line: 333
+- :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot1_still_can_not_be_update
+  :line: 320
   :message: ''
-- :test: test_motorStep_add_third_motor_and_first_motor_commad_into_tx_buffer
-  :line: 350
+- :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot2_still_can_be_update
+  :line: 349
   :message: ''
-- :test: test_motorStep_add_third_and_sec_commad_into_tx_buffer
-  :line: 390
+- :test: test_motorStep_the_firMotorElem_is_added_into_linked_list_the_next_of_triMotorElem_should_point_to_firMotorElem
+  :line: 376
+  :message: ''
+- :test: test_motorStep_the_secMotorElem_is_added_into_linked_list_the_next_of_triMotorElem_should_point_to_secMotorElem
+  :line: 414
+  :message: ''
+- :test: test_motorSet_the_motor_setting_was_set_by_using_motorSet_the_stepHighCommand_and_stepLowCommand_should_return_the_motor_setting
+  :line: 442
+  :message: ''
+- :test: test_DMA_channel_marco_the_DMAy_chanelx_that_was_executed_in_system_was_defined_into_DMA_channel_marco
+  :line: 460
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 13
-  :passed: 13
+  :total: 16
+  :passed: 16
   :failed: 0
   :ignored: 0
 :stdout:
-- NO.01
-- NO.02
-- NO.04.2
-- NO.04.3
-- NO.03
-- NO.04.1
-- NO.06
-- NO.05
-- NO.07
-- NO.07.1
-- NO.08
-- NO.08
+- No 1.0
+- No 1.1
+- No 1.2
+- No 2.0
+- No 3.0
+- No 4.0
+- No 5.0
+- No 6.0
+- No 7.0
+- No 8.0
+- No 9.0
+- No 10.0
+- NO 11.0
+- No 12.0
+- No 13.0
+- No 14.0
 - ''

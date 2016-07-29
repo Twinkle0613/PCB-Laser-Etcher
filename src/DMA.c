@@ -17,7 +17,7 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
-
+#include "stepperMotor.h"
 
 
 uint8_t motorDriveBuffer[3];
@@ -25,19 +25,32 @@ uint8_t txBuffer[3];
 uint8_t txStorage[3];
 struct Linkedlist *txRoot;
 
-#define pointToHeadOfLinkedList(x) (x = txRoot->head)
-#define isEndOfLinkedList (temp == txRoot->head) 
-#define pointToNext(x) (x = x->next)
-#define readMotorConfigInfo(y) ((motorConfigInfo*)y)
+void DMA1_Channel3_IRQHandler(void){
+  stopDMA(DMA1_Channel3);
+  outputData();
+  resetTCFlag;
+  struct ListElement* temp;
+  motorConfigInfo* motorConfig = readMotorConfigInfo(txRoot->head->args);
+  setDataNumber(DMA1_Channel3,3);
 
-#define resetTCFlag ( DMA_ClearITPendingBit(DMA1_IT_TC3) )
-#define isCompleteUpdateCommand(x) (x->counter >= 2)
-#define isDmaQueueEmpty (txRoot->head == NULL)
-#define resetCount(x) (x->counter = 0)
+   while(!isDmaQueueEmpty && isCompleteUpdateCommand(motorConfig)){
+     temp = dmaDequeue();
+     resetCommandCounter(readMotorConfigInfo(temp->args));
+     callBackFunction(temp);
+     if(!isDmaQueueEmpty){
+       updateMotorConfigInfo(motorConfig);
+     }
+   }
+
+  if(!isDmaQueueEmpty){
+   updateMotorDriveBuffer();
+   startDMA(DMA1_Channel3);
+  }
+
+}
 
 void updateMotorDriveBuffer(void){
   struct ListElement* temp ;
-  struct ListElement* delete;
   
   motorConfigInfo* motorConfiguration;
   pointToHeadOfLinkedList(temp);
@@ -45,37 +58,14 @@ void updateMotorDriveBuffer(void){
    motorConfiguration = readMotorConfigInfo(temp->args);
    updateSlotCommand(motorConfiguration->slot);
    pointToNext(temp);
-  }while( !isEndOfLinkedList );
-  cleanUpListedList();
-}
-
-void cleanUpListedList(void){
-  struct ListElement* temp ;
-  motorConfigInfo* motorConfiguration = readMotorConfigInfo(txRoot->head->args);
-  while( !isDmaQueueEmpty && isCompleteUpdateCommand(motorConfiguration) ){
-       
-       temp = dmaDequeue();
-       
-       if(!isDmaQueueEmpty){
-         motorConfiguration = readMotorConfigInfo(txRoot->head->args);
-       }
-  }     
-}
-
-
-
-void DMA1_Channel3_IRQHandler(void){
-  stopDMA(DMA1_Channel3);
-  outputData();
-  resetTCFlag;
-  updateMotorDriveBuffer();
+  }while( !isEndOfQueue );
   
-
-  
-  setDataNumber(DMA1_Channel3,3);
-  startDMA(DMA1_Channel3);
 }
 
+motorConfigInfo* readMotorConfigInfo(void *args){
+  motorInfo* whichMotor = readMotorInfo(args);
+  return (whichMotor->motorConfiguration);
+}
 
 struct ListElement* dmaDequeue(void){
   struct ListElement *temp = txRoot->head;
@@ -88,17 +78,16 @@ void dmaQueue(struct ListElement *txElement){
 }
 
 
-motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress) ,int slot){
-  motorConfigInfo* detail = malloc(sizeof(motorConfigInfo));
-  detail->counter = 0;
-  detail->slot = slot;
-  detail->stepHighCommand = 0;
-  detail->stepLowCommand = 0;
-  detail->txElement.next = NULL;
-  detail->txElement.prev = NULL;
-  detail->txElement.callBack = funcAddress;
-  detail->txElement.args = detail;
-  return detail;
+uint8_t getCommand(motorConfigInfo* motorConfiguration){
+  uint8_t commond;
+  if(motorConfiguration->counter == 0){ // If the function was called by first times, the stepLowCommand will be return out.
+   commond = motorConfiguration->stepLowCommand;
+  }else{
+   commond = motorConfiguration->stepHighCommand;
+  }
+   motorConfiguration->counter++; // Once the function was called, the Counter will be recorded.
+                                  // Once the counter reached 2, it is mean the command update is completed.
+  return commond;
 }
 
 
@@ -124,6 +113,18 @@ void dmaDriveMotor(motorInfo* whichMotor, uint8_t motorDir, uint8_t microStep){
   setDataNumber(DMA1_Channel3,3);
   startDMA(DMA1_Channel3);
 }
+
+void cleanUpListedList(void){
+  struct ListElement* temp ;
+  motorConfigInfo* motorConfiguration = readMotorConfigInfo(txRoot->head->args);
+  while( !isDmaQueueEmpty && isCompleteUpdateCommand(motorConfiguration) ){
+       temp = dmaDequeue();
+       if(!isDmaQueueEmpty){
+         motorConfiguration = readMotorConfigInfo(txRoot->head->args);
+       }
+  }     
+}
+
 */
 
 // void copyInformFromBufferToStorageExcept(motorID identity){

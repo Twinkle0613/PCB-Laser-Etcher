@@ -25,9 +25,11 @@
 #define updateBaseTime  root->baseTime += root->head->actionTime
 #define clearUpdateFlag(x) (TIM_ClearITPendingBit(x,TIM_IT_Update))
 #define updateCurrentTime root->curTime = root->baseTime + getTime(TIM2)
+#define recordCurrentTime(x) (x = getTime(TIM2))
+#define interval (whichMotor->timeRecord2 - whichMotor->timeRecord1)
 
-
+extern uint16_t timeInterval;
 void timerDelay(struct ListElement* timerElement,uint32_t period);
-void timerSetExpiry(uint32_t period);
+void timerSetExpiry(uint16_t period);
 
 #endif // Timer_H

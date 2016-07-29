@@ -19,7 +19,7 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
-
+#include "stepperMotor.h"
 
 #define startDMA(x) (DMA_Cmd(x,ENABLE))
 #define stopDMA(x) (DMA_Cmd(x,DISABLE))
@@ -29,25 +29,35 @@
 
 #define updateSlotCommand(x) (motorDriveBuffer[x] = getCommand(motorConfiguration))
 
-typedef struct{
-  int slot;
-  int counter;
-  struct ListElement txElement;
-  uint8_t stepHighCommand;
-  uint8_t stepLowCommand;
-}motorConfigInfo;
+#define pointToHeadOfLinkedList(x) (x = txRoot->head)
+#define isEndOfQueue (temp == txRoot->head) 
+#define pointToNext(x) (x = x->next)
+
+#define resetTCFlag ( DMA_ClearITPendingBit(DMA1_IT_TC3) )
+#define isCompleteUpdateCommand(x) (x->counter >= 2)
+#define isDmaQueueEmpty (txRoot->head == NULL)
+#define resetCount(x) (x->counter = 0)
+#define readMotorInfo(x) ((motorInfo*)x)
+
+#define resetCommandCounter(x) (x->counter = 0)
+#define updateMotorConfigInfo(x) (x = readMotorConfigInfo(txRoot->head->args))
+
+
+
 
 
 extern uint8_t motorDriveBuffer[];
 extern uint8_t txBuffer[];
 extern uint8_t txStorage[];
 extern struct Linkedlist *txRoot;
+uint8_t getCommand(motorConfigInfo* motorConfiguration);
 
+motorConfigInfo* readMotorConfigInfo(void *args);
 void copyWholeInform(uint8_t buffer[],uint8_t storetage[]);
 motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress),int slot);
 void dmaQueue(struct ListElement *txElement);
 struct ListElement* dmaDequeue(void);
 void cleanUpListedList(void);
-
+void updateMotorDriveBuffer(void);
 
 #endif // DMA_H

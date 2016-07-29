@@ -8,20 +8,13 @@
 #include "stm32f10x_spi.h"
 #include "stm32f10x_gpio.h"
 //Own Library
-#include "DMA.h"
 #include "RelativeTimeLinkList.h"
 #include "projectStruct.h"
 #include "Timer.h"
 
-void motorController(motorInfo* whichMotor){
-   startCoroutine();
-  while(1){
-   //dmaDriveMotor(whichMotor,StpMtr_Clockwise,StpMtr_Full_step);
-    timerDelay(&(whichMotor->timerElement),whichMotor->period);
-    yield();
-   }
-   endCoroutine();
-}
+
+
+
 
 /**
  * Initialize the motor infomation.
@@ -29,13 +22,17 @@ void motorController(motorInfo* whichMotor){
 
 motorInfo* motorInit( void (*funcAddress),int period, int slot ){
    motorInfo* whichMotor = malloc(sizeof(motorInfo));  
+   
    whichMotor->direation = StpMtr_Clockwise;
    whichMotor->step = StpMtr_Low;
    whichMotor->sleep = StpMtr_Slp_Off; 
    whichMotor->microstep = StpMtr_Full_step;
+   whichMotor->reset = StpMtr_Rst_Off;
+   whichMotor->motorState = StpMtr_Enable;
+   
    whichMotor->period = period;
    whichMotor->state = 0;
-   whichMotor->slot = slot;
+   
    whichMotor->timerElement.next = NULL;
    whichMotor->timerElement.prev = NULL;
    whichMotor->timerElement.actionTime = 0;
@@ -45,7 +42,18 @@ motorInfo* motorInit( void (*funcAddress),int period, int slot ){
    return whichMotor;
 }
 
-
+motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress) ,int slot){
+  motorConfigInfo* detail = malloc(sizeof(motorConfigInfo));
+  detail->counter = 0;
+  detail->slot = slot;
+  detail->stepHighCommand = 0;
+  detail->stepLowCommand = 0;
+  detail->txElement.next = NULL;
+  detail->txElement.prev = NULL;
+  detail->txElement.callBack = funcAddress;
+  detail->txElement.args = motorAddress;
+  return detail;
+}
 
 /**
  * Set own address to args that was created in motorInfo struct.

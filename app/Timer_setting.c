@@ -29,5 +29,5 @@ void updatePeriod(TIM_TypeDef* TIMx,uint16_t period){
 }
 
 uint16_t getTime(TIM_TypeDef* TIMx){
-  return (TIMx->CNT);
+  return (TIMx->CNT&0x0000FFFF);
 }

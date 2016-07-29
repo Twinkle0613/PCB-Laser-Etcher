@@ -8,7 +8,7 @@
 struct ListElement{
    struct ListElement *next;
    struct ListElement *prev;
-   uint32_t actionTime;
+   uint16_t actionTime;
    void (*callBack)(void* unknown);
    void *args;
 };
@@ -24,6 +24,6 @@ struct Linkedlist{
 struct Linkedlist *createLinkedList();
 struct ListElement *createLinkedElement(int x);
 void addList( struct Linkedlist *newList, struct ListElement *newElement);
-
+void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement);
 
 #endif // Linklist_H

@@ -14,7 +14,8 @@ void Timer_conf(TIM_TypeDef* TIMx,
               );
               
               
-void enableTimer(TIM_TypeDef* TIM,FunctionalState NewState);
+void enableTimer(TIM_TypeDef* TIMx,FunctionalState NewState);
+
 void updatePeriod(TIM_TypeDef* TIMx,uint16_t period);
 
 uint16_t getTime(TIM_TypeDef* TIMx);
