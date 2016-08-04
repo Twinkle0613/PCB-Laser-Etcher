@@ -49,7 +49,7 @@
 
 
 
-void testMotor123(motorInfo* whichMotor){
+void testMotor123(MotorInfo* whichMotor){
 
   whichMotor->step = 1;
 
@@ -85,11 +85,11 @@ void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_
 
     root = createLinkedList();
 
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
 
 
 
@@ -121,11 +121,11 @@ void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandle
 
     root = createLinkedList();
 
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
 
     int arr[] = {5};
 
@@ -175,11 +175,11 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
 
     uint16_t arr[] = {5,7};
 
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
 
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
 
 
 

@@ -27,7 +27,7 @@
 #include "Motor.h"
 
 
-motorInfo motor;
+MotorInfo motor;
 
 #define motorConfig3 Motor3->motorConfiguration
 #define motorConfig2 Motor2->motorConfiguration

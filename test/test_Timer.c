@@ -27,7 +27,7 @@
 #include "Motor.h"
 
 
-void testMotor123(motorInfo* whichMotor){
+void testMotor123(MotorInfo* whichMotor){
   whichMotor->step = 1;
   whichMotor->sleep = 1;
 }
@@ -55,9 +55,9 @@ void tearDown(void)
 void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null(void){
   
     root = createLinkedList();
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
 
     _updateBaseTime(root,10);
     updateCurTime(root,20);
@@ -82,9 +82,9 @@ void test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_
 void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement(void){
   
     root = createLinkedList();
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
     int arr[] = {5};
 
     _updateBaseTime(root,10);
@@ -120,9 +120,9 @@ void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_
     root = createLinkedList();
     uint16_t arr2[] = {10,5,7};
     uint16_t arr[] = {5,7};
-    motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
-    motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
+    MotorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);
 
     _updateBaseTime(root,10);
     updateCurTime(root,20);

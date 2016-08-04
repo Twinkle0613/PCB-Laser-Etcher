@@ -19,9 +19,9 @@
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
 
-struct Linkedlist *txRoot;
+Linkedlist *txRoot;
 
-void dmaQueue(struct ListElement *txElement){
+void dmaQueue(ListElement *txElement){
     addList(txRoot,txElement);
 }
 

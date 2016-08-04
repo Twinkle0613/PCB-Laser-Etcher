@@ -26,7 +26,7 @@
 #define stopDMA(x) (DMA_Cmd(x,DISABLE))
 #define resetTCFlag ( DMA_ClearITPendingBit(DMA1_IT_TC3) )
 #define dmaDequeue(x) dequeue(x)
-void dmaQueue(struct ListElement *txElement);
+void dmaQueue(ListElement *txElement);
 
 // #define startDMA(x) (DMA_Cmd(x,ENABLE))
 // #define stopDMA(x) (DMA_Cmd(x,DISABLE))

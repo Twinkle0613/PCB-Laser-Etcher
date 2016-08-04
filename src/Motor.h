@@ -23,6 +23,13 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 
+typedef struct {
+   ListElement *next;
+   ListElement *prev;
+   void (*callBack)(void* unknown);
+   void *args;
+}MotorElement;
+
 typedef struct{
   int slot;
   int counter;
@@ -58,12 +65,7 @@ typedef struct{
   MotorConfigInfo* motorConfiguration;
 }MotorInfo;   
 
-typedef struct {
-   ListElement *next;
-   ListElement *prev;
-   void (*callBack)(void* unknown);
-   void *args;
-}MotorElement;
+
 
 void motorController(MotorInfo* whichMotor);
 uint8_t getCommand(MotorConfigInfo* motorConfiguration);

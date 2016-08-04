@@ -27,7 +27,7 @@
 #include "Motor.h"
 
 
-motorInfo motor;
+MotorInfo motor;
 
 void resetMotorDriveBuffer(void);
 void setUp(void)

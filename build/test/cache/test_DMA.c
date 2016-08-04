@@ -26,7 +26,7 @@
 
 
 
-motorInfo motor;
+MotorInfo motor;
 
 
 
