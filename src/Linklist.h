@@ -4,26 +4,28 @@
 #include <stdint.h>
 #include "projectStruct.h"
 
-
-struct ListElement{
-   struct ListElement *next;
-   struct ListElement *prev;
-   uint16_t actionTime;
+typedef struct ListElement_t ListElement;
+struct ListElement_t{
+   ListElement *next;
+   ListElement *prev;
    void (*callBack)(void* unknown);
    void *args;
+   uint16_t actionTime;
 };
-
-struct Linkedlist{
-	  struct ListElement *head;
-	  struct ListElement *tail;
+typedef struct Linkedlist_t Linkedlist;
+struct Linkedlist_t{
+	  ListElement *head;
+	  ListElement *tail;
     uint32_t curTime;
     uint32_t baseTime;
     int callBackState;
+    int count;
 }; 
 
-struct Linkedlist *createLinkedList();
-struct ListElement *createLinkedElement(int x);
-void addList( struct Linkedlist *newList, struct ListElement *newElement);
-void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement);
+void elementDelete(ListElement* Node);
+void linkedListRemove(Linkedlist *newList, ListElement *newElement);
+Linkedlist *createLinkedList();
+ListElement *createLinkedElement(int x);
+void addList(  Linkedlist *newList, ListElement *newElement);
 
 #endif // Linklist_H

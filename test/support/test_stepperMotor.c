@@ -20,6 +20,7 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
+#include "Motor.h"
 
 void setUp(void)
 {

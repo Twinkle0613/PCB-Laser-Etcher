@@ -26,7 +26,7 @@
 #define stopDMA(x) (DMA_Cmd(x,DISABLE))
 #define resetTCFlag ( DMA_ClearITPendingBit(DMA1_IT_TC3) )
 #define dmaDequeue(x) dequeue(x)
-void dmaQueue(ListElement *txElement);
+void dmaQueue(struct ListElement *txElement);
 
 // #define startDMA(x) (DMA_Cmd(x,ENABLE))
 // #define stopDMA(x) (DMA_Cmd(x,DISABLE))
@@ -64,7 +64,7 @@ void dmaQueue(ListElement *txElement);
 // void copyWholeInform(uint8_t buffer[],uint8_t storetage[]);
 // motorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress),int slot);
 // void dmaQueue(struct ListElement *txElement);
-// ListElement* dmaDequeue(void);
+// struct ListElement* dmaDequeue(void);
 // void cleanUpListedList(void);
 // void updateMotorDriveBuffer(void);
 

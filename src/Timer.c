@@ -14,8 +14,11 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 
+#define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
+#define nextActionTime ( getTime(TIM2) + root->head->actionTime)
+#define newActionTime (root->head->actionTime + root->baseTime)
 
-void timerDelay(struct ListElement* timerElement,uint32_t period){
+void timerDelay(ListElement* timerElement,uint32_t period){
   updateCurrentTime;
   if(isTimerQueueEmpty){
     timerSetExpiry(period);
@@ -27,16 +30,14 @@ void timerSetExpiry(uint16_t period){
    TIM_SetAutoreload(TIM2,period);
    startTimer(TIM2);
 }
-#define nextActionTime ( getTime(TIM2) + root->head->actionTime)
-#define newActionTime (root->head->actionTime + root->baseTime)
 
 void TIM2_IRQHandler(){
   clearUpdateFlag(TIM2);
-  struct ListElement *temp;
+  ListElement *temp;
 
   do{
    updateBaseTime; 
-   temp = timerDequeue();
+   temp = timerDequeue(root);
    callBackFunction(temp); 
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
 

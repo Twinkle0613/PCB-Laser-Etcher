@@ -6,38 +6,26 @@
 #include "Linklist.h"
 #include "projectStruct.h"
 
-struct Linkedlist *createLinkedList(){
-  struct Linkedlist *list_NULL = malloc(sizeof(struct Linkedlist));;
-  list_NULL->tail = NULL;
-  list_NULL->head = NULL;
-  list_NULL->curTime = 0;
-  list_NULL->baseTime = 0;
-  return list_NULL;
+Linkedlist *createLinkedList(){
+  Linkedlist *newList = malloc(sizeof(Linkedlist));;
+  newList->tail = NULL;
+  newList->head = NULL;
+  newList->curTime = 0;
+  newList->baseTime = 0;
+  newList->count = 0;
+  return newList;
 }
 
-struct ListElement *createLinkedElement(int x){
-  struct ListElement *newptr = malloc(sizeof(struct ListElement));
-  newptr->actionTime = x;
-  newptr->next = NULL;
-  newptr->prev = NULL;
-  return newptr;
+ListElement *createLinkedElement(int x){
+  ListElement *newElem = malloc(sizeof(ListElement));
+  newElem->actionTime = x;
+  newElem->next = NULL;
+  newElem->prev = NULL;
+  return newElem;
 }
  
-void addList(  struct Linkedlist *newList, struct ListElement *newElement){
-	 if(newList->head == NULL)
-	 {
-      newList->head = newElement;
-      newElement->prev = newList->head;
-	 }
-	 else 
-	 {
-		 for(newList->tail = newList->head; newList->tail->next!=NULL ; newList->tail = newList->tail->next );
-     newList->tail->next = newElement;
-     newElement->prev = newList->tail;
-	 }
-}
 
-void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement){
+void addList(  Linkedlist *newList, ListElement *newElement){
 	 if(newList->head == NULL)
 	 {
       newList->head = newElement;
@@ -52,5 +40,30 @@ void addListInCycle(  struct Linkedlist *newList, struct ListElement *newElement
      newList->head->prev = newElement;       // the previous of head point to new Element to continue the cycle link-list.
      newElement->next = newList->head;       // the next of new element point to head address to continue the cycle link-list.
 	 }
+     newList->count++;
 }
+
+void elementDelete(ListElement* deleteNode){
+   deleteNode->prev->next = deleteNode->next;
+   deleteNode->next->prev = deleteNode->prev;
+  // deleteNode->next = NULL;
+   deleteNode->prev = NULL;
+}
+
+void linkedListRemove(Linkedlist *newList, ListElement *elem){
+  
+  if(elem->next != elem){
+   if(newList->head != NULL && newList->head == elem){
+     newList->head = newList->head->next;
+   }
+   elementDelete(elem);
+  }else{
+   newList->head->next = NULL;
+   newList->head->prev = NULL;
+   newList->head = NULL;
+  }
+  newList->count--;
+}
+
+
 

@@ -4,10 +4,10 @@
 #include <stdint.h>
 #include <unity.h>
 
-void test_assert_link_list(struct Linkedlist *newList,uint32_t arr[],int arraySize,int lineNo){
+void test_assert_link_list(Linkedlist *newList,uint32_t arr[],int arraySize,int lineNo){
    UNITY_TEST_ASSERT_NOT_NULL(newList,lineNo,"The Link-List should not be NULL!");
    UNITY_TEST_ASSERT_NOT_NULL(arr,lineNo,"The Array should not be NULL!");
-  struct ListElement *testNode;
+   ListElement *testNode;
   int i = 0;
 
   for(testNode = newList->head; testNode !=NULL ; testNode = testNode->next ){
@@ -24,13 +24,14 @@ void test_assert_link_list(struct Linkedlist *newList,uint32_t arr[],int arraySi
 }
 
 
-void test_assert_cycle_link_list(struct Linkedlist *newList,uint32_t arr[],int arraySize,int lineNo){
+void test_assert_cycle_link_list(Linkedlist *newList,uint16_t arr[],int arraySize,int lineNo){
    UNITY_TEST_ASSERT_NOT_NULL(newList,lineNo,"The Link-List should not be NULL!");
    UNITY_TEST_ASSERT_NOT_NULL(arr,lineNo,"The Array should not be NULL!");
-  struct ListElement *testNode;
+   ListElement *testNode;
   int i = 0;
    testNode = newList->head;
    do{
+     //printf("arr[%d] = %d\n",i,arr[i]);
      if(testNode->actionTime != arr[i] ){
        CUSTOM_TEST_FAIL(lineNo,"Expected %d was %d. The element value is not the same with Array[%d].",arr[i],testNode->actionTime,i); 
      }

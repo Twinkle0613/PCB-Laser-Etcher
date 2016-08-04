@@ -3,30 +3,37 @@
   :path: test
   :file: test_Linklist.c
 :successes:
-- :test: test_head_and_Tail_euqal_NULL
+- :test: test_createLinkedList_the_new_list_was_initialized_by_the_function
   :line: 17
   :message: ''
-- :test: test_creatlikedelement
-  :line: 26
+- :test: test_creatlikedelement_the_element_was_initialized_by_the_function
+  :line: 29
   :message: ''
-- :test: test_addlist_one_element_was_added_into_Link_list
-  :line: 34
+- :test: test_cycle_link_list_Elem9_Elem8_Elem7_and_Elem6_add_to_link_list
+  :line: 55
   :message: ''
-- :test: test_addlist_a_few_elements_were_added_into_link_list
-  :line: 42
+- :test: test_timerListDelete_delete_a_Node
+  :line: 83
   :message: ''
-- :test: test_double_link_list_
-  :line: 61
+- :test: test_elementDetele_Detele_node_that_is_between_two_node
+  :line: 112
   :message: ''
-- :test: test_cycle_link_list
-  :line: 94
+- :test: test_elementDetele_Detele_the_node_that_was_pointed_by_head
+  :line: 138
+  :message: ''
+- :test: test_elementDetele_Detele_the_node_that_is_last_node_in_linked_list
+  :line: 161
+  :message: ''
+- :test: test_elementDetele_Detele_the_node_that_is_the_only_one_elem_in_linked_list
+  :line: 184
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:
+- elementDelete
 - ''

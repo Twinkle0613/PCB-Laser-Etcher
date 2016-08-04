@@ -60,56 +60,53 @@
 - :test: test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new_node
   :line: 704
   :message: ''
-- :test: test_timerListDelete_delete_a_Node
-  :line: 720
-  :message: ''
 - :test: test_new_timerListAdd_
-  :line: 748
+  :line: 723
   :message: ''
 - :test: test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_9_and_20
-  :line: 756
+  :line: 731
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7
-  :line: 774
+  :line: 749
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_3_2
-  :line: 810
+  :line: 785
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8_2_5
-  :line: 846
+  :line: 821
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5
-  :line: 884
+  :line: 859
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_5_0
-  :line: 920
+  :line: 895
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_
-  :line: 956
+  :line: 931
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_
-  :line: 993
+  :line: 968
   :message: ''
-- :test: test_timerDequeue_timer_list_link_contain_one_timerElement_using_timerDequeue_to_remove_first_timerElement
-  :line: 1033
+- :test: test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remove_first_timerElement
+  :line: 1008
   :message: ''
-- :test: test_timerDequeue_timer_list_link_contain_two_timerElement_using_timerDequeue_to_remove_first_timerElement
-  :line: 1057
+- :test: test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remove_first_timerElement
+  :line: 1032
   :message: ''
-- :test: test_timerDequeue_timer_list_link_contain_three_timerElement_using_timerDequeue_to_remove_first_timerElement
-  :line: 1086
+- :test: test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_remove_first_timerElement
+  :line: 1061
   :message: ''
 - :test: test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_will_point_to_null
-  :line: 1111
+  :line: 1086
   :message: ''
 - :test: test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_will_point_to_next_element
-  :line: 1123
+  :line: 1098
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 34
-  :passed: 34
+  :total: 33
+  :passed: 33
   :failed: 0
   :ignored: 0
 :stdout:
@@ -132,7 +129,6 @@
 - No.17 - timerListAdd
 - No.18 - timerListAdd
 - No.19 - timerListAdd
-- No.20 - timerListDelete
 - No.21 - initialization root
 - No.22 - updateActionTime
 - No.23 - timerQueue
@@ -142,9 +138,9 @@
 - No.27 - timerQueue
 - No.28 - timerQueue
 - No.29 - timerQueue
-- No.30 - timerDequeue
-- No.31 - timerDequeue
-- No.32 - timerDequeue
+- No.30 - dequeue
+- No.31 - dequeue
+- No.32 - dequeue
 - No.33 - updateHead
 - No.34 - updateHead
 - ''

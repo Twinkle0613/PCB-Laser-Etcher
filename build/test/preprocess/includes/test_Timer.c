@@ -17,3 +17,4 @@
 - CustomAssertion.h
 - RelativeTimeLinkList.h
 - stepperMotor.h
+- Motor.h

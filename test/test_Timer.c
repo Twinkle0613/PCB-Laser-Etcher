@@ -24,7 +24,7 @@
 #include "CustomAssertion.h"
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
-
+#include "Motor.h"
 
 
 void testMotor123(motorInfo* whichMotor){
@@ -116,10 +116,10 @@ void test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandle
 
 
 void test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement(void){
-  
+    printf("Hello\n");
     root = createLinkedList();
-    int arr2[] = {10,5,7};
-     int arr[] = {5,7};
+    uint16_t arr2[] = {10,5,7};
+    uint16_t arr[] = {5,7};
     motorInfo* motor1 = motorInit(testMotor123,0,FIRST_MOTOR);
     motorInfo* motor2 = motorInit(testMotor123,0,FIRST_MOTOR);
     motorInfo* motor3 = motorInit(testMotor123,0,FIRST_MOTOR);

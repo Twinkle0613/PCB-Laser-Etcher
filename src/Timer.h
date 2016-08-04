@@ -29,7 +29,15 @@
 #define interval (whichMotor->timeRecord2 - whichMotor->timeRecord1)
 
 extern uint16_t timeInterval;
-void timerDelay(struct ListElement* timerElement,uint32_t period);
+void timerDelay(ListElement* timerElement,uint32_t period);
 void timerSetExpiry(uint16_t period);
+
+typedef struct{
+   ListElement *next;
+   ListElement *prev;
+   void (*callBack)(void* unknown);
+   void *args;
+   uint16_t actionTime;
+}TimerElement;
 
 #endif // Timer_H

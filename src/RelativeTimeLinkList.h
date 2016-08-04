@@ -13,12 +13,10 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 
-
-
 #define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
-#define addTimeList(x,y) { addListInCycle(x,createLinkedElement(y)); }
+#define addTimeList(x,y) { addList(x,createLinkedElement(y)); }
 #define insertNode(x,y) {                                     \
-         struct ListElement * temp = createLinkedElement(y);  \
+         ListElement * temp = createLinkedElement(y);  \
          temp->next = x->next;                                \
          x->next = temp;                                      \
 }  
@@ -30,18 +28,17 @@
    }                                                                \
 } 
 
-extern struct Linkedlist *root;
+extern Linkedlist *root;
+void findTheNodeNearPeriodForBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
+void updateHead(Linkedlist *root);
+ListElement* dequeue(Linkedlist *root);
+void updateCurTime(Linkedlist *newList,uint32_t curTime);
+void _updateBaseTime(Linkedlist *newList,uint32_t baseTime);
+void updateActionTime(ListElement *timerElement, uint32_t newActTime);
+void insertTimeElement(ListElement *recordElement, ListElement *timerElement);
+void timerQueue(ListElement *timerElement, uint32_t period);
+void timerListAdd(Linkedlist *newList, uint32_t period);
 
-void findTheNodeNearPeriodForBase(struct ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
-void updateHead(struct Linkedlist *root);
-struct ListElement* timerDequeue(void);
-void updateCurTime(struct Linkedlist *newList,uint32_t curTime);
-void _updateBaseTime(struct Linkedlist *newList,uint32_t baseTime);
-void updateActionTime(struct ListElement *timerElement, uint32_t newActTime);
-void insertTimeElement(struct ListElement *recordElement, struct ListElement *timerElement);
-void timerQueue(struct ListElement *timerElement, uint32_t period);
-void timerListAdd(struct Linkedlist *newList, uint32_t period);
-void timerListDelete(struct ListElement* Node);
 
 
 #endif // RelativeTimeLinkList_H

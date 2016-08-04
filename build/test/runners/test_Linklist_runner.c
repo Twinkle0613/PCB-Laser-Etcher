@@ -30,12 +30,14 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_head_and_Tail_euqal_NULL(void);
-extern void test_creatlikedelement(void);
-extern void test_addlist_one_element_was_added_into_Link_list(void);
-extern void test_addlist_a_few_elements_were_added_into_link_list(void);
-extern void test_double_link_list_(void);
-extern void test_cycle_link_list(void);
+extern void test_createLinkedList_the_new_list_was_initialized_by_the_function(void);
+extern void test_creatlikedelement_the_element_was_initialized_by_the_function(void);
+extern void test_cycle_link_list_Elem9_Elem8_Elem7_and_Elem6_add_to_link_list(void);
+extern void test_timerListDelete_delete_a_Node(void);
+extern void test_elementDetele_Detele_node_that_is_between_two_node(void);
+extern void test_elementDetele_Detele_the_node_that_was_pointed_by_head(void);
+extern void test_elementDetele_Detele_the_node_that_is_last_node_in_linked_list(void);
+extern void test_elementDetele_Detele_the_node_that_is_the_only_one_elem_in_linked_list(void);
 
 
 //=======Test Reset Option=====
@@ -51,12 +53,14 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_Linklist.c");
-  RUN_TEST(test_head_and_Tail_euqal_NULL, 17);
-  RUN_TEST(test_creatlikedelement, 26);
-  RUN_TEST(test_addlist_one_element_was_added_into_Link_list, 34);
-  RUN_TEST(test_addlist_a_few_elements_were_added_into_link_list, 42);
-  RUN_TEST(test_double_link_list_, 61);
-  RUN_TEST(test_cycle_link_list, 94);
+  RUN_TEST(test_createLinkedList_the_new_list_was_initialized_by_the_function, 17);
+  RUN_TEST(test_creatlikedelement_the_element_was_initialized_by_the_function, 29);
+  RUN_TEST(test_cycle_link_list_Elem9_Elem8_Elem7_and_Elem6_add_to_link_list, 55);
+  RUN_TEST(test_timerListDelete_delete_a_Node, 83);
+  RUN_TEST(test_elementDetele_Detele_node_that_is_between_two_node, 112);
+  RUN_TEST(test_elementDetele_Detele_the_node_that_was_pointed_by_head, 138);
+  RUN_TEST(test_elementDetele_Detele_the_node_that_is_last_node_in_linked_list, 161);
+  RUN_TEST(test_elementDetele_Detele_the_node_that_is_the_only_one_elem_in_linked_list, 184);
 
   return (UnityEnd());
 }

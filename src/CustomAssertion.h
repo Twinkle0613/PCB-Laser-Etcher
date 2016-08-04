@@ -19,5 +19,5 @@
      test_assert_cycle_link_list(newList,arr,sizeof(arr)/sizeof(uint32_t),__LINE__);     \
                                                                     }
         
-void test_assert_link_list(struct Linkedlist *newList,uint32_t arr[],int arraySize,int lineNo);
+void test_assert_link_list(Linkedlist *newList,uint32_t arr[],int arraySize,int lineNo);
 #endif // CustomAssertion_H
