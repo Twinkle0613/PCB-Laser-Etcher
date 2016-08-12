@@ -26,7 +26,7 @@
 #define stopDMA(x) (DMA_Cmd(x,DISABLE))
 #define resetTCFlag ( DMA_ClearITPendingBit(DMA1_IT_TC3) )
 #define dmaDequeue(x) dequeue(x)
-void dmaQueue(ListElement *txElement);
+void dmaQueue(ListElement *motorElement);
 
 
 #endif // DMA_H

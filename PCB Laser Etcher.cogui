@@ -9,155 +9,58 @@
 <orientation position="512" view="org.eclipse.debug.ui.VariableView"/>
 </fastViewData>
 <perspectiveBar/>
-<page aggregateWorkingSetId="Aggregate for window 1462431194805" focus="true" label="Workspace - CooCox CoBuilder">
+<page aggregateWorkingSetId="Aggregate for window 1470647982365" focus="true" label="Workspace - CooCox CoBuilder">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="2"/>
 <part id="1"/>
+<part id="2"/>
 <part id="3"/>
-<part id="4"/>
-<part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
-<part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
-<part id="13"/>
-<part id="14"/>
-<part id="15"/>
-<part id="16"/>
-<part id="17"/>
-<part id="18"/>
-<part id="19"/>
-<part id="20"/>
-<part id="21"/>
-<part id="22"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stepperMotor.h" partName="stepperMotor.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/stepperMotor.h" title="stepperMotor.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/stepperMotor.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/stepperMotor.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="764" selectionTopPixel="420"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/main.c" title="main.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1466" selectionTopPixel="985"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Coroutine.h" partName="Coroutine.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Coroutine.h" title="Coroutine.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Coroutine.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Coroutine.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="721" selectionTopPixel="136"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Coroutine.c" partName="Coroutine.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Coroutine.c" title="Coroutine.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Coroutine.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Coroutine.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="778" selectionTopPixel="174"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DMA_setting.c" partName="DMA_setting.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/DMA_setting.c" title="DMA_setting.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/DMA_setting.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/DMA_setting.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="765" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DMA_setting.h" partName="DMA_setting.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/DMA_setting.h" title="DMA_setting.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/DMA_setting.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/DMA_setting.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="267" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.c" partName="Motor.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.c" title="Motor.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.c" partName="Motor.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.c" title="Motor.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Motor.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="1026" selectionTopPixel="449"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stepperMotor.c" partName="stepperMotor.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/stepperMotor.c" title="stepperMotor.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/stepperMotor.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/stepperMotor.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="387" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2074" selectionTopPixel="215"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Timer.c" partName="Timer.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Timer.c" title="Timer.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Timer.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Timer.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="843" selectionTopPixel="370"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Timer.h" partName="Timer.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Timer.h" title="Timer.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Timer.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Timer.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="695" selectionTopPixel="187"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="SPI_setting.c" partName="SPI_setting.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/SPI_setting.c" title="SPI_setting.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/SPI_setting.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/SPI_setting.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="595"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Timer_setting.c" partName="Timer_setting.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/Timer_setting.c" title="Timer_setting.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/Timer_setting.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Timer_setting.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="776" selectionTopPixel="156"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_tim.c" partName="stm32f10x_tim.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/StdPeriph_Driver/src/stm32f10x_tim.c" title="stm32f10x_tim.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/StdPeriph_Driver/src/stm32f10x_tim.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Driver/stm32f10x_tim.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="29317" selectionTopPixel="13685"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DMA.c" partName="DMA.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/DMA.c" title="DMA.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/DMA.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/DMA.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="833" selectionTopPixel="359"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" partName="stm32f10x.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/startup/stm32f10x.h" title="stm32f10x.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/startup/stm32f10x.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Startup/stm32f10x.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="52385" selectionTopPixel="20443"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.h" partName="Linklist.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Linklist.h" title="Linklist.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Linklist.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Linklist.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="665" selectionTopPixel="119"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/main.c" title="main.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3633" selectionTopPixel="1947"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1484" selectionTopPixel="823"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f103xb.s" partName="startup_stm32f103xb.s" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/startup/startup_stm32f103xb.s" title="startup_stm32f103xb.s" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/Config/startup/startup_stm32f103xb.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Startup/startup_stm32f103xb.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3694" selectionTopPixel="1258"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Config.c" partName="Config.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Config.c" title="Config.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Config.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Config.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Config.h" partName="Config.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Config.h" title="Config.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Config.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Config.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="567" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DMA.h" partName="DMA.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/DMA.h" title="DMA.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/DMA.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/DMA.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="85" selectionOffset="703" selectionTopPixel="254"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.c" partName="Linklist.c" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Linklist.c" title="Linklist.c" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Linklist.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Linklist.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="82" selectionOffset="1012" selectionTopPixel="300"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.h" partName="Motor.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.h" title="Motor.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/src/Motor.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Motor.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="536" selectionTopPixel="150"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer_setting.h" partName="Timer_setting.h" path="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/Timer_setting.h" title="Timer_setting.h" tooltip="C:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/app/Timer_setting.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PCB Laser Etcher/Timer_setting.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="173" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="18">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="12">
 <expanded>
 <element path="/PCB Laser Etcher"/>
-<element path="/PCB Laser Etcher/Driver"/>
-<element path="/PCB Laser Etcher/Startup"/>
 </expanded>
 <selection>
-<element path="/PCB Laser Etcher/Config.h"/>
+<element path="/PCB Laser Etcher/Timer.c"/>
 </selection>
 </viewState>
 </view>
+<view id="org.coocox.codebugger.trace.ui.traceview" partName="Semihosting">
+<viewState/>
+</view>
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
 <viewState isPinned="false">
+<view IMemento.internal.id="org.eclipse.search.text.FileSearchResultPage" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" org.eclipse.search.resultpage.limit="1000" org.eclipse.search.resultpage.sorting="2"/>
 <view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
-<view IMemento.internal.id="org.eclipse.cdt.ui.pdomSearchViewPage" definitionColumnWidth="150" locationColumnWidth="300" matchColumnWidth="300" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" showEnclosingDefinitions="true"/>
 </viewState>
 </view>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
-<viewState/>
-</view>
-<view id="org.coocox.component.ui.view.ComponentView" partName="Component View">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
@@ -214,28 +117,26 @@
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
-<view id="org.coocox.component.ui.view.ComponentView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@fc8305">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d5e602">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<page content="org.coocox.component.ui.view.ComponentView" label="Component View"/>
+<page content="org.coocox.component.ui.view.ComponentView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@fc8305">
+<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d5e602">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@b1a5ce" ratio="0.69952303" ratioLeft="440" ratioRight="189" relationship="4" relative="org.eclipse.ui.internal.ViewStack@fc8305">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@141d826" ratio="0.6597444" ratioLeft="413" ratioRight="213" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d5e602">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
@@ -247,8 +148,8 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.21944036" ratioLeft="298" ratioRight="1060" relationship="2" relative="org.eclipse.ui.internal.ViewStack@fc8305"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1fdf31c" ratio="0.7198113" ratioLeft="763" ratioRight="297" relationship="2" relative="org.eclipse.ui.editorss">
+<info part="org.eclipse.ui.editorss" ratio="0.21944036" ratioLeft="298" ratioRight="1060" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d5e602"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1ef9da2" ratio="0.7198113" ratioLeft="763" ratioRight="297" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -272,94 +173,80 @@
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
 <hide_menu_item_id id="org.coocox.builder.ui.newFolder"/>
-<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
-<hide_menu_item_id id="org.eclipse.ui.file.save"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
-<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
-<hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openFile"/>
+<hide_menu_item_id id="org.eclipse.ui.file.save"/>
 <hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
 <hide_menu_item_id id="org.coocox.builder.rcp.projectMenu"/>
 <hide_menu_item_id id="org.coocox.builder.rcp.flashMenu"/>
-<hide_menu_item_id id="org.coocox.builder.ui.debug"/>
 <hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
-<hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
-<hide_menu_item_id id="org.coocox.builder.ui.build"/>
-<hide_menu_item_id id="org.coocox.welcome.ui.action.welcome"/>
 <hide_menu_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.actions.TargetManageAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.debug"/>
+<hide_menu_item_id id="org.coocox.builder.ui.build"/>
+<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.newProject"/>
-<hide_toolbar_item_id id="org.coocox.welcome.ui.action.repository"/>
-<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.newFile"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
-<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
-<view id="org.coocox.builder.ui.views.ProjectView"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.TargetManageAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.coocox.codebugger.trace.ui.traceview"/>
 <view id="org.eclipse.debug.ui.VariableView"/>
-<fastViewBars>&#x0A;<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@1a08ab" orientation="256" selectedTabId="org.eclipse.debug.ui.VariableView" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.debug.ui.VariableView:PIN_CLONE_VIEW_1" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-</fastViewBars>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
+<fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@319d26">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4c318b" ratio="0.7488076" ratioLeft="471" ratioRight="158" relationship="4" relative="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@319d26">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@13f8af8" ratio="0.48402557" ratioLeft="303" ratioRight="323" relationship="4" relative="org.eclipse.ui.internal.ViewStack@319d26">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1c755d9" ratio="0.49962434" ratioLeft="665" ratioRight="666" relationship="2" relative="org.eclipse.ui.internal.ViewStack@4c318b">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
-</presentation>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@66a893" ratio="0.68370605" ratioLeft="428" ratioRight="198" relationship="4" relative="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder appearance="2" expanded="0">&#x0A;<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a08ab" ratio="0.39630997" ratioLeft="537" ratioRight="818" relationship="2" relative="org.eclipse.ui.internal.ViewStack@66a893">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.debug.ui.VariableView:PIN_CLONE_VIEW_1" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
-</folder>
-</info>
-<info folder="true" part="stickyFolderRight" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@27a40" ratio="0.69952303" ratioLeft="440" ratioRight="189" relationship="4" relative="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@142bb43" ratio="0.5" ratioLeft="679" ratioRight="679" relationship="2" relative="org.eclipse.ui.internal.ViewStack@27a40">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1e2d304" ratio="0.5" ratioLeft="679" ratioRight="679" relationship="2" relative="org.eclipse.ui.internal.ViewStack@13f8af8">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@7356ef" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@506731">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@8bd495" ratio="0.7496318" ratioLeft="1018" ratioRight="340" relationship="2" relative="org.eclipse.ui.internal.ViewStack@319d26">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.22509225" ratioLeft="305" ratioRight="1050" relationship="2" relative="org.eclipse.ui.internal.ViewStack@506731"/>
+<info part="org.eclipse.ui.editorss" ratio="0.29960707" ratioLeft="305" ratioRight="713" relationship="2" relative="org.eclipse.ui.internal.ViewStack@319d26"/>
 </mainWindow>
 </layout>
 </perspective>
@@ -367,166 +254,164 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/DMA.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/stepperMotor.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Config.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Config.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/DMA.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Motor.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/PCB Laser Etcher/Startup/startup_stm32f103xb.s"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Timer.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/DMA_setting.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/DMA_setting.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Timer_setting.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/PCB Laser Etcher/Startup/startup_stm32f103xb.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/PCB Laser Etcher/Startup/startup_stm32f103xb.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Motor.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/PCB Laser Etcher/Timer.c"/>
 </editors>
-<item historyLabel="DMA.h" index="5">
-<position info="not_deleted" x="755" y="10"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="DMA.c" index="0">
-<position info="not_deleted" x="1414" y="49"/>
-</item>
-<item historyLabel="Timer.c" index="6">
-<position info="not_deleted" x="942" y="0"/>
-</item>
-<item historyLabel="Timer.c" index="6">
-<position info="not_deleted" x="843" y="0"/>
-</item>
-<item historyLabel="DMA.c" index="0">
-<position info="not_deleted" x="632" y="0"/>
-</item>
-<item historyLabel="DMA.h" index="5">
-<position info="not_deleted" x="703" y="85"/>
-</item>
-<item historyLabel="DMA_setting.h" index="7">
-<position info="not_deleted" x="101" y="0"/>
-</item>
-<item historyLabel="DMA_setting.h" index="7">
-<position info="not_deleted" x="267" y="0"/>
-</item>
-<item historyLabel="DMA_setting.c" index="8">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="DMA_setting.h" index="7">
-<position info="not_deleted" x="267" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="DMA_setting.c" index="8">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="DMA_setting.h" index="7">
-<position info="not_deleted" x="267" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="stepperMotor.c" index="1">
-<position info="not_deleted" x="387" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="1081" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="798" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="DMA.c" index="0">
-<position info="not_deleted" x="833" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="798" y="0"/>
-</item>
-<item historyLabel="DMA.c" index="0">
-<position info="not_deleted" x="833" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="798" y="0"/>
-</item>
-<item historyLabel="DMA.c" index="0">
-<position info="not_deleted" x="833" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="1564" y="3"/>
-</item>
-<item historyLabel="Config.c" index="3">
+<item historyLabel="startup_stm32f103xb.s" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="485" y="3"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="Config.c" index="3">
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2137" y="0"/>
+</item>
+<item historyLabel="startup_stm32f103xb.s" index="2">
+<position info="not_deleted" x="3694" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1831" y="0"/>
+</item>
+<item historyLabel="Timer.c" index="3">
+<position info="not_deleted" x="956" y="0"/>
+</item>
+<item historyLabel="Motor.c" index="1">
+<position info="not_deleted" x="1650" y="36"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1797" y="0"/>
+</item>
+<item historyLabel="startup_stm32f103xb.s" index="2">
+<position info="not_deleted" x="3694" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="startup_stm32f103xb.s" index="2">
+<position info="not_deleted" x="3694" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="startup_stm32f103xb.s" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="1032" y="8"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="Config.c" index="3">
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1218" y="0"/>
+</item>
+<item historyLabel="startup_stm32f103xb.s" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="485" y="3"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="3017" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1157" y="0"/>
 </item>
-<item historyLabel="Config.c" index="3">
+<item historyLabel="startup_stm32f103xb.s" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="3017" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="765" y="0"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="586" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1928" y="0"/>
 </item>
-<item historyLabel="Config.c" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Motor.c" index="6">
+<position info="not_deleted" x="1650" y="36"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="586" y="0"/>
+<item historyLabel="Timer.c" index="7">
+<position info="not_deleted" x="1484" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="2735" y="5"/>
+<item historyLabel="Motor.c" index="6">
+<position info="not_deleted" x="4244" y="25"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="586" y="0"/>
+<item historyLabel="Timer.c" index="7">
+<position info="not_deleted" x="1484" y="0"/>
 </item>
-<item historyLabel="Config.c" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Motor.c" index="6">
+<position info="not_deleted" x="1470" y="0"/>
 </item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="586" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1466" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="2735" y="5"/>
-</item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="544" y="0"/>
-</item>
-<item historyLabel="Config.c" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="544" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="2870" y="9"/>
-</item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="567" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="2661" y="10"/>
-</item>
-<item historyLabel="Config.h" index="4">
-<position info="not_deleted" x="567" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="2661" y="10"/>
-</item>
-<item historyLabel="Timer_setting.h" index="9">
-<position info="not_deleted" x="377" y="11"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="3633" y="0"/>
-</item>
-<item historyLabel="Timer_setting.h" index="9">
-<position info="not_deleted" x="372" y="63"/>
-</item>
-<item active="true" historyLabel="stepperMotor.c" index="1">
-<position info="not_deleted" x="387" y="0"/>
+<item active="true" historyLabel="Motor.c" index="6">
+<position info="not_deleted" x="1470" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -535,29 +420,35 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer_setting.h" tooltip="PCB Laser Etcher/Timer_setting.h">
-<persistable path="/PCB Laser Etcher/Timer_setting.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.h" tooltip="PCB Laser Etcher/Motor.h">
-<persistable path="/PCB Laser Etcher/Motor.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.c" tooltip="PCB Laser Etcher/Linklist.c">
-<persistable path="/PCB Laser Etcher/Linklist.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DMA.h" tooltip="PCB Laser Etcher/DMA.h">
-<persistable path="/PCB Laser Etcher/DMA.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Config.h" tooltip="PCB Laser Etcher/Config.h">
-<persistable path="/PCB Laser Etcher/Config.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Config.c" tooltip="PCB Laser Etcher/Config.c">
-<persistable path="/PCB Laser Etcher/Config.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f103xb.s" tooltip="PCB Laser Etcher/Startup/startup_stm32f103xb.s">
 <persistable path="/PCB Laser Etcher/Startup/startup_stm32f103xb.s"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer.c" tooltip="PCB Laser Etcher/Timer.c">
+<persistable path="/PCB Laser Etcher/Timer.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.c" tooltip="PCB Laser Etcher/Motor.c">
+<persistable path="/PCB Laser Etcher/Motor.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="PCB Laser Etcher/main.c">
 <persistable path="/PCB Laser Etcher/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer_setting.c" tooltip="PCB Laser Etcher/Timer_setting.c">
+<persistable path="/PCB Laser Etcher/Timer_setting.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_tim.h" tooltip="PCB Laser Etcher/Driver/stm32f10x_tim.h">
+<persistable path="/PCB Laser Etcher/Driver/stm32f10x_tim.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_tim.c" tooltip="PCB Laser Etcher/Driver/stm32f10x_tim.c">
+<persistable path="/PCB Laser Etcher/Driver/stm32f10x_tim.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="RelativeTimeLinkList.c" tooltip="PCB Laser Etcher/RelativeTimeLinkList.c">
+<persistable path="/PCB Laser Etcher/RelativeTimeLinkList.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer.h" tooltip="PCB Laser Etcher/Timer.h">
+<persistable path="/PCB Laser Etcher/Timer.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Motor.h" tooltip="PCB Laser Etcher/Motor.h">
+<persistable path="/PCB Laser Etcher/Motor.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.h" tooltip="PCB Laser Etcher/Linklist.h">
 <persistable path="/PCB Laser Etcher/Linklist.h"/>
@@ -568,17 +459,11 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DMA.c" tooltip="PCB Laser Etcher/DMA.c">
 <persistable path="/PCB Laser Etcher/DMA.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_tim.c" tooltip="PCB Laser Etcher/Driver/stm32f10x_tim.c">
-<persistable path="/PCB Laser Etcher/Driver/stm32f10x_tim.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.c" tooltip="PCB Laser Etcher/Linklist.c">
+<persistable path="/PCB Laser Etcher/Linklist.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer_setting.c" tooltip="PCB Laser Etcher/Timer_setting.c">
-<persistable path="/PCB Laser Etcher/Timer_setting.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="SPI_setting.c" tooltip="PCB Laser Etcher/SPI_setting.c">
-<persistable path="/PCB Laser Etcher/SPI_setting.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Timer.h" tooltip="PCB Laser Etcher/Timer.h">
-<persistable path="/PCB Laser Etcher/Timer.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Linklist.c" tooltip="PCB Laser Etcher/Linklist.c">
+<persistable path="/PCB Laser Etcher/Linklist.c"/>
 </file>
 </mruList>
 </workbench>

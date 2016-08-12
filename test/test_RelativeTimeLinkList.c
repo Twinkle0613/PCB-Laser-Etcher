@@ -736,6 +736,10 @@ void test_updateActionTime_initialy_the_actionTime_of_motor_is_0_that_change_to_
   updateActionTime(motor1,20);
   TEST_ASSERT_EQUAL(20,motor1->actionTime);
 }
+
+//*******************timerQueue*************************
+
+//  Condition: (period > timeInterval) 
 /*
                                                                  rate = 14
                                                          |------------------------|       
@@ -753,6 +757,7 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
     uint16_t arr[] = {10,5,7};
+    
     _updateBaseTime(root,10);
     updateCurTime(root,20);
     timerQueue(motor1,10);
@@ -768,11 +773,22 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
     _updateBaseTime(root,100);
     updateCurTime(root,108);
     timerQueue(motor3,14);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
     TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
-    TEST_ASSERT_EQUAL_PTR(7,motor3->actionTime);
+    
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
+    TEST_ASSERT_EQUAL(7,motor3->actionTime);
+    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
 }
-/*
+
+
+
+
+/* Condition: (period < timeInterval) 
                                                            rate = 8
                                                          |----------|       
           0          10      15                 0               10        15          
@@ -788,27 +804,38 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor1 = createLinkedElement(0);
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
-     uint16_t arr[] = {10,3,2};
+    uint16_t arr[] = {10,3,2};
+     
     _updateBaseTime(root,10);
     updateCurTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
-
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    
     _updateBaseTime(root,100);
     updateCurTime(root,105);
     timerQueue(motor2,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
-
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
+    
     _updateBaseTime(root,100);
     updateCurTime(root,105);
     timerQueue(motor3,8);
-    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
-
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor2);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(3,motor3->actionTime);
+    TEST_ASSERT_EQUAL(2,motor2->actionTime);
+    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
   
 }
 
-/*
+/* Condition: (period < timeInterval) 
                                                        rate = 3
                                                           |---|       
           0          10      15                 0               10        15          
@@ -825,6 +852,7 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
      uint16_t arr[] = {8,2,5};
+     
     _updateBaseTime(root,10);
     updateCurTime(root,20);
     timerQueue(motor1,10);
@@ -838,15 +866,57 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
     _updateBaseTime(root,100);
     updateCurTime(root,105);
     timerQueue(motor3,3);
-    TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    
+    TEST_ASSERT_EQUAL(8,motor3->actionTime);
+    TEST_ASSERT_EQUAL(2,motor1->actionTime);
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor1);
     TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor2);
-    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
-  
 }
 
-/*
+
+/* Condition: (period == timeInterval) 
+                                                           rate = 5
+                                                          |------|       
+          0              10                     0               10       
+          |---------------|                     |---------------|
+                                     =>         <---5--->        
+                     
+          Head-->10                            Head-->10-->0-->NULL
+*/
+
+void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0(void){
+    printf("No.26 - timerQueue\n");
+    root = createLinkedList();
+    ListElement *motor1 = createLinkedElement(0);
+    ListElement *motor2 = createLinkedElement(0);
+    ListElement *motor3 = createLinkedElement(0);
+    uint16_t arr[] = {10,0,5};
+     
+    _updateBaseTime(root,10);
+    updateCurTime(root,20);
+    timerQueue(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    _updateBaseTime(root,100);
+    updateCurTime(root,105);
+    timerQueue(motor2,5);
+    
+
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(0,motor2->actionTime);
+
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+    
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+}
+
+/* Condition: (period > timeInterval) 
                                                            rate = 10
                                                           |---------------|       
           0          10      15                 0               10        15          
@@ -857,12 +927,12 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
 
 */
 void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5(void){
-    printf("No.26 - timerQueue\n");
+    printf("No.26.1 - timerQueue\n");
     root = createLinkedList();
     ListElement *motor1 = createLinkedElement(0);
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
-     uint16_t arr[] = {10,0,5};
+    uint16_t arr[] = {10,0,5};
      
     _updateBaseTime(root,10);
     updateCurTime(root,20);
@@ -877,12 +947,19 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     _updateBaseTime(root,100);
     updateCurTime(root,105);
     timerQueue(motor3,10);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
     TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
 
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(0,motor2->actionTime);
+    TEST_ASSERT_EQUAL(5,motor3->actionTime);
+    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
-  
 }
-/*
+
+/* Condition: (period == timeInterval) 
                                                            rate = 7
                                                           |----------|       
           0          10      15                 0          10        15          
@@ -912,18 +989,24 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     _updateBaseTime(root,100);
     updateCurTime(root,106);
     timerQueue(motor3,9);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
     TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
 
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
+    TEST_ASSERT_EQUAL(0,motor3->actionTime);
+    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
-  
 }
 
-/*
-                                                           rate = 7
-                                                          |----------|       
+/* Condition: (period < timeInterval) 
+                                                           rate = 5
+                                                       |-----|       
           0          10      15                 0          10        15          
           |----------|-------|                  |-----------|--------|
-                     <---5--->       =>         <----5--->           
+                     <---5--->       =>         <--5-->           
                      
           Head-->10-->5-->NULL               Head-->10-->0-->5-->NULL
 
@@ -948,19 +1031,26 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     _updateBaseTime(root,100);
     updateCurTime(root,105);
     timerQueue(motor3,5);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor2);
+    
+    TEST_ASSERT_EQUAL(0,motor3->actionTime);
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
 
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
   
 }
 
 
-/*
-                                                           rate = 7
-                                                          |----------|       
+/* Condition: (period < timeInterval) 
+                                                      rate = 5
+                                                       |----|       
           0          10      15                 0          10        15          
           |----------|-------|                  |-----------|--------|
-                     <---5--->       =>         <----5--->           
+                     <---5--->       =>         <--5-->           
                      
           Head-->10-->0-->5-->NULL               Head-->10-->0-->0-->5-->NULL
 
@@ -989,20 +1079,62 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     updateCurTime(root,105);
     timerQueue(motor4,5);
     
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(0,motor3->actionTime);
+    TEST_ASSERT_EQUAL(0,motor4->actionTime);
+    TEST_ASSERT_EQUAL(5,motor2->actionTime);
+    
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
-    TEST_ASSERT_EQUAL_PTR(root->head->next->next->next,motor2);
-    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor4);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor4);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next->next,motor2);
+    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
   
 }
 
-/*
+/* Condition: (period > timeInterval) 
+                                                                                                           
+                                               |----------|       
+          0                7000              0          5010        1990          
+          |-----------------|                |-----------|--------|
+                                    =>                    
+                     
+          Head-->7000                      Head-->5010->1990
 
-    head                                head     
-     ||                                  ||
-     V                                   V
-    10      => TIMx_IRQHandler()  =>    NULL
+*/
+
+void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5000_1990(void){
+    printf("No.29.1 - timerQueue\n");
+    root = createLinkedList();
+    ListElement *motor1 = createLinkedElement(0);
+    ListElement *motor2 = createLinkedElement(0);
+
+    uint16_t arr[] = {5010,1990};
+    _updateBaseTime(root,0);
+    updateCurTime(root,1);
+    timerQueue(motor1,7000);
+  
+    _updateBaseTime(root,100);
+    updateCurTime(root,110);
+    timerQueue(motor2,5000);
+
+
+    
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor2);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+  
+}
+
+//***************dequeue****************
+/*
+  
+    head                        head     
+     ||                          ||
+     V                           V
+    10      => dequeue()  =>    NULL
 
 */
 void test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remove_first_timerElement(void){
@@ -1023,11 +1155,10 @@ void test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remo
 
 /*
 
-    head                                head     
-     ||                                  ||
-     V                                   V
-    10-->5     => TIMx_IRQHandler()  =>  5
-
+    head                        head     
+     ||                          ||
+     V                           V
+    10-->5     => dequeue()  =>  5
 */
 void test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remove_first_timerElement(void){
     printf("No.31 - dequeue\n");
@@ -1051,10 +1182,10 @@ void test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remo
 
 /*
 
-    head                                        head     
-     ||                                          ||
-     V                                           V
-    10-->5-->7     => TIMx_IRQHandler()  =>      5-->7
+    head                               head     
+     ||                                 ||
+     V                                  V
+    10-->5-->7     =>dequeue() =>      5-->7
 
 */
 
@@ -1083,6 +1214,9 @@ void test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_re
     TEST_ASSERT_EQUAL_PTR(elem1,temp);
 }
 
+
+//************updateHead****************
+
 void test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_will_point_to_null(void){
     printf("No.33 - updateHead\n");
     root = createLinkedList();
@@ -1110,4 +1244,35 @@ void test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_wi
     
     updateHead(root);
     TEST_ASSERT_EQUAL_PTR(elem2,root->head);
+}
+
+//************insertTimeElementIntoLeft******************
+void test_insertTimeElementIntoBack_(void){
+    root = createLinkedList();
+    ListElement *elem1 = createLinkedElement(0);
+    ListElement *elem2 = createLinkedElement(0);
+    ListElement *elem3 = createLinkedElement(0);
+    
+   addList(root,elem1);
+   addList(root,elem2);
+   insertTimeElementIntoLeft(elem2,elem3);
+   TEST_ASSERT_EQUAL_PTR(root->head,elem1);
+   TEST_ASSERT_EQUAL_PTR(root->head->next,elem3);
+   TEST_ASSERT_EQUAL_PTR(root->head->next->next,elem2);
+}
+
+//************insertTimeElementIntoRight******************
+
+void test_insertTimeElementIntoRight_(void){
+    root = createLinkedList();
+    ListElement *elem1 = createLinkedElement(0);
+    ListElement *elem2 = createLinkedElement(0);
+    ListElement *elem3 = createLinkedElement(0);
+    
+   addList(root,elem1);
+   addList(root,elem2);
+   insertTimeElementIntoRight(elem2,elem3);
+   TEST_ASSERT_EQUAL_PTR(root->head,elem1);
+   TEST_ASSERT_EQUAL_PTR(root->head->next,elem2);
+   TEST_ASSERT_EQUAL_PTR(root->head->next->next,elem3);
 }

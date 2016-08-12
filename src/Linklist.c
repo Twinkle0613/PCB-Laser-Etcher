@@ -46,7 +46,7 @@ void addList(  Linkedlist *newList, ListElement *newElement){
 void elementDelete(ListElement* deleteNode){
    deleteNode->prev->next = deleteNode->next;
    deleteNode->next->prev = deleteNode->prev;
-  // deleteNode->next = NULL;
+   deleteNode->next = NULL;
    deleteNode->prev = NULL;
 }
 

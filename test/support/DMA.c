@@ -19,10 +19,10 @@
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
 
-Linkedlist *txRoot;
+Linkedlist *motorRoot;
 
 void dmaQueue(ListElement *txElement){
-    addList(txRoot,txElement);
+    addList(motorRoot,txElement);
 }
 
 // uint8_t motorDriveBuffer[3];

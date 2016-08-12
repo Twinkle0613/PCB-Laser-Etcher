@@ -67,46 +67,58 @@
   :line: 731
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_list_10_5_7
-  :line: 749
+  :line: 753
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_3_2
-  :line: 785
+  :line: 801
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8_2_5
-  :line: 821
+  :line: 848
+  :message: ''
+- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0
+  :line: 892
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5
-  :line: 859
+  :line: 929
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_5_0
-  :line: 895
+  :line: 972
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_
-  :line: 931
+  :line: 1014
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_
-  :line: 968
+  :line: 1058
+  :message: ''
+- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5000_1990
+  :line: 1107
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1008
+  :line: 1140
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1032
+  :line: 1163
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1061
+  :line: 1192
   :message: ''
 - :test: test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_will_point_to_null
-  :line: 1086
+  :line: 1220
   :message: ''
 - :test: test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_will_point_to_next_element
-  :line: 1098
+  :line: 1232
+  :message: ''
+- :test: test_insertTimeElementIntoBack_
+  :line: 1250
+  :message: ''
+- :test: test_insertTimeElementIntoRight_
+  :line: 1266
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 33
-  :passed: 33
+  :total: 37
+  :passed: 37
   :failed: 0
   :ignored: 0
 :stdout:
@@ -135,9 +147,11 @@
 - No.24 - timerQueue
 - No.25 - timerQueue
 - No.26 - timerQueue
+- No.26.1 - timerQueue
 - No.27 - timerQueue
 - No.28 - timerQueue
 - No.29 - timerQueue
+- No.29.1 - timerQueue
 - No.30 - dequeue
 - No.31 - dequeue
 - No.32 - dequeue

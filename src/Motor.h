@@ -33,7 +33,7 @@ typedef struct {
 typedef struct{
   int slot;
   int counter;
-  ListElement txElement;
+  ListElement motorElement;
   uint8_t stepHighCommand;
   uint8_t stepLowCommand;
 }MotorConfigInfo;
@@ -62,20 +62,15 @@ typedef struct{
   uint8_t microstep;
   uint16_t timeRecord1;
   uint16_t timeRecord2;
+  uint16_t timeRecord3;
   MotorConfigInfo* motorConfiguration;
 }MotorInfo;   
 
 
 
-void motorController(MotorInfo* whichMotor);
-uint8_t getCommand(MotorConfigInfo* motorConfiguration);
-void motorStep(MotorConfigInfo* motorConfiguration);
-uint8_t getMotorSetUp(MotorInfo* whichMotor);
-void setUpCommand(MotorInfo* whichMotor);
-void motorSet(MotorInfo* whichMotor, uint8_t direation, uint8_t microstep);
 
 /*
-  The macros as shown at bottom are used to configure Motor Drive.
+  The macros as shown at bottom are used to configure motorSet(...) function.
 */
 #define Motor_Step_High  ((uint8_t)0x40)
 #define Motor_Step_Low   ((uint8_t)0xBF)
@@ -105,16 +100,16 @@ void motorSet(MotorInfo* whichMotor, uint8_t direation, uint8_t microstep);
 #define stepHigh 0x40
 #define stepLow 0xBF
 #define updateSlotCommand(x) (motorDriveBuffer[x] = getCommand(motorConfiguration))
-#define pointToHeadOfLinkedList(x) (x = txRoot->head)
-#define isEndOfQueue (temp == txRoot->head) 
+#define pointToHeadOfLinkedList(x) (x = motorRoot->head)
+#define isEndOfQueue (temp == motorRoot->head) 
 #define pointToNext(x) (x = x->next)
 
 #define hasCompleteUpdate(x) (x->counter >= 2)
-#define isDmaQueueEmpty (txRoot->head == NULL)
+#define isDmaQueueEmpty (motorRoot->head == NULL)
 #define resetCount(x) (x->counter = 0)
 #define readMotorInfo(x) ((MotorInfo*)x)
 #define resetCommandCounter(x) (x->counter = 0)
-#define updateMotorConfigInfo(x) (x = readMotorConfigInfo(txRoot->head->args))
+#define updateMotorConfigInfo(x) (x = extractMotorConfigInfo(motorRoot->head->args))
 //motor
 #define allowThirdMotorUpdate (motorConfiguration->slot == THIRD_MOTOR)
 #define allowSecondMotorUpdate (motorConfiguration->slot == SECOND_MOTOR)
@@ -124,25 +119,33 @@ void motorSet(MotorInfo* whichMotor, uint8_t direation, uint8_t microstep);
 #define transmittedStatus getDataNumber(DMA_Channel)
 #define motorPosition motorConfiguration->slot
 #define isDMAstarted(x) ( (x->CCR & 0x01) == 1)
-// #define dmaQueue(x) (addList(txRoot,x))
+#define motorMovementHandler DMA1_Channel3_IRQHandler
+
+
+void motorController(MotorInfo* whichMotor);
+uint8_t getCommand(MotorConfigInfo* motorConfiguration);
+void motorStep(MotorConfigInfo* motorConfiguration);
+uint8_t getMotorSetUp(MotorInfo* whichMotor);
+void setUpCommand(MotorInfo* whichMotor);
+void motorSet(MotorInfo* whichMotor, uint8_t direation, uint8_t microstep);
+
+
 extern uint8_t motorDriveBuffer[];
-extern uint8_t txBuffer[];
-extern uint8_t txStorage[];
-extern Linkedlist *txRoot;
+extern Linkedlist *motorRoot;
 
 uint8_t getCommand(MotorConfigInfo* motorConfiguration);
-MotorConfigInfo* readMotorConfigInfo(void *args);
+MotorConfigInfo* extractMotorConfigInfo(void *args);
 void copyWholeInform(uint8_t buffer[],uint8_t storetage[]);
 MotorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress),int slot);
-// void dmaQueue(struct ListElement *txElement);
+
 
 void cleanUpListedList(void);
 void updateMotorDriveBuffer(void);
-//stepperMotor
+
 MotorConfigInfo* motorConfigInit(void* motorAddress, void (*funcAddress) ,int slot);
 uint8_t getMotorSetting(MotorInfo* whichMotor);
-void outputData();
-//DMA
+void triggerOutputData();
+
 MotorInfo* motorInit(void (*funcAddress),int period,int identity);
 void setArgs(MotorInfo* whichMotor);
 void setPeriod(MotorInfo* whichMotor,int period);

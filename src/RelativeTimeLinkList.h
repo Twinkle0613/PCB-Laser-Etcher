@@ -29,15 +29,17 @@
 } 
 
 extern Linkedlist *root;
-void findTheNodeNearPeriodForBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
+void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
 void updateHead(Linkedlist *root);
 ListElement* dequeue(Linkedlist *root);
 void updateCurTime(Linkedlist *newList,uint32_t curTime);
 void _updateBaseTime(Linkedlist *newList,uint32_t baseTime);
 void updateActionTime(ListElement *timerElement, uint32_t newActTime);
-void insertTimeElement(ListElement *recordElement, ListElement *timerElement);
+void insertTimeElementIntoLeft(ListElement *recordElement, ListElement *timerElement);
 void timerQueue(ListElement *timerElement, uint32_t period);
 void timerListAdd(Linkedlist *newList, uint32_t period);
+uint32_t getWholeActionTime(Linkedlist *newList);
+void insertTimeElementIntoRight(ListElement *recordElement, ListElement *timerElement);
 
 
 
