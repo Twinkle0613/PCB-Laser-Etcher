@@ -18,7 +18,7 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
-
+#include "MockFunction.h"
 Linkedlist *motorRoot;
 
 void dmaQueue(ListElement *motorElement){

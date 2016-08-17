@@ -60,7 +60,7 @@ int main(void)
   //motor1->timerElement.callBack(motor1);
   //motor2->timerElement.callBack(motor2);
   //motor3->timerElement.callBack(motor3);
-	timerSetExpiry(20000);
+	timerSetExpiry(10000);
     startTimer(TIM2);
 	while(1)
     {

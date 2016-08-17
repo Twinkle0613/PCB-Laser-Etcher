@@ -27,13 +27,31 @@
 void resetMotorDriveBuffer(void);
 MotorInfo motor; 
 
+uint32_t* tickPointer = NULL;
+void setTickSequence(uint32_t tickTable[]){
+  tickPointer = tickTable;  
+}
+
+uint32_t fake_getFakeTick(){
+  uint32_t tick = *tickPointer; 
+  tickPointer++;
+  return tick;
+}
+
 
 
 void setUp(void)
 {
+  getFakeTick_StubWithCallback(fake_getFakeTick);
   HostDma1_Channel3 = malloc((sizeof(DMA_Channel_TypeDef)));
   HostDma1 = malloc((sizeof(DMA_TypeDef)));
   HostGpioA= malloc((sizeof(GPIO_TypeDef)));
+  HostTim2= malloc((sizeof(TIM_TypeDef)));
+  root = createLinkedList();
+  motorRoot = createLinkedList();
+  tickRecord1 = 0;
+  tickRecord2 = 0;
+  resetMotorDriveBuffer();
 }
 
 void tearDown(void)
@@ -41,10 +59,13 @@ void tearDown(void)
   free(HostDma1_Channel3);
   free(HostDma1);
   free(HostGpioA);
+  free(HostTim2);
   HostDma1_Channel3 = NULL;
   HostDma1 = NULL;
   HostGpioA = NULL;
   resetMotorDriveBuffer();
+  motorRoot = NULL;
+  root = NULL;
 }
 
 
@@ -1562,4 +1583,79 @@ void test_motorMovementHandler_motor1Element_and_motor2Element_that_updated_comp
    TEST_ASSERT_EQUAL_PTR(&motor0Config->motorElement,motorRoot->head->next);
 }
 
+//************getFakeTick****************//
+void test_getFakeTick(void){
+  
+  uint32_t stickTable[] = {1000,2000,3000};
+  setTickSequence(stickTable);
+  TEST_ASSERT_EQUAL(1000,getFakeTick());
+  TEST_ASSERT_EQUAL(2000,getFakeTick());
+  TEST_ASSERT_EQUAL(3000,getFakeTick());
+  
+}
+/*
+     Head                                   Head                           Head
+      V                                      V                              V
+   -------     -------  TIM2_IRQHandler    -------  motorMovementHandler   -------     -------
+  | 2000 | -> | 4000 |      --->          | 4000 |      --->              | 2000 | -> | 2000 | 
+  -------     -------                     -------                         -------     -------
 
+                                          motorHead                      motorHead
+                                             V                              V               
+                                           --------- motorMovementHandler   V
+                                          | motor0 |     --->             NULL
+                                          ---------                       
+*/
+void test_motorMovementHandler_233(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   MotorInfo* motor3 = motorInit(motorController,1000,3);
+   uint32_t stickTable[] = {1000,2000,3000,4000};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   initialStepCommand(motor0->motorConfiguration);
+   initialStepCommand(motor1->motorConfiguration);
+   initialStepCommand(motor2->motorConfiguration);
+   initialStepCommand(motor3->motorConfiguration);
+   
+   timerDelay(&motor0->timerElement,2000);
+   timerDelay(&motor1->timerElement,6000);
+   TEST_ASSERT_EQUAL(2000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(4000,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   
+   TIM2_IRQHandler();
+   
+   TEST_ASSERT_EQUAL(3000,tickRecord1);
+   TEST_ASSERT_EQUAL(0,tickRecord2);
+   TEST_ASSERT_EQUAL(4000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0x0001,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(4000,root->head->actionTime);
+   //motorController call motorStep
+   TEST_ASSERT_EQUAL_PTR(&motor0->motorConfiguration->motorElement,motorRoot->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->motorConfiguration->motorElement,motorRoot->head->next);
+   TEST_ASSERT_EQUAL(1,motor0->motorConfiguration->counter);
+   TEST_ASSERT_EQUAL(0,motor1->motorConfiguration->counter);
+   TEST_ASSERT_EQUAL(0,motor2->motorConfiguration->counter);
+   TEST_ASSERT_EQUAL(motor0->motorConfiguration->stepLowCommand,motorDriveBuffer[0]);
+   TEST_ASSERT_EQUAL(0,motorDriveBuffer[1]);
+   TEST_ASSERT_EQUAL(0,motorDriveBuffer[2]);
+   TEST_ASSERT_EQUAL(0x01,DMA1_Channel3->CCR&0x01);
+   
+   motorMovementHandler();
+   TEST_ASSERT_EQUAL(3,getDataNumber(DMA1_Channel3));
+   TEST_ASSERT_EQUAL(1,DMA1_Channel3->CCR&0x01);
+   TEST_ASSERT_EQUAL(0,DMA_GetITStatus(DMA1_IT_TC1));
+   TEST_ASSERT_EQUAL(2,motor0->motorConfiguration->counter);
+   TEST_ASSERT_EQUAL(0,motor1->motorConfiguration->counter);
+   TEST_ASSERT_EQUAL(0,motor2->motorConfiguration->counter);
+   
+   TEST_ASSERT_EQUAL(3000,tickRecord1);
+   TEST_ASSERT_EQUAL(4000,tickRecord2);
+   
+}

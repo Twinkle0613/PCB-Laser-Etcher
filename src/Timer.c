@@ -14,7 +14,7 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
-
+#include "MockFunction.h"
 
 #define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
 #define nextActionTime ( getTime(TIM2) + root->head->actionTime)
@@ -39,47 +39,36 @@ void timerDelay(ListElement* timerElement,uint32_t period){
   }else{
    recordCurActTime = root->head->actionTime;
    timerQueue(timerElement,period);
-  	if( root->head->actionTime != recordCurActTime && root->head->actionTime > getTime(TIM2) ){
+  	if( root->head->actionTime != recordCurActTime && root->head->actionTime > getFakeTick() ){
 	  	timerSetExpiry(root->head->actionTime);
     }
   }
+
 }
 
 void timerSetExpiry(uint16_t period){
    TIM_SetAutoreload(TIM2,period);
 }
 
-#include "Motor.h"
+//#include "Motor.h"
 void TIM2_IRQHandler(){
- 
+
   ListElement *temp1 = root->head;
   stopTimer(TIM2);
   clearUpdateFlag(TIM2);
-  if( temp1->next != root->head){
-    // while( temp1->next->actionTime == 0){
-     // temp1 = temp1->next; 
-    // }
-     
-      timerSetExpiry(root->head->next->actionTime);
+  if( root->head->next != root->head){
+     for(temp1 = root->head->next; ((temp1->next != root->head) && temp1->actionTime == 0) ; temp1 = temp1->next);      
+     if(temp1->actionTime != 0){
+      timerSetExpiry(temp1->actionTime); 
       startTimer(TIM2);
-     // }else{
-       
-     // }
-  
-  }
-     
-     
-  
-  
-  
-  ListElement *temp2;
-  
+     }
+  }  
+  ListElement *temp2;  
   do{
    updateBaseTime;
    temp2 = timerDequeue(root);
    callBackFunction(temp2); 
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
-
 
 }
 
@@ -95,6 +84,33 @@ void TIM2_IRQHandler(){
    	 //stopTimer(TIM2);
    }
    */ 
+ /*
+  *
+  * 	 ITStatus checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
+
+	  uint16_t checkCNT = TIM2->CNT;
+	  uint16_t checkCNT2 = TIM2->CNT;
+	  uint16_t checkARR;
+	  clearUpdateFlag(TIM2);
+	  TIM_SetCounter(TIM2,0); // set CNT to 0
+	  TIM2->ARR = 10000;
+	  checkARR = TIM2->ARR;
+	  TIM_Cmd(TIM2,ENABLE); // Disable Timer2
+	  checkCNT = TIM2->CNT;
+	  while(TIM2->CNT < 9000 ){
+	   checkCNT = TIM2->CNT;
+	   checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
+	  }
+	  checkCNT = TIM2->CNT;
+	  while(TIM2->CNT < 9000 ){
+	   checkCNT = TIM2->CNT;
+	   checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
+	  }
+  *
+  *
+  *
+  *
+  * */
 
 uint32_t getTick(TIM_TypeDef* TIMx){
    return (root->baseTime + (TIMx->CNT&0x0000FFFF) );

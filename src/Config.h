@@ -3,7 +3,8 @@
 
 
 
-#define Motor_Number 3
+#define Motor_Number 4
+#define NumberOfMotor 3
 // DMA configuration
 #define DMA_Channel DMA1_Channel3
 #define RCC_AHBPeriph_DMA RCC_AHBPeriph_DMA1

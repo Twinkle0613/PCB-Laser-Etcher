@@ -20,7 +20,7 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
-
+#include "MockFunction.h"
 
 #define startDMA(x) (DMA_Cmd(x,ENABLE))
 #define stopDMA(x) (DMA_Cmd(x,DISABLE))

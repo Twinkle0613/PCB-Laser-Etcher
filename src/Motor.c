@@ -20,11 +20,12 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
+#include "MockFunction.h"
 /*
   DMA_Channel is a marco that was defined in Config.h. 
 */
 #define interval1 (whichMotor->timeRecord2 + whichMotor->timeRecord3)
-uint8_t motorDriveBuffer[3];
+uint8_t motorDriveBuffer[NumberOfMotor];
 Linkedlist *motorRoot;
 
 /*
@@ -68,7 +69,7 @@ void motorStep(MotorConfigInfo* motorConfiguration){
   
   dmaQueue(&motorConfiguration->motorElement);  //Add the Element into DMA Queue.
   
-  if( DMA_Channel->CNDTR >= Motor_Number - motorConfiguration->slot ){  
+  if( DMA_Channel->CNDTR >= NumberOfMotor - motorConfiguration->slot ){  
     updateSlotCommand(motorConfiguration->slot);  // update the command of slot
   }
   

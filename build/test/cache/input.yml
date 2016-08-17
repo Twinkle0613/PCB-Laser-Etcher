@@ -63,10 +63,10 @@
   :testfail: ".fail"
   :dependencies: ".d"
 :unity:
-  :vendor_path: c:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/vendor/ceedling/vendor
+  :vendor_path: c:/Users/D203C-01/Desktop/PCB-Laser-Etcher/vendor/ceedling/vendor
   :defines: []
 :cmock:
-  :vendor_path: c:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/vendor/ceedling/vendor
+  :vendor_path: c:/Users/D203C-01/Desktop/PCB-Laser-Etcher/vendor/ceedling/vendor
   :defines: []
   :mock_prefix: mock_
   :when_no_prototypes: :warn
@@ -84,7 +84,7 @@
   :verbosity: 3
   :unity_helper: false
 :cexception:
-  :vendor_path: c:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/vendor/ceedling/vendor
+  :vendor_path: c:/Users/D203C-01/Desktop/PCB-Laser-Etcher/vendor/ceedling/vendor
   :defines: []
 :test_runner:
   :includes: []
