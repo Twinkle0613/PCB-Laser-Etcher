@@ -7,6 +7,7 @@
 #include "mock_MockFunction.h"
 
 static const char* CMockString_commandCount = "commandCount";
+static const char* CMockString_getFakeTick = "getFakeTick";
 static const char* CMockString_setComCount = "setComCount";
 
 typedef struct _CMOCK_setComCount_CALL_INSTANCE
@@ -17,12 +18,25 @@ typedef struct _CMOCK_setComCount_CALL_INSTANCE
 
 } CMOCK_setComCount_CALL_INSTANCE;
 
+typedef struct _CMOCK_getFakeTick_CALL_INSTANCE
+{
+  UNITY_LINE_TYPE LineNumber;
+  uint32_t ReturnVal;
+  int CallOrder;
+
+} CMOCK_getFakeTick_CALL_INSTANCE;
+
 static struct mock_MockFunctionInstance
 {
   int setComCount_IgnoreBool;
   CMOCK_setComCount_CALLBACK setComCount_CallbackFunctionPointer;
   int setComCount_CallbackCalls;
   CMOCK_MEM_INDEX_TYPE setComCount_CallInstance;
+  int getFakeTick_IgnoreBool;
+  uint32_t getFakeTick_FinalReturn;
+  CMOCK_getFakeTick_CALLBACK getFakeTick_CallbackFunctionPointer;
+  int getFakeTick_CallbackCalls;
+  CMOCK_MEM_INDEX_TYPE getFakeTick_CallInstance;
 } Mock;
 
 extern jmp_buf AbortFrame;
@@ -38,6 +52,12 @@ void mock_MockFunction_Verify(void)
   UNITY_TEST_ASSERT(CMOCK_GUTS_NONE == Mock.setComCount_CallInstance, cmock_line, CMockStringCalledLess);
   if (Mock.setComCount_CallbackFunctionPointer != NULL)
     Mock.setComCount_CallInstance = CMOCK_GUTS_NONE;
+  if (Mock.getFakeTick_IgnoreBool)
+    Mock.getFakeTick_CallInstance = CMOCK_GUTS_NONE;
+  UNITY_SET_DETAIL(CMockString_getFakeTick);
+  UNITY_TEST_ASSERT(CMOCK_GUTS_NONE == Mock.getFakeTick_CallInstance, cmock_line, CMockStringCalledLess);
+  if (Mock.getFakeTick_CallbackFunctionPointer != NULL)
+    Mock.getFakeTick_CallInstance = CMOCK_GUTS_NONE;
 }
 
 void mock_MockFunction_Init(void)
@@ -51,6 +71,8 @@ void mock_MockFunction_Destroy(void)
   memset(&Mock, 0, sizeof(Mock));
   Mock.setComCount_CallbackFunctionPointer = NULL;
   Mock.setComCount_CallbackCalls = 0;
+  Mock.getFakeTick_CallbackFunctionPointer = NULL;
+  Mock.getFakeTick_CallbackCalls = 0;
   GlobalExpectCount = 0;
   GlobalVerifyOrder = 0;
 }
@@ -111,5 +133,65 @@ void setComCount_CMockExpect(UNITY_LINE_TYPE cmock_line, int commandCount)
 void setComCount_StubWithCallback(CMOCK_setComCount_CALLBACK Callback)
 {
   Mock.setComCount_CallbackFunctionPointer = Callback;
+}
+
+uint32_t getFakeTick(void)
+{
+  UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
+  UNITY_SET_DETAIL(CMockString_getFakeTick);
+  CMOCK_getFakeTick_CALL_INSTANCE* cmock_call_instance = (CMOCK_getFakeTick_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.getFakeTick_CallInstance);
+  Mock.getFakeTick_CallInstance = CMock_Guts_MemNext(Mock.getFakeTick_CallInstance);
+  if (Mock.getFakeTick_IgnoreBool)
+  {
+    UNITY_CLR_DETAILS();
+    if (cmock_call_instance == NULL)
+      return Mock.getFakeTick_FinalReturn;
+    Mock.getFakeTick_FinalReturn = cmock_call_instance->ReturnVal;
+    return cmock_call_instance->ReturnVal;
+  }
+  if (Mock.getFakeTick_CallbackFunctionPointer != NULL)
+  {
+    return Mock.getFakeTick_CallbackFunctionPointer(Mock.getFakeTick_CallbackCalls++);
+  }
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringCalledMore);
+  cmock_line = cmock_call_instance->LineNumber;
+  if (cmock_call_instance->CallOrder > ++GlobalVerifyOrder)
+    UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
+  if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
+    UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
+  UNITY_CLR_DETAILS();
+  return cmock_call_instance->ReturnVal;
+}
+
+void getFakeTick_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_getFakeTick_CALL_INSTANCE));
+  CMOCK_getFakeTick_CALL_INSTANCE* cmock_call_instance = (CMOCK_getFakeTick_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.getFakeTick_CallInstance = CMock_Guts_MemChain(Mock.getFakeTick_CallInstance, cmock_guts_index);
+  Mock.getFakeTick_IgnoreBool = (int)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  Mock.getFakeTick_IgnoreBool = (int)1;
+}
+
+void getFakeTick_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_getFakeTick_CALL_INSTANCE));
+  CMOCK_getFakeTick_CALL_INSTANCE* cmock_call_instance = (CMOCK_getFakeTick_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.getFakeTick_CallInstance = CMock_Guts_MemChain(Mock.getFakeTick_CallInstance, cmock_guts_index);
+  Mock.getFakeTick_IgnoreBool = (int)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  UNITY_CLR_DETAILS();
+}
+
+void getFakeTick_StubWithCallback(CMOCK_getFakeTick_CALLBACK Callback)
+{
+  Mock.getFakeTick_CallbackFunctionPointer = Callback;
 }
 

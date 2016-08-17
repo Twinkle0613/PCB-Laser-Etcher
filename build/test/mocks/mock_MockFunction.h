@@ -26,5 +26,11 @@ void setComCount_CMockIgnore(void);
 void setComCount_CMockExpect(UNITY_LINE_TYPE cmock_line, int commandCount);
 typedef void (* CMOCK_setComCount_CALLBACK)(int commandCount, int cmock_num_calls);
 void setComCount_StubWithCallback(CMOCK_setComCount_CALLBACK Callback);
+#define getFakeTick_IgnoreAndReturn(cmock_retval) getFakeTick_CMockIgnoreAndReturn(__LINE__, cmock_retval)
+void getFakeTick_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return);
+#define getFakeTick_ExpectAndReturn(cmock_retval) getFakeTick_CMockExpectAndReturn(__LINE__, cmock_retval)
+void getFakeTick_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint32_t cmock_to_return);
+typedef uint32_t (* CMOCK_getFakeTick_CALLBACK)(int cmock_num_calls);
+void getFakeTick_StubWithCallback(CMOCK_getFakeTick_CALLBACK Callback);
 
 #endif

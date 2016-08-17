@@ -21,6 +21,7 @@ void SPI1_DMA1_init(void);
 void TIM_init(void);
 void SPI_init(void);
 Linkedlist *root;
+uint64_t freeRunningCounter;
 void delay(int counter);
 uint8_t motorDriveBuffer[Motor_Number];
 uint8_t txBuffer[Motor_Number];
@@ -56,20 +57,13 @@ int main(void)
   motorSet(motor2,Motor_Clockwise,Motor_Full_step);
 //  motorSet(motor3,Motor_Clockwise,Motor_Full_step);
 
-  motor1->timerElement.callBack(motor1);
-  motor2->timerElement.callBack(motor2);
+  //motor1->timerElement.callBack(motor1);
+  //motor2->timerElement.callBack(motor2);
   //motor3->timerElement.callBack(motor3);
-
-
+	timerSetExpiry(20000);
+    startTimer(TIM2);
 	while(1)
     {
-        checkTimeRecord1 = timeRecord1;
-        checkTimeRecord2 = timeRecord2;
-        checkTimeRecord3 = timeRecord3;
-		timeInterval1 = getInterval(timeRecord1,timeRecord2);
-		checkARR = TIM2->ARR;
-		checkActionTime = root->head->actionTime;
-		checkNextActionTime = root->head->next->actionTime;
 	    time = getTime(TIM2);
     }
 }

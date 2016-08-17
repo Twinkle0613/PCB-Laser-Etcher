@@ -29,7 +29,6 @@ void timerQueue(ListElement *timerElement, uint32_t period){
        wholeActTime = getWholeActionTime(root);
        receiveInstrTime = diffBtwCurTimeAndBaseTime(root);
        timeInterval = wholeActTime - receiveInstrTime;
-
        if( period > timeInterval){   //Condition: (period > timeInterval)       
      
          newActTime = period - timeInterval;

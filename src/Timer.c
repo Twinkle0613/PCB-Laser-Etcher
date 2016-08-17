@@ -15,6 +15,7 @@
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 
+
 #define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
 #define nextActionTime ( getTime(TIM2) + root->head->actionTime)
 #define newActionTime (root->head->actionTime + root->baseTime)
@@ -22,42 +23,67 @@ uint16_t timeRecord1;
 uint16_t timeRecord2;
 uint16_t timeRecord3;
 
-void timerDelay(ListElement* timerElement,uint32_t period){
+uint32_t tickRecord1;
+uint32_t tickRecord2;
 
+void timerDelay(ListElement* timerElement,uint32_t period){
+  uint16_t recordCurActTime;
   updateCurrentTime;
 
   if(isTimerQueueEmpty){
-	stopTimer(TIM2);
-	TIM2->CNT = 0;
-	timerSetExpiry(period);
-	startTimer(TIM2);
-	timerQueue(timerElement,period);
+	 stopTimer(TIM2);
+	 TIM_SetCounter(TIM2,0);
+	 timerSetExpiry(period);
+	 startTimer(TIM2);
+	 timerQueue(timerElement,period);
   }else{
-    uint16_t recordCurActTime = root->head->actionTime;
-	timerQueue(timerElement,period);
-	if( root->head->actionTime != recordCurActTime && root->head->actionTime > getTime(TIM2) ){
-		 timerSetExpiry( root->head->actionTime );
+   recordCurActTime = root->head->actionTime;
+   timerQueue(timerElement,period);
+  	if( root->head->actionTime != recordCurActTime && root->head->actionTime > getTime(TIM2) ){
+	  	timerSetExpiry(root->head->actionTime);
     }
   }
-
-
 }
 
 void timerSetExpiry(uint16_t period){
    TIM_SetAutoreload(TIM2,period);
+}
+
+#include "Motor.h"
+void TIM2_IRQHandler(){
+ 
+  ListElement *temp1 = root->head;
+  stopTimer(TIM2);
+  clearUpdateFlag(TIM2);
+  if( temp1->next != root->head){
+    // while( temp1->next->actionTime == 0){
+     // temp1 = temp1->next; 
+    // }
+     
+      timerSetExpiry(root->head->next->actionTime);
+      startTimer(TIM2);
+     // }else{
+       
+     // }
+  
+  }
+     
+     
+  
+  
+  
+  ListElement *temp2;
+  
+  do{
+   updateBaseTime;
+   temp2 = timerDequeue(root);
+   callBackFunction(temp2); 
+  }while( !isTimerQueueEmpty && currActionTimeIsZero );
+
 
 }
 
-void TIM2_IRQHandler(){
-  clearUpdateFlag(TIM2);
-  ListElement *temp;
-
-  do{
-   updateBaseTime; 
-   temp = timerDequeue(root);
-   callBackFunction(temp); 
-  }while( !isTimerQueueEmpty && currActionTimeIsZero );
-
+   /*
    if(!isTimerQueueEmpty){
 	 stopTimer(TIM2);
 	 timeRecord1 = getTime(TIM2) - timeRecord1;
@@ -68,4 +94,17 @@ void TIM2_IRQHandler(){
    }else{
    	 //stopTimer(TIM2);
    }
+   */ 
+
+uint32_t getTick(TIM_TypeDef* TIMx){
+   return (root->baseTime + (TIMx->CNT&0x0000FFFF) );
+}
+
+uint32_t getTickInterval(void){
+  
+  if(tickRecord2 - tickRecord1 < 0){
+    tickRecord2 = tickRecord2;
+  }else{
+    return (tickRecord2 - tickRecord1);
+  }
 }

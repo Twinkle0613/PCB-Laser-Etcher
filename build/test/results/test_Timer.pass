@@ -4,21 +4,50 @@
   :file: test_Timer.c
 :successes:
 - :test: test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null
-  :line: 55
+  :line: 92
   :message: ''
 - :test: test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 82
+  :line: 119
   :message: ''
 - :test: test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 118
+  :line: 155
+  :message: ''
+- :test: test_timerDelay_generate_delay_10_by_adding_elemMotor1_into_queue
+  :line: 190
+  :message: ''
+- :test: test_timerDelay_generate_delay_by_adding_elemMotor1_and_elemMotor2_into_queue
+  :line: 219
+  :message: ''
+- :test: test_timerDelay_generate_delay_2_and_10_by_adding_elemMotor1_and_elemMotor2_into_queue
+  :line: 250
+  :message: ''
+- :test: test_getTick_BaseTime_is_100000_and_TIM2_CNT_is_200_the_getTick_should_return_100200
+  :line: 272
+  :message: ''
+- :test: test_recordCurrentTick_BaseTime_is_1000000_and_TIM2_CNT_is_2000_tickRecord_contains_1000200
+  :line: 281
+  :message: ''
+- :test: test_getTickInterval_tickRecord1_is_3000_and_tickRecord2_is_4000_the_getTickInterval_should_return_1000
+  :line: 290
+  :message: ''
+- :test: test_getTickInterval_tickRecord1_is_10000_and_tickRecord2_is_10000_the_getTickInterval_should_return_0
+  :line: 303
+  :message: ''
+- :test: test_getFakeTick
+  :line: 315
+  :message: ''
+- :test: test_TIM2_IRQHandler_when_timer_expire_for_motor1_the_TIM2_IRQHandler_was_called
+  :line: 326
+  :message: ''
+- :test: test_TIM2_IRQHandler_link_list_contain_two_timerElement_when_timer_interrupt
+  :line: 379
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 3
-  :passed: 3
+  :total: 13
+  :passed: 13
   :failed: 0
   :ignored: 0
 :stdout:
-- Hello
 - ''

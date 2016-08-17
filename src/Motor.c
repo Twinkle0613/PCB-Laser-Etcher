@@ -19,7 +19,7 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
-
+#include "Config.h"
 /*
   DMA_Channel is a marco that was defined in Config.h. 
 */
@@ -43,23 +43,15 @@ uint16_t getInterval(uint16_t timeRecord1, uint16_t timeRecord2){
 
 void motorController(MotorInfo* whichMotor){
    startCoroutine();
-   uint16_t checkInterval;
-   uint16_t checkTimeRecord1;
-   uint16_t checkTimeRecord2;
-   uint16_t newActime;
   while(1){
-
-	recordCurrentTime(timeRecord1);
-	checkTimeRecord1 = timeRecord1;
+	  //recordCurrentTime(timeRecord1);
+    recordCurrentTick(tickRecord1);
    	motorStep(whichMotor->motorConfiguration);
     yield();
-    recordCurrentTime(timeRecord2);
-
-    checkTimeRecord1 = timeRecord1;
-    checkTimeRecord2 = timeRecord2;
-    checkInterval = getInterval(timeRecord1,timeRecord2);
-    newActime = whichMotor->period - checkInterval;
-
+    //recordCurrentTime(timeRecord2);
+    recordCurrentTick(tickRecord2);
+    //getTickInterval();
+    //getInterval(timeRecord1,timeRecord2);
     timerDelay(&(whichMotor->timerElement),whichMotor->period - getInterval(timeRecord1,timeRecord2) );
     yield();
    }
@@ -76,7 +68,7 @@ void motorStep(MotorConfigInfo* motorConfiguration){
   
   dmaQueue(&motorConfiguration->motorElement);  //Add the Element into DMA Queue.
   
-  if( (Motor_Number - DMA_Channel->CNDTR) <= motorConfiguration->slot ){  
+  if( DMA_Channel->CNDTR >= Motor_Number - motorConfiguration->slot ){  
     updateSlotCommand(motorConfiguration->slot);  // update the command of slot
   }
   
@@ -147,7 +139,6 @@ void motorMovementHandler(void){
    updateMotorDriveBuffer();
    startDMA(DMA1_Channel3);
   }
-
 
 }
 /*

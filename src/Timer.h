@@ -15,6 +15,8 @@
 #include "projectStruct.h"
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
+#include "MockFunction.h"
+
 
 #define stopTimer(x) (TIM_Cmd(x,DISABLE))
 #define startTimer(x) (TIM_Cmd(x,ENABLE))
@@ -27,12 +29,23 @@
 #define updateCurrentTime root->curTime = root->baseTime + getTime(TIM2)
 #define recordCurrentTime(x) (x = getTime(TIM2))
 
+
+
 #define interval (whichMotor->timeRecord2 - whichMotor->timeRecord1)
+
+
+#define recordCurrentTick(x) (x = getFakeTick() + root->baseTime )
+//#define recordCurrentTick(x) (x = getTick(TIM2))
 
 extern uint16_t timeInterval;
 extern uint16_t timeRecord1;
 extern uint16_t timeRecord2;
 extern uint16_t timeRecord3;
+
+
+extern uint32_t tickRecord1;
+extern uint32_t tickRecord2; 
+
 
 void timerDelay(ListElement* timerElement,uint32_t period);
 void timerSetExpiry(uint16_t period);

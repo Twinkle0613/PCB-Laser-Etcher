@@ -35,9 +35,12 @@ Allocating common symbols
 Common symbol       size              file
 
 errno               0x4               c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
+freeRunningCounter  0x8               ..\obj\main.o
 root                0x4               ..\obj\RelativeTimeLinkList.o
+tickRecord1         0x4               ..\obj\Timer.o
 txBuffer            0x3               ..\obj\main.o
 motorDriveBuffer    0x3               ..\obj\Motor.o
+tickRecord2         0x4               ..\obj\Timer.o
 motorRoot           0x4               ..\obj\DMA.o
 timeInterval        0x2               ..\obj\main.o
 
@@ -133,7 +136,6 @@ Discarded input sections
  .bss           0x00000000        0x0 ..\obj\DMA_setting.o
  .data          0x00000000        0x0 ..\obj\Timer.o
  .bss           0x00000000        0x0 ..\obj\Timer.o
- COMMON         0x00000000        0x0 ..\obj\Timer.o
  .text          0x00000000       0x14 ..\obj\startup_stm32f103xb.o
  .data          0x00000000        0x0 ..\obj\startup_stm32f103xb.o
  .bss           0x00000000        0x0 ..\obj\startup_stm32f103xb.o
@@ -176,6 +178,7 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x33 ..\obj\misc.o
  .data          0x00000000        0x0 ..\obj\main.o
+ .bss           0x00000000        0x6 ..\obj\main.o
  .text          0x00000000        0x0 ..\obj\Config.o
  .data          0x00000000        0x0 ..\obj\Config.o
  .bss           0x00000000        0x0 ..\obj\Config.o
@@ -244,7 +247,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm
                 0x08000000                g_pfnVectors
                 0x0800010c                . = ALIGN (0x4)
 
-.text           0x0800010c     0x5808
+.text           0x0800010c     0x5794
                 0x0800010c                . = ALIGN (0x4)
  *(.text)
  .text          0x0800010c       0x5c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
@@ -292,390 +295,393 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm
  .text          0x080008d8      0x24c ..\obj\system_stm32f10x.o
                 0x080008d8                SystemInit
                 0x08000940                SystemCoreClockUpdate
- .text          0x08000b24      0x410 ..\obj\RelativeTimeLinkList.o
-                0x08000b24                updateCurTime
-                0x08000b40                _updateBaseTime
-                0x08000b5c                searchTheNodeActionTimeNearbyPeriodFromBase
-                0x08000bbc                getWholeActionTime
-                0x08000bf8                updateActionTime
-                0x08000c14                insertTimeElement
-                0x08000c44                timerListAdd
-                0x08000d8c                timerQueue
-                0x08000ebc                dequeue
-                0x08000edc                updateHead
- .text          0x08000f34       0xa0 ..\obj\DMA_setting.o
-                0x08000f34                DMA_conf
-                0x08000f84                setDataNumber
-                0x08000fa0                getDataNumber
-                0x08000fb8                setMemoryAddress
- .text          0x08000fd4      0x1a0 ..\obj\Timer.o
-                0x08000fd4                timerDelay
-                0x08001080                timerSetExpiry
-                0x080010a0                TIM2_IRQHandler
- .text          0x08001174     0x1e0c ..\obj\stm32f10x_tim.o
-                0x08001174                TIM_DeInit
-                0x080013a0                TIM_TimeBaseInit
-                0x08001498                TIM_OC1Init
-                0x080015b0                TIM_OC2Init
-                0x080016c0                TIM_OC3Init
-                0x080017cc                TIM_OC4Init
-                0x0800189c                TIM_ICInit
-                0x08001944                TIM_PWMIConfig
-                0x080019fc                TIM_BDTRConfig
-                0x08001a4c                TIM_TimeBaseStructInit
-                0x08001a80                TIM_OCStructInit
-                0x08001ac4                TIM_ICStructInit
-                0x08001af4                TIM_BDTRStructInit
-                0x08001b30                TIM_Cmd
-                0x08001b70                TIM_CtrlPWMOutputs
-                0x08001bbc                TIM_ITConfig
-                0x08001c04                TIM_GenerateEvent
-                0x08001c20                TIM_DMAConfig
-                0x08001c48                TIM_DMACmd
-                0x08001c90                TIM_InternalClockConfig
-                0x08001cb4                TIM_ITRxExternalClockConfig
-                0x08001ce4                TIM_TIxExternalClockConfig
-                0x08001d40                TIM_ETRClockMode1Config
-                0x08001da0                TIM_ETRClockMode2Config
-                0x08001de0                TIM_ETRConfig
-                0x08001e34                TIM_PrescalerConfig
-                0x08001e5c                TIM_CounterModeConfig
-                0x08001e94                TIM_SelectInputTrigger
-                0x08001ecc                TIM_EncoderInterfaceConfig
-                0x08001f64                TIM_ForcedOC1Config
-                0x08001f9c                TIM_ForcedOC2Config
-                0x08001fd8                TIM_ForcedOC3Config
-                0x08002010                TIM_ForcedOC4Config
-                0x0800204c                TIM_ARRPreloadConfig
-                0x0800208c                TIM_SelectCOM
-                0x080020cc                TIM_SelectCCDMA
-                0x0800210c                TIM_CCPreloadControl
-                0x0800214c                TIM_OC1PreloadConfig
-                0x08002184                TIM_OC2PreloadConfig
-                0x080021c0                TIM_OC3PreloadConfig
-                0x080021f8                TIM_OC4PreloadConfig
-                0x08002234                TIM_OC1FastConfig
-                0x0800226c                TIM_OC2FastConfig
-                0x080022a8                TIM_OC3FastConfig
-                0x080022e0                TIM_OC4FastConfig
-                0x0800231c                TIM_ClearOC1Ref
-                0x08002354                TIM_ClearOC2Ref
-                0x08002390                TIM_ClearOC3Ref
-                0x080023c8                TIM_ClearOC4Ref
-                0x08002404                TIM_OC1PolarityConfig
-                0x0800243c                TIM_OC1NPolarityConfig
-                0x08002474                TIM_OC2PolarityConfig
-                0x080024b0                TIM_OC2NPolarityConfig
-                0x080024ec                TIM_OC3PolarityConfig
-                0x08002528                TIM_OC3NPolarityConfig
-                0x08002564                TIM_OC4PolarityConfig
-                0x080025a0                TIM_CCxCmd
-                0x080025f8                TIM_CCxNCmd
-                0x08002650                TIM_SelectOCxM
-                0x080026fc                TIM_UpdateDisableConfig
-                0x0800273c                TIM_UpdateRequestConfig
-                0x0800277c                TIM_SelectHallSensor
-                0x080027bc                TIM_SelectOnePulseMode
-                0x080027f4                TIM_SelectOutputTrigger
-                0x0800282c                TIM_SelectSlaveMode
-                0x08002864                TIM_SelectMasterSlaveMode
-                0x0800289c                TIM_SetCounter
-                0x080028b8                TIM_SetAutoreload
-                0x080028d4                TIM_SetCompare1
-                0x080028f0                TIM_SetCompare2
-                0x0800290c                TIM_SetCompare3
-                0x08002928                TIM_SetCompare4
-                0x08002948                TIM_SetIC1Prescaler
-                0x08002980                TIM_SetIC2Prescaler
-                0x080029bc                TIM_SetIC3Prescaler
-                0x080029f4                TIM_SetIC4Prescaler
-                0x08002a30                TIM_SetClockDivision
-                0x08002a68                TIM_GetCapture1
-                0x08002a80                TIM_GetCapture2
-                0x08002a98                TIM_GetCapture3
-                0x08002ab0                TIM_GetCapture4
-                0x08002acc                TIM_GetCounter
-                0x08002ae4                TIM_GetPrescaler
-                0x08002afc                TIM_GetFlagStatus
-                0x08002b34                TIM_ClearFlag
-                0x08002b54                TIM_GetITStatus
-                0x08002ba8                TIM_ClearITPendingBit
- .text          0x08002f80      0x5e8 ..\obj\stm32f10x_gpio.o
-                0x08002f80                GPIO_DeInit
-                0x08003064                GPIO_AFIODeInit
-                0x0800307c                GPIO_Init
-                0x080031f4                GPIO_StructInit
-                0x0800321c                GPIO_ReadInputDataBit
-                0x08003250                GPIO_ReadInputData
-                0x08003268                GPIO_ReadOutputDataBit
-                0x0800329c                GPIO_ReadOutputData
-                0x080032b4                GPIO_SetBits
-                0x080032d0                GPIO_ResetBits
-                0x080032ec                GPIO_WriteBit
-                0x0800331c                GPIO_Write
-                0x08003338                GPIO_PinLockConfig
-                0x0800337c                GPIO_EventOutputConfig
-                0x080033c8                GPIO_EventOutputCmd
-                0x080033e8                GPIO_PinRemapConfig
-                0x080034c8                GPIO_EXTILineConfig
-                0x0800354c                GPIO_ETH_MediaInterfaceConfig
- .text          0x08003568       0xd4 ..\obj\SPI_setting.o
-                0x08003568                enableSPI
-                0x080035a8                SPI_conf
- .text          0x0800363c      0x7d0 ..\obj\stm32f10x_rcc.o
-                0x0800363c                RCC_DeInit
-                0x08003698                RCC_HSEConfig
-                0x080036f4                RCC_WaitForHSEStartUp
-                0x08003744                RCC_AdjustHSICalibrationValue
-                0x08003780                RCC_HSICmd
-                0x080037a0                RCC_PLLConfig
-                0x080037dc                RCC_PLLCmd
-                0x080037fc                RCC_SYSCLKConfig
-                0x08003834                RCC_GetSYSCLKSource
-                0x08003850                RCC_HCLKConfig
-                0x08003888                RCC_PCLK1Config
-                0x080038c0                RCC_PCLK2Config
-                0x080038f8                RCC_ITConfig
-                0x08003944                RCC_USBCLKConfig
-                0x08003960                RCC_ADCCLKConfig
-                0x08003998                RCC_LSEConfig
-                0x080039d8                RCC_LSICmd
-                0x080039f8                RCC_RTCCLKConfig
-                0x08003a1c                RCC_RTCCLKCmd
-                0x08003a3c                RCC_GetClocksFreq
-                0x08003b9c                RCC_AHBPeriphClockCmd
-                0x08003bd8                RCC_APB2PeriphClockCmd
-                0x08003c14                RCC_APB1PeriphClockCmd
-                0x08003c50                RCC_APB2PeriphResetCmd
-                0x08003c8c                RCC_APB1PeriphResetCmd
-                0x08003cc8                RCC_BackupResetCmd
-                0x08003ce8                RCC_ClockSecuritySystemCmd
-                0x08003d08                RCC_MCOConfig
-                0x08003d28                RCC_GetFlagStatus
-                0x08003d9c                RCC_ClearFlag
-                0x08003db8                RCC_GetITStatus
-                0x08003dec                RCC_ClearITPendingBit
- .text          0x08003e0c      0x168 ..\obj\Linklist.o
-                0x08003e0c                createLinkedList
-                0x08003e44                createLinkedElement
-                0x08003e74                addList
-                0x08003ee0                elementDelete
-                0x08003f14                linkedListRemove
- .text          0x08003f74      0x564 ..\obj\Motor.o
-                0x08003f74                getInterval
-                0x08003fb4                motorController
-                0x08004070                motorStep
-                0x080040c4                getMotorSetUp
-                0x08004100                setUpCommand
-                0x08004138                motorSet
-                0x08004178                DMA1_Channel3_IRQHandler
-                0x08004234                updateMotorDriveBuffer
-                0x08004284                extractMotorConfigInfo
-                0x080042a0                getCommand
-                0x080042d4                motorInit
-                0x08004358                motorConfigInit
-                0x080043a8                setArgs
-                0x080043c0                setCallBack
-                0x080043dc                setPeriod
-                0x080043f8                stdMtr_drive_conf
-                0x08004428                sendConfToShiftReg
-                0x08004454                triggerOutputData
-                0x08004470                getMotorSetting
-                0x080044a0                resetMotorDrive
- .text          0x080044d8      0x6e8 ..\obj\stm32f10x_spi.o
-                0x080044d8                SPI_I2S_DeInit
-                0x0800454c                SPI_Init
-                0x080045d4                I2S_Init
-                0x0800473c                SPI_StructInit
-                0x08004784                I2S_StructInit
-                0x080047bc                SPI_Cmd
-                0x080047fc                I2S_Cmd
-                0x0800483c                SPI_I2S_ITConfig
-                0x0800489c                SPI_I2S_DMACmd
-                0x080048e4                SPI_I2S_SendData
-                0x08004900                SPI_I2S_ReceiveData
-                0x08004918                SPI_NSSInternalSoftwareConfig
-                0x0800495c                SPI_SSOutputCmd
-                0x0800499c                SPI_DataSizeConfig
-                0x080049d4                SPI_TransmitCRC
-                0x080049f8                SPI_CalculateCRC
-                0x08004a38                SPI_GetCRC
-                0x08004a68                SPI_GetCRCPolynomial
-                0x08004a80                SPI_BiDirectionalLineConfig
-                0x08004ac0                SPI_I2S_GetFlagStatus
-                0x08004af8                SPI_I2S_ClearFlag
-                0x08004b18                SPI_I2S_GetITStatus
-                0x08004b8c                SPI_I2S_ClearITPendingBit
- .text          0x08004bc0      0x3a8 ..\obj\main.o
-                0x08004c90                main
-                0x08004d8c                SPI1_DMA1_init
-                0x08004e00                TIM_init
-                0x08004e7c                SPI_init
-                0x08004f0c                initializeTxBuffer
-                0x08004f3c                delay
+ .text          0x08000b24      0x458 ..\obj\RelativeTimeLinkList.o
+                0x08000b24                timerQueue
+                0x08000c6c                updateCurTime
+                0x08000c88                _updateBaseTime
+                0x08000ca4                searchTheNodeActionTimeNearbyPeriodFromBase
+                0x08000d04                getWholeActionTime
+                0x08000d40                updateActionTime
+                0x08000d5c                insertTimeElementIntoLeft
+                0x08000d8c                insertTimeElementIntoRight
+                0x08000dbc                dequeue
+                0x08000ddc                updateHead
+                0x08000e34                timerListAdd
+ .text          0x08000f7c       0xa0 ..\obj\DMA_setting.o
+                0x08000f7c                DMA_conf
+                0x08000fcc                setDataNumber
+                0x08000fe8                getDataNumber
+                0x08001000                setMemoryAddress
+ .text          0x0800101c      0x174 ..\obj\Timer.o
+                0x0800101c                timerDelay
+                0x080010cc                timerSetExpiry
+                0x080010ec                TIM2_IRQHandler
+                0x0800114c                getTick
+                0x08001170                getTickInterval
+ .text          0x08001190     0x1e0c ..\obj\stm32f10x_tim.o
+                0x08001190                TIM_DeInit
+                0x080013bc                TIM_TimeBaseInit
+                0x080014b4                TIM_OC1Init
+                0x080015cc                TIM_OC2Init
+                0x080016dc                TIM_OC3Init
+                0x080017e8                TIM_OC4Init
+                0x080018b8                TIM_ICInit
+                0x08001960                TIM_PWMIConfig
+                0x08001a18                TIM_BDTRConfig
+                0x08001a68                TIM_TimeBaseStructInit
+                0x08001a9c                TIM_OCStructInit
+                0x08001ae0                TIM_ICStructInit
+                0x08001b10                TIM_BDTRStructInit
+                0x08001b4c                TIM_Cmd
+                0x08001b8c                TIM_CtrlPWMOutputs
+                0x08001bd8                TIM_ITConfig
+                0x08001c20                TIM_GenerateEvent
+                0x08001c3c                TIM_DMAConfig
+                0x08001c64                TIM_DMACmd
+                0x08001cac                TIM_InternalClockConfig
+                0x08001cd0                TIM_ITRxExternalClockConfig
+                0x08001d00                TIM_TIxExternalClockConfig
+                0x08001d5c                TIM_ETRClockMode1Config
+                0x08001dbc                TIM_ETRClockMode2Config
+                0x08001dfc                TIM_ETRConfig
+                0x08001e50                TIM_PrescalerConfig
+                0x08001e78                TIM_CounterModeConfig
+                0x08001eb0                TIM_SelectInputTrigger
+                0x08001ee8                TIM_EncoderInterfaceConfig
+                0x08001f80                TIM_ForcedOC1Config
+                0x08001fb8                TIM_ForcedOC2Config
+                0x08001ff4                TIM_ForcedOC3Config
+                0x0800202c                TIM_ForcedOC4Config
+                0x08002068                TIM_ARRPreloadConfig
+                0x080020a8                TIM_SelectCOM
+                0x080020e8                TIM_SelectCCDMA
+                0x08002128                TIM_CCPreloadControl
+                0x08002168                TIM_OC1PreloadConfig
+                0x080021a0                TIM_OC2PreloadConfig
+                0x080021dc                TIM_OC3PreloadConfig
+                0x08002214                TIM_OC4PreloadConfig
+                0x08002250                TIM_OC1FastConfig
+                0x08002288                TIM_OC2FastConfig
+                0x080022c4                TIM_OC3FastConfig
+                0x080022fc                TIM_OC4FastConfig
+                0x08002338                TIM_ClearOC1Ref
+                0x08002370                TIM_ClearOC2Ref
+                0x080023ac                TIM_ClearOC3Ref
+                0x080023e4                TIM_ClearOC4Ref
+                0x08002420                TIM_OC1PolarityConfig
+                0x08002458                TIM_OC1NPolarityConfig
+                0x08002490                TIM_OC2PolarityConfig
+                0x080024cc                TIM_OC2NPolarityConfig
+                0x08002508                TIM_OC3PolarityConfig
+                0x08002544                TIM_OC3NPolarityConfig
+                0x08002580                TIM_OC4PolarityConfig
+                0x080025bc                TIM_CCxCmd
+                0x08002614                TIM_CCxNCmd
+                0x0800266c                TIM_SelectOCxM
+                0x08002718                TIM_UpdateDisableConfig
+                0x08002758                TIM_UpdateRequestConfig
+                0x08002798                TIM_SelectHallSensor
+                0x080027d8                TIM_SelectOnePulseMode
+                0x08002810                TIM_SelectOutputTrigger
+                0x08002848                TIM_SelectSlaveMode
+                0x08002880                TIM_SelectMasterSlaveMode
+                0x080028b8                TIM_SetCounter
+                0x080028d4                TIM_SetAutoreload
+                0x080028f0                TIM_SetCompare1
+                0x0800290c                TIM_SetCompare2
+                0x08002928                TIM_SetCompare3
+                0x08002944                TIM_SetCompare4
+                0x08002964                TIM_SetIC1Prescaler
+                0x0800299c                TIM_SetIC2Prescaler
+                0x080029d8                TIM_SetIC3Prescaler
+                0x08002a10                TIM_SetIC4Prescaler
+                0x08002a4c                TIM_SetClockDivision
+                0x08002a84                TIM_GetCapture1
+                0x08002a9c                TIM_GetCapture2
+                0x08002ab4                TIM_GetCapture3
+                0x08002acc                TIM_GetCapture4
+                0x08002ae8                TIM_GetCounter
+                0x08002b00                TIM_GetPrescaler
+                0x08002b18                TIM_GetFlagStatus
+                0x08002b50                TIM_ClearFlag
+                0x08002b70                TIM_GetITStatus
+                0x08002bc4                TIM_ClearITPendingBit
+ .text          0x08002f9c      0x5e8 ..\obj\stm32f10x_gpio.o
+                0x08002f9c                GPIO_DeInit
+                0x08003080                GPIO_AFIODeInit
+                0x08003098                GPIO_Init
+                0x08003210                GPIO_StructInit
+                0x08003238                GPIO_ReadInputDataBit
+                0x0800326c                GPIO_ReadInputData
+                0x08003284                GPIO_ReadOutputDataBit
+                0x080032b8                GPIO_ReadOutputData
+                0x080032d0                GPIO_SetBits
+                0x080032ec                GPIO_ResetBits
+                0x08003308                GPIO_WriteBit
+                0x08003338                GPIO_Write
+                0x08003354                GPIO_PinLockConfig
+                0x08003398                GPIO_EventOutputConfig
+                0x080033e4                GPIO_EventOutputCmd
+                0x08003404                GPIO_PinRemapConfig
+                0x080034e4                GPIO_EXTILineConfig
+                0x08003568                GPIO_ETH_MediaInterfaceConfig
+ .text          0x08003584       0xd4 ..\obj\SPI_setting.o
+                0x08003584                enableSPI
+                0x080035c4                SPI_conf
+ .text          0x08003658      0x7d0 ..\obj\stm32f10x_rcc.o
+                0x08003658                RCC_DeInit
+                0x080036b4                RCC_HSEConfig
+                0x08003710                RCC_WaitForHSEStartUp
+                0x08003760                RCC_AdjustHSICalibrationValue
+                0x0800379c                RCC_HSICmd
+                0x080037bc                RCC_PLLConfig
+                0x080037f8                RCC_PLLCmd
+                0x08003818                RCC_SYSCLKConfig
+                0x08003850                RCC_GetSYSCLKSource
+                0x0800386c                RCC_HCLKConfig
+                0x080038a4                RCC_PCLK1Config
+                0x080038dc                RCC_PCLK2Config
+                0x08003914                RCC_ITConfig
+                0x08003960                RCC_USBCLKConfig
+                0x0800397c                RCC_ADCCLKConfig
+                0x080039b4                RCC_LSEConfig
+                0x080039f4                RCC_LSICmd
+                0x08003a14                RCC_RTCCLKConfig
+                0x08003a38                RCC_RTCCLKCmd
+                0x08003a58                RCC_GetClocksFreq
+                0x08003bb8                RCC_AHBPeriphClockCmd
+                0x08003bf4                RCC_APB2PeriphClockCmd
+                0x08003c30                RCC_APB1PeriphClockCmd
+                0x08003c6c                RCC_APB2PeriphResetCmd
+                0x08003ca8                RCC_APB1PeriphResetCmd
+                0x08003ce4                RCC_BackupResetCmd
+                0x08003d04                RCC_ClockSecuritySystemCmd
+                0x08003d24                RCC_MCOConfig
+                0x08003d44                RCC_GetFlagStatus
+                0x08003db8                RCC_ClearFlag
+                0x08003dd4                RCC_GetITStatus
+                0x08003e08                RCC_ClearITPendingBit
+ .text          0x08003e28      0x168 ..\obj\Linklist.o
+                0x08003e28                createLinkedList
+                0x08003e60                createLinkedElement
+                0x08003e90                addList
+                0x08003efc                elementDelete
+                0x08003f30                linkedListRemove
+ .text          0x08003f90      0x524 ..\obj\Motor.o
+                0x08003f90                getInterval
+                0x08003fd0                motorController
+                0x0800404c                motorStep
+                0x080040a0                getMotorSetUp
+                0x080040dc                setUpCommand
+                0x08004114                motorSet
+                0x08004154                DMA1_Channel3_IRQHandler
+                0x08004210                updateMotorDriveBuffer
+                0x08004260                extractMotorConfigInfo
+                0x0800427c                getCommand
+                0x080042b0                motorInit
+                0x08004334                motorConfigInit
+                0x08004384                setArgs
+                0x0800439c                setCallBack
+                0x080043b8                setPeriod
+                0x080043d4                stdMtr_drive_conf
+                0x08004404                sendConfToShiftReg
+                0x08004430                triggerOutputData
+                0x0800444c                getMotorSetting
+                0x0800447c                resetMotorDrive
+ .text          0x080044b4      0x6e8 ..\obj\stm32f10x_spi.o
+                0x080044b4                SPI_I2S_DeInit
+                0x08004528                SPI_Init
+                0x080045b0                I2S_Init
+                0x08004718                SPI_StructInit
+                0x08004760                I2S_StructInit
+                0x08004798                SPI_Cmd
+                0x080047d8                I2S_Cmd
+                0x08004818                SPI_I2S_ITConfig
+                0x08004878                SPI_I2S_DMACmd
+                0x080048c0                SPI_I2S_SendData
+                0x080048dc                SPI_I2S_ReceiveData
+                0x080048f4                SPI_NSSInternalSoftwareConfig
+                0x08004938                SPI_SSOutputCmd
+                0x08004978                SPI_DataSizeConfig
+                0x080049b0                SPI_TransmitCRC
+                0x080049d4                SPI_CalculateCRC
+                0x08004a14                SPI_GetCRC
+                0x08004a44                SPI_GetCRCPolynomial
+                0x08004a5c                SPI_BiDirectionalLineConfig
+                0x08004a9c                SPI_I2S_GetFlagStatus
+                0x08004ad4                SPI_I2S_ClearFlag
+                0x08004af4                SPI_I2S_GetITStatus
+                0x08004b68                SPI_I2S_ClearITPendingBit
+ .text          0x08004b9c      0x358 ..\obj\main.o
+                0x08004c6c                main
+                0x08004d18                SPI1_DMA1_init
+                0x08004d8c                TIM_init
+                0x08004e08                SPI_init
+                0x08004e98                initializeTxBuffer
+                0x08004ec8                delay
  *(.text*)
  .text.__libc_init_array
-                0x08004f68       0x50 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
-                0x08004f68                __libc_init_array
+                0x08004ef4       0x50 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+                0x08004ef4                __libc_init_array
  .text.startup.register_fini
-                0x08004fb8       0x14 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x08004fcc        0xc c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
-                0x08004fcc                atexit
+                0x08004f44       0x14 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x08004f58        0xc c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+                0x08004f58                atexit
  .text.__libc_fini_array
-                0x08004fd8       0x28 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
-                0x08004fd8                __libc_fini_array
+                0x08004f64       0x28 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+                0x08004f64                __libc_fini_array
  .text.__register_exitproc
-                0x08005000       0xa4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
-                0x08005000                __register_exitproc
+                0x08004f8c       0xa4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+                0x08004f8c                __register_exitproc
  .text.Reset_Handler
-                0x080050a4       0x48 ..\obj\startup_stm32f103xb.o
-                0x080050a4                Reset_Handler
+                0x08005030       0x48 ..\obj\startup_stm32f103xb.o
+                0x08005030                Reset_Handler
  .text.Default_Handler
-                0x080050ec        0x2 ..\obj\startup_stm32f103xb.o
-                0x080050ec                RTC_Alarm_IRQHandler
-                0x080050ec                EXTI2_IRQHandler
-                0x080050ec                DebugMon_Handler
-                0x080050ec                TIM1_CC_IRQHandler
-                0x080050ec                HardFault_Handler
-                0x080050ec                SysTick_Handler
-                0x080050ec                PVD_IRQHandler
-                0x080050ec                PendSV_Handler
-                0x080050ec                NMI_Handler
-                0x080050ec                EXTI3_IRQHandler
-                0x080050ec                EXTI0_IRQHandler
-                0x080050ec                I2C2_EV_IRQHandler
-                0x080050ec                UsageFault_Handler
-                0x080050ec                ADC1_2_IRQHandler
-                0x080050ec                SPI1_IRQHandler
-                0x080050ec                TAMPER_IRQHandler
-                0x080050ec                DMA1_Channel4_IRQHandler
-                0x080050ec                USART3_IRQHandler
-                0x080050ec                RTC_IRQHandler
-                0x080050ec                DMA1_Channel7_IRQHandler
-                0x080050ec                CAN1_RX1_IRQHandler
-                0x080050ec                TIM4_IRQHandler
-                0x080050ec                I2C1_EV_IRQHandler
-                0x080050ec                DMA1_Channel6_IRQHandler
-                0x080050ec                TIM3_IRQHandler
-                0x080050ec                RCC_IRQHandler
-                0x080050ec                TIM1_TRG_COM_IRQHandler
-                0x080050ec                DMA1_Channel1_IRQHandler
-                0x080050ec                Default_Handler
-                0x080050ec                EXTI15_10_IRQHandler
-                0x080050ec                EXTI9_5_IRQHandler
-                0x080050ec                SPI2_IRQHandler
-                0x080050ec                MemManage_Handler
-                0x080050ec                SVC_Handler
-                0x080050ec                DMA1_Channel5_IRQHandler
-                0x080050ec                EXTI4_IRQHandler
-                0x080050ec                USB_LP_CAN1_RX0_IRQHandler
-                0x080050ec                USB_HP_CAN1_TX_IRQHandler
-                0x080050ec                TIM1_UP_IRQHandler
-                0x080050ec                WWDG_IRQHandler
-                0x080050ec                TIM1_BRK_IRQHandler
-                0x080050ec                EXTI1_IRQHandler
-                0x080050ec                USART2_IRQHandler
-                0x080050ec                I2C2_ER_IRQHandler
-                0x080050ec                DMA1_Channel2_IRQHandler
-                0x080050ec                CAN1_SCE_IRQHandler
-                0x080050ec                FLASH_IRQHandler
-                0x080050ec                BusFault_Handler
-                0x080050ec                USART1_IRQHandler
-                0x080050ec                I2C1_ER_IRQHandler
-                0x080050ec                USBWakeUp_IRQHandler
- *fill*         0x080050ee        0x2 
- .text.__errno  0x080050f0        0xc c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-errno.o)
-                0x080050f0                __errno
- .text.malloc   0x080050fc       0x10 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
-                0x080050fc                malloc
+                0x08005078        0x2 ..\obj\startup_stm32f103xb.o
+                0x08005078                RTC_Alarm_IRQHandler
+                0x08005078                EXTI2_IRQHandler
+                0x08005078                DebugMon_Handler
+                0x08005078                TIM1_CC_IRQHandler
+                0x08005078                HardFault_Handler
+                0x08005078                SysTick_Handler
+                0x08005078                PVD_IRQHandler
+                0x08005078                PendSV_Handler
+                0x08005078                NMI_Handler
+                0x08005078                EXTI3_IRQHandler
+                0x08005078                EXTI0_IRQHandler
+                0x08005078                I2C2_EV_IRQHandler
+                0x08005078                UsageFault_Handler
+                0x08005078                ADC1_2_IRQHandler
+                0x08005078                SPI1_IRQHandler
+                0x08005078                TAMPER_IRQHandler
+                0x08005078                DMA1_Channel4_IRQHandler
+                0x08005078                USART3_IRQHandler
+                0x08005078                RTC_IRQHandler
+                0x08005078                DMA1_Channel7_IRQHandler
+                0x08005078                CAN1_RX1_IRQHandler
+                0x08005078                TIM4_IRQHandler
+                0x08005078                I2C1_EV_IRQHandler
+                0x08005078                DMA1_Channel6_IRQHandler
+                0x08005078                TIM3_IRQHandler
+                0x08005078                RCC_IRQHandler
+                0x08005078                TIM1_TRG_COM_IRQHandler
+                0x08005078                DMA1_Channel1_IRQHandler
+                0x08005078                Default_Handler
+                0x08005078                EXTI15_10_IRQHandler
+                0x08005078                EXTI9_5_IRQHandler
+                0x08005078                SPI2_IRQHandler
+                0x08005078                MemManage_Handler
+                0x08005078                SVC_Handler
+                0x08005078                DMA1_Channel5_IRQHandler
+                0x08005078                EXTI4_IRQHandler
+                0x08005078                USB_LP_CAN1_RX0_IRQHandler
+                0x08005078                USB_HP_CAN1_TX_IRQHandler
+                0x08005078                TIM1_UP_IRQHandler
+                0x08005078                WWDG_IRQHandler
+                0x08005078                TIM1_BRK_IRQHandler
+                0x08005078                EXTI1_IRQHandler
+                0x08005078                USART2_IRQHandler
+                0x08005078                I2C2_ER_IRQHandler
+                0x08005078                DMA1_Channel2_IRQHandler
+                0x08005078                CAN1_SCE_IRQHandler
+                0x08005078                FLASH_IRQHandler
+                0x08005078                BusFault_Handler
+                0x08005078                USART1_IRQHandler
+                0x08005078                I2C1_ER_IRQHandler
+                0x08005078                USBWakeUp_IRQHandler
+ *fill*         0x0800507a        0x2 
+ .text.__errno  0x0800507c        0xc c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-errno.o)
+                0x0800507c                __errno
+ .text.malloc   0x08005088       0x10 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
+                0x08005088                malloc
  .text._malloc_r
-                0x0800510c      0x558 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x0800510c                _malloc_r
+                0x08005098      0x558 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x08005098                _malloc_r
  .text.__malloc_lock
-                0x08005664        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
-                0x08005664                __malloc_lock
+                0x080055f0        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+                0x080055f0                __malloc_lock
  .text.__malloc_unlock
-                0x08005668        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
-                0x08005668                __malloc_unlock
- .text._sbrk_r  0x0800566c       0x24 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
-                0x0800566c                _sbrk_r
+                0x080055f4        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+                0x080055f4                __malloc_unlock
+ .text._sbrk_r  0x080055f8       0x24 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
+                0x080055f8                _sbrk_r
  .text._malloc_trim_r
-                0x08005690       0x9c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
-                0x08005690                _malloc_trim_r
- .text._free_r  0x0800572c      0x1d0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
-                0x0800572c                _free_r
+                0x0800561c       0x9c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+                0x0800561c                _malloc_trim_r
+ .text._free_r  0x080056b8      0x1d0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+                0x080056b8                _free_r
  *(.glue_7)
- .glue_7        0x080058fc        0x0 linker stubs
+ .glue_7        0x08005888        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080058fc        0x0 linker stubs
+ .glue_7t       0x08005888        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080058fc        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+ .eh_frame      0x08005888        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
  *(.init)
- .init          0x080058fc        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crti.o
-                0x080058fc                _init
- .init          0x08005900        0x8 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtn.o
+ .init          0x08005888        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crti.o
+                0x08005888                _init
+ .init          0x0800588c        0x8 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtn.o
  *(.fini)
- .fini          0x08005908        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crti.o
-                0x08005908                _fini
- .fini          0x0800590c        0x8 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtn.o
-                0x08005914                . = ALIGN (0x4)
-                0x08005914                _etext = .
+ .fini          0x08005894        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crti.o
+                0x08005894                _fini
+ .fini          0x08005898        0x8 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtn.o
+                0x080058a0                . = ALIGN (0x4)
+                0x080058a0                _etext = .
 
-.vfp11_veneer   0x08005914        0x0
- .vfp11_veneer  0x08005914        0x0 linker stubs
+.vfp11_veneer   0x080058a0        0x0
+ .vfp11_veneer  0x080058a0        0x0 linker stubs
 
-.v4_bx          0x08005914        0x0
- .v4_bx         0x08005914        0x0 linker stubs
+.v4_bx          0x080058a0        0x0
+ .v4_bx         0x080058a0        0x0 linker stubs
 
-.iplt           0x08005914        0x0
- .iplt          0x08005914        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+.iplt           0x080058a0        0x0
+ .iplt          0x080058a0        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
 
-.rodata         0x08005914        0x8
-                0x08005914                . = ALIGN (0x4)
+.rodata         0x080058a0        0x8
+                0x080058a0                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.str1.4
-                0x08005914        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+                0x080058a0        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
                                   0x2 (size before relaxing)
  .rodata._global_impure_ptr
-                0x08005918        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
-                0x08005918                _global_impure_ptr
-                0x0800591c                . = ALIGN (0x4)
+                0x080058a4        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+                0x080058a4                _global_impure_ptr
+                0x080058a8                . = ALIGN (0x4)
 
-.rel.dyn        0x0800591c        0x0
- .rel.iplt      0x0800591c        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+.rel.dyn        0x080058a8        0x0
+ .rel.iplt      0x080058a8        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800591c        0x0
-                0x0800591c                __exidx_start = .
+.ARM            0x080058a8        0x0
+                0x080058a8                __exidx_start = .
  *(.ARM.exidx*)
-                0x0800591c                __exidx_end = .
+                0x080058a8                __exidx_end = .
 
-.preinit_array  0x0800591c        0x0
-                0x0800591c                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x080058a8        0x0
+                0x080058a8                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0800591c                PROVIDE (__preinit_array_end, .)
+                0x080058a8                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0800591c        0x8
-                0x0800591c                PROVIDE (__init_array_start, .)
+.init_array     0x080058a8        0x8
+                0x080058a8                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  .init_array.00000
-                0x0800591c        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+                0x080058a8        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08005920        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
-                0x08005924                PROVIDE (__init_array_end, .)
+ .init_array    0x080058ac        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+                0x080058b0                PROVIDE (__init_array_end, .)
 
-.fini_array     0x08005924        0x4
-                0x08005924                PROVIDE (__fini_array_start, .)
+.fini_array     0x080058b0        0x4
+                0x080058b0                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08005924        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
-                0x08005928                PROVIDE (__fini_array_end, .)
-                0x08005928                _sidata = LOADADDR (.data)
+ .fini_array    0x080058b0        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+                0x080058b4                PROVIDE (__fini_array_end, .)
+                0x080058b4                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x864 load address 0x08005928
+.data           0x20000000      0x864 load address 0x080058b4
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -701,66 +707,65 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm
                 0x20000864                . = ALIGN (0x4)
                 0x20000864                _edata = .
 
-.jcr            0x20000864        0x0 load address 0x0800618c
+.jcr            0x20000864        0x0 load address 0x08006118
  .jcr           0x20000864        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
 
-.igot.plt       0x20000864        0x0 load address 0x0800618c
+.igot.plt       0x20000864        0x0 load address 0x08006118
  .igot.plt      0x20000864        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
                 0x20000864                . = ALIGN (0x4)
 
-.bss            0x20000864       0x78 load address 0x0800618c
-                0x20000864                _sbss = .
-                0x20000864                __bss_start__ = _sbss
+.bss            0x20000868       0x84 load address 0x08006118
+                0x20000868                _sbss = .
+                0x20000868                __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000864       0x1c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
- .bss           0x20000880        0x8 ..\obj\syscalls.o
-                0x20000880                __env
- .bss           0x20000888        0x6 ..\obj\main.o
-                0x20000888                timeRecord2
-                0x2000088a                timeRecord1
-                0x2000088c                timeRecord3
+ .bss           0x20000868       0x1c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtbegin.o
+ .bss           0x20000884        0x8 ..\obj\syscalls.o
+                0x20000884                __env
  *(.bss*)
- *fill*         0x2000088e        0x2 
  .bss.__malloc_max_total_mem
-                0x20000890        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x20000890                __malloc_max_total_mem
+                0x2000088c        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x2000088c                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x20000894        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x20000894                __malloc_max_sbrked_mem
+                0x20000890        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x20000890                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x20000898        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x20000898                __malloc_top_pad
+                0x20000894        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x20000894                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x2000089c       0x28 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x2000089c                __malloc_current_mallinfo
+                0x20000898       0x28 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x20000898                __malloc_current_mallinfo
  *(COMMON)
- COMMON         0x200008c4        0x4 ..\obj\DMA.o
-                0x200008c4                motorRoot
- COMMON         0x200008c8        0x4 ..\obj\RelativeTimeLinkList.o
-                0x200008c8                root
- COMMON         0x200008cc        0x3 ..\obj\Motor.o
-                0x200008cc                motorDriveBuffer
- *fill*         0x200008cf        0x1 
- COMMON         0x200008d0        0x6 ..\obj\main.o
-                0x200008d0                txBuffer
-                0x200008d4                timeInterval
- *fill*         0x200008d6        0x2 
- COMMON         0x200008d8        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
-                0x200008d8                errno
-                0x200008dc                . = ALIGN (0x4)
-                0x200008dc                _ebss = .
-                0x200008dc                __bss_end__ = _ebss
+ COMMON         0x200008c0        0x4 ..\obj\DMA.o
+                0x200008c0                motorRoot
+ COMMON         0x200008c4        0x4 ..\obj\RelativeTimeLinkList.o
+                0x200008c4                root
+ COMMON         0x200008c8        0x8 ..\obj\Timer.o
+                0x200008c8                tickRecord1
+                0x200008cc                tickRecord2
+ COMMON         0x200008d0        0x3 ..\obj\Motor.o
+                0x200008d0                motorDriveBuffer
+ *fill*         0x200008d3        0x5 
+ COMMON         0x200008d8        0xe ..\obj\main.o
+                0x200008d8                freeRunningCounter
+                0x200008e0                txBuffer
+                0x200008e4                timeInterval
+ *fill*         0x200008e6        0x2 
+ COMMON         0x200008e8        0x4 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
+                0x200008e8                errno
+                0x200008ec                . = ALIGN (0x4)
+                0x200008ec                _ebss = .
+                0x200008ec                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200008dc      0x600 load address 0x0800618c
-                0x200008dc                . = ALIGN (0x4)
-                0x200008dc                PROVIDE (end, .)
+                0x200008ec      0x600 load address 0x08006118
+                0x200008ec                . = ALIGN (0x4)
+                0x200008ec                PROVIDE (end, .)
                 [!provide]                PROVIDE (_end, .)
-                0x20000adc                . = (. + _Min_Heap_Size)
- *fill*         0x200008dc      0x200 
-                0x20000edc                . = (. + _Min_Stack_Size)
- *fill*         0x20000adc      0x400 
-                0x20000edc                . = ALIGN (0x4)
+                0x20000aec                . = (. + _Min_Heap_Size)
+ *fill*         0x200008ec      0x200 
+                0x20000eec                . = (. + _Min_Stack_Size)
+ *fill*         0x20000aec      0x400 
+                0x20000eec                . = ALIGN (0x4)
 
 /DISCARD/
  libc.a(*)
@@ -857,27 +862,27 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm
 LOAD c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7-m/crtn.o
 OUTPUT(PCB Laser Etcher.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x78bf
+.debug_info     0x00000000     0x794d
  .debug_info    0x00000000      0x47b ..\obj\stm32f10x_dma.o
  .debug_info    0x0000047b      0x1dc ..\obj\DMA.o
  .debug_info    0x00000657      0x244 ..\obj\GPIO_setting.o
  .debug_info    0x0000089b      0x448 ..\obj\Timer_setting.o
  .debug_info    0x00000ce3      0x663 ..\obj\syscalls.o
  .debug_info    0x00001346      0x49c ..\obj\system_stm32f10x.o
- .debug_info    0x000017e2      0x4b8 ..\obj\RelativeTimeLinkList.o
- .debug_info    0x00001c9a      0x2bb ..\obj\DMA_setting.o
- .debug_info    0x00001f55      0x4b3 ..\obj\Timer.o
- .debug_info    0x00002408       0xca ..\obj\startup_stm32f103xb.o
- .debug_info    0x000024d2     0x1c60 ..\obj\stm32f10x_tim.o
- .debug_info    0x00004132      0x6f6 ..\obj\stm32f10x_gpio.o
- .debug_info    0x00004828      0x305 ..\obj\SPI_setting.o
- .debug_info    0x00004b2d      0x8a3 ..\obj\stm32f10x_rcc.o
- .debug_info    0x000053d0      0x260 ..\obj\Linklist.o
- .debug_info    0x00005630      0xb66 ..\obj\Motor.o
- .debug_info    0x00006196      0x8fb ..\obj\stm32f10x_spi.o
- .debug_info    0x00006a91      0xe2e ..\obj\main.o
+ .debug_info    0x000017e2      0x4ea ..\obj\RelativeTimeLinkList.o
+ .debug_info    0x00001ccc      0x2bb ..\obj\DMA_setting.o
+ .debug_info    0x00001f87      0x51c ..\obj\Timer.o
+ .debug_info    0x000024a3       0xca ..\obj\startup_stm32f103xb.o
+ .debug_info    0x0000256d     0x1c60 ..\obj\stm32f10x_tim.o
+ .debug_info    0x000041cd      0x6f6 ..\obj\stm32f10x_gpio.o
+ .debug_info    0x000048c3      0x305 ..\obj\SPI_setting.o
+ .debug_info    0x00004bc8      0x8a3 ..\obj\stm32f10x_rcc.o
+ .debug_info    0x0000546b      0x260 ..\obj\Linklist.o
+ .debug_info    0x000056cb      0xb49 ..\obj\Motor.o
+ .debug_info    0x00006214      0x8fb ..\obj\stm32f10x_spi.o
+ .debug_info    0x00006b0f      0xe3e ..\obj\main.o
 
-.debug_abbrev   0x00000000     0x1879
+.debug_abbrev   0x00000000     0x18b0
  .debug_abbrev  0x00000000      0x157 ..\obj\stm32f10x_dma.o
  .debug_abbrev  0x00000157       0xc7 ..\obj\DMA.o
  .debug_abbrev  0x0000021e      0x109 ..\obj\GPIO_setting.o
@@ -886,16 +891,16 @@ OUTPUT(PCB Laser Etcher.elf elf32-littlearm)
  .debug_abbrev  0x000005cb      0x14e ..\obj\system_stm32f10x.o
  .debug_abbrev  0x00000719      0x13c ..\obj\RelativeTimeLinkList.o
  .debug_abbrev  0x00000855      0x118 ..\obj\DMA_setting.o
- .debug_abbrev  0x0000096d      0x158 ..\obj\Timer.o
- .debug_abbrev  0x00000ac5       0x12 ..\obj\startup_stm32f103xb.o
- .debug_abbrev  0x00000ad7      0x1b2 ..\obj\stm32f10x_tim.o
- .debug_abbrev  0x00000c89      0x1cc ..\obj\stm32f10x_gpio.o
- .debug_abbrev  0x00000e55      0x114 ..\obj\SPI_setting.o
- .debug_abbrev  0x00000f69      0x1bc ..\obj\stm32f10x_rcc.o
- .debug_abbrev  0x00001125      0x10a ..\obj\Linklist.o
- .debug_abbrev  0x0000122f      0x253 ..\obj\Motor.o
- .debug_abbrev  0x00001482      0x180 ..\obj\stm32f10x_spi.o
- .debug_abbrev  0x00001602      0x277 ..\obj\main.o
+ .debug_abbrev  0x0000096d      0x185 ..\obj\Timer.o
+ .debug_abbrev  0x00000af2       0x12 ..\obj\startup_stm32f103xb.o
+ .debug_abbrev  0x00000b04      0x1b2 ..\obj\stm32f10x_tim.o
+ .debug_abbrev  0x00000cb6      0x1cc ..\obj\stm32f10x_gpio.o
+ .debug_abbrev  0x00000e82      0x114 ..\obj\SPI_setting.o
+ .debug_abbrev  0x00000f96      0x1bc ..\obj\stm32f10x_rcc.o
+ .debug_abbrev  0x00001152      0x10a ..\obj\Linklist.o
+ .debug_abbrev  0x0000125c      0x27c ..\obj\Motor.o
+ .debug_abbrev  0x000014d8      0x180 ..\obj\stm32f10x_spi.o
+ .debug_abbrev  0x00001658      0x258 ..\obj\main.o
 
 .debug_aranges  0x00000000      0x248
  .debug_aranges
@@ -935,27 +940,27 @@ OUTPUT(PCB Laser Etcher.elf elf32-littlearm)
  .debug_aranges
                 0x00000228       0x20 ..\obj\main.o
 
-.debug_line     0x00000000     0x2fba
+.debug_line     0x00000000     0x2f8b
  .debug_line    0x00000000      0x31f ..\obj\stm32f10x_dma.o
  .debug_line    0x0000031f      0x195 ..\obj\DMA.o
  .debug_line    0x000004b4      0x245 ..\obj\GPIO_setting.o
  .debug_line    0x000006f9      0x252 ..\obj\Timer_setting.o
  .debug_line    0x0000094b      0x178 ..\obj\syscalls.o
  .debug_line    0x00000ac3      0x223 ..\obj\system_stm32f10x.o
- .debug_line    0x00000ce6      0x247 ..\obj\RelativeTimeLinkList.o
- .debug_line    0x00000f2d      0x256 ..\obj\DMA_setting.o
- .debug_line    0x00001183      0x240 ..\obj\Timer.o
- .debug_line    0x000013c3       0xb4 ..\obj\startup_stm32f103xb.o
- .debug_line    0x00001477      0x71c ..\obj\stm32f10x_tim.o
- .debug_line    0x00001b93      0x357 ..\obj\stm32f10x_gpio.o
- .debug_line    0x00001eea      0x25d ..\obj\SPI_setting.o
- .debug_line    0x00002147      0x3a0 ..\obj\stm32f10x_rcc.o
- .debug_line    0x000024e7      0x17a ..\obj\Linklist.o
- .debug_line    0x00002661      0x2bf ..\obj\Motor.o
- .debug_line    0x00002920      0x36e ..\obj\stm32f10x_spi.o
- .debug_line    0x00002c8e      0x32c ..\obj\main.o
+ .debug_line    0x00000ce6      0x255 ..\obj\RelativeTimeLinkList.o
+ .debug_line    0x00000f3b      0x256 ..\obj\DMA_setting.o
+ .debug_line    0x00001191      0x22c ..\obj\Timer.o
+ .debug_line    0x000013bd       0xb4 ..\obj\startup_stm32f103xb.o
+ .debug_line    0x00001471      0x71c ..\obj\stm32f10x_tim.o
+ .debug_line    0x00001b8d      0x357 ..\obj\stm32f10x_gpio.o
+ .debug_line    0x00001ee4      0x25d ..\obj\SPI_setting.o
+ .debug_line    0x00002141      0x3a0 ..\obj\stm32f10x_rcc.o
+ .debug_line    0x000024e1      0x17a ..\obj\Linklist.o
+ .debug_line    0x0000265b      0x2b9 ..\obj\Motor.o
+ .debug_line    0x00002914      0x36e ..\obj\stm32f10x_spi.o
+ .debug_line    0x00002c82      0x309 ..\obj\main.o
 
-.debug_str      0x00000000     0x2c2d
+.debug_str      0x00000000     0x2c8f
  .debug_str     0x00000000      0x357 ..\obj\stm32f10x_dma.o
                                 0x3ca (size before relaxing)
  .debug_str     0x00000357      0x136 ..\obj\DMA.o
@@ -968,28 +973,28 @@ OUTPUT(PCB Laser Etcher.elf elf32-littlearm)
                                 0x3ba (size before relaxing)
  .debug_str     0x00000a4c      0x17f ..\obj\system_stm32f10x.o
                                 0x2f6 (size before relaxing)
- .debug_str     0x00000bcb      0x187 ..\obj\RelativeTimeLinkList.o
-                                0x3ae (size before relaxing)
- .debug_str     0x00000d52       0xe5 ..\obj\DMA_setting.o
+ .debug_str     0x00000bcb      0x1aa ..\obj\RelativeTimeLinkList.o
+                                0x3d1 (size before relaxing)
+ .debug_str     0x00000d75       0xe5 ..\obj\DMA_setting.o
                                 0x2f9 (size before relaxing)
- .debug_str     0x00000e37       0x9e ..\obj\Timer.o
-                                0x402 (size before relaxing)
- .debug_str     0x00000ed5      0xa7d ..\obj\stm32f10x_tim.o
+ .debug_str     0x00000e5a       0xe0 ..\obj\Timer.o
+                                0x444 (size before relaxing)
+ .debug_str     0x00000f3a      0xa7d ..\obj\stm32f10x_tim.o
                                 0xdf0 (size before relaxing)
- .debug_str     0x00001952      0x272 ..\obj\stm32f10x_gpio.o
+ .debug_str     0x000019b7      0x272 ..\obj\stm32f10x_gpio.o
                                 0x52c (size before relaxing)
- .debug_str     0x00001bc4      0x118 ..\obj\SPI_setting.o
+ .debug_str     0x00001c29      0x118 ..\obj\SPI_setting.o
                                 0x2ec (size before relaxing)
- .debug_str     0x00001cdc      0x406 ..\obj\stm32f10x_rcc.o
+ .debug_str     0x00001d41      0x406 ..\obj\stm32f10x_rcc.o
                                 0x62d (size before relaxing)
- .debug_str     0x000020e2       0xb1 ..\obj\Linklist.o
+ .debug_str     0x00002147       0xb1 ..\obj\Linklist.o
                                 0x2ba (size before relaxing)
- .debug_str     0x00002193      0x2a0 ..\obj\Motor.o
-                                0x6cf (size before relaxing)
- .debug_str     0x00002433      0x2eb ..\obj\stm32f10x_spi.o
+ .debug_str     0x000021f8      0x266 ..\obj\Motor.o
+                                0x6c5 (size before relaxing)
+ .debug_str     0x0000245e      0x2eb ..\obj\stm32f10x_spi.o
                                 0x610 (size before relaxing)
- .debug_str     0x0000271e      0x50f ..\obj\main.o
-                                0xb11 (size before relaxing)
+ .debug_str     0x00002749      0x546 ..\obj\main.o
+                                0xb2c (size before relaxing)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e ..\obj\stm32f10x_dma.o
@@ -1011,31 +1016,31 @@ OUTPUT(PCB Laser Etcher.elf elf32-littlearm)
  .comment       0x0000006e       0x6f ..\obj\stm32f10x_spi.o
  .comment       0x0000006e       0x6f ..\obj\main.o
 
-.debug_frame    0x00000000     0x29fc
+.debug_frame    0x00000000     0x2a68
  .debug_frame   0x00000000      0x1c8 ..\obj\stm32f10x_dma.o
  .debug_frame   0x000001c8       0x34 ..\obj\DMA.o
  .debug_frame   0x000001fc       0x34 ..\obj\GPIO_setting.o
  .debug_frame   0x00000230       0xac ..\obj\Timer_setting.o
  .debug_frame   0x000002dc      0x2d4 ..\obj\syscalls.o
  .debug_frame   0x000005b0       0x98 ..\obj\system_stm32f10x.o
- .debug_frame   0x00000648      0x194 ..\obj\RelativeTimeLinkList.o
- .debug_frame   0x000007dc       0xac ..\obj\DMA_setting.o
- .debug_frame   0x00000888       0x84 ..\obj\Timer.o
- .debug_frame   0x0000090c      0xe2c ..\obj\stm32f10x_tim.o
- .debug_frame   0x00001738      0x2d0 ..\obj\stm32f10x_gpio.o
- .debug_frame   0x00001a08       0x5c ..\obj\SPI_setting.o
- .debug_frame   0x00001a64      0x4f4 ..\obj\stm32f10x_rcc.o
- .debug_frame   0x00001f58       0xcc ..\obj\Linklist.o
- .debug_frame   0x00002024      0x308 ..\obj\Motor.o
- .debug_frame   0x0000232c      0x3a0 ..\obj\stm32f10x_spi.o
- .debug_frame   0x000026cc      0x164 ..\obj\main.o
- .debug_frame   0x00002830       0x20 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-errno.o)
- .debug_frame   0x00002850       0x30 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
- .debug_frame   0x00002880       0x54 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
- .debug_frame   0x000028d4       0x30 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
- .debug_frame   0x00002904       0x2c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00002930       0x74 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
- .debug_frame   0x000029a4       0x58 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
+ .debug_frame   0x00000648      0x1bc ..\obj\RelativeTimeLinkList.o
+ .debug_frame   0x00000804       0xac ..\obj\DMA_setting.o
+ .debug_frame   0x000008b0       0xc8 ..\obj\Timer.o
+ .debug_frame   0x00000978      0xe2c ..\obj\stm32f10x_tim.o
+ .debug_frame   0x000017a4      0x2d0 ..\obj\stm32f10x_gpio.o
+ .debug_frame   0x00001a74       0x5c ..\obj\SPI_setting.o
+ .debug_frame   0x00001ad0      0x4f4 ..\obj\stm32f10x_rcc.o
+ .debug_frame   0x00001fc4       0xcc ..\obj\Linklist.o
+ .debug_frame   0x00002090      0x308 ..\obj\Motor.o
+ .debug_frame   0x00002398      0x3a0 ..\obj\stm32f10x_spi.o
+ .debug_frame   0x00002738      0x164 ..\obj\main.o
+ .debug_frame   0x0000289c       0x20 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-errno.o)
+ .debug_frame   0x000028bc       0x30 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
+ .debug_frame   0x000028ec       0x54 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+ .debug_frame   0x00002940       0x30 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+ .debug_frame   0x00002970       0x2c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000299c       0x74 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+ .debug_frame   0x00002a10       0x58 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 ..\obj\startup_stm32f103xb.o
