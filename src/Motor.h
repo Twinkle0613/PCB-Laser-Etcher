@@ -23,6 +23,8 @@
 #include "Timer_setting.h"
 #include "RelativeTimeLinkList.h"
 #include "MockFunction.h"
+#include "getTick.h"
+
 typedef struct {
    ListElement *next;
    ListElement *prev;

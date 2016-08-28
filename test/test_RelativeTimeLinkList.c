@@ -56,8 +56,8 @@ void test_timerListAdd_a_time_element_is_added_into_link_list(void){
    printf("No.01 - timerListAdd\n");
    Linkedlist *ptr = createLinkedList();
    uint16_t arr[] = {10};
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
 }
@@ -76,11 +76,11 @@ void test_timerListAdd_two_time_element_is_added_into_link_list(void){
    printf("No.02 - timerListAdd\n");   
    Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5};
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
 }
@@ -99,16 +99,16 @@ void test_timerListAdd_three_time_element_is_added_into_link_list(void){
     printf("No.03 - timerListAdd\n");
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,5};
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,108);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,108);
    timerListAdd(ptr,12);
    
    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -129,20 +129,20 @@ void test_timerListAdd_four_time_element_is_added_into_link_list(void){
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,5,2};
     
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,108);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,108);
    timerListAdd(ptr,12);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,109);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,109);
    timerListAdd(ptr,13);
 }
 /*
@@ -161,27 +161,27 @@ void test_timerListAdd_four_time_element_is_added_into_link_list(void){
     // Linkedlist *ptr = createLinkedList();
     // int arr[] = {10,5,5,2,3};
    // updateBaseTime(ptr,10);
-   // updateCurTime(ptr,20);
+   // setCurrentTime(ptr,20);
    // timerListAdd(ptr,10);
    
    // updateBaseTime(ptr,100);
-   // updateCurTime(ptr,105);
+   // setCurrentTime(ptr,105);
     // timerListAdd(ptr,10);
    
    // updateBaseTime(ptr,100);
-   // updateCurTime(ptr,108);
+   // setCurrentTime(ptr,108);
    // timerListAdd(ptr,12);
    
    // updateBaseTime(ptr,100);
-   // updateCurTime(ptr,109);
+   // setCurrentTime(ptr,109);
    // timerListAdd(ptr,13);
    
    // updateBaseTime(ptr,100);
-   // updateCurTime(ptr,109);
+   // setCurrentTime(ptr,109);
    // timerListAdd(ptr,13);
    
    // updateBaseTime(ptr,100);
-   // updateCurTime(ptr,110);
+   // setCurrentTime(ptr,110);
    // timerListAdd(ptr,25);
    
     // TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -222,12 +222,12 @@ void test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_In
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {15,5};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,20);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -249,16 +249,16 @@ void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,2,3};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,4);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -279,20 +279,20 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,3,4};
     
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,108);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,108);
    timerListAdd(ptr,14);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
    timerListAdd(ptr,13);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -314,20 +314,20 @@ void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,2,3,7};
     
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,108);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,108);
    timerListAdd(ptr,14);
     
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
    timerListAdd(ptr,7);
 
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -365,12 +365,12 @@ void test_relative_Time_Link_list_one_time_Element_and_added_a_timeElement_that_
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,0};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,5);
     
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -393,16 +393,16 @@ void test_relative_Time_Link_list_two_time_Element_and_added_a_timeElement_that_
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,0};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,7);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -422,20 +422,20 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,7,0};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,13);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -455,20 +455,20 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,0,7};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -488,24 +488,24 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_that_period_equal_
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,0,0,7};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -524,28 +524,28 @@ void test_relative_Time_Link_list_the_link_list_contain_three_0_that_period_equa
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,0,0,0,7};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -567,41 +567,41 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
     ListElement* store2;
     uint16_t arr[] = {10,5,0,0,0,0,7};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
     
 
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     
     store1 = ptr->head->next->next;
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     store2 = ptr->head->next->next;
     TEST_ASSERT_EQUAL_PTR(store1,store2);
     
     store1 = ptr->head->next->next->next;
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     store2 = ptr->head->next->next->next;
     TEST_ASSERT_EQUAL_PTR(store1,store2);
     
     store1 = ptr->head->next->next->next->next;
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,109);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,109);
     timerListAdd(ptr,6);
     store2 = ptr->head->next->next->next->next;
     TEST_ASSERT_EQUAL_PTR(store1,store2);
@@ -625,25 +625,25 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period
    
     uint16_t arr[] = {10,5,7,0,0};
     
-    _updateBaseTime(ptr,10);
-    updateCurTime(ptr,20);
+    setBaseTime(ptr,10);
+    setCurrentTime(ptr,20);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,105);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,105);
     timerListAdd(ptr,10);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     
     ListElement* store1 = ptr->head->next->next->next;
-    _updateBaseTime(ptr,100);
-    updateCurTime(ptr,108);
+    setBaseTime(ptr,100);
+    setCurrentTime(ptr,108);
     timerListAdd(ptr,14);
     ListElement* store2 = ptr->head->next->next->next;
 
@@ -666,24 +666,24 @@ void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_
     Linkedlist *ptr = createLinkedList();
     uint16_t arr[] = {10,5,0,3,4,9};
     
-   _updateBaseTime(ptr,10);
-   updateCurTime(ptr,20);
+   setBaseTime(ptr,10);
+   setCurrentTime(ptr,20);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
    timerListAdd(ptr,10);
     
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
    timerListAdd(ptr,10);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,108);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,108);
    timerListAdd(ptr,14);
    
-   _updateBaseTime(ptr,100);
-   updateCurTime(ptr,105);
+   setBaseTime(ptr,100);
+   setCurrentTime(ptr,105);
    timerListAdd(ptr,13);
    
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -706,12 +706,12 @@ void test_relative_Time_Link_list_initial_the_first_Node_contain_0_and_add_a_new
       Linkedlist *ptr = createLinkedList();
       uint16_t arr[] = {0,10};
       
-     // _updateBaseTime(ptr,10);
-     // updateCurTime(ptr,20);
+     // setBaseTime(ptr,10);
+     // setCurrentTime(ptr,20);
      // timerListAdd(ptr,0);
      
-     // _updateBaseTime(ptr,100);
-     // updateCurTime(ptr,108);
+     // setBaseTime(ptr,100);
+     // setCurrentTime(ptr,108);
      // timerListAdd(ptr,10);
      
      // TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,ptr);
@@ -758,20 +758,20 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
     ListElement *motor3 = createLinkedElement(0);
     uint16_t arr[] = {10,5,7};
     
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL_PTR(10,motor1->actionTime);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
     TEST_ASSERT_EQUAL_PTR(5,motor2->actionTime);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,108);
+    setBaseTime(root,100);
+    setCurrentTime(root,108);
     timerQueue(motor3,14);
     
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
@@ -806,21 +806,21 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor3 = createLinkedElement(0);
     uint16_t arr[] = {10,3,2};
      
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL(10,motor1->actionTime);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
     TEST_ASSERT_EQUAL(5,motor2->actionTime);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor3,8);
     
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
@@ -853,18 +853,18 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
     ListElement *motor3 = createLinkedElement(0);
      uint16_t arr[] = {8,2,5};
      
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor3,3);
     
     TEST_ASSERT_EQUAL(8,motor3->actionTime);
@@ -897,18 +897,18 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor3 = createLinkedElement(0);
      uint16_t arr[] = {1,9,0};
      
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,5);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,100);
+    setBaseTime(root,100);
+    setCurrentTime(root,100);
     timerQueue(motor3,1);
     
     TEST_ASSERT_EQUAL(1,motor3->actionTime);
@@ -941,13 +941,13 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor3 = createLinkedElement(0);
     uint16_t arr[] = {10,0,5};
      
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,5);
     
 
@@ -956,6 +956,49 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+    
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+}
+
+/* Condition: (period == timeInterval) 
+                                                           rate = 5
+                                                          |------|       
+          0              10                     0               10       
+          |---------------|                     |---------------|
+                                     =>         <---5--->        
+                     
+          Head-->10->0                            Head-->10-->0-->0
+*/
+
+void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0(void){
+    printf("No.26.0.1 - timerQueue\n");
+    root = createLinkedList();
+    ListElement *motor1 = createLinkedElement(0);
+    ListElement *motor2 = createLinkedElement(0);
+    ListElement *motor3 = createLinkedElement(0);
+    uint16_t arr[] = {10,0,0};
+     
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
+    timerQueue(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
+    timerQueue(motor2,5);
+    
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
+    timerQueue(motor3,5);
+
+    TEST_ASSERT_EQUAL(10,motor1->actionTime);
+    TEST_ASSERT_EQUAL(0,motor2->actionTime);
+    TEST_ASSERT_EQUAL(0,motor3->actionTime);
+
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next->next,motor1);
     
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
 }
@@ -978,18 +1021,18 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor3 = createLinkedElement(0);
     uint16_t arr[] = {10,0,5};
      
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,5);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor3,10);
     
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
@@ -1020,18 +1063,18 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
      uint16_t arr[] = {10,5,0};
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,106);
+    setBaseTime(root,100);
+    setCurrentTime(root,106);
     timerQueue(motor3,9);
     
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
@@ -1062,18 +1105,18 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor2 = createLinkedElement(0);
     ListElement *motor3 = createLinkedElement(0);
      uint16_t arr[] = {10,0,5};
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
     TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor3,5);
     
     TEST_ASSERT_EQUAL_PTR(root->head,motor1);
@@ -1107,20 +1150,20 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
     ListElement *motor3 = createLinkedElement(0);
     ListElement *motor4 = createLinkedElement(0);
      uint16_t arr[] = {10,0,0,5};
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(motor1,10);
   
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor2,10);
 
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor3,5);
    
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(motor4,5);
     
     TEST_ASSERT_EQUAL(10,motor1->actionTime);
@@ -1155,12 +1198,12 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5
     ListElement *motor2 = createLinkedElement(0);
 
     uint16_t arr[] = {5010,1990};
-    _updateBaseTime(root,0);
-    updateCurTime(root,1);
+    setBaseTime(root,0);
+    setCurrentTime(root,1);
     timerQueue(motor1,7000);
   
-    _updateBaseTime(root,100);
-    updateCurTime(root,110);
+    setBaseTime(root,100);
+    setCurrentTime(root,110);
     timerQueue(motor2,5000);
 
 
@@ -1188,8 +1231,8 @@ void test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remo
     ListElement *elem2 = createLinkedElement(0);
     ListElement *temp;
     
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(elem1,10);
   
     temp = dequeue(root);
@@ -1211,12 +1254,12 @@ void test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remo
     ListElement *elem2 = createLinkedElement(0);
     ListElement *temp;
     
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(elem1,10);
   
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(elem2,5);
     
     temp = dequeue(root);
@@ -1241,16 +1284,16 @@ void test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_re
     ListElement *elem3 = createLinkedElement(0);
     ListElement *temp;
     
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(elem1,10);
   
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(elem2,5);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,108);
+    setBaseTime(root,100);
+    setCurrentTime(root,108);
     timerQueue(elem3,14);
     
     temp = dequeue(root);
@@ -1265,8 +1308,8 @@ void test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_wil
     printf("No.33 - updateHead\n");
     root = createLinkedList();
     ListElement *elem1 = createLinkedElement(0);
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(elem1,10);
     updateHead(root);
     TEST_ASSERT_NULL(root->head);
@@ -1278,19 +1321,19 @@ void test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_wi
     root = createLinkedList();
     ListElement *elem1 = createLinkedElement(0);
     ListElement *elem2 = createLinkedElement(0);
-    _updateBaseTime(root,10);
-    updateCurTime(root,20);
+    setBaseTime(root,10);
+    setCurrentTime(root,20);
     timerQueue(elem1,10);
     
-    _updateBaseTime(root,100);
-    updateCurTime(root,105);
+    setBaseTime(root,100);
+    setCurrentTime(root,105);
     timerQueue(elem2,5);
     
     updateHead(root);
     TEST_ASSERT_EQUAL_PTR(elem2,root->head);
 }
 
-//************insertTimeElementIntoLeft******************
+//************insertTimeElementIntoBack******************
 void test_insertTimeElementIntoBack_(void){
     root = createLinkedList();
     ListElement *elem1 = createLinkedElement(0);
@@ -1299,15 +1342,15 @@ void test_insertTimeElementIntoBack_(void){
     
    addList(root,elem1);
    addList(root,elem2);
-   insertTimeElementIntoLeft(elem2,elem3);
+   insertTimeElementIntoBack(elem2,elem3);
    TEST_ASSERT_EQUAL_PTR(root->head,elem1);
    TEST_ASSERT_EQUAL_PTR(root->head->next,elem3);
    TEST_ASSERT_EQUAL_PTR(root->head->next->next,elem2);
 }
 
-//************insertTimeElementIntoRight******************
+//************insertTimeElementIntoFront******************
 
-void test_insertTimeElementIntoRight_(void){
+void test_insertTimeElementIntoFront_(void){
     root = createLinkedList();
     ListElement *elem1 = createLinkedElement(0);
     ListElement *elem2 = createLinkedElement(0);
@@ -1315,7 +1358,7 @@ void test_insertTimeElementIntoRight_(void){
     
    addList(root,elem1);
    addList(root,elem2);
-   insertTimeElementIntoRight(elem2,elem3);
+   insertTimeElementIntoFront(elem2,elem3);
    TEST_ASSERT_EQUAL_PTR(root->head,elem1);
    TEST_ASSERT_EQUAL_PTR(root->head->next,elem2);
    TEST_ASSERT_EQUAL_PTR(root->head->next->next,elem3);

@@ -81,47 +81,50 @@
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0
   :line: 936
   :message: ''
-- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5
+- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0
   :line: 973
   :message: ''
-- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_5_0
+- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5
   :line: 1016
   :message: ''
+- :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_5_0
+  :line: 1059
+  :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5_
-  :line: 1058
+  :line: 1101
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0_5_
-  :line: 1102
+  :line: 1145
   :message: ''
 - :test: test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5000_1990
-  :line: 1151
+  :line: 1194
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1184
+  :line: 1227
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1207
+  :line: 1250
   :message: ''
 - :test: test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_remove_first_timerElement
-  :line: 1236
+  :line: 1279
   :message: ''
 - :test: test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_will_point_to_null
-  :line: 1264
+  :line: 1307
   :message: ''
 - :test: test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_will_point_to_next_element
-  :line: 1276
+  :line: 1319
   :message: ''
 - :test: test_insertTimeElementIntoBack_
-  :line: 1294
+  :line: 1337
   :message: ''
-- :test: test_insertTimeElementIntoRight_
-  :line: 1310
+- :test: test_insertTimeElementIntoFront_
+  :line: 1353
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 38
-  :passed: 38
+  :total: 39
+  :passed: 39
   :failed: 0
   :ignored: 0
 :stdout:
@@ -188,74 +191,19 @@
 - No.21 - initialization root
 - No.22 - updateActionTime
 - No.23 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 8
-- timeInterval = 7
 - No.24 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 5
-- timeInterval = 10
-- newActTime = 2
 - No.25 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 5
-- timeInterval = 10
-- newActTime = 2
 - No.25.1 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 0
-- timeInterval = 10
-- newActTime = 9
 - No.26 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
+- No.26.0.1 - timerQueue
 - No.26.1 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 5
-- timeInterval = 5
 - No.27 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 6
-- timeInterval = 9
 - No.28 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 5
-- timeInterval = 10
-- newActTime = 0
-- recordElement->actionTime = 10
 - No.29 - timerQueue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 5
-- timeInterval = 10
-- newActTime = 0
-- recordElement->actionTime = 10
-- receiveInstrTime = 5
-- timeInterval = 10
-- newActTime = 0
-- recordElement->actionTime = 0
 - No.29.1 - timerQueue
-- receiveInstrTime = 10
-- timeInterval = 6990
-- newActTime = 1990
 - No.30 - dequeue
 - No.31 - dequeue
-- receiveInstrTime = 5
-- timeInterval = 5
 - No.32 - dequeue
-- receiveInstrTime = 5
-- timeInterval = 5
-- receiveInstrTime = 8
-- timeInterval = 2
 - No.33 - updateHead
 - No.34 - updateHead
-- receiveInstrTime = 5
-- timeInterval = 5
 - ''

@@ -61,9 +61,9 @@ void test_timerListAdd_a_time_element_is_added_into_link_list(void){
 
    uint16_t arr[] = {10};
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
@@ -79,15 +79,15 @@ void test_timerListAdd_two_time_element_is_added_into_link_list(void){
 
     uint16_t arr[] = {10,5};
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
@@ -103,25 +103,25 @@ void test_timerListAdd_three_time_element_is_added_into_link_list(void){
 
     uint16_t arr[] = {10,5,5};
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,108);
+   setCurrentTime(ptr,108);
 
    timerListAdd(ptr,12);
 
@@ -141,33 +141,33 @@ void test_timerListAdd_four_time_element_is_added_into_link_list(void){
 
 
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,108);
+   setCurrentTime(ptr,108);
 
    timerListAdd(ptr,12);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,109);
+   setCurrentTime(ptr,109);
 
    timerListAdd(ptr,13);
 
@@ -189,17 +189,17 @@ void test_relative_Time_Link_list_added_a_time_Element_that_rate_smaller_than_In
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,20);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
@@ -219,25 +219,25 @@ void test_relative_Time_Link_list_added_two_time_Element_and_added_a_timeElement
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,4);
 
@@ -257,33 +257,33 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
 
 
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,108);
+   setCurrentTime(ptr,108);
 
    timerListAdd(ptr,14);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
    timerListAdd(ptr,13);
 
@@ -303,33 +303,33 @@ void test_relative_Time_Link_list_four_time_Element_and_added_a_timeElement_that
 
 
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
     timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,108);
+   setCurrentTime(ptr,108);
 
    timerListAdd(ptr,14);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
    timerListAdd(ptr,7);
 
@@ -349,17 +349,17 @@ void test_relative_Time_Link_list_one_time_Element_and_added_a_timeElement_that_
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,105);
 
     timerListAdd(ptr,5);
 
@@ -379,25 +379,25 @@ void test_relative_Time_Link_list_two_time_Element_and_added_a_timeElement_that_
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,7);
 
@@ -417,33 +417,33 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,13);
 
@@ -463,33 +463,33 @@ void test_relative_Time_Link_list_three_time_Element_and_added_a_timeElement_tha
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -509,41 +509,41 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_that_period_equal_
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -563,49 +563,49 @@ void test_relative_Time_Link_list_the_link_list_contain_three_0_that_period_equa
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
-
-    timerListAdd(ptr,6);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
+
+    timerListAdd(ptr,6);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -629,25 +629,25 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
@@ -657,9 +657,9 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -667,9 +667,9 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
     store1 = ptr->head->next->next;
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -681,9 +681,9 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
     store1 = ptr->head->next->next->next;
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -695,9 +695,9 @@ void test_relative_Time_Link_list_the_link_list_contain_four_0_that_period_equal
 
     store1 = ptr->head->next->next->next->next;
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,109);
+    setCurrentTime(ptr,109);
 
     timerListAdd(ptr,6);
 
@@ -723,33 +723,33 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period
 
 
 
-    _updateBaseTime(ptr,10);
+    setBaseTime(ptr,10);
 
-    updateCurTime(ptr,20);
-
-    timerListAdd(ptr,10);
-
-
-
-    _updateBaseTime(ptr,100);
-
-    updateCurTime(ptr,105);
+    setCurrentTime(ptr,20);
 
     timerListAdd(ptr,10);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,105);
+
+    timerListAdd(ptr,10);
+
+
+
+    setBaseTime(ptr,100);
+
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
 
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
@@ -757,9 +757,9 @@ void test_relative_Time_Link_list_the_link_list_contain_two_0_at_end_that_period
 
     ListElement* store1 = ptr->head->next->next->next;
 
-    _updateBaseTime(ptr,100);
+    setBaseTime(ptr,100);
 
-    updateCurTime(ptr,108);
+    setCurrentTime(ptr,108);
 
     timerListAdd(ptr,14);
 
@@ -783,41 +783,41 @@ void test_relative_Time_Link_list_contain_a_0_and_added_a_timeElement_that_rate_
 
 
 
-   _updateBaseTime(ptr,10);
+   setBaseTime(ptr,10);
 
-   updateCurTime(ptr,20);
-
-   timerListAdd(ptr,10);
-
-
-
-   _updateBaseTime(ptr,100);
-
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,20);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
    timerListAdd(ptr,10);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,108);
+   setCurrentTime(ptr,105);
+
+   timerListAdd(ptr,10);
+
+
+
+   setBaseTime(ptr,100);
+
+   setCurrentTime(ptr,108);
 
    timerListAdd(ptr,14);
 
 
 
-   _updateBaseTime(ptr,100);
+   setBaseTime(ptr,100);
 
-   updateCurTime(ptr,105);
+   setCurrentTime(ptr,105);
 
    timerListAdd(ptr,13);
 
@@ -893,9 +893,9 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
@@ -905,9 +905,9 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
@@ -917,9 +917,9 @@ void test_timerQueue_create_three_TimerElement_that_added_to_relative_time_link_
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,108);
+    setCurrentTime(root,108);
 
     timerQueue(motor3,14);
 
@@ -961,9 +961,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
@@ -973,9 +973,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
@@ -987,9 +987,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor3,8);
 
@@ -1033,9 +1033,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
@@ -1043,9 +1043,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
@@ -1053,9 +1053,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor3,3);
 
@@ -1099,9 +1099,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
@@ -1109,9 +1109,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,5);
 
@@ -1119,9 +1119,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,100);
+    setCurrentTime(root,100);
 
     timerQueue(motor3,1);
 
@@ -1163,9 +1163,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
@@ -1173,9 +1173,9 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,5);
 
@@ -1199,6 +1199,70 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 }
 
+void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_0(void){
+
+    printf("No.26.0.1 - timerQueue\n");
+
+    root = createLinkedList();
+
+    ListElement *motor1 = createLinkedElement(0);
+
+    ListElement *motor2 = createLinkedElement(0);
+
+    ListElement *motor3 = createLinkedElement(0);
+
+    uint16_t arr[] = {10,0,0};
+
+
+
+    setBaseTime(root,10);
+
+    setCurrentTime(root,20);
+
+    timerQueue(motor1,10);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(984), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    setBaseTime(root,100);
+
+    setCurrentTime(root,105);
+
+    timerQueue(motor2,5);
+
+
+
+    setBaseTime(root,100);
+
+    setCurrentTime(root,105);
+
+    timerQueue(motor3,5);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(994), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(995), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(996), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(998), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(999), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1000), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next->next)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1001), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1003); };
+
+}
+
 void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_10_0_5(void){
 
     printf("No.26.1 - timerQueue\n");
@@ -1215,51 +1279,51 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(984), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1027), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,5);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(989), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1032), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor3,10);
 
 
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(995), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1038), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(996), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1039), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(997), UNITY_DISPLAY_STYLE_HEX32);
-
-
-
-    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(999), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1000), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1001), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1040), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1003); };
+    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1042), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1043), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1044), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1046); };
 
 }
 
@@ -1277,51 +1341,51 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
      uint16_t arr[] = {10,5,0};
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1026), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1069), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1031), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1074), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,106);
+    setCurrentTime(root,106);
 
     timerQueue(motor3,9);
 
 
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1037), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1080), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1038), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1081), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1039), UNITY_DISPLAY_STYLE_HEX32);
-
-
-
-    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1041), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1042), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1043), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1082), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1045); };
+    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1084), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1085), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1086), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1088); };
 
 }
 
@@ -1339,51 +1403,51 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
      uint16_t arr[] = {10,0,5};
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1068), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1111), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1073), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1116), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor3,5);
 
 
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1079), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1122), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1080), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1123), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1081), UNITY_DISPLAY_STYLE_HEX32);
-
-
-
-    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1083), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1084), UNITY_DISPLAY_STYLE_INT);
-
-    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1085), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1124), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1087); };
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1126), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1127), UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1128), UNITY_DISPLAY_STYLE_INT);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1130); };
 
 
 
@@ -1405,59 +1469,59 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1
 
      uint16_t arr[] = {10,0,0,5};
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(motor1,10);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor2,10);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor3,5);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(motor4,5);
 
 
 
-    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1126), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((motor1->actionTime)), (((void *)0)), (_U_UINT)(1169), UNITY_DISPLAY_STYLE_INT);
 
-    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1127), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor3->actionTime)), (((void *)0)), (_U_UINT)(1170), UNITY_DISPLAY_STYLE_INT);
 
-    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor4->actionTime)), (((void *)0)), (_U_UINT)(1128), UNITY_DISPLAY_STYLE_INT);
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((motor4->actionTime)), (((void *)0)), (_U_UINT)(1171), UNITY_DISPLAY_STYLE_INT);
 
-    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1129), UNITY_DISPLAY_STYLE_INT);
-
-
-
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1131), UNITY_DISPLAY_STYLE_HEX32);
-
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1132), UNITY_DISPLAY_STYLE_HEX32);
-
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor4)), (((void *)0)), (_U_UINT)(1133), UNITY_DISPLAY_STYLE_HEX32);
-
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1134), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((motor2->actionTime)), (((void *)0)), (_U_UINT)(1172), UNITY_DISPLAY_STYLE_INT);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1136); };
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1174), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor3)), (((void *)0)), (_U_UINT)(1175), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((motor4)), (((void *)0)), (_U_UINT)(1176), UNITY_DISPLAY_STYLE_HEX32);
+
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next->next)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1177), UNITY_DISPLAY_STYLE_HEX32);
+
+
+
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1179); };
 
 
 
@@ -1477,17 +1541,17 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5
 
     uint16_t arr[] = {5010,1990};
 
-    _updateBaseTime(root,0);
+    setBaseTime(root,0);
 
-    updateCurTime(root,1);
+    setCurrentTime(root,1);
 
     timerQueue(motor1,7000);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,110);
+    setCurrentTime(root,110);
 
     timerQueue(motor2,5000);
 
@@ -1497,13 +1561,13 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_5
 
 
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1168), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((motor1)), (((void *)0)), (_U_UINT)(1211), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1169), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((motor2)), (((void *)0)), (_U_UINT)(1212), UNITY_DISPLAY_STYLE_HEX32);
 
 
 
-    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1171); };
+    { test_assert_cycle_link_list(root,arr,sizeof(arr)/sizeof(uint32_t),1214); };
 
 
 
@@ -1523,9 +1587,9 @@ void test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remo
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(elem1,10);
 
@@ -1533,9 +1597,9 @@ void test_dequeue_timer_list_link_contain_one_timerElement_using_dequeue_to_remo
 
     temp = dequeue(root);
 
-    if ((((root->head)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(1196))));};
+    if ((((root->head)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(1239))));};
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1197), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1240), UNITY_DISPLAY_STYLE_HEX32);
 
 }
 
@@ -1553,17 +1617,17 @@ void test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remo
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(elem1,10);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(elem2,5);
 
@@ -1571,9 +1635,9 @@ void test_dequeue_timer_list_link_contain_two_timerElement_using_dequeue_to_remo
 
     temp = dequeue(root);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1223), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1266), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1224), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1267), UNITY_DISPLAY_STYLE_HEX32);
 
 }
 
@@ -1593,25 +1657,25 @@ void test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_re
 
 
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(elem1,10);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(elem2,5);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,108);
+    setCurrentTime(root,108);
 
     timerQueue(elem3,14);
 
@@ -1619,9 +1683,9 @@ void test_dequeue_timer_list_link_contain_three_timerElement_using_dequeue_to_re
 
     temp = dequeue(root);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1257), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1300), UNITY_DISPLAY_STYLE_HEX32);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1258), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem1)), (_U_SINT)(_UP)((temp)), (((void *)0)), (_U_UINT)(1301), UNITY_DISPLAY_STYLE_HEX32);
 
 }
 
@@ -1641,15 +1705,15 @@ void test_updateHead_the_link_list_contain_one_timerElement_the_head_of_root_wil
 
     ListElement *elem1 = createLinkedElement(0);
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(elem1,10);
 
     updateHead(root);
 
-    if ((((root->head)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(1272))));};
+    if ((((root->head)) == ((void *)0))) {} else {UnityFail( (((" Expected NULL"))), (_U_UINT)((_U_UINT)((_U_UINT)(1315))));};
 
 
 
@@ -1667,17 +1731,17 @@ void test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_wi
 
     ListElement *elem2 = createLinkedElement(0);
 
-    _updateBaseTime(root,10);
+    setBaseTime(root,10);
 
-    updateCurTime(root,20);
+    setCurrentTime(root,20);
 
     timerQueue(elem1,10);
 
 
 
-    _updateBaseTime(root,100);
+    setBaseTime(root,100);
 
-    updateCurTime(root,105);
+    setCurrentTime(root,105);
 
     timerQueue(elem2,5);
 
@@ -1685,7 +1749,7 @@ void test_updateHead_the_link_list_contain_twon_timerElement_the_head_of_root_wi
 
     updateHead(root);
 
-    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1290), UNITY_DISPLAY_STYLE_HEX32);
+    UnityAssertEqualNumber((_U_SINT)(_UP)((elem2)), (_U_SINT)(_UP)((root->head)), (((void *)0)), (_U_UINT)(1333), UNITY_DISPLAY_STYLE_HEX32);
 
 }
 
@@ -1709,13 +1773,13 @@ void test_insertTimeElementIntoBack_(void){
 
    addList(root,elem2);
 
-   insertTimeElementIntoLeft(elem2,elem3);
+   insertTimeElementIntoBack(elem2,elem3);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((elem1)), (((void *)0)), (_U_UINT)(1303), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((elem1)), (((void *)0)), (_U_UINT)(1346), UNITY_DISPLAY_STYLE_HEX32);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((elem3)), (((void *)0)), (_U_UINT)(1304), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((elem3)), (((void *)0)), (_U_UINT)(1347), UNITY_DISPLAY_STYLE_HEX32);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((elem2)), (((void *)0)), (_U_UINT)(1305), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((elem2)), (((void *)0)), (_U_UINT)(1348), UNITY_DISPLAY_STYLE_HEX32);
 
 }
 
@@ -1725,7 +1789,7 @@ void test_insertTimeElementIntoBack_(void){
 
 
 
-void test_insertTimeElementIntoRight_(void){
+void test_insertTimeElementIntoFront_(void){
 
     root = createLinkedList();
 
@@ -1741,12 +1805,12 @@ void test_insertTimeElementIntoRight_(void){
 
    addList(root,elem2);
 
-   insertTimeElementIntoRight(elem2,elem3);
+   insertTimeElementIntoFront(elem2,elem3);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((elem1)), (((void *)0)), (_U_UINT)(1319), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head)), (_U_SINT)(_UP)((elem1)), (((void *)0)), (_U_UINT)(1362), UNITY_DISPLAY_STYLE_HEX32);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((elem2)), (((void *)0)), (_U_UINT)(1320), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next)), (_U_SINT)(_UP)((elem2)), (((void *)0)), (_U_UINT)(1363), UNITY_DISPLAY_STYLE_HEX32);
 
-   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((elem3)), (((void *)0)), (_U_UINT)(1321), UNITY_DISPLAY_STYLE_HEX32);
+   UnityAssertEqualNumber((_U_SINT)(_UP)((root->head->next->next)), (_U_SINT)(_UP)((elem3)), (((void *)0)), (_U_UINT)(1364), UNITY_DISPLAY_STYLE_HEX32);
 
 }

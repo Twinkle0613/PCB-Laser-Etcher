@@ -15,7 +15,7 @@
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 #include "MockFunction.h"
-#include "getTick.h"
+
 #define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
 #define nextActionTime ( getTime(TIM2) + root->head->actionTime)
 #define newActionTime (root->head->actionTime + root->baseTime)
@@ -48,10 +48,6 @@ void timerDelay(ListElement* timerElement,uint32_t period){
 
 void _timerDelay(ListElement* timerElement,uint32_t period){
       int recordTick;
-      uint32_t checkPeriod;
-  if(period == 1){
-	  checkPeriod = period;
-  }
     if(isTimerQueueEmpty){
       stopTimer(TIM2);
 	    TIM_SetCounter(TIM2,0);
@@ -87,15 +83,6 @@ void timerSetExpiry(uint16_t period){
 
 #include "Motor.h"
 void TIM2_IRQHandler(){
-
-   // if(root->head->args == motor2){
-	   // root->head->actionTime = root->head->actionTime;
-   // }else if(root->head->args == motor1){
-	   // root->head->actionTime = root->head->actionTime;
-   // }else if(root->head->args == motor0){
-	   // root->head->actionTime = root->head->actionTime;
-  // }
-
   ListElement *temp1 = root->head;
   stopTimer(TIM2);
   clearUpdateFlag(TIM2);
@@ -111,13 +98,8 @@ void TIM2_IRQHandler(){
   do{
    updateBaseTime;
    temp2 = timerDequeue(root);
-   //printf("temp2 = %d\n",temp2);
    callBackFunction(temp2); 
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
-  if(TIM2->ARR < TIM2->CNT){
-	  uint16_t checkARR = TIM2->ARR;
-	  uint16_t checkCNT = TIM2->CNT;
-  }
 }
 
    /*

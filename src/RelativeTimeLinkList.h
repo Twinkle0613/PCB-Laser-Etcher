@@ -15,32 +15,29 @@
 
 #define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
 #define addTimeList(x,y) { addList(x,createLinkedElement(y)); }
+#define periodFromBase (period + receiveInstrTime)
+
+
+
+extern Linkedlist *root;
+void searchLastZeroTimerElement(ListElement** timerElement);
+void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
+void updateHead(Linkedlist *root);
+ListElement* dequeue(Linkedlist *root);
+void setCurrentTime(Linkedlist *newList,uint32_t curTime);
+void setBaseTime(Linkedlist *newList,uint32_t baseTime);
+void updateActionTime(ListElement *timerElement, uint32_t newActTime);
+void insertTimeElementIntoBack(ListElement *recordElement, ListElement *timerElement);
+void timerQueue(ListElement *timerElement, uint32_t period);
+void timerListAdd(Linkedlist *newList, uint32_t period);
+uint32_t getTotalActionTime(Linkedlist *newList);
+void insertTimeElementIntoFront(ListElement *recordElement, ListElement *timerElement);
+
 #define insertNode(x,y) {                                     \
          ListElement * temp = createLinkedElement(y);  \
          temp->next = x->next;                                \
          x->next = temp;                                      \
 }  
-#define periodFromBase (period + receiveInstrTime)
-
-#define findLastZeroNode(x) {                                       \
-    while(x->next->actionTime== 0){                                 \
-    x = x->next;                                                    \
-   }                                                                \
-} 
-
-extern Linkedlist *root;
-void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
-void updateHead(Linkedlist *root);
-ListElement* dequeue(Linkedlist *root);
-void updateCurTime(Linkedlist *newList,uint32_t curTime);
-void _updateBaseTime(Linkedlist *newList,uint32_t baseTime);
-void updateActionTime(ListElement *timerElement, uint32_t newActTime);
-void insertTimeElementIntoLeft(ListElement *recordElement, ListElement *timerElement);
-void timerQueue(ListElement *timerElement, uint32_t period);
-void timerListAdd(Linkedlist *newList, uint32_t period);
-uint32_t getWholeActionTime(Linkedlist *newList);
-void insertTimeElementIntoRight(ListElement *recordElement, ListElement *timerElement);
-
 
 
 #endif // RelativeTimeLinkList_H

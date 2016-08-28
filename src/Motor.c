@@ -21,6 +21,7 @@
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 #include "MockFunction.h"
+#include "getTick.h"
 
 /*
   DMA_Channel is a marco that was defined in Config.h. 

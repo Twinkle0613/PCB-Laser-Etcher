@@ -4,172 +4,172 @@
   :file: test_Motor.c
 :successes:
 - :test: test_motorInit_the_configuration_was_set_by_motorInit_every_setting_should_pass_the_test_
-  :line: 89
+  :line: 90
   :message: ''
 - :test: test_setCallBack_the_callBack_of_timerElement_of_whichMotor_was_set_the_address_of_testMotor_functon_
-  :line: 116
+  :line: 117
   :message: ''
 - :test: test_initialStepCommand_the_value_stepLowCommand_and_stepHighCommand_is_changed_to_0xAA_and_0x55
-  :line: 139
+  :line: 140
   :message: ''
 - :test: test_getCommond_first_called_getCommand_should_return_0xAA_and_second_called_getCommand_should_retun_0x55
-  :line: 148
+  :line: 149
   :message: ''
 - :test: test_resetMotorDriveBuffer_the_data_of_motoDriveBuffer_should_become_0
-  :line: 161
+  :line: 162
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot0_still_can_be_update
-  :line: 185
+  :line: 186
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot1_still_can_be_update
-  :line: 216
+  :line: 217
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot2_still_can_be_update
-  :line: 249
+  :line: 250
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot0_still_can_not_be_update
-  :line: 281
+  :line: 282
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot1_still_can_be_update
-  :line: 317
+  :line: 318
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot1_the_data_of_slot2_still_can_be_update
-  :line: 349
+  :line: 350
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot0_still_can_not_be_update
-  :line: 380
+  :line: 381
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot1_still_can_not_be_update
-  :line: 410
+  :line: 411
   :message: ''
 - :test: test_motorStep_when_DmaPointer_point_to_slot2_the_data_of_slot2_still_can_be_update
-  :line: 440
+  :line: 441
   :message: ''
 - :test: test_motorStep_the_firMotorElem_is_added_into_linked_list_the_next_of_triMotorElem_should_point_to_firMotorElem
-  :line: 468
+  :line: 469
   :message: ''
 - :test: test_motorStep_the_secMotorElem_is_added_into_linked_list_the_next_of_triMotorElem_should_point_to_secMotorElem
-  :line: 511
+  :line: 512
   :message: ''
 - :test: test_motorStep_Motor0Element_Motor1Element_and_Motor2Element_was_added_into_linked_list_at_the_same_time
-  :line: 559
+  :line: 560
   :message: ''
 - :test: test_motorStep_did_not_update_slot1_but_add_the_Motor2Element_into_linked_list
-  :line: 604
+  :line: 605
   :message: ''
 - :test: test_motorStep_when_DataNumber_is_0_the_slot2_cant_be_update_but_the_Motor2Element_was_added_into_linked_list
-  :line: 652
+  :line: 653
   :message: ''
 - :test: test_motorStep_when_DataNumber_is_0_the_all_of_slot_cant_be_update_but_the_all_MotorElement_were_added_into_linked_list
-  :line: 699
+  :line: 700
   :message: ''
 - :test: test_motorSet_the_motor_setting_was_set_by_using_motorSet_the_stepHighCommand_and_stepLowCommand_should_return_the_motor_setting
-  :line: 731
+  :line: 732
   :message: ''
 - :test: test_DMA_channel_marco_the_DMAy_chanelx_that_was_executed_in_system_was_defined_into_DMA_channel_marco
-  :line: 749
+  :line: 750
   :message: ''
 - :test: test_motorConfigInit_the_txDetail_was_set_by_motorConfigInit_the_setting_of_txDetail_should_pass_the_test
-  :line: 765
+  :line: 766
   :message: ''
 - :test: test_extractMotorConfigInfo_
-  :line: 780
+  :line: 781
   :message: ''
 - :test: test_dmaQueue_add_one_motorElement_into_Queue
-  :line: 789
+  :line: 790
   :message: ''
 - :test: test_dmaQueue_add_two_motorElement_into_Queue
-  :line: 799
+  :line: 800
   :message: ''
 - :test: test_dmaDequeue_add_two_motorElement_into_Queue_and_deQueue
-  :line: 812
+  :line: 813
   :message: ''
 - :test: test_updateMotorDriveBuffer_the_linkedlist_only_contain_motor0Element_and_Update_the_triMotor_slot_buffer
-  :line: 846
+  :line: 847
   :message: ''
 - :test: test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_and_motor1Element_and_Update_the_triMotor_and_secMotor_slot_buffer
-  :line: 874
+  :line: 875
   :message: ''
 - :test: test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_motor1Element_and_motor2Elementent_and_Update_the_triMotor_secMotor_and_firMotor_slot_buffer
-  :line: 914
+  :line: 915
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_after_function_it_should_dequeue
-  :line: 956
+  :line: 957
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_motor1Element_and_motor2Element_after_function_they_should_dequeue
-  :line: 989
+  :line: 990
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_they_should_dequeue
-  :line: 1036
+  :line: 1037
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor2Element_after_function_linkedList_contain_motor2Element
-  :line: 1080
+  :line: 1081
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_is_emply
-  :line: 1122
+  :line: 1123
   :message: ''
 - :test: test_updateMotorDriveBuffer_Queue_contain_motor0Element_and_motor1Element_after_function_linkedList_only_contain_motor1Element
-  :line: 1164
+  :line: 1165
   :message: ''
 - :test: test_motorMovementHandler_the_DMA_IRQ_function_will_update_motor0Element_Command
-  :line: 1209
+  :line: 1210
   :message: ''
 - :test: test_motorMovementHandler_the_DMA_IRQ_function_was_called_in_2_times_and_the_head_of_queue_is_point_to_null
-  :line: 1244
+  :line: 1245
   :message: ''
 - :test: test_motorMovementHandler_the_DMA_IRQ_function_will_update_triMotorSlot_and_secMotorSlot_Command
-  :line: 1284
+  :line: 1285
   :message: ''
 - :test: test_motorMovementHandler_motor0Element_and_motor1Element_that_updated_completely_should_be_dequeue
-  :line: 1325
+  :line: 1326
   :message: ''
 - :test: test_motorMovementHandler_motor0Element__motor1Element_and_motor2Element_that_updated_completely_should_be_dequeue
-  :line: 1375
+  :line: 1376
   :message: ''
 - :test: test_motorMovementHandler_motor0ment_and_motor1Element_
-  :line: 1431
+  :line: 1432
   :message: ''
 - :test: test_motorMovementHandler_motor0Element_and_motor2Element_that_updated_completely_should_be_dequeue
-  :line: 1504
+  :line: 1505
   :message: ''
 - :test: test_motorMovementHandler_motor1Element_and_motor2Element_that_updated_completely_should_be_dequeue
-  :line: 1556
+  :line: 1557
   :message: ''
 - :test: test_getFakeTick
-  :line: 1596
+  :line: 1597
   :message: ''
 - :test: test_getTick
-  :line: 1606
+  :line: 1607
   :message: ''
 - :test: test_motorMovementHandler_the_DMA_interrupt_has_occured_two_time_the_timer_link_list_have_contained_two_element
-  :line: 1629
+  :line: 1630
   :message: ''
 - :test: test_motorMovementHandler_the1
-  :line: 1724
+  :line: 1725
   :message: ''
 - :test: test_motorMovementHandler_the_timer_link_list_has_contain_two_element_such_as_3000_and_6000
-  :line: 1821
+  :line: 1822
   :message: ''
 - :test: test_motorMovementHandler_with_3000_and_6000_elem_in_link_list
-  :line: 1919
+  :line: 1920
   :message: ''
 - :test: test_motorMovementHandler_with_1000_2000_and_4000_elem_in_timer_link_list
-  :line: 2017
+  :line: 2018
   :message: ''
 - :test: test_motorMovementHandler_with_900_800_and_4000_elem_in_timer_link_list
-  :line: 2126
+  :line: 2127
   :message: ''
 - :test: test_motorMovementHandler_with_1_9_and_90_elem_in_timer_link_list
-  :line: 2236
+  :line: 2237
   :message: ''
 - :test: test_getNewPeriod_tickInterval_is_10_and_initial_period_is_20_the_function_should_return_10
-  :line: 2390
+  :line: 2391
   :message: ''
 - :test: test_getNewPeriod_tickInterval_is_10_and_initial_period_is_5_the_function_should_return_1
-  :line: 2400
+  :line: 2401
   :message: ''
 - :test: test_getNewPeriod_tickInterval_is_10_and_initial_period_is_10_the_function_should_return_1
-  :line: 2410
+  :line: 2411
   :message: ''
 :failures: []
 :ignores: []
@@ -228,51 +228,13 @@
 - No 5.4
 - No 5.5
 - No 5.6
-- No 6.0receiveInstrTime = 0
-- timeInterval = 2000
-- receiveInstrTime = 0
-- timeInterval = 3700
-- newActTime = 1800
-- No 6.1receiveInstrTime = 0
-- timeInterval = 2000
-- receiveInstrTime = 0
-- timeInterval = 3700
-- newActTime = 1800
-- No 6.2receiveInstrTime = 0
-- timeInterval = 3000
-- receiveInstrTime = 0
-- timeInterval = 2700
-- No 6.3receiveInstrTime = 0
-- timeInterval = 3000
-- receiveInstrTime = 300
-- timeInterval = 2700
-- No 6.4receiveInstrTime = 0
-- timeInterval = 1000
-- receiveInstrTime = 0
-- timeInterval = 3000
-- receiveInstrTime = 0
-- timeInterval = 5700
-- newActTime = 800
-- No 6.5receiveInstrTime = 0
-- timeInterval = 900
-- receiveInstrTime = 0
-- timeInterval = 1700
-- receiveInstrTime = 600
-- timeInterval = 4200
-- newActTime = 3300
-- No 6.5receiveInstrTime = 0
-- timeInterval = 1
-- receiveInstrTime = 0
-- timeInterval = 2
-- receiveInstrTime = 0
-- timeInterval = 11
-- newActTime = 0
-- recordElement->actionTime = 1
-- receiveInstrTime = 0
-- timeInterval = 10
-- receiveInstrTime = 0
-- timeInterval = 10
-- newActTime = 9
+- No 6.0
+- No 6.1
+- No 6.2
+- No 6.3
+- No 6.4
+- No 6.5
+- No 6.5
 - No 7.0
 - No 7.1
 - No 7.2

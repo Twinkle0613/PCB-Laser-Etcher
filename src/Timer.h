@@ -52,7 +52,7 @@ extern uint32_t tickRecord2;
 void timerDelay(ListElement* timerElement,uint32_t period);
 void timerSetExpiry(uint16_t period);
 void _timerDelay(ListElement* timerElement,uint32_t period);
-//uint32_t getTick(TIM_TypeDef* TIMx);
+
 typedef struct{
    ListElement *next;
    ListElement *prev;
