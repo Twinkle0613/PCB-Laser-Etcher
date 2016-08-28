@@ -1,30 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g2 -Map=PCB Laser Etcher.map -O0 --gc-sections -LC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher -TC:/Users/Hwa-Neng/CoIDE/workspace/PCB Laser Etcher/STM32F103C8_FLASH.ld -g">
-      <target file="PCB Laser Etcher.elf" lastModified="156ceb5a0a7">
-         <source file="..\obj\getTick.o" lastModified="156ce86aad7"/>
-         <source file="..\obj\DMA.o" lastModified="156ce86b119"/>
-         <source file="..\obj\syscalls.o" lastModified="156ce86b05b"/>
-         <source file="..\obj\stepperMotor.o" lastModified="156ce86a85f"/>
-         <source file="..\obj\Timer.o" lastModified="156ceb59c8c"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="156ce86aa3c"/>
-         <source file="..\obj\SPI_setting.o" lastModified="156ce86b1bf"/>
-         <source file="..\obj\projectStruct.o" lastModified="156ce86a8ef"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="156ce86acc3"/>
-         <source file="..\obj\Linklist.o" lastModified="156ce86af24"/>
-         <source file="..\obj\stm32f10x_dma.o" lastModified="156ce86b285"/>
-         <source file="..\obj\GPIO_setting.o" lastModified="156ce86b7a7"/>
-         <source file="..\obj\Timer_setting.o" lastModified="156ce86b605"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="156ce86a98c"/>
-         <source file="..\obj\RelativeTimeLinkList.o" lastModified="156ceb59b9f"/>
-         <source file="..\obj\DMA_setting.o" lastModified="156ce86a62a"/>
-         <source file="..\obj\startup_stm32f103xb.o" lastModified="156ce86abc1"/>
-         <source file="..\obj\stm32f10x_tim.o" lastModified="156ce86a77a"/>
-         <source file="..\obj\Motor.o" lastModified="156ceb59d97"/>
-         <source file="..\obj\stm32f10x_spi.o" lastModified="156ce86b708"/>
-         <source file="..\obj\misc.o" lastModified="156ce86b33a"/>
-         <source file="..\obj\main.o" lastModified="156ceb59a74"/>
-         <source file="..\obj\Config.o" lastModified="156ceb59968"/>
+      <target file="PCB Laser Etcher.elf" lastModified="156d18f6ebd">
+         <source file="..\obj\getTick.o" lastModified="156d18f6490"/>
+         <source file="..\obj\stm32f10x_dma.o" lastModified="156d18f6a70"/>
+         <source file="..\obj\Dma.o" lastModified="156d18f686c"/>
+         <source file="..\obj\syscalls.o" lastModified="156d18f68e7"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="156d18f6333"/>
+         <source file="..\obj\RelativeTimeLinkList.o" lastModified="156d18f66c7"/>
+         <source file="..\obj\Gpio.o" lastModified="156d18f6963"/>
+         <source file="..\obj\Timer.o" lastModified="156d18f6767"/>
+         <source file="..\obj\startup_stm32f103xb.o" lastModified="156d18f6553"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="156d18f624b"/>
+         <source file="..\obj\Spi.o" lastModified="156d18f69e4"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="156d18f63ff"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="156d18f6618"/>
+         <source file="..\obj\Linklist.o" lastModified="156d18f67da"/>
+         <source file="..\obj\Motor.o" lastModified="156d18f6bc9"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="156d18f6c70"/>
+         <source file="..\obj\misc.o" lastModified="156d18f6af8"/>
+         <source file="..\obj\main.o" lastModified="156d18f653e"/>
+         <source file="..\obj\Config.o" lastModified="156d18f629f"/>
       </target>
    </processor>
 </history>

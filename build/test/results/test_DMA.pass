@@ -1,14 +1,19 @@
 ---
 :source:
   :path: test
-  :file: test_DMA.c
-:successes: []
+  :file: test_Dma.c
+:successes:
+- :test: test_foo_
+  :line: 36
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 0
-  :passed: 0
+  :total: 1
+  :passed: 1
   :failed: 0
   :ignored: 0
 :stdout:
+- "&motorDriveBuffer = 63ff0d"
+- motorDriveBuffer = 63ff0d
 - ''

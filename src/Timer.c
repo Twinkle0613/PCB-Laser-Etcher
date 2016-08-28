@@ -11,43 +11,18 @@
 #include "Timer.h"
 #include "Linklist.h"
 #include "projectStruct.h"
-#include "Timer_setting.h"
+
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 #include "MockFunction.h"
 
-#define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
-#define nextActionTime ( getTime(TIM2) + root->head->actionTime)
-#define newActionTime (root->head->actionTime + root->baseTime)
-uint16_t timeRecord1;
-uint16_t timeRecord2;
-uint16_t timeRecord3;
 
 uint32_t tickRecord1;
 uint32_t tickRecord2;
 
 void timerDelay(ListElement* timerElement,uint32_t period){
-  // uint16_t recordCurActTime;
-  // updateCurrentTime;
-
-  // if(isTimerQueueEmpty){
-	 // stopTimer(TIM2);
-	 // TIM_SetCounter(TIM2,0);
-	 // timerSetExpiry(period);
-	 // startTimer(TIM2);
-	 // timerQueue(timerElement,period);
-  // }else{
-   // recordCurActTime = root->head->actionTime;
-   // timerQueue(timerElement,period);
-  	// if( root->head->actionTime != recordCurActTime && root->head->actionTime > getTime(TIM2) ){
-	  	// timerSetExpiry(root->head->actionTime);
-    // }
-  // }
-
-}
-
-void _timerDelay(ListElement* timerElement,uint32_t period){
-      int recordTick;
+    int recordTick;
+  if(period != 0){  
     if(isTimerQueueEmpty){
       stopTimer(TIM2);
 	    TIM_SetCounter(TIM2,0);
@@ -75,6 +50,9 @@ void _timerDelay(ListElement* timerElement,uint32_t period){
       }
       
     }
+  }else{
+    
+  }
 }
 
 void timerSetExpiry(uint16_t period){
@@ -102,54 +80,23 @@ void TIM2_IRQHandler(){
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
 }
 
-   /*
-   if(!isTimerQueueEmpty){
-	 stopTimer(TIM2);
-	 timeRecord1 = getTime(TIM2) - timeRecord1;
-	 timeRecord3 = getTime(TIM2);
-     timerSetExpiry( root->head->actionTime - getTime(TIM2) );
-     TIM2->CNT = 0;
-     startTimer(TIM2);
-   }else{
-   	 //stopTimer(TIM2);
-   }
-   */ 
- /*
-  *
-  * 	 ITStatus checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
-
-	  uint16_t checkCNT = TIM2->CNT;
-	  uint16_t checkCNT2 = TIM2->CNT;
-	  uint16_t checkARR;
-	  clearUpdateFlag(TIM2);
-	  TIM_SetCounter(TIM2,0); // set CNT to 0
-	  TIM2->ARR = 10000;
-	  checkARR = TIM2->ARR;
-	  TIM_Cmd(TIM2,ENABLE); // Disable Timer2
-	  checkCNT = TIM2->CNT;
-	  while(TIM2->CNT < 9000 ){
-	   checkCNT = TIM2->CNT;
-	   checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
-	  }
-	  checkCNT = TIM2->CNT;
-	  while(TIM2->CNT < 9000 ){
-	   checkCNT = TIM2->CNT;
-	   checkIT = TIM_GetITStatus(TIM2,TIM_IT_Update);
-	  }
-  *
-  *
-  *
-  *
-  * */
-
-// uint32_t getTick(TIM_TypeDef* TIMx){
-   // return ( (TIMx->CNT&0x0000FFFF) );
-// }
-
 uint32_t getTickInterval(void){
   if(tickRecord2 - tickRecord1 < 0){
 	  tickRecord2 = tickRecord2;
   }else{
     return (tickRecord2 - tickRecord1);
   }
+}
+
+void TimerConfig(TIM_TypeDef* TIMx,
+                uint16_t Prescaler,
+                uint16_t CounterMode,
+                uint16_t Period
+              ){
+  TIM_TimeBaseInitTypeDef timer;
+  timer.TIM_Prescaler = Prescaler;
+  timer.TIM_CounterMode = CounterMode;
+  timer.TIM_Period = Period;
+  timer.TIM_ClockDivision = TIM_CKD_DIV1;
+  TIM_TimeBaseInit(TIMx,&timer);
 }

@@ -15,10 +15,10 @@
 #include "Config.h"
 #include "Host.h"
 #include "Registers.h"
-#include "DMA.h"
+#include "Dma.h"
 #include "Timer.h"
 #include "Linklist.h"
-#include "DMA_setting.h"
+//#include "DMA_setting.h"
 #include "peripherals.h"
 #include "Timer_setting.h"
 #include "stepperMotor.h"
@@ -35,11 +35,6 @@ void setTickSequence(uint32_t tickTable[]){
   tickPointer = tickTable;  
 }
 
-uint32_t fake_getFakeTick(){
-  uint32_t tick = *tickPointer; 
-  tickPointer++;
-  return tick;
-}
 
 uint32_t fake_getTick(TIM_TypeDef* TIMx){
   uint32_t tick = *tickPointer; 
@@ -50,7 +45,7 @@ uint32_t fake_getTick(TIM_TypeDef* TIMx){
 
 void setUp(void)
 {
-  getFakeTick_StubWithCallback(fake_getFakeTick);
+  
   getTick_StubWithCallback(fake_getTick);
   
   HostDma1_Channel3 = malloc((sizeof(DMA_Channel_TypeDef)));
@@ -116,7 +111,7 @@ void test_motorInit_the_configuration_was_set_by_motorInit_every_setting_should_
 
 void test_setCallBack_the_callBack_of_timerElement_of_whichMotor_was_set_the_address_of_testMotor_functon_(void){
   printf("No 1.1");
-  MotorInfo* whichMotor = motorInit(testMotor,0,FIRST_MOTOR);
+  MotorInfo* whichMotor = motorInit(testMotor,0,2);
   setCallBack(&whichMotor->timerElement,testMotor);
   whichMotor->timerElement.callBack(whichMotor);
   TEST_ASSERT_EQUAL(1,whichMotor->step);
@@ -139,7 +134,7 @@ void initialStepCommand(MotorConfigInfo* motorConfiguration){
 //************initialStepCommand************//
 void test_initialStepCommand_the_value_stepLowCommand_and_stepHighCommand_is_changed_to_0xAA_and_0x55(void){
   printf("No 1.0");
-  MotorConfigInfo* motorConfig = motorConfigInit(&motor,func1,FIRST_MOTOR);
+  MotorConfigInfo* motorConfig = motorConfigInit(&motor,func1,2);
   initialStepCommand(motorConfig);
   TEST_ASSERT_EQUAL(0xAA,motorConfig->stepLowCommand);
   TEST_ASSERT_EQUAL(0x55,motorConfig->stepHighCommand);  
@@ -149,7 +144,7 @@ void test_initialStepCommand_the_value_stepLowCommand_and_stepHighCommand_is_cha
 void test_getCommond_first_called_getCommand_should_return_0xAA_and_second_called_getCommand_should_retun_0x55(void){
   printf("No 1.1");
   MotorInfo motor1; 
-  MotorConfigInfo* motorConfig = motorConfigInit(&motor1,func1,FIRST_MOTOR);
+  MotorConfigInfo* motorConfig = motorConfigInit(&motor1,func1,2);
   initialStepCommand(motorConfig);
   TEST_ASSERT_EQUAL(0xAA,getCommand(motorConfig));
   TEST_ASSERT_EQUAL(1,motorConfig->counter);
@@ -185,7 +180,7 @@ void test_resetMotorDriveBuffer_the_data_of_motoDriveBuffer_should_become_0(void
 
 void test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot0_still_can_be_update(void){
   printf("No 2.0");
-  setDataNumber(DMA1_Channel3,Motor_Number);
+  setDataNumber(DMA1_Channel3,NumberOfMotor);
   motorRoot = createLinkedList();
   MotorConfigInfo* motorConfig = motorConfigInit(&motor,func1,0);
   initialStepCommand(motorConfig);
@@ -251,7 +246,7 @@ void test_motorStep_when_DmaPointer_point_to_slot0_the_data_of_slot2_still_can_b
   printf("No 4.0");
   
   motorRoot = createLinkedList();
-  setDataNumber(DMA_Channel,Motor_Number);
+  setDataNumber(DMA_Channel,NumberOfMotor);
   MotorConfigInfo* motorConfig = motorConfigInit(&motor,func1,2);
   initialStepCommand(motorConfig);  
   
@@ -739,7 +734,7 @@ void test_motorSet_the_motor_setting_was_set_by_using_motorSet_the_stepHighComma
                       |Motor_Enable;
     uint8_t tempLow = tempHigh&Motor_Step_Low;
     
-    MotorInfo* Motor3 = motorInit(func1,0,THIRD_MOTOR);
+    MotorInfo* Motor3 = motorInit(func1,0,0);
     motorSet(Motor3,Motor_Clockwise,Motor_Full_step);
     
     TEST_ASSERT_EQUAL(tempHigh,Motor3->motorConfiguration->stepHighCommand);
@@ -793,7 +788,7 @@ void test_dmaQueue_add_one_motorElement_into_Queue(void){
     motorRoot = createLinkedList();
     MotorInfo motor2; 
     MotorConfigInfo* motorConfig2 = motorConfigInit(&motor2,func1,2);
-    dmaQueue(&motorConfig2->motorElement);
+    dmaQueue(motorRoot,&motorConfig2->motorElement);
     TEST_ASSERT_EQUAL_PTR(&motorConfig2->motorElement,motorRoot->head);
 }
 
@@ -804,8 +799,8 @@ void test_dmaQueue_add_two_motorElement_into_Queue(void){
     MotorInfo motor1; 
     MotorConfigInfo* motorConfig0 = motorConfigInit(&motor0,func1,0);
     MotorConfigInfo* motorConfig1 = motorConfigInit(&motor1,func1,1);
-    dmaQueue(&motorConfig0->motorElement);
-    dmaQueue(&motorConfig1->motorElement);
+    dmaQueue(motorRoot,&motorConfig0->motorElement);
+    dmaQueue(motorRoot,&motorConfig1->motorElement);
     TEST_ASSERT_EQUAL_PTR(&motorConfig0->motorElement,motorRoot->head);
     TEST_ASSERT_EQUAL_PTR(&motorConfig1->motorElement,motorRoot->head->next);
 }
@@ -821,8 +816,8 @@ void test_dmaDequeue_add_two_motorElement_into_Queue_and_deQueue(void){
     MotorConfigInfo* motorConfig0 = motorConfigInit(&motor0,func1,0);
     MotorConfigInfo* motorConfig1 = motorConfigInit(&motor1,func1,1);
     
-    dmaQueue(&motorConfig0->motorElement);
-    dmaQueue(&motorConfig1->motorElement);
+    dmaQueue(motorRoot,&motorConfig0->motorElement);
+    dmaQueue(motorRoot,&motorConfig1->motorElement);
     
     temp = dmaDequeue(motorRoot);
     TEST_ASSERT_EQUAL_PTR(&motorConfig0->motorElement,temp);
@@ -851,7 +846,7 @@ void test_updateMotorDriveBuffer_the_linkedlist_only_contain_motor0Element_and_U
     setDataNumber(DMA1_Channel3,3);
     MotorInfo* motor0 = motorInit(func1,1000,0);
     initialStepCommand(motor0Config);
-    dmaQueue(&motor0Config->motorElement);
+    dmaQueue(motorRoot,&motor0Config->motorElement);
     
     updateMotorDriveBuffer();
     
@@ -883,8 +878,8 @@ void test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_and_motor1
     initialStepCommand(motor0Config);
     initialStepCommand(motor1Config);
     
-    dmaQueue(&motor0Config->motorElement);
-    dmaQueue(&motor1Config->motorElement);
+    dmaQueue(motorRoot,&motor0Config->motorElement);
+    dmaQueue(motorRoot,&motor1Config->motorElement);
     
     updateMotorDriveBuffer();
     
@@ -925,9 +920,9 @@ void test_updateMotorDriveBuffer_the_linkedlist_contain_motor0Element_motor1Elem
     initialStepCommand(motor1Config);
     initialStepCommand(motor2Config);
     
-    dmaQueue(&motor0Config->motorElement);
-    dmaQueue(&motor1Config->motorElement);
-    dmaQueue(&motor2Config->motorElement);
+    dmaQueue(motorRoot,&motor0Config->motorElement);
+    dmaQueue(motorRoot,&motor1Config->motorElement);
+    dmaQueue(motorRoot,&motor2Config->motorElement);
     
     updateMotorDriveBuffer();
     
@@ -1593,18 +1588,7 @@ void test_motorMovementHandler_motor1Element_and_motor2Element_that_updated_comp
    TEST_ASSERT_EQUAL_PTR(&motor0Config->motorElement,motorRoot->head->next);
 }
 
-//************getFakeTick****************//
-void test_getFakeTick(void){
-  
-  uint32_t stickTable[] = {1000,2000,3000};
-  setTickSequence(stickTable);
-  TEST_ASSERT_EQUAL(1000,getFakeTick());
-  TEST_ASSERT_EQUAL(2000,getFakeTick());
-  TEST_ASSERT_EQUAL(3000,getFakeTick());
-  
-}
-
-void test_getTick(void){
+void test_getTick_the_function_should_return_1000_2000_3000(void){
   uint32_t stickTable[] = {1000,2000,3000};
   setTickSequence(stickTable);
   TEST_ASSERT_EQUAL(1000,getTick(TIM2));
@@ -1641,8 +1625,8 @@ void test_motorMovementHandler_the_DMA_interrupt_has_occured_two_time_the_timer_
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,2000);
-   _timerDelay(&motor1->timerElement,6000);
+   timerDelay(&motor0->timerElement,2000);
+   timerDelay(&motor1->timerElement,6000);
    TEST_ASSERT_EQUAL(2000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(4000,motor1->timerElement.actionTime);
    TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
@@ -1736,8 +1720,8 @@ void test_motorMovementHandler_the1(void){
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,2000);
-   _timerDelay(&motor1->timerElement,6000);
+   timerDelay(&motor0->timerElement,2000);
+   timerDelay(&motor1->timerElement,6000);
    TEST_ASSERT_EQUAL(2000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(4000,motor1->timerElement.actionTime);
    TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
@@ -1833,8 +1817,8 @@ void test_motorMovementHandler_the_timer_link_list_has_contain_two_element_such_
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,3000);
-   _timerDelay(&motor1->timerElement,6000);
+   timerDelay(&motor0->timerElement,3000);
+   timerDelay(&motor1->timerElement,6000);
    TEST_ASSERT_EQUAL(3000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(3000,motor1->timerElement.actionTime);
    TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
@@ -1931,8 +1915,8 @@ void test_motorMovementHandler_with_3000_and_6000_elem_in_link_list(void){
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,3000);
-   _timerDelay(&motor1->timerElement,6000);
+   timerDelay(&motor0->timerElement,3000);
+   timerDelay(&motor1->timerElement,6000);
    TEST_ASSERT_EQUAL(3000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(3000,motor1->timerElement.actionTime);
    TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
@@ -2030,9 +2014,9 @@ void test_motorMovementHandler_with_1000_2000_and_4000_elem_in_timer_link_list(v
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,1000);
-   _timerDelay(&motor1->timerElement,3000);
-   _timerDelay(&motor2->timerElement,7000);
+   timerDelay(&motor0->timerElement,1000);
+   timerDelay(&motor1->timerElement,3000);
+   timerDelay(&motor2->timerElement,7000);
    
    TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(2000,motor1->timerElement.actionTime);
@@ -2139,9 +2123,9 @@ void test_motorMovementHandler_with_900_800_and_4000_elem_in_timer_link_list(voi
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,900);
-   _timerDelay(&motor1->timerElement,1700);
-   _timerDelay(&motor2->timerElement,5700);
+   timerDelay(&motor0->timerElement,900);
+   timerDelay(&motor1->timerElement,1700);
+   timerDelay(&motor2->timerElement,5700);
    
    TEST_ASSERT_EQUAL(900,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(800,motor1->timerElement.actionTime);
@@ -2249,9 +2233,9 @@ void test_motorMovementHandler_with_1_9_and_90_elem_in_timer_link_list(void){
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
    
-   _timerDelay(&motor0->timerElement,1);
-   _timerDelay(&motor1->timerElement,2);
-   _timerDelay(&motor2->timerElement,12);
+   timerDelay(&motor0->timerElement,1);
+   timerDelay(&motor1->timerElement,2);
+   timerDelay(&motor2->timerElement,12);
    
    TEST_ASSERT_EQUAL(1,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(1,motor1->timerElement.actionTime);
@@ -2415,5 +2399,14 @@ void test_getNewPeriod_tickInterval_is_10_and_initial_period_is_10_the_function_
   
  TEST_ASSERT_EQUAL(1,getNewPeriod(10));
   
+  
+}
+
+void test_DmaConfig_(void){
+  
+    // uint8_t motorDriveBuffer[3];
+  
+  // uint8_t spi;
+  // DmaConfig(DMA1_Channel3,&spi,&motorDriveBuffer,DMA_DIR_PeripheralDST,3,DMA_PeripheralDataSize_Byte,DMA_MemoryDataSize_Byte,DMA_Mode_Normal);
   
 }

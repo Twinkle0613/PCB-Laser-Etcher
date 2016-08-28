@@ -4,85 +4,82 @@
   :file: test_Timer.c
 :successes:
 - :test: test_Test_TIMxIRQHandler_a_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_should_become_null
-  :line: 102
+  :line: 96
   :message: ''
 - :test: test_Test_TIMxIRQHandler_two_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 129
+  :line: 123
   :message: ''
 - :test: test_Test_TIMxIRQHandler_5_timerElement_exist_in_root_after_TIMxIRQHandler_the_head_of_roof_will_point_to_last_timerElement
-  :line: 165
+  :line: 159
   :message: ''
 - :test: test_timerDelay_generate_delay_10_by_adding_elemMotor1_into_queue
-  :line: 200
+  :line: 194
   :message: ''
 - :test: test_timerDelay_generate_delay_by_adding_elemMotor1_and_elemMotor2_into_queue
-  :line: 229
+  :line: 223
   :message: ''
 - :test: test_timerDelay_generate_delay_2_and_10_by_adding_elemMotor1_and_elemMotor2_into_queue
-  :line: 260
+  :line: 254
   :message: ''
 - :test: test_getTick_BaseTime_is_100000_and_TIM2_CNT_is_200_the_getTick_should_return_100200
-  :line: 283
+  :line: 277
   :message: ''
 - :test: test_getTickInterval_tickRecord1_is_3000_and_tickRecord2_is_4000_the_getTickInterval_should_return_1000
-  :line: 293
+  :line: 286
   :message: ''
 - :test: test_getTickInterval_tickRecord1_is_10000_and_tickRecord2_is_10000_the_getTickInterval_should_return_0
-  :line: 306
-  :message: ''
-- :test: test_getFakeTick
-  :line: 318
+  :line: 298
   :message: ''
 - :test: test_TIM2_IRQHandler_when_timer_expire_for_motor1_the_TIM2_IRQHandler_was_called
-  :line: 329
+  :line: 313
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_two_timerElement_when_timer_interrupt
-  :line: 382
+  :line: 366
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
-  :line: 455
+  :line: 439
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_2
-  :line: 521
+  :line: 505
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_0
-  :line: 616
+  :line: 600
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_0_3
-  :line: 684
+  :line: 668
   :message: ''
 - :test: test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_0_2
-  :line: 785
+  :line: 769
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_tick_the_link_list_should_contain_time_element
-  :line: 858
+  :line: 842
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_and_2000_tick_the_link_list_should_contain_two_time_element
-  :line: 886
+  :line: 870
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_3000_and_6000_tick_the_link_list_should_contain_three_time_element
-  :line: 924
+  :line: 908
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_and_100_tick_the_link_list_should_contain_two_time_element
-  :line: 974
+  :line: 958
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_1100_and_6000_tick_the_link_list_should_contain_three_time_element
-  :line: 1014
+  :line: 998
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_100_1000_1100_and_3000_tick_the_link_list_should_contain_four_time_element
-  :line: 1064
+  :line: 1048
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_1000_and_6000_tick_the_link_list_should_contain_three_time_element
-  :line: 1130
+  :line: 1114
   :message: ''
 - :test: test_new_timerDelay_call_timerDelay_to_delay_1000_1000_and_1000_tick_the_link_list_should_contain_three_time_element
-  :line: 1181
+  :line: 1165
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 25
-  :passed: 25
+  :total: 24
+  :passed: 24
   :failed: 0
   :ignored: 0
 :stdout:

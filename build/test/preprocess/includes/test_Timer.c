@@ -5,8 +5,7 @@
 - stm32f10x_tim.h
 - stm32f10x_gpio.h
 - stm32f10x_dma.h
-- DMA.h
-- DMA_setting.h
+- Dma.h
 - Host.h
 - Timer.h
 - Linklist.h

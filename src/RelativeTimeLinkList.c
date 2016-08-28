@@ -5,14 +5,14 @@
 //Own Library
 #include "Linklist.h"
 #include "projectStruct.h"
-#include "Timer_setting.h"
+
 #include "RelativeTimeLinkList.h"
 
 Linkedlist *root;
+
 /*
  The timerQueue function is used to sequence stepper motor action time.
 */
-
 void timerQueue(ListElement *timerElement, uint32_t period){
     uint32_t wholeActTime = 0;     // To store the sum of timeELement value.
     uint32_t receiveInstrTime = 0; // To store the difference between currentTime and prevTime
@@ -20,8 +20,8 @@ void timerQueue(ListElement *timerElement, uint32_t period){
     uint32_t newActTime = 0;       // To store the new timeElement value.
     uint32_t collectActTime = 0;   // To store timElement value in searchTheNodeActionTimeNearbyPeriodFromBase(...) function.
     ListElement * recordElement;   // To record the timeElement address
-    ListElement* temp = 0;
     
+
     if(root->head == NULL){  // if the root is NULL, timeELement is pointed by root->head.
 
       updateActionTime(timerElement,period);
@@ -69,19 +69,16 @@ void timerQueue(ListElement *timerElement, uint32_t period){
     }
 }
 
+ListElement* dequeue(Linkedlist *root){
+  ListElement *temp = root->head;
+  updateHead(root);
+  return temp;
+}
 
 void searchLastZeroTimerElement(ListElement **timerElement){
    while((*timerElement)->next->actionTime== 0){                                 
     (*timerElement) = (*timerElement)->next;                                                    
    }     
-}
-
-void setCurrentTime(Linkedlist *newList,uint32_t curTime){
-     newList->curTime = curTime;
-}
-
-void setBaseTime(Linkedlist *newList,uint32_t baseTime){
-     newList->baseTime = baseTime;
 }
 
 void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t periodFrombase){
@@ -94,19 +91,29 @@ void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, ui
       
 }
 
-uint32_t getTotalActionTime(Linkedlist *newList){
-  uint32_t storeActTime = 0;
-  ListElement * recordElement;
-  recordElement = newList->head;
-     do{
-         storeActTime += recordElement->actionTime;
-         recordElement = recordElement->next;
-        }while(recordElement != newList->head);
-  return storeActTime;
+void setCurrentTime(Linkedlist *newList,uint32_t curTime){
+     newList->curTime = curTime;
+}
+
+void setBaseTime(Linkedlist *newList,uint32_t baseTime){
+     newList->baseTime = baseTime;
 }
 
 void updateActionTime(ListElement *timerElement, uint32_t newActTime){
   timerElement->actionTime = newActTime;
+}
+
+void updateHead(Linkedlist *root){
+  ListElement *temp = root->head;
+  if(root->head->next == root->head){
+	 root->head = NULL;
+  }else{
+	 root->head = root->head->next;
+	 root->head->prev = temp->prev;
+	 temp->prev->next = root->head;
+  }
+  temp->next = NULL;
+  temp->prev = NULL;
 }
 
 void insertTimeElementIntoBack(ListElement *recordElement, ListElement *timerElement) {                                              
@@ -125,23 +132,16 @@ void insertTimeElementIntoFront(ListElement *recordElement, ListElement *timerEl
                                          
 } 
 
-ListElement* dequeue(Linkedlist *root){
-  ListElement *temp = root->head;
-  updateHead(root);
-  return temp;
-}
 
-void updateHead(Linkedlist *root){
-  ListElement *temp = root->head;
-  if(root->head->next == root->head){
-	 root->head = NULL;
-  }else{
-	 root->head = root->head->next;
-	 root->head->prev = temp->prev;
-	 temp->prev->next = root->head;
-  }
-  temp->next = NULL;
-  temp->prev = NULL;
+uint32_t getTotalActionTime(Linkedlist *newList){
+  uint32_t storeActTime = 0;
+  ListElement * recordElement;
+  recordElement = newList->head;
+     do{
+         storeActTime += recordElement->actionTime;
+         recordElement = recordElement->next;
+        }while(recordElement != newList->head);
+  return storeActTime;
 }
 
 /*

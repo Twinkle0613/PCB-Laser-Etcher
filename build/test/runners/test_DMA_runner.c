@@ -30,6 +30,7 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_foo_(void);
 
 
 //=======Test Reset Option=====
@@ -44,7 +45,8 @@ void resetTest(void)
 //=======MAIN=====
 int main(void)
 {
-  UnityBegin("test_DMA.c");
+  UnityBegin("test_Dma.c");
+  RUN_TEST(test_foo_, 36);
 
   return (UnityEnd());
 }

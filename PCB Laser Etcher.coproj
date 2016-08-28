@@ -72,58 +72,48 @@
   <Components path="./"/>
   <LocalComponents/>
   <Files>
+    <File name="Timer.h" path="src/Timer.h" type="1"/>
+    <File name="CMSIS/core_cmFunc.h" path="Config/CMSIS/core_cmFunc.h" type="1"/>
+    <File name="getTick.h" path="src/getTick.h" type="1"/>
     <File name="getTick.c" path="src/getTick.c" type="1"/>
-    <File name="DMA.c" path="src/DMA.c" type="1"/>
+    <File name="Driver/stm32f10x_dma.c" path="Config/StdPeriph_Driver/src/stm32f10x_dma.c" type="1"/>
+    <File name="Dma.c" path="src/Dma.c" type="1"/>
     <File name="Startup/syscalls.c" path="Config/startup/syscalls.c" type="1"/>
-    <File name="projectStruct.h" path="src/projectStruct.h" type="1"/>
-    <File name="stepperMotor.c" path="src/stepperMotor.c" type="1"/>
+    <File name="Driver/stm32f10x_gpio.h" path="Config/StdPeriph_Driver/inc/stm32f10x_gpio.h" type="1"/>
     <File name="Linklist.h" path="src/Linklist.h" type="1"/>
-    <File name="DMA_setting.h" path="app/DMA_setting.h" type="1"/>
-    <File name="Timer.c" path="src/Timer.c" type="1"/>
+    <File name="Startup/system_stm32f10x.c" path="Config/startup/system_stm32f10x.c" type="1"/>
+    <File name="Driver/stm32f10x_spi.h" path="Config/StdPeriph_Driver/inc/stm32f10x_spi.h" type="1"/>
+    <File name="Driver/misc.h" path="Config/StdPeriph_Driver/inc/misc.h" type="1"/>
+    <File name="RelativeTimeLinkList.c" path="src/RelativeTimeLinkList.c" type="1"/>
+    <File name="Gpio.c" path="src/Gpio.c" type="1"/>
+    <File name="Startup/stm32f10x.h" path="Config/startup/stm32f10x.h" type="1"/>
+    <File name="Driver/stm32f10x_tim.h" path="Config/StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
+    <File name="Startup/stm32f1xx_hal_rcc.h" path="Config/startup/stm32f1xx_hal_rcc.h" type="1"/>
     <File name="RelativeTimeLinkList.h" path="src/RelativeTimeLinkList.h" type="1"/>
-    <File name="Coroutine.c" path="src/Coroutine.c" type="1"/>
+    <File name="Timer.c" path="src/Timer.c" type="1"/>
+    <File name="Startup/startup_stm32f103xb.s" path="Config/startup/startup_stm32f103xb.s" type="1"/>
     <File name="CMSIS" path="" type="2"/>
     <File name="Config.h" path="src/Config.h" type="1"/>
     <File name="Driver" path="" type="2"/>
+    <File name="Driver/stm32f10x_tim.c" path="Config/StdPeriph_Driver/src/stm32f10x_tim.c" type="1"/>
+    <File name="Motor.h" path="src/Motor.h" type="1"/>
+    <File name="Spi.c" path="src/Spi.c" type="1"/>
     <File name="CMSIS/cmsis_gcc.h" path="Config/CMSIS/cmsis_gcc.h" type="1"/>
     <File name="Driver/stm32f10x_dma.h" path="Config/StdPeriph_Driver/inc/stm32f10x_dma.h" type="1"/>
     <File name="Driver/stm32f10x_gpio.c" path="Config/StdPeriph_Driver/src/stm32f10x_gpio.c" type="1"/>
-    <File name="SPI_setting.c" path="app/SPI_setting.c" type="1"/>
+    <File name="CMSIS/core_cm3.h" path="Config/CMSIS/core_cm3.h" type="1"/>
     <File name="CMSIS/core_cmSimd.h" path="Config/CMSIS/core_cmSimd.h" type="1"/>
-    <File name="projectStruct.c" path="src/projectStruct.c" type="1"/>
     <File name="Driver/stm32f10x_rcc.c" path="Config/StdPeriph_Driver/src/stm32f10x_rcc.c" type="1"/>
     <File name="Linklist.c" path="src/Linklist.c" type="1"/>
+    <File name="Gpio.h" path="src/Gpio.h" type="1"/>
     <File name="Startup/system_stm32f10x.h" path="Config/startup/system_stm32f10x.h" type="1"/>
-    <File name="DMA.h" path="src/DMA.h" type="1"/>
-    <File name="Coroutine.h" path="src/Coroutine.h" type="1"/>
-    <File name="CMSIS/core_cmInstr.h" path="Config/CMSIS/core_cmInstr.h" type="1"/>
-    <File name="getTick.h" path="src/getTick.h" type="1"/>
-    <File name="CMSIS/core_cmFunc.h" path="Config/CMSIS/core_cmFunc.h" type="1"/>
-    <File name="Timer.h" path="src/Timer.h" type="1"/>
-    <File name="Driver/stm32f10x_dma.c" path="Config/StdPeriph_Driver/src/stm32f10x_dma.c" type="1"/>
-    <File name="GPIO_setting.c" path="app/GPIO_setting.c" type="1"/>
-    <File name="Timer_setting.c" path="app/Timer_setting.c" type="1"/>
-    <File name="Driver/stm32f10x_gpio.h" path="Config/StdPeriph_Driver/inc/stm32f10x_gpio.h" type="1"/>
-    <File name="Startup/system_stm32f10x.c" path="Config/startup/system_stm32f10x.c" type="1"/>
-    <File name="Driver/stm32f10x_spi.h" path="Config/StdPeriph_Driver/inc/stm32f10x_spi.h" type="1"/>
-    <File name="RelativeTimeLinkList.c" path="src/RelativeTimeLinkList.c" type="1"/>
-    <File name="Driver/misc.h" path="Config/StdPeriph_Driver/inc/misc.h" type="1"/>
-    <File name="Startup/stm32f10x.h" path="Config/startup/stm32f10x.h" type="1"/>
-    <File name="DMA_setting.c" path="app/DMA_setting.c" type="1"/>
-    <File name="Startup/stm32f1xx_hal_rcc.h" path="Config/startup/stm32f1xx_hal_rcc.h" type="1"/>
-    <File name="Driver/stm32f10x_tim.h" path="Config/StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
-    <File name="Startup/startup_stm32f103xb.s" path="Config/startup/startup_stm32f103xb.s" type="1"/>
-    <File name="Driver/stm32f10x_tim.c" path="Config/StdPeriph_Driver/src/stm32f10x_tim.c" type="1"/>
-    <File name="Motor.h" path="src/Motor.h" type="1"/>
-    <File name="Timer_setting.h" path="app/Timer_setting.h" type="1"/>
-    <File name="GPIO_setting.h" path="app/GPIO_setting.h" type="1"/>
-    <File name="CMSIS/core_cm3.h" path="Config/CMSIS/core_cm3.h" type="1"/>
-    <File name="stepperMotor.h" path="src/stepperMotor.h" type="1"/>
+    <File name="Dma.h" path="src/Dma.h" type="1"/>
+    <File name="Spi.h" path="src/Spi.h" type="1"/>
     <File name="Motor.c" path="src/Motor.c" type="1"/>
+    <File name="CMSIS/core_cmInstr.h" path="Config/CMSIS/core_cmInstr.h" type="1"/>
     <File name="Startup" path="" type="2"/>
     <File name="Startup/stm32f103xb.h" path="Config/startup/stm32f103xb.h" type="1"/>
     <File name="Driver/stm32f10x_spi.c" path="Config/StdPeriph_Driver/src/stm32f10x_spi.c" type="1"/>
-    <File name="SPI_setting.h" path="app/SPI_setting.h" type="1"/>
     <File name="Driver/misc.c" path="Config/StdPeriph_Driver/src/misc.c" type="1"/>
     <File name="Driver/stm32f10x_rcc.h" path="Config/StdPeriph_Driver/inc/stm32f10x_rcc.h" type="1"/>
     <File name="main.c" path="app/main.c" type="1"/>

@@ -1,74 +1,62 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc 4.9.3 mingw32 -mcpu=cortex-m3 -mthumb -g2 -Wall -O0 -c -DSTM32F103C8T6 -DSTM32F103xB -DUSE_STDPERIPH_DRIVER -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\startup -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\src -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config -I..\..\..\..\..\..\..\CoIDE\workspace -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\app -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\CMSIS -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver\inc -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher">
-      <target file="stm32f10x_spi.o" lastModified="156ce86b708">
+   <processor signature="arm-none-eabi-gcc 4.9.3 mingw32 -mcpu=cortex-m3 -mthumb -g2 -Wall -O0 -c -DSTM32F103C8T6 -DSTM32F103xB -DUSE_STDPERIPH_DRIVER -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\startup -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\src -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config -I..\..\..\..\..\..\..\CoIDE\workspace -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\CMSIS -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher\Config\StdPeriph_Driver\inc -I..\..\..\..\..\..\..\CoIDE\workspace\PCB Laser Etcher">
+      <target file="stm32f10x_spi.o" lastModified="156d18f6c70">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_spi.c" lastModified="15486435481"/>
       </target>
-      <target file="stepperMotor.o" lastModified="156ce86a85f">
-         <source file="..\..\..\src\stepperMotor.c" lastModified="156564931c3"/>
+      <target file="Motor.o" lastModified="156d18f6bc9">
+         <source file="..\..\..\src\Motor.c" lastModified="156d146de84"/>
       </target>
-      <target file="Motor.o" lastModified="156ceb59d97">
-         <source file="..\..\..\src\Motor.c" lastModified="156cc1c2be4"/>
+      <target file="Dma.o" lastModified="156d18f686c">
+         <source file="..\..\..\src\Dma.c" lastModified="156d13b8e99"/>
       </target>
-      <target file="Config.o" lastModified="156ceb59968">
+      <target file="Config.o" lastModified="156d18f629f">
          <source file="..\..\..\src\Config.c" lastModified="156326c9f9b"/>
       </target>
-      <target file="stm32f10x_rcc.o" lastModified="156ce86acc3">
+      <target file="stm32f10x_rcc.o" lastModified="156d18f6618">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_rcc.c" lastModified="15486435459"/>
       </target>
-      <target file="startup_stm32f103xb.o" lastModified="156ce86abc1">
+      <target file="startup_stm32f103xb.o" lastModified="156d18f6553">
          <source file="..\..\..\Config\startup\startup_stm32f103xb.s" lastModified="1518acc3ee0"/>
       </target>
-      <target file="getTick.o" lastModified="156ce86aad7">
-         <source file="..\..\..\src\getTick.c" lastModified="156c559738e"/>
+      <target file="getTick.o" lastModified="156d18f6490">
+         <source file="..\..\..\src\getTick.c" lastModified="156cfc7f087"/>
       </target>
-      <target file="SPI_setting.o" lastModified="156ce86b1bf">
-         <source file="..\..\..\app\SPI_setting.c" lastModified="155b489dc91"/>
+      <target file="Spi.o" lastModified="156d18f69e4">
+         <source file="..\..\..\src\Spi.c" lastModified="156d0a88ad5"/>
       </target>
-      <target file="RelativeTimeLinkList.o" lastModified="156ceb59b9f">
-         <source file="..\..\..\src\RelativeTimeLinkList.c" lastModified="156ceb4d027"/>
+      <target file="RelativeTimeLinkList.o" lastModified="156d18f66c7">
+         <source file="..\..\..\src\RelativeTimeLinkList.c" lastModified="156d0e38950"/>
       </target>
-      <target file="GPIO_setting.o" lastModified="156ce86b7a7">
-         <source file="..\..\..\app\GPIO_setting.c" lastModified="15507b59dc9"/>
-      </target>
-      <target file="misc.o" lastModified="156ce86b33a">
+      <target file="misc.o" lastModified="156d18f6af8">
          <source file="..\..\..\Config\StdPeriph_Driver\src\misc.c" lastModified="154864353a5"/>
       </target>
-      <target file="Timer.o" lastModified="156ceb59c8c">
-         <source file="..\..\..\src\Timer.c" lastModified="156cb6d4d16"/>
+      <target file="Gpio.o" lastModified="156d18f6963">
+         <source file="..\..\..\src\Gpio.c" lastModified="156d0976b0f"/>
       </target>
-      <target file="DMA_setting.o" lastModified="156ce86a62a">
-         <source file="..\..\..\app\DMA_setting.c" lastModified="1560cb838b5"/>
+      <target file="Timer.o" lastModified="156d18f6767">
+         <source file="..\..\..\src\Timer.c" lastModified="156d1859be5"/>
       </target>
-      <target file="DMA.o" lastModified="156ce86b119">
-         <source file="..\..\..\src\DMA.c" lastModified="1569bb3a442"/>
-      </target>
-      <target file="stm32f10x_gpio.o" lastModified="156ce86aa3c">
+      <target file="stm32f10x_gpio.o" lastModified="156d18f63ff">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_gpio.c" lastModified="1548643542c"/>
       </target>
-      <target file="system_stm32f10x.o" lastModified="156ce86a98c">
+      <target file="system_stm32f10x.o" lastModified="156d18f6333">
          <source file="..\..\..\Config\startup\system_stm32f10x.c" lastModified="155b3e2a225"/>
       </target>
-      <target file="syscalls.o" lastModified="156ce86b05b">
-         <source file="..\..\..\Config\startup\syscalls.c" lastModified="154af482b57"/>
-      </target>
-      <target file="Linklist.o" lastModified="156ce86af24">
+      <target file="Linklist.o" lastModified="156d18f67da">
          <source file="..\..\..\src\Linklist.c" lastModified="15658935a1e"/>
       </target>
-      <target file="projectStruct.o" lastModified="156ce86a8ef">
-         <source file="..\..\..\src\projectStruct.c" lastModified="155a633f3b1"/>
+      <target file="syscalls.o" lastModified="156d18f68e7">
+         <source file="..\..\..\Config\startup\syscalls.c" lastModified="154af482b57"/>
       </target>
-      <target file="stm32f10x_tim.o" lastModified="156ce86a77a">
+      <target file="stm32f10x_tim.o" lastModified="156d18f624b">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_tim.c" lastModified="15486435493"/>
       </target>
-      <target file="stm32f10x_dma.o" lastModified="156ce86b285">
+      <target file="stm32f10x_dma.o" lastModified="156d18f6a70">
          <source file="..\..\..\Config\StdPeriph_Driver\src\stm32f10x_dma.c" lastModified="154864353f4"/>
       </target>
-      <target file="Timer_setting.o" lastModified="156ce86b605">
-         <source file="..\..\..\app\Timer_setting.c" lastModified="1561b88bfce"/>
-      </target>
-      <target file="main.o" lastModified="156ceb59a74">
-         <source file="..\..\..\app\main.c" lastModified="156cc4abb47"/>
+      <target file="main.o" lastModified="156d18f653e">
+         <source file="..\..\..\app\main.c" lastModified="156d145204f"/>
       </target>
    </processor>
 </history>

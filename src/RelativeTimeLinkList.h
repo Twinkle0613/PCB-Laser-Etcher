@@ -11,27 +11,36 @@
 //Own Library
 #include "Linklist.h"
 #include "projectStruct.h"
-#include "Timer_setting.h"
+
 
 #define diffBtwCurTimeAndBaseTime(x) (x->curTime - x->baseTime)
 #define addTimeList(x,y) { addList(x,createLinkedElement(y)); }
 #define periodFromBase (period + receiveInstrTime)
 
-
-
 extern Linkedlist *root;
+
+void timerQueue(ListElement *timerElement, uint32_t period);
+ListElement* dequeue(Linkedlist *root);
+
+//Searching 
 void searchLastZeroTimerElement(ListElement** timerElement);
 void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, uint32_t* collectActTime , uint32_t period);
-void updateHead(Linkedlist *root);
-ListElement* dequeue(Linkedlist *root);
+
+//Setting 
 void setCurrentTime(Linkedlist *newList,uint32_t curTime);
 void setBaseTime(Linkedlist *newList,uint32_t baseTime);
 void updateActionTime(ListElement *timerElement, uint32_t newActTime);
+void updateHead(Linkedlist *root);
+
+//Adding 
 void insertTimeElementIntoBack(ListElement *recordElement, ListElement *timerElement);
-void timerQueue(ListElement *timerElement, uint32_t period);
-void timerListAdd(Linkedlist *newList, uint32_t period);
-uint32_t getTotalActionTime(Linkedlist *newList);
 void insertTimeElementIntoFront(ListElement *recordElement, ListElement *timerElement);
+
+//Others
+uint32_t getTotalActionTime(Linkedlist *newList);
+void timerListAdd(Linkedlist *newList, uint32_t period);
+
+
 
 #define insertNode(x,y) {                                     \
          ListElement * temp = createLinkedElement(y);  \

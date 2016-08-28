@@ -9,10 +9,9 @@
 - Config.h
 - Host.h
 - Registers.h
-- DMA.h
+- Dma.h
 - Timer.h
 - Linklist.h
-- DMA_setting.h
 - peripherals.h
 - Timer_setting.h
 - stepperMotor.h

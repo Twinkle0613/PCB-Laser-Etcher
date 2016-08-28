@@ -3,7 +3,7 @@
 
 
 
-#define Motor_Number 4
+
 #define NumberOfMotor 3
 // DMA configuration
 #define DMA_Channel DMA1_Channel3
