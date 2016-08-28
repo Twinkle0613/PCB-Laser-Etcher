@@ -878,6 +878,50 @@ void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_8
     TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
 }
 
+/* Condition: (period < timeInterval) 
+                                                       
+                                                      
+          0          10                       0         10                  
+          |----------|                        |---------|
+                                                     
+                     
+          Head-->10-->0-->NULL               Head-->1-->9-->0-->NULL
+
+*/
+void test_timerQueue_create_three_TimerElement_that_to_relative_time_link_list_1_9_0(void){
+    printf("No.25.1 - timerQueue\n");
+    
+    root = createLinkedList();
+    ListElement *motor1 = createLinkedElement(0);
+    ListElement *motor2 = createLinkedElement(0);
+    ListElement *motor3 = createLinkedElement(0);
+     uint16_t arr[] = {1,9,0};
+     
+    _updateBaseTime(root,10);
+    updateCurTime(root,20);
+    timerQueue(motor1,10);
+    TEST_ASSERT_EQUAL_PTR(root->head,motor1);
+
+    _updateBaseTime(root,100);
+    updateCurTime(root,105);
+    timerQueue(motor2,5);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor2);
+
+    _updateBaseTime(root,100);
+    updateCurTime(root,100);
+    timerQueue(motor3,1);
+    
+    TEST_ASSERT_EQUAL(1,motor3->actionTime);
+    TEST_ASSERT_EQUAL(9,motor1->actionTime);
+    TEST_ASSERT_EQUAL(0,motor2->actionTime);
+    
+    TEST_ASSERT_EQUAL_PTR(root->head,motor3);
+    TEST_ASSERT_EQUAL_PTR(root->head->next,motor1);
+    TEST_ASSERT_EQUAL_PTR(root->head->next->next,motor2);
+
+    TEST_ASSERT_CYCLE_LINK_LIST_WITH_ARR(arr,root);
+}
+
 
 /* Condition: (period == timeInterval) 
                                                            rate = 5

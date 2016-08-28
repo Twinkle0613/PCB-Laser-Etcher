@@ -11,7 +11,7 @@
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_dma.h"
 //Own Library
-
+#include "getTick.h"
 #include "DMA.h"
 #include "DMA_setting.h"
 #include "Host.h"
@@ -20,12 +20,14 @@
 #include "Registers.h"
 #include "peripherals.h"
 #include "projectStruct.h"
-#include "Timer_setting.h"
+//#include "Timer_setting.h"
 #include "CustomAssertion.h"
 #include "RelativeTimeLinkList.h"
 #include "stepperMotor.h"
 #include "Motor.h"
 #include "mock_MockFunction.h"
+#include "mock_getTick.h"
+// #include "getTick.h"
 
 uint32_t* tickPointer = NULL;
 void setTickSequence(uint32_t tickTable[]){
@@ -38,6 +40,11 @@ uint32_t fake_getFakeTick(){
   return tick;
 }
 
+uint32_t fake_getTick(TIM_TypeDef* TIMx){
+  uint32_t tick = *tickPointer; 
+  tickPointer++;
+  return tick;
+}
 
 void testMotor123(MotorInfo* whichMotor){
   whichMotor->step = 1;
@@ -59,6 +66,8 @@ void resetMotorDriveBuffer(void){
 void setUp(void)
 {
   getFakeTick_StubWithCallback(fake_getFakeTick);
+  getTick_StubWithCallback(fake_getTick);
+  
   HostTim2= malloc((sizeof(TIM_TypeDef)));
   HostDma1_Channel3 = malloc((sizeof(DMA_Channel_TypeDef)));
   HostDma1 = malloc((sizeof(DMA_TypeDef)));
@@ -273,7 +282,7 @@ void test_getTick_BaseTime_is_100000_and_TIM2_CNT_is_200_the_getTick_should_retu
   
   _updateBaseTime(root,100000);
   TIM_SetCounter(TIM2,200);
-  TEST_ASSERT_EQUAL(100200,getTick(TIM2));
+  TEST_ASSERT_EQUAL(200,getTick(TIM2));
   
 }
 
@@ -328,13 +337,13 @@ void test_TIM2_IRQHandler_when_timer_expire_for_motor1_the_TIM2_IRQHandler_was_c
    MotorInfo* motor0 = motorInit(motorController,1000,0);
    MotorInfo* motor1 = motorInit(motorController,2000,1);
    MotorInfo* motor2 = motorInit(motorController,1000,2);
-   uint32_t stickTable[] = {1000,2000,3000};
+   uint32_t stickTable[] = {0,1000,2000,3000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
 
-   timerDelay(&motor0->timerElement,2000);
-   timerDelay(&motor1->timerElement,6000);
+   _timerDelay(&motor0->timerElement,2000);
+   _timerDelay(&motor1->timerElement,6000);
   
    TEST_ASSERT_EQUAL(2000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(4000,motor1->timerElement.actionTime);
@@ -381,15 +390,15 @@ void test_TIM2_IRQHandler_link_list_contain_two_timerElement_when_timer_interrup
    MotorInfo* motor0 = motorInit(motorController,1000,0);
    MotorInfo* motor1 = motorInit(motorController,2000,1);
    MotorInfo* motor2 = motorInit(motorController,1000,2);
-   uint32_t stickTable[] = {1000,1000,3000};
+   uint32_t stickTable[] = {0,1000,1000,3000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
    initialStepCommand(motor1->motorConfiguration);
    initialStepCommand(motor2->motorConfiguration);
 
-   timerDelay(&motor0->timerElement,2000);
-   timerDelay(&motor1->timerElement,6000);
+   _timerDelay(&motor0->timerElement,2000);
+   _timerDelay(&motor1->timerElement,6000);
   
    TEST_ASSERT_EQUAL(2000,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(4000,motor1->timerElement.actionTime);
@@ -456,15 +465,15 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    MotorInfo* motor2 = motorInit(motorController,1000,2);
    MotorInfo* motor3 = motorInit(motorController,1000,3);
    
-   uint32_t stickTable[] = {1000,1000,3000};
+   uint32_t stickTable[] = {0,1000,1000,3000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
    initialStepCommand(motor1->motorConfiguration);
    initialStepCommand(motor2->motorConfiguration);
   
-   timerDelay(&motor0->timerElement,2);
-   timerDelay(&motor1->timerElement,0);
+   _timerDelay(&motor0->timerElement,2);
+   _timerDelay(&motor1->timerElement,2);
    //timerDelay(&motor2->timerElement,0);
   
    TEST_ASSERT_EQUAL(2,motor0->timerElement.actionTime);
@@ -480,8 +489,8 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    
    TEST_ASSERT_EQUAL(1002,tickRecord1);
    TEST_ASSERT_EQUAL(0,tickRecord2);
-   TEST_ASSERT_EQUAL(2,TIM2->ARR);
    TEST_ASSERT_EQUAL(0x0000,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(2,TIM2->ARR);
    TEST_ASSERT_NULL(root->head);
   // TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
    //TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
@@ -522,16 +531,16 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    MotorInfo* motor2 = motorInit(motorController,1000,2);
    MotorInfo* motor3 = motorInit(motorController,1000,3);
    
-   uint32_t stickTable[] = {1000,2000,3000};
+   uint32_t stickTable[] = {0,0,1000,2000,3000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
    initialStepCommand(motor1->motorConfiguration);
    initialStepCommand(motor2->motorConfiguration);
   
-   timerDelay(&motor0->timerElement,2);
-   timerDelay(&motor1->timerElement,2);
-   timerDelay(&motor2->timerElement,5);
+   _timerDelay(&motor0->timerElement,2);
+   _timerDelay(&motor1->timerElement,2);
+   _timerDelay(&motor2->timerElement,5);
   
    TEST_ASSERT_EQUAL(2,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
@@ -617,16 +626,16 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    MotorInfo* motor2 = motorInit(motorController,1000,2);
    MotorInfo* motor3 = motorInit(motorController,1000,3);
    
-   uint32_t stickTable[] = {1000,2000,3000};
+   uint32_t stickTable[] = {0,0,1000,2000,3000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
    initialStepCommand(motor1->motorConfiguration);
    initialStepCommand(motor2->motorConfiguration);
   
-   timerDelay(&motor0->timerElement,2);
-   timerDelay(&motor1->timerElement,2);
-   timerDelay(&motor2->timerElement,2);
+   _timerDelay(&motor0->timerElement,2);
+   _timerDelay(&motor1->timerElement,2);
+   _timerDelay(&motor2->timerElement,2);
   
    TEST_ASSERT_EQUAL(2,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
@@ -685,7 +694,7 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    MotorInfo* motor2 = motorInit(motorController,1000,2);
    MotorInfo* motor3 = motorInit(motorController,1000,3);
    
-   uint32_t stickTable[] = {1000,2000,3000,4000};
+   uint32_t stickTable[] = {0,0,0,1000,2000,3000,4000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
@@ -693,10 +702,10 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
   
-   timerDelay(&motor0->timerElement,2);
-   timerDelay(&motor1->timerElement,2);
-   timerDelay(&motor2->timerElement,2);
-   timerDelay(&motor3->timerElement,5);
+   _timerDelay(&motor0->timerElement,2);
+   _timerDelay(&motor1->timerElement,2);
+   _timerDelay(&motor2->timerElement,2);
+   _timerDelay(&motor3->timerElement,5);
   
    TEST_ASSERT_EQUAL(2,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
@@ -786,7 +795,7 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    MotorInfo* motor2 = motorInit(motorController,1000,2);
    MotorInfo* motor3 = motorInit(motorController,1000,3);
    
-   uint32_t stickTable[] = {1000,2000,3000,4000};
+   uint32_t stickTable[] = {0,0,0,1000,2000,3000,4000};
    setDataNumber(DMA1_Channel3,NumberOfMotor);
    setTickSequence(stickTable);
    initialStepCommand(motor0->motorConfiguration);
@@ -794,10 +803,10 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    initialStepCommand(motor2->motorConfiguration);
    initialStepCommand(motor3->motorConfiguration);
   
-   timerDelay(&motor0->timerElement,2);
-   timerDelay(&motor1->timerElement,2);
-   timerDelay(&motor2->timerElement,2);
-   timerDelay(&motor3->timerElement,2);
+   _timerDelay(&motor0->timerElement,2);
+   _timerDelay(&motor1->timerElement,2);
+   _timerDelay(&motor2->timerElement,2);
+   _timerDelay(&motor3->timerElement,2);
   
    TEST_ASSERT_EQUAL(2,motor0->timerElement.actionTime);
    TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
@@ -839,4 +848,379 @@ void test_TIM2_IRQHandler_link_list_contain_3_timerElemen_that_the_value_is_2_0_
    TEST_ASSERT_EQUAL(0x01,DMA1_Channel3->CCR&0x01);
   
   
+}
+
+/*
+
+        Head                       Head
+         V                          V
+                                 -------
+       NULL        ---->        | 1000 |
+                                -------
+
+*/ 
+
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_tick_the_link_list_should_contain_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {0,2000,3000,4000};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+}
+
+
+/*
+
+          Head             Head
+           V                V
+        -------          -------   -------
+       | 1000 |    ->   | 1000 |->| 2000 |
+       -------          -------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_and_2000_tick_the_link_list_should_contain_two_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {0,0,3000,4000};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,3000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2000,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+}
+
+
+/*
+
+          Head             Head
+           V                V
+        -------          -------   -------       -------   -------   -------
+       | 1000 |    ->   | 1000 |->| 2010 |  ->  | 1000 |->| 2010 |->| 3020 |
+       -------          -------   -------       -------   -------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_3000_and_6000_tick_the_link_list_should_contain_three_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {10,30,4000};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,3000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2010,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(10,root->curTime);
+   
+   _timerDelay(&motor2->timerElement,6000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2010,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(3020,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(30,root->curTime);
+   
+}
+
+
+/*
+                        curTime = 20
+          Head             Head
+           V                V
+        -------          ------   ------      
+       | 1000 |    ->   | 100 |->| 880 |  
+       -------          ------   ------      
+
+*/ 
+void test_new_timerDelay_call_timerDelay_to_delay_1000_and_100_tick_the_link_list_should_contain_two_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {20,30,4000};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,100);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(880,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(100,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(20,root->baseTime);
+   TEST_ASSERT_EQUAL(0,TIM2->CNT);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(100,TIM2->ARR);
+   TEST_ASSERT_EQUAL(20,root->curTime);
+   
+}
+
+/*
+
+          Head             Head                    Head
+           V                V                       V
+        -------          -------   -------       -------   -------   -------
+       | 1000 |    ->   | 1000 |->| 2010 |  ->  | 1000 |->| 130  |->| 1880 |
+       -------          -------   -------       -------   -------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_1100_and_6000_tick_the_link_list_should_contain_three_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {10,30};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,3000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2010,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(10,root->curTime);
+   
+   _timerDelay(&motor2->timerElement,1100);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1880,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(130,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(30,root->curTime);
+   
+}
+
+/*
+
+          Head             Head                    Head
+           V                V                       V
+        -------          -------   -------       -------   -------   -------     ------   ------   ------   -------
+       | 1000 |    ->   | 1000 |->| 2010 |  ->  | 1000 |->| 130  |->| 1880 | -> | 100 |->| 860 |->| 130 |->| 1880 |
+       -------          -------   -------       -------   -------   -------     ------   ------   ------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_100_1000_1100_and_3000_tick_the_link_list_should_contain_four_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   MotorInfo* motor3 = motorInit(motorController,1000,2);
+   
+   uint32_t stickTable[] = {10,30,40};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,3000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2010,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(10,root->curTime);
+   
+   _timerDelay(&motor2->timerElement,1100);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1880,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(130,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(30,root->curTime);
+   
+   _timerDelay(&motor3->timerElement,100);
+   TEST_ASSERT_EQUAL_PTR(&motor3->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor3->timerElement,root->head->next->next->next->next);
+   TEST_ASSERT_EQUAL(860,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1880,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(130,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(100,motor3->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(100,TIM2->ARR);
+   TEST_ASSERT_EQUAL(40,root->curTime);
+   
+}
+
+/*
+
+          Head             Head                    Head
+           V                V                       V
+        -------          -------   -------       -------   -------   -------
+       | 1000 |    ->   | 1000 |->| 2000 |  ->  | 1000 |->|  0   |->| 2000 |
+       -------          -------   -------       -------   -------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_1000_and_6000_tick_the_link_list_should_contain_three_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {0,0};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,3000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2000,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor2->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(2000,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(0,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+}
+
+
+/*
+
+          Head             Head                    Head
+           V                V                       V
+        -------          -------   -------       -------   -------   -------
+       | 1000 |    ->   | 1000 |->| 2000 |  ->  | 1000 |->|  0   |->|   0  |
+       -------          -------   -------       -------   -------   -------
+
+*/ 
+
+void test_new_timerDelay_call_timerDelay_to_delay_1000_1000_and_1000_tick_the_link_list_should_contain_three_time_element(void){
+   MotorInfo* motor0 = motorInit(motorController,1000,0);
+   MotorInfo* motor1 = motorInit(motorController,2000,1);
+   MotorInfo* motor2 = motorInit(motorController,1000,2);
+   uint32_t stickTable[] = {0,0};
+   setTickSequence(stickTable);
+   setDataNumber(DMA1_Channel3,NumberOfMotor);
+   
+   _timerDelay(&motor0->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor1->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
+   _timerDelay(&motor2->timerElement,1000);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head);
+   TEST_ASSERT_EQUAL_PTR(&motor1->timerElement,root->head->next);
+   TEST_ASSERT_EQUAL_PTR(&motor2->timerElement,root->head->next->next);
+   TEST_ASSERT_EQUAL_PTR(&motor0->timerElement,root->head->next->next->next);
+   
+   TEST_ASSERT_EQUAL(1000,motor0->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(0,motor1->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(0,motor2->timerElement.actionTime);
+   TEST_ASSERT_EQUAL(1,TIM2->CR1&0x0001);
+   TEST_ASSERT_EQUAL(1000,TIM2->ARR);
+   TEST_ASSERT_EQUAL(0,root->curTime);
+   
 }

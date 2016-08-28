@@ -17,8 +17,9 @@ void timerQueue(ListElement *timerElement, uint32_t period){
     uint32_t timeInterval = 0;      // To store the difference between wholeActTime and receiveInstrTime
     uint32_t newActTime = 0;     // To store the new timeElement value.
     uint32_t collectActTime = 0;
+    ListElement* temp = 0;
     ListElement * recordElement; // To record the timeElement address
-
+    
     if(root->head == NULL){  // if the root is NULL, timeELement is connected the root->head.
 
       updateActionTime(timerElement,period);
@@ -28,36 +29,43 @@ void timerQueue(ListElement *timerElement, uint32_t period){
 
        wholeActTime = getWholeActionTime(root);
        receiveInstrTime = diffBtwCurTimeAndBaseTime(root);
+       printf("receiveInstrTime = %d\n",receiveInstrTime);
        timeInterval = wholeActTime - receiveInstrTime;
+       printf("timeInterval = %d\n",timeInterval);
+       
        if( period > timeInterval){   //Condition: (period > timeInterval)       
-     
          newActTime = period - timeInterval;
          updateActionTime(timerElement,newActTime);
          addList(root,timerElement);
 
        }else if( period < timeInterval){  //Condition: ( period < timeInterval) 
-     
          recordElement = root->head;
          searchTheNodeActionTimeNearbyPeriodFromBase(&recordElement,&collectActTime,periodFromBase);
+         temp = recordElement;
+         findLastZeroNode(recordElement); 
+         
          newActTime = collectActTime - periodFromBase;
-        
+         printf("newActTime = %d\n",newActTime);
+         
          if(newActTime != 0){
-          updateActionTime(timerElement, recordElement->actionTime - newActTime);
-          recordElement->actionTime = newActTime;
-           if(recordElement == root->head){
+          updateActionTime(timerElement, temp->actionTime - newActTime);
+          temp->actionTime = newActTime;
+           if(temp == root->head){
                root->head = timerElement;
            }
-          insertTimeElementIntoLeft(recordElement,timerElement);
+          insertTimeElementIntoLeft(temp,timerElement);
          }else{
            updateActionTime(timerElement,newActTime);
+            printf("recordElement->actionTime = %d\n",recordElement->actionTime);
            insertTimeElementIntoRight(recordElement,timerElement);
          }
          
-       }else{  //Condition: ( period == timeInterval )       
+       }else{  //Condition: ( period == timeInterval )     
            recordElement = root->head;
            searchTheNodeActionTimeNearbyPeriodFromBase(&recordElement,&collectActTime,periodFromBase);
+           findLastZeroNode(recordElement); 
            updateActionTime(timerElement,0);
-           addList(root,timerElement);
+           addList(root,timerElement);    
            
        }
     }
@@ -80,7 +88,7 @@ void searchTheNodeActionTimeNearbyPeriodFromBase(ListElement **recordElement, ui
           (*recordElement) = (*recordElement)->next;
         }
     }
-   findLastZeroNode((*recordElement));     
+      
 }
 
 /*
@@ -157,12 +165,14 @@ void timerListAdd(Linkedlist *newList, uint32_t period){
        timeInterval = wholeActTime - receiveInstrTime;
 
        if( period > timeInterval){   //Condition: (period > timeInterval)       
+        printf("period > timeInterval\n");
         newActTime = period - timeInterval;
         addTimeList(newList,newActTime);
        }else if( period < timeInterval){  //Condition: ( period < timeInterval) 
-         
+         printf("period < timeInterval\n");
          recordElement = newList->head;
          searchTheNodeActionTimeNearbyPeriodFromBase(&recordElement,&collectActTime,periodFromBase);
+         findLastZeroNode(recordElement); 
          newActTime = collectActTime - periodFromBase;
          recordElement->actionTime = recordElement->actionTime - newActTime;
         
@@ -176,7 +186,7 @@ void timerListAdd(Linkedlist *newList, uint32_t period){
        
            recordElement = newList->head;
            searchTheNodeActionTimeNearbyPeriodFromBase(&recordElement,&collectActTime,periodFromBase);
-           
+           findLastZeroNode(recordElement); 
            if(recordElement->next == newList->head){
              addTimeList(newList,0);
            }else{ 

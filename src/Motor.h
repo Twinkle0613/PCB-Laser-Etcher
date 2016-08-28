@@ -133,6 +133,11 @@ void motorSet(MotorInfo* whichMotor, uint8_t direation, uint8_t microstep);
 extern uint8_t motorDriveBuffer[];
 extern Linkedlist *motorRoot;
 
+extern MotorInfo* motor2;
+extern MotorInfo* motor1;
+extern MotorInfo* motor0;
+
+
 uint8_t getCommand(MotorConfigInfo* motorConfiguration);
 MotorConfigInfo* extractMotorConfigInfo(void *args);
 void copyWholeInform(uint8_t buffer[],uint8_t storetage[]);

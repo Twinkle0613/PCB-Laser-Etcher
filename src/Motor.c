@@ -21,6 +21,7 @@
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 #include "MockFunction.h"
+
 /*
   DMA_Channel is a marco that was defined in Config.h. 
 */
@@ -42,21 +43,32 @@ uint16_t getInterval(uint16_t timeRecord1, uint16_t timeRecord2){
 	}
 }
 
+uint32_t getNewPeriod(uint32_t period){
+  int32_t tick = period - getTickInterval();
+  if( tick < 0 || tick == 0){
+	  return 1;
+  }else{
+	  return tick;
+  }
+}
+
 void motorController(MotorInfo* whichMotor){
    startCoroutine();
   while(1){
-	  //recordCurrentTime(timeRecord1);
     recordCurrentTick(tickRecord1);
    	motorStep(whichMotor->motorConfiguration);
     yield();
-    //recordCurrentTime(timeRecord2);
     recordCurrentTick(tickRecord2);
-    //getTickInterval();
-    //getInterval(timeRecord1,timeRecord2);
-    timerDelay(&(whichMotor->timerElement),whichMotor->period - getInterval(timeRecord1,timeRecord2) );
+    if(tickRecord1 != tickRecord2){
+    	tickRecord1 = tickRecord1;
+    }
+
+    if( whichMotor->period - getTickInterval() < 0){
+     timeRecord1 = whichMotor->period - getTickInterval();
+    }
+    _timerDelay(&(whichMotor->timerElement),getNewPeriod(whichMotor->period));
     yield();
    }
-   
    endCoroutine();
 }
 
@@ -296,6 +308,10 @@ void resetMotorDrive(void){
   while(!SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE));
   triggerOutputData();
 }
+
+
+
+
 
 
 /*

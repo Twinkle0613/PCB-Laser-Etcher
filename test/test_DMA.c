@@ -26,6 +26,7 @@
 #include "stepperMotor.h"
 #include "Motor.h"
 #include "MockFunction.h"
+#include "getTick.h"
 
 MotorInfo motor;
 

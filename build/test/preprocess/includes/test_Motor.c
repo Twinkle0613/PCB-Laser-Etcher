@@ -18,3 +18,4 @@
 - stepperMotor.h
 - RelativeTimeLinkList.h
 - mock_MockFunction.h
+- mock_getTick.h

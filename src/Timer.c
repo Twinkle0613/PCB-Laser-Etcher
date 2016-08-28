@@ -15,7 +15,7 @@
 #include "RelativeTimeLinkList.h"
 #include "Config.h"
 #include "MockFunction.h"
-
+#include "getTick.h"
 #define timerDequeue(x) dequeue(x) //dequeue function can be found in RelativeTimeLinkList.c
 #define nextActionTime ( getTime(TIM2) + root->head->actionTime)
 #define newActionTime (root->head->actionTime + root->baseTime)
@@ -27,31 +27,74 @@ uint32_t tickRecord1;
 uint32_t tickRecord2;
 
 void timerDelay(ListElement* timerElement,uint32_t period){
-  uint16_t recordCurActTime;
-  updateCurrentTime;
+  // uint16_t recordCurActTime;
+  // updateCurrentTime;
 
-  if(isTimerQueueEmpty){
-	 stopTimer(TIM2);
-	 TIM_SetCounter(TIM2,0);
-	 timerSetExpiry(period);
-	 startTimer(TIM2);
-	 timerQueue(timerElement,period);
-  }else{
-   recordCurActTime = root->head->actionTime;
-   timerQueue(timerElement,period);
-  	if( root->head->actionTime != recordCurActTime && root->head->actionTime > getFakeTick() ){
-	  	timerSetExpiry(root->head->actionTime);
-    }
+  // if(isTimerQueueEmpty){
+	 // stopTimer(TIM2);
+	 // TIM_SetCounter(TIM2,0);
+	 // timerSetExpiry(period);
+	 // startTimer(TIM2);
+	 // timerQueue(timerElement,period);
+  // }else{
+   // recordCurActTime = root->head->actionTime;
+   // timerQueue(timerElement,period);
+  	// if( root->head->actionTime != recordCurActTime && root->head->actionTime > getTime(TIM2) ){
+	  	// timerSetExpiry(root->head->actionTime);
+    // }
+  // }
+
+}
+
+void _timerDelay(ListElement* timerElement,uint32_t period){
+      int recordTick;
+      uint32_t checkPeriod;
+  if(period == 1){
+	  checkPeriod = period;
   }
+    if(isTimerQueueEmpty){
+      stopTimer(TIM2);
+	    TIM_SetCounter(TIM2,0);
+	    timerSetExpiry(period);
+	    startTimer(TIM2);
+      timerQueue(timerElement,period);
+    }else{
+      
+      if(root->head->actionTime > period){ 
+       stopTimer(TIM2);
+       recordTick = getTick(TIM2);   //This command is used for real execution
+       
+       root->curTime = recordTick + root->baseTime; //update currrent time
+       root->baseTime += recordTick;   // Update baseTime
+       root->head->actionTime -= recordTick;
+       
+       timerQueue(timerElement,period);   
+       TIM_SetCounter(TIM2,0);
+       timerSetExpiry(root->head->actionTime);
+       startTimer(TIM2);
 
+      }else{
+       root->curTime = getTick(TIM2) + root->baseTime;
+       timerQueue(timerElement,period);   
+      }
+      
+    }
 }
 
 void timerSetExpiry(uint16_t period){
    TIM_SetAutoreload(TIM2,period);
 }
 
-//#include "Motor.h"
+#include "Motor.h"
 void TIM2_IRQHandler(){
+
+   // if(root->head->args == motor2){
+	   // root->head->actionTime = root->head->actionTime;
+   // }else if(root->head->args == motor1){
+	   // root->head->actionTime = root->head->actionTime;
+   // }else if(root->head->args == motor0){
+	   // root->head->actionTime = root->head->actionTime;
+  // }
 
   ListElement *temp1 = root->head;
   stopTimer(TIM2);
@@ -59,6 +102,7 @@ void TIM2_IRQHandler(){
   if( root->head->next != root->head){
      for(temp1 = root->head->next; ((temp1->next != root->head) && temp1->actionTime == 0) ; temp1 = temp1->next);      
      if(temp1->actionTime != 0){
+      TIM_SetCounter(TIM2,0);
       timerSetExpiry(temp1->actionTime); 
       startTimer(TIM2);
      }
@@ -67,9 +111,13 @@ void TIM2_IRQHandler(){
   do{
    updateBaseTime;
    temp2 = timerDequeue(root);
+   //printf("temp2 = %d\n",temp2);
    callBackFunction(temp2); 
   }while( !isTimerQueueEmpty && currActionTimeIsZero );
-
+  if(TIM2->ARR < TIM2->CNT){
+	  uint16_t checkARR = TIM2->ARR;
+	  uint16_t checkCNT = TIM2->CNT;
+  }
 }
 
    /*
@@ -112,14 +160,13 @@ void TIM2_IRQHandler(){
   *
   * */
 
-uint32_t getTick(TIM_TypeDef* TIMx){
-   return (root->baseTime + (TIMx->CNT&0x0000FFFF) );
-}
+// uint32_t getTick(TIM_TypeDef* TIMx){
+   // return ( (TIMx->CNT&0x0000FFFF) );
+// }
 
 uint32_t getTickInterval(void){
-  
   if(tickRecord2 - tickRecord1 < 0){
-    tickRecord2 = tickRecord2;
+	  tickRecord2 = tickRecord2;
   }else{
     return (tickRecord2 - tickRecord1);
   }

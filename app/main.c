@@ -30,6 +30,15 @@ uint16_t timeRecord2 = 0;
 uint16_t timeRecord1 = 0;
 uint16_t timeRecord3 = 0;
 
+uint32_t tickRecord1 = 0;
+uint32_t tickRecord2 = 0;
+MotorInfo* motor4;
+MotorInfo* motor3;
+MotorInfo* motor2;
+MotorInfo* motor1;
+MotorInfo* motor0;
+
+
 void initializeTxBuffer(void);
 
 int main(void)
@@ -45,25 +54,29 @@ int main(void)
 
   motorRoot = createLinkedList();
   root = createLinkedList();
-  MotorInfo* motor1 = motorInit(motorController,6000,2);
-  MotorInfo* motor2 = motorInit(motorController,2000,1);
-  //MotorInfo* motor3 = motorInit(motorController,1000,0);
+   motor4 = motorInit(motorController,100,4);
+   motor3 = motorInit(motorController,100,3);
+   motor2 = motorInit(motorController,2,2);
+   motor1 = motorInit(motorController,2,1);
+   motor0 = motorInit(motorController,6,0);
   initializeTxBuffer();
   SPI_init();
   SPI1_DMA1_init();
   TIM_init();
   resetMotorDrive();
-  motorSet(motor1,Motor_Clockwise,Motor_Full_step);  
   motorSet(motor2,Motor_Clockwise,Motor_Full_step);
-//  motorSet(motor3,Motor_Clockwise,Motor_Full_step);
+  motorSet(motor1,Motor_Anti_Clockwise,Motor_Full_step);
+  motorSet(motor0,Motor_Clockwise,Motor_Full_step);
 
-  //motor1->timerElement.callBack(motor1);
-  //motor2->timerElement.callBack(motor2);
-  //motor3->timerElement.callBack(motor3);
-	timerSetExpiry(10000);
-    startTimer(TIM2);
+  motor2->timerElement.callBack(motor2);
+  motor1->timerElement.callBack(motor1);
+  motor0->timerElement.callBack(motor0);
+
 	while(1)
     {
+		checkARR = TIM2->ARR;
+		checkActionTime = root->head->actionTime;
+		timeInterval1 = getTickInterval();
 	    time = getTime(TIM2);
     }
 }
